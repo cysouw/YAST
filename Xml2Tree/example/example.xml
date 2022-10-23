@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<catalog>
+   <book id="bk101">
+      <author date="12.05" place="Moscow">Gambardella, Matthew</author>
+      <title>XML Developer's Guide</title>
+      <publish_date>2000-10-01</publish_date>
+   </book>
+   <book id="bk102">
+      <author>Ralls, Kim</author>
+      <title>Midnight Rain</title>
+      <publish_date>2000-12-16</publish_date>
+   </book>
+   <journal id="jl101">
+	  <author>Corets, Eva</author>
+      <title>Oberon's Legacy</title>
+      <publish_date>2004-12-12</publish_date>
+   </journal>
+   <journal id="jl102">
+      <author>Thurman, Paula</author>
+      <title>Splish Splash</title>
+      <publish_date>2005-11-02</publish_date>
+   </journal>
+</catalog>

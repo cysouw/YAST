@@ -1,0 +1,20 @@
+
+<html>
+  <head>
+    <link rel="stylesheet" href="Xml2Tree/src/css/style.css" type="text/css">
+    <script src="Xml2Tree/src/xml2tree_d3.min.js"></script>
+	</head>
+	<body>
+    <div id="chart1"></div>
+    <script>
+
+      var elementId = 'chart1';
+      var filePath = 'trees/example.xml';
+      var secondLevelNodes = [];
+      var isAttributes = true;
+      var isJSON = false;
+        
+      xml2tree(elementId, filePath, secondLevelNodes, isAttributes, isJSON);
+    </script>
+	</body>
+</html>

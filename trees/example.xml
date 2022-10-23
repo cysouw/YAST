@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+Alle drei Kinder haben sich darüber gefreut von ihr gesehen zu werden ohne uns zu sehen.
+-->
+<SATZ kind="Hauptsatz">
+  <VORFELD>
+    <ARGUMENT role="Freuer" case="Akkusativ">
+      <ERLEBNISKONVERSIV case="Nominativ">
+        <PHRASE case="Nominativ">
+          <DETERMINATIV>
+            <ARTIKEL>alle</ARTIKEL>
+            <NUMERALE>drei</NUMERALE>
+          </DETERMINATIV>
+          <REFERENT>Kinder</REFERENT>
+        </PHRASE>
+      </ERLEBNISKONVERSIV>
+    </ARGUMENT>
+  </VORFELD>
+  <VERBZWEIT verb="haben" tense="Präsens" person="3" number="Plural">haben</VERBZWEIT>
+  <ERLEBNISKONVERSIV>
+    <REFLEXIV case="Akkusativ">sich</REFLEXIV>
+  </ERLEBNISKONVERSIV>
+  <ARGUMENT role="Auslöser" case="Nominativ">
+    <ERLEBNISKONVERSIV juncture="über">
+      <JUNKTOR>darüber</JUNKTOR>
+      <SATZ move="Satzende" />
+    </ERLEBNISKONVERSIV>
+  </ARGUMENT>
+  <PRÄDIKAT verb="freuen">
+    <PARTIZIP>gefreut</PARTIZIP>
+    <PERFEKT verb="haben">
+      <FINITUM move="Verbzweit" />
+    </PERFEKT>
+  </PRÄDIKAT>
+  <ARGUMENT role="Auslöser" case="Nominativ">
+    <ERLEBNISKONVERSIV juncture="über">
+      <SATZ kind="Kontrollsatz" controller="Freuer">
+        <ARGUMENT role="Gesehene" case="Akkusativ">
+          <VORGANGSPASSIV case="Nominativ">
+            <PHRASE controller="Freuer" />
+          </VORGANGSPASSIV>
+        </ARGUMENT>
+        <ARGUMENT role="Seher" case="Nominativ">
+          <VORGANGSPASSIV juncture="von">
+            <JUNKTOR>von</JUNKTOR>
+            <PHRASE case="Dativ">
+              <PRONOMEN>ihr</PRONOMEN>
+            </PHRASE>
+          </VORGANGSPASSIV>
+        </ARGUMENT>
+        <PRÄDIKAT verb="sehen">
+          <PARTIZIP>gesehen</PARTIZIP>
+          <VORGANGSPASSIV verb="werden">
+            <INFINITUM verb="werden" non-finite="zu-Infinitiv">zu werden</INFINITUM>
+          </VORGANGSPASSIV>
+        </PRÄDIKAT>
+      </SATZ>
+    </ERLEBNISKONVERSIV>
+  </ARGUMENT>
+  <ADVERBIALE>
+    <JUNKTOR>ohne</JUNKTOR>
+    <SATZ kind="Kontrollsatz" controller="Freuer">
+      <ARGUMENT role="Seher" case="Nominativ">
+        <PHRASE controller="Freuer" />
+      </ARGUMENT>
+      <ARGUMENT role="Gesehene" case="Akkusativ">
+        <PHRASE case="Akkusativ">
+          <PRONOMEN>uns</PRONOMEN>
+        </PHRASE>
+      </ARGUMENT>
+      <PRÄDIKAT verb="sehen">
+        <INFINITUM verb="sehen" non-finite="zu-Infinitiv">zu sehen</INFINITUM>
+      </PRÄDIKAT>
+    </SATZ>
+  </ADVERBIALE>
+</SATZ>

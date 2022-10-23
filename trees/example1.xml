@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+Schnell aber gut werden ich und du von uns gesehen.
+-->
+<SATZ kind="Hauptsatz">
+  <VORFELD>
+    <KOORDINATION>
+      <ADVERBIALE>
+        <ADVERB>schnell</ADVERB>
+      </ADVERBIALE>
+      <KONJUNKTION>aber</KONJUNKTION>
+      <ADVERBIALE>
+        <ADVERB>gut</ADVERB>
+      </ADVERBIALE>
+    </KOORDINATION>
+  </VORFELD>
+  <VERBZWEIT verb="werden" tense="Präsens" person="1" number="Plural">werden</VERBZWEIT>
+  <ARGUMENT role="Gesehene" case="Akkusativ">
+    <VORGANGSPASSIV case="Nominativ">
+      <PHRASE case="Nominativ">
+        <KOORDINATION>
+          <PRONOMEN>ich</PRONOMEN>
+          <KONJUNKTION>und</KONJUNKTION>
+          <PRONOMEN>du</PRONOMEN>
+        </KOORDINATION>
+      </PHRASE>
+    </VORGANGSPASSIV>
+  </ARGUMENT>
+  <ARGUMENT role="Seher" case="Nominativ">
+    <VORGANGSPASSIV juncture="von">
+      <JUNKTOR>von</JUNKTOR>
+      <PHRASE case="Dativ">
+        <REFLEXIV case="Dativ" person="1" number="Plural">uns</REFLEXIV>
+      </PHRASE>
+    </VORGANGSPASSIV>
+  </ARGUMENT>
+  <PRÄDIKAT verb="sehen">
+    <PARTIZIP>gesehen</PARTIZIP>
+    <VORGANGSPASSIV verb="werden">
+      <FINITUM move="Verbzweit" />
+    </VORGANGSPASSIV>
+  </PRÄDIKAT>
+</SATZ>
