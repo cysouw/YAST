@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+Manche Zuschauer deren kleinen doch lieben Kinder dich mit mir gesehen haben laufen sehr schnell.
+-->
+<SATZ kind="Hauptsatz">
+  <VORFELD>
+    <ARGUMENT role="Läufer" case="Nominativ" position="Vorfeld">
+      <PHRASE case="Nominativ">
+        <DETERMINATIV>
+          <ARTIKEL>manche</ARTIKEL>
+        </DETERMINATIV>
+        <REFERENT>Zuschauer</REFERENT>
+        <ATTRIBUT>
+          <SATZ kind="Relativsatz">
+            <ARGUMENT role="Seher" case="Nominativ" position="Relator">
+              <PHRASE case="Nominativ">
+                <DETERMINATIV>
+                  <RELATOR relative="Plural" case="Genitiv">deren</RELATOR>
+                </DETERMINATIV>
+                <ATTRIBUT kind="Koordination">
+                  <KOORDINATION>
+                    <ATTRIBUT>
+                      <ADJEKTIV>kleinen</ADJEKTIV>
+                    </ATTRIBUT>
+                    <KONJUNKTION>doch</KONJUNKTION>
+                    <ATTRIBUT>
+                      <ADJEKTIV>lieben</ADJEKTIV>
+                    </ATTRIBUT>
+                  </KOORDINATION>
+                </ATTRIBUT>
+                <REFERENT>Kinder</REFERENT>
+              </PHRASE>
+            </ARGUMENT>
+            <ARGUMENT role="Gesehene" case="Akkusativ">
+              <PHRASE case="Akkusativ">
+                <PRONOMEN person="2" number="Singular">dich</PRONOMEN>
+              </PHRASE>
+            </ARGUMENT>
+            <ADVERBIALE>
+              <JUNKTOR>mit</JUNKTOR>
+              <PHRASE case="Dativ">
+                <PRONOMEN person="1" number="Singular">mir</PRONOMEN>
+              </PHRASE>
+            </ADVERBIALE>
+            <PRÄDIKAT verb="sehen">
+              <PARTIZIP>gesehen</PARTIZIP>
+              <PERFEKT verb="haben">
+                <FINITUM verb="haben" tense="Präsens" person="3" number="Plural">haben</FINITUM>
+              </PERFEKT>
+            </PRÄDIKAT>
+          </SATZ>
+        </ATTRIBUT>
+      </PHRASE>
+    </ARGUMENT>
+  </VORFELD>
+  <VERBZWEIT verb="laufen" tense="Präsens" person="3" number="Plural">laufen</VERBZWEIT>
+  <ADVERBIALE>
+    <GRADPARTIKEL>sehr</GRADPARTIKEL>
+    <ADJEKTIV>schnell</ADJEKTIV>
+  </ADVERBIALE>
+  <PRÄDIKAT verb="laufen">
+    <FINITUM move="Verbzweit" />
+  </PRÄDIKAT>
+</SATZ>

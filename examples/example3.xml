@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+Ich warte darauf ein großes Kind zu sein.
+-->
+<SATZ kind="Hauptsatz">
+  <VORFELD>
+    <ARGUMENT role="Wartende" case="Nominativ" position="Vorfeld">
+      <PHRASE case="Nominativ">
+        <PRONOMEN person="1" gender="Singular">ich</PRONOMEN>
+      </PHRASE>
+    </ARGUMENT>
+  </VORFELD>
+  <VERBZWEIT verb="warten" tense="Präsens" person="1" number="Singular">warte</VERBZWEIT>
+  <ARGUMENT role="auf" case="Akkusativ">
+    <JUNKTOR>darauf</JUNKTOR>
+    <SATZ move="Satzende"/>
+  </ARGUMENT>
+  <PRÄDIKAT verb="warten">
+    <FINITUM move="Verbzweit"/>
+  </PRÄDIKAT>
+  <ARGUMENT role="auf" case="Akkusativ">
+    <SATZ kind="Kontrollsatz" controller="Wartende">
+      <ARGUMENT role="Subjekt" case="Nominativ"/>
+      <PRÄDIKATIV role="Prädikativ" case="Nominativ">
+        <PHRASE case="Nominativ">
+          <DETERMINATIV>
+            <ARTIKEL>ein</ARTIKEL>
+          </DETERMINATIV>
+          <ATTRIBUT>
+            <ADJEKTIV>großes</ADJEKTIV>
+          </ATTRIBUT>
+          <REFERENT>Kind</REFERENT>
+        </PHRASE>
+      </PRÄDIKATIV>
+      <PRÄDIKAT verb="sein">
+        <INFINITUM verb="sein" non-finite="zu-Infinitiv">zu sein</INFINITUM>
+      </PRÄDIKAT>
+    </SATZ>
+  </ARGUMENT>
+</SATZ>

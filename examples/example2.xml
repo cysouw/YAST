@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+Zu schnell aber mit allen zu erwartenden Kindern werden ich und du von uns gesehen.
+-->
+<SATZ kind="Hauptsatz">
+  <VORFELD>
+    <ADVERBIALE position="Vorfeld">
+      <KOORDINATION>
+        <ADVERBIALE>
+          <GRADPARTIKEL>zu</GRADPARTIKEL>
+          <ADJEKTIV>schnell</ADJEKTIV>
+        </ADVERBIALE>
+        <KONJUNKTION>aber</KONJUNKTION>
+        <ADVERBIALE>
+          <JUNKTOR>mit</JUNKTOR>
+          <PHRASE case="Dativ">
+            <DETERMINATIV>
+              <ARTIKEL>allen</ARTIKEL>
+            </DETERMINATIV>
+            <ATTRIBUT>
+              <SATZ kind="Partizipsatz" controller="Kindern">
+                <ARGUMENT role="Erwarter" case="Nominativ"/>
+                <ARGUMENT role="Erwartete" case="Akkusativ"/>
+                <PRÄDIKAT verb="erwart">
+                  <INFINITUM verb="erwart" non-finite="Futurpartizip">zu erwartenden</INFINITUM>
+                </PRÄDIKAT>
+              </SATZ>
+            </ATTRIBUT>
+            <REFERENT>Kindern</REFERENT>
+          </PHRASE>
+        </ADVERBIALE>
+      </KOORDINATION>
+    </ADVERBIALE>
+  </VORFELD>
+  <VERBZWEIT verb="werd" tense="Präsens" person="1" number="Plural">werden</VERBZWEIT>
+  <ARGUMENT role="Gesehene" case="Akkusativ">
+    <VORGANGSPASSIV case="Nominativ">
+      <PHRASE case="Nominativ" mark="wir">
+        <KOORDINATION>
+          <PRONOMEN person="1" gender="Singular">ich</PRONOMEN>
+          <KONJUNKTION>und</KONJUNKTION>
+          <PRONOMEN person="2" gender="Singular">du</PRONOMEN>
+        </KOORDINATION>
+      </PHRASE>
+    </VORGANGSPASSIV>
+  </ARGUMENT>
+  <ARGUMENT role="Seher" case="Nominativ">
+    <VORGANGSPASSIV juncture="von">
+      <JUNKTOR>von</JUNKTOR>
+      <PHRASE case="Dativ">
+        <REFLEXIV referent="wir" person="1" number="Plural">uns</REFLEXIV>
+      </PHRASE>
+    </VORGANGSPASSIV>
+  </ARGUMENT>
+  <PRÄDIKAT verb="seh">
+    <PARTIZIP>gesehen</PARTIZIP>
+    <VORGANGSPASSIV verb="werd">
+      <FINITUM move="Verbzweit"/>
+    </VORGANGSPASSIV>
+  </PRÄDIKAT>
+</SATZ>

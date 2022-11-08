@@ -1,5 +1,7 @@
 abgesehen davon, dass
 
+'Genitivsatz' !!! (die Konsequenz dessen, dass im Wettbewerb immer mehr Geld verdient wird")
+
 angesichts dessen, dass
 anhand dessen, dass
 aufgrund dessen, dass
@@ -16,20 +18,21 @@ im Fall(e), dass
 für den Fall, dass
 gesetzt den Fall, dass
 
-anstatt dass
-anstelle dass
-ohne dass
-statt dass
-außer dass
+'Alternativsatz?'
+
+(an)statt dass (alternative)
+anstelle dass (rare alternative to anstatt)
+ohne dass (clause with exception: A aber nicht B)
+außer dass (negative clause with positive exception: nicht A aber B)
 
 bis dass
 
-als ob
-als wenn
 insofern (...), als
 insoweit (...), als
 
 als
+als ob
+als wenn
 bevor
 bis
 da
