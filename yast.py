@@ -1,5 +1,6 @@
 from lxml import etree as ET
 from copy import deepcopy
+import re
 
 # ==============
 # Pure recursion
@@ -475,7 +476,7 @@ def Phrase(addto, connection = None):
   # ======
   node = addto.find(f'*[@role="{connection}"]')
   predicative = addto.find('*[@role="Prädikativ"]')
-  if node is not None:
+  if node is not None:# and len(node) == 0:
     # go to tip of branch to add stuff
     leaf = list(node.iter())[-1]
     # change arguments for Partizipsatz
@@ -496,7 +497,7 @@ def Phrase(addto, connection = None):
     phrase = ET.SubElement(leaf, 'PHRASE', attrib = {'case': case})
   # special case for prepositional connection to a predicative phrase 'ich bin im Garten'
   # assumes there are no diatheses above
-  elif predicative is not None and not predicative:
+  elif predicative is not None:# and len(predicative) == 0:
     case = Präpositionen[connection]
     ET.SubElement(predicative, 'JUNKTOR').text = connection
     phrase = ET.SubElement(predicative, 'PHRASE', attrib = {'case': case})
@@ -599,7 +600,7 @@ def Adverb(addto, adverb):
   else:
     # Adverbprädikat
     node = addto.find('PRÄDIKATIV')
-    if node is not None and not node:
+    if node is not None and len(node) == 0:
       ET.SubElement(node, "ADVERB").text = adverb
     elif adverb in Frageadverbien:
       node = ET.SubElement(addto, 'ADVERBIALE')
@@ -1538,7 +1539,7 @@ def cleanup(satz):
 def capfirst(s):
   return s[:1].upper() + s[1:]
 
-def showresult(clause):
+def showresult(clause = 's1'):
   sentence = ' '.join(clause.itertext())
   if clause.get('mood') == 'Fragesatz':
     sentence = capfirst(sentence) + '?'
@@ -1551,11 +1552,92 @@ def showresult(clause):
   ET.indent(clause)
   ET.dump(clause)
 
+# ==========
+# parse file
+# ==========
+
+def level(file):
+  depth = []
+  for line in file:
+    depth.append(len(line) - len(line.strip()))
+  return(depth)
+
+def reference(file):
+  depth = level(file)
+  stack = {}
+  ref = ['None']
+  for nr,elem in enumerate(depth[1:]):
+    if elem > depth[nr]:
+      ref.append(nr+1)
+      stack.update({elem: nr+1})
+    elif elem == depth[nr]:
+      ref.append(ref[-1])
+    elif elem < depth[nr]:
+      ref.append(stack[elem])
+  return ref
+
+def specification(raw, lineNr, refs):
+  #raw = file[lineNr]
+  ID = 's' + str(lineNr+1)
+  if lineNr == 0:
+    REF = 'None'
+  else:
+    REF = 's' + str(refs[lineNr])
+  raw = re.sub('\)', '', raw)
+  spec = re.split(' \(', raw)
+  # recurion part
+  recursion = spec[0].strip()
+  recursion = re.split(': ', recursion)
+  base = ID + ' = R(' + REF + ', \''
+  if len(recursion) == 1:
+    string = base + recursion[0] + '\')'
+  elif len(recursion) == 2:
+    string = base + recursion[1] + '\', \'' + recursion[0] + '\')'
+  string = re.sub('\'-\'', 'None', string)
+  # specification part
+  if len(spec) > 1:
+    parts = re.split(' \+ ', spec[1])
+    for nr,part in enumerate(parts):
+      tmp = re.split(': ', part)
+      base = tmp[0] + '(' + ID
+      if len(tmp) == 1:
+        parts[nr] = base + ')'
+      else:
+        parts[nr] = base + ', \'' + tmp[1] + '\')'
+    parts = '\n' + '\n'.join(parts)
+  else:
+    parts = ''
+  return string + parts
+
+def Syntax(file):
+  file = re.split('\n', file)
+  file = list(filter(None, file))
+  refs = reference(file)
+  for nr,elem in enumerate(file):
+    file[nr] = specification(elem, nr, refs) 
+  generative = '\n'.join(file)
+  generative = generative + '\nSatzende(s1)'
+  return generative
+
+#with open('test/generation.txt') as g:
+#  file = g.read()
+#  g.close()
+
 # =======
 # Lexicon
 # =======
 
 Verben = {
+  'hoffen':{
+    'Perfekt': 'haben',
+    'Rollen':{
+      'Hoffende': 'Nominativ',
+      'Gehoffte': 'Akkusativ',
+      'auf': 'Akkusativ'
+    },
+    'Kontrolle': 'Hoffende',
+    'Kontrolliert': 'auf'
+  },
   'warten':{
     'Perfekt': 'haben',
     'Rollen':{

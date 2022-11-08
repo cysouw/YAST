@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+Ich hoffe darauf bald Vater zu sein.
+-->
+<SATZ kind="Hauptsatz">
+  <VORFELD>
+    <ARGUMENT role="Hoffende" case="Nominativ" position="Vorfeld">
+      <PHRASE case="Nominativ">
+        <PRONOMEN person="1" gender="Singular">ich</PRONOMEN>
+      </PHRASE>
+    </ARGUMENT>
+  </VORFELD>
+  <VERBZWEIT verb="hoffen" tense="Präsens" person="1" number="Singular">hoffe</VERBZWEIT>
+  <ARGUMENT role="Gehoffte" case="Akkusativ"/>
+  <ARGUMENT role="auf" case="Akkusativ">
+    <JUNKTOR>darauf</JUNKTOR>
+    <SATZ move="Satzende"/>
+  </ARGUMENT>
+  <PRÄDIKAT verb="hoffen">
+    <FINITUM move="Verbzweit"/>
+  </PRÄDIKAT>
+  <ARGUMENT role="auf" case="Akkusativ">
+    <SATZ kind="Kontrollsatz" controller="Hoffende">
+      <ARGUMENT role="Subjekt" case="Nominativ"/>
+      <ADVERBIALE>
+        <ADVERB>bald</ADVERB>
+      </ADVERBIALE>
+      <PRÄDIKATIV role="Prädikativ" case="Nominativ">
+        <PHRASE case="Nominativ">
+          <DETERMINATIV/>
+          <REFERENT>Vater</REFERENT>
+        </PHRASE>
+      </PRÄDIKATIV>
+      <PRÄDIKAT verb="sein">
+        <INFINITUM verb="sein" non-finite="zu-Infinitiv">zu sein</INFINITUM>
+      </PRÄDIKAT>
+    </SATZ>
+  </ARGUMENT>
+</SATZ>
