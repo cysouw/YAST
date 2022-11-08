@@ -77,7 +77,7 @@ Recursion happens in the following combinations:
 Connecting tissue in YAST:
 
 - ~~junction~~ (*Junktion*) sometimes an explicit juncture (*Junktor*) is inserted at recursion, describing the relation between the subordinate and the embedded element ('link downwards'). Although there is some overlap, I will use the name preposition (*Präposition*, also with *da-*) for junctures used with an embedded phrase and subordinator (*Subjunktion*) for junctures used with an embedded clause. also conjunctions (*Konjunktion*).
-- ~~linkage~~ (*Verbindung*) is made with relators (*Relator*) inside clauses 'link upwards'. In German relative pronouns ('d'-*Relativpronomen*) and question words ('w'-*Fragewort*), with the default entries *dass* and *was*. Additionally the particle *ob* is used as relator. Relators always occur in the first position of a clause and there is a strong connection to the *Vorfeld* position in the German main clause (which can be interpreted as the linkage to the preceding context).
+- ~~linkage~~ (*Verbindung*) is made with relators (*Relator*) inside clauses 'link upwards'. In German relative pronouns ('d'-*Relativpronomen*) and question words ('w'-*Fragewort*), with the default entries *dass* and *was*. Additionally the particle *ob* is used as relator. Relators always occur in the first position of a clause and there is a strong connection to the *Vorfeld* position in the German main clause (which can be interpreted as the linkage to the preceding context with a default entry *es*).
 
 # Rules for predication
 
@@ -147,9 +147,9 @@ Relativsatz -> Partizipsatz
 
 NOTE: *freier Relativsatz* is transparent combination of 'free' relative pronoun as head with a relative clause referring to it. This construction can grammaticalise, e.g. *Adverbialrelativsatz* is an example of this.
 
-Three dimensions, 10 of 18 theoretical possiblities attested:
+Three dimensions, 10 of 18 theoretical possiblities attested (Vollsatz always adverbial, Attributsatz never juncture. missing: Adverbialsatz+Kontrollsatz without juncture)
 
-- Place of attachment (*Argument, Adverbiale, Attribut*)
+- Place of attachment (*Argumentsatz, Adverbialsatz, Attributsatz*)
 - Structure of subordinate clause (*Vollsatz, Relatorsatz, Kontrollsatz*)
 - Presence of juncture (*ja, nein*)
 

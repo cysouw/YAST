@@ -1815,7 +1815,7 @@ Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen',
 # Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
 Kontrollsatzpräpositionen = ['um', 'statt', 'anstatt', 'anstelle', 'ohne', 'außer', 'ausser']
 
-Adverbien = ['da', 'dort', 'draußen', 'hier', 'hinten', 'links', 'rechts', 'überall', 'drinnen', 'draußen', 'oben', 'vorn', 'anfangs', 'früh', 'morgens', 'mittags', 'nachmittags', 'abends', 'nachts', 'neulich', 'vorgestern', 'gestern', 'morgen', 'übermorgen', 'heute', 'stündlich', 'nun', 'jetzt', 'bald', 'bisher', 'blindlings', 'keineswegs', 'halbwegs', 'meinerseits', 'allerdings', 'oft', 'manchmal', 'natürlich', 'gewiss', 'unbedingt', 'keinesfalls']
+Adverbien = ['selbst', 'da', 'dort', 'draußen', 'hier', 'hinten', 'links', 'rechts', 'überall', 'drinnen', 'draußen', 'oben', 'vorn', 'anfangs', 'früh', 'morgens', 'mittags', 'nachmittags', 'abends', 'nachts', 'neulich', 'vorgestern', 'gestern', 'morgen', 'übermorgen', 'heute', 'stündlich', 'nun', 'jetzt', 'bald', 'bisher', 'blindlings', 'keineswegs', 'halbwegs', 'meinerseits', 'allerdings', 'oft', 'manchmal', 'natürlich', 'gewiss', 'unbedingt', 'keinesfalls']
 Frageadverbien = ['warum', 'weshalb', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
 Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
 
