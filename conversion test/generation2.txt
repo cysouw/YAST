@@ -1,0 +1,16 @@
+freuen (ReflexivErlebniskonversiv + Perfekt + Präsens)
+  Freuende: Zuschauer (Markierung: Y + Vorfeld)
+    Kind (Plural + Definit + Quantor: jen + Numerale: drei + Markierung: X)
+    erwarten (Infinit + PartizipPerfekt)
+      Erwartende: 1s
+      lang
+  Freudeauslösende: sehen (Vorgangspassiv + Präsens)
+    Sehende: X
+    Gesehene: Mutter (Definit)
+      alt
+      laufen (Modalverb: können + Präsens)
+        Laufende: - (Relator)
+        gut (Gradpartikel: ganz)
+        nicht mehr
+  ohne: sehen (Modalverb: können + Infinit)
+    Gesehene: Y

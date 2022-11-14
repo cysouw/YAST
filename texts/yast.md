@@ -89,10 +89,18 @@ Basically a verb with lexical arguments. A PHRASE leads to *Prädikatives Substa
 Lexical arguments can be filled with either PHRASE or SATZ (*Komplementsatz*)
 
 - verbal predication
-- nominal predication (SUBJ + role 'noun predicate' + auxiliary)
+
+Nonverbal predication in German is 'overloaded': the same auxiliary/copula(!) constructions are used fro various different kinds of predication. In YAST they are treated as the same structures, but the interpretation is of course different. They all have roles 'Subjekt' and 'Prädikativ'
+
 - possession (possessor(SUBJ) + possessee + auxiliary)
+- nominal predication (SUBJ + role 'noun predicate' + auxiliary)
+- identification (noun predicate with definite marking)
 - adjectival predication (SUBJ + attribute 'adjectival predicate' + auxiliary)
 - adverbial predications (local/temporal)
+- location predication with prepositions.
+
+To be done:
+
 - comparison (comparee(SUBJ) + 'comparison adjectival predicate' + auxiliary + role 'standard of comparison': both SATZ and PHRASE possible, additional Junktion *als, wie*)
 
 ## Event structure (*Ereignisstruktur*)
