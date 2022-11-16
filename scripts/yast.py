@@ -1,6 +1,5 @@
 import re
 from copy import deepcopy
-
 from lxml import etree as ET
 
 # ==============
@@ -16,15 +15,15 @@ def R(addto = None, lexeme = None, juncture = None):
     # or SATZ!!!
   elif lexeme[0].isupper() or lexeme in list('12mnfp'):
     out = Phrase(addto, juncture)
-    Referenz(out, lexeme)
+    Referent(out, lexeme)
   elif lexeme in Adverbien + Frageadverbien + Negationen + Adjektive:
     if juncture == 'Prädikativ':
-      link = Link(addto, juncture)
-      out = Addendum(link, lexeme)
+      link = Addendum(addto, juncture)
+      out = Eigenschaft(link, lexeme)
     else:
       out = Addendum(addto, lexeme)
   elif lexeme in Konjunktionen:
-    out = Koordination(addto, lexeme)
+    out = Koordination(addto, lexeme) # CHANGE! koordination becomes juncture!
   else:
     out = Satz(addto, juncture)
     Prädikat(out, lexeme)
@@ -35,9 +34,9 @@ def R(addto = None, lexeme = None, juncture = None):
 # adjective as predicate:
 # R(addto, 'sein') + R(addto, adjective, 'Prädikativ')
 
-# =======
-# Satzart
-# =======
+# ====
+# Satz
+# ====
 
 def Satz(addto = None, juncture = None):
   if addto is None:
@@ -58,6 +57,12 @@ def Satz(addto = None, juncture = None):
     return Relativsatz(addto)
   elif addto.tag in ['KOORDINATION', 'SATZ']:
     return eval(addto.get('kind'))(addto, juncture)
+
+def Prädikat(clause, verb):
+  if re.split(' ', verb)[0] in Kopula:
+    Prädikativ(clause, verb)
+  else:
+    Verb(clause, verb)
 
 # ========
 # Vollsatz
@@ -163,7 +168,7 @@ def Relativsatz(phrase, juncture = None):
 # e.g. "Es ist ein vernünftiger Kompromiss, der festhält an dem, dass Klimaschutz auch und gerade Angelegenheit der deutschen Wirtschaft ist."
 
 def Pronominalrelativsatz(phrase, gender):
-  Referenz(phrase, gender)
+  Referent(phrase, gender)
   Demonstrativ(phrase)
   clause = Relativsatz(phrase)
   clause.set('kind', 'Pronominalrelativsatz')
@@ -236,12 +241,6 @@ def Infinit(clause):
 # Prädikation
 # ===========
 
-def Prädikat(clause, verb):
-  if re.split(' ', verb)[0] in ['sein', 'werden', 'bleiben', 'haben']:
-    Prädikativ(clause, verb)
-  else:
-    Verb(clause, verb)
-
 # tense is Präsens by default and has to be explicitly changed to an infinite from
 # insertion point 'break' is added to make Mittelfeld-insertion easier. Removed at the end
 # Nominative '-de' role is assumed by default, except when listed differently in the lexicon
@@ -268,7 +267,7 @@ def Verb(clause, verb):
   elif Verben.get(verb, {}).get('Prädikativ', False):
     predicative = ET.SubElement(clause, 'PRÄDIKATIV', attrib = {'role': 'Prädikativ'})
     phrase = ET.SubElement(predicative, 'PHRASE', attrib = {'case': 'Akkusativ'})
-    Referenz(phrase, Verben[verb]['Prädikativ'])
+    Referent(phrase, Verben[verb]['Prädikativ'])
     Generisch(phrase)
     #prädikat.set('verb', Verben[verb]['Stamm'])
     verb = Verben[verb]['Stamm']
@@ -316,11 +315,6 @@ def Prädikativ(clause, copula = 'sein'):
     verb.set('tense', 'Präsens')
   # return for coordination
   return predicate
-
-# dummy function to expose prädikativ node for connection of addendum
-
-def Link(addto, link = 'Prädikativ'):
-  return addto.find(link.upper())
 
 # Alternatively, the verb 'haben (besitzen)' can be included as a main verb with these roles.
 # note the accusative case
@@ -444,282 +438,18 @@ def ReflexivErlebniskonversiv(clause):
 
 def Phrase(addto, connection = None):
   parent = addto.getparent()
-  # ======
-  # argument phrase
-  # ======
-  node = addto.find(f'*[@role="{connection}"]')
-  if node is not None:
-    # Check for already filled predicative: do not add another phrase then
-    # this happens with lexicalised constructions like 'Angst haben'
-    phrase = node.find('PHRASE')
-    if connection == 'Prädikativ' and phrase is not None:
-      return phrase
-    # go to tip of branch to add stuff
-    leaf = list(node.iter())[-1]
-    # change arguments for Partizipsatz
-    leaf = switchPartizipsatz(addto, leaf)
-    # get the prepositional juncture, if available
-    if connection in Präpositionen:
-      juncture = node.get('role')
-    else:
-      juncture = leaf.get('juncture')
-    # no juncture, direct case from argument
-    if juncture is None:
-      case = leaf.get('case')
-    # or add juncture and get case from juncture
-    elif juncture is not None:
-      ET.SubElement(leaf, 'JUNKTOR').text = juncture
-      # special case assignment for governed prepositions
-      if juncture in ['an', 'in', 'auf', 'über']:
-        case = 'Akkusativ'
-      else:
-        case = Präpositionen[juncture]
-    # add phrase
-    phrase = ET.SubElement(leaf, 'PHRASE', attrib = {'case': case})
-  # add role for unknown verbs: only useful for verbs that are not yet in the dictionary
-  # for verfication, this should not be allowed.
-  elif connection is not None and connection[0].isupper():
-    if connection == "Rezipient":
-      case = 'Dativ'
-    else:
-      case = 'Akkusativ'
-    # make node
-    argument = ET.Element('ARGUMENT', attrib = {'role': connection, 'case': case})
-    phrase = ET.SubElement(argument, 'PHRASE', attrib = {'case': case})
-    # insert
-    insert = addto.find('break')
-    insert.addprevious(argument)
-  # ======
-  # adverbial phrase
-  # ======
-  elif addto.tag == 'SATZ' or parent.tag == 'SATZ':
-    # prepare node
-    node = ET.Element('ADVERBIALE')
-    # prepositionphrase
-    if connection is not None:
-      ET.SubElement(node, 'JUNKTOR').text = connection
-      phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': Präpositionen[connection]})
-    # No juncture then measure phrase in accusative, e.g. 'den ganzen Tag'
-    else:
-      phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': 'Akkusativ'})
-    # find insertion point for branch
-    if addto.tag == 'KOORDINATION':
-      addto.append(node)
-    else:
-      insert = addto.find('break')
-      insert.addnext(node)
-  # ======
-  # attribute phrase
-  # ======
+  argument = addto.find(f'*[@role="{connection}"]')
+  # possibilities
+  if argument is not None:
+    return Argument(addto, connection)
+  if addto.tag == 'SATZ' or parent.tag == 'SATZ':
+    return Adverbialphrase(addto, connection)
   elif addto.tag == 'PHRASE' or parent.tag == 'PHRASE':
-    # prepare node
-    node = ET.Element('ATTRIBUT')
-    # prepositionphrase
-    if connection is not None:
-      ET.SubElement(node, 'JUNKTOR').text = connection
-      phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': Präpositionen[connection]})
-    # for coordination: when added to empty phrase, then new phrase is doubled, later replaced by coordination
-    elif addto[0] is None:
-      case = addto.get('case')
-      phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': case})
-    # Genitive when no juncture
-    else:
-      phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': 'Genitiv'})
-    # find insertion point for branch
-    addto.append(node)
-  # ======
-  # Coordination of arguments is left over
-  # ======
+    return Attributivphrase(addto, connection)
   elif addto.tag == 'KOORDINATION':
-    # simply add phrase to end of the koordination
-    case = addto.get('case')
-    phrase = ET.SubElement(addto, 'PHRASE', attrib = {'case': case})
-  # ======
-  # For relators: add info to all phrases
-  relative = addto.get('relative')
-  if relative is not None:
-    phrase.set('relative', relative)
-  kind = addto.get('kind')
-  if kind is not None:
-    phrase.set('kind', kind)
-  # ======
-  return phrase
+    return Phrasenkoordination(addto)
 
-# =======
-# Addenda
-# =======
-
-# adjective and adverb addition are almost completely the same
-# they are distinguished to allow for lexical checks
-# and there are differences in attributive function
-# there are differences in specification as well
-
-def Addendum (addto, adword):
-  if adword in Adverbien + Frageadverbien + Negationen:
-    node = Adverb(addto, adword)
-  elif adword in Adjektive:
-    node = Adjektiv(addto, adword)
-  return node
-
-def Adverb(addto, adverb):
-  # In coordination, get label from parent
-  if addto.tag == 'KOORDINATION':
-    tags = {'SATZ': 'ADVERBIALE', 'PHRASE': 'ATTRIBUT', 'PRÄDIKATIV': 'ADVERBIALE'}
-    parent = addto.getparent()
-    node = ET.SubElement(addto, tags[parent.tag])
-  # Adverb Prädikat
-  elif addto.tag == 'PRÄDIKATIV':
-    node = ET.SubElement(addto, "ADVERBIALE")
-  # Adverb Attribut, this is rare, e.g. 'das Treffen gestern'
-  elif addto.tag == 'PHRASE':
-    node = ET.SubElement(addto, 'ATTRIBUT')
-  # Adverb Adverbiale
-  elif addto.tag == 'SATZ':
-    node = ET.Element("ADVERBIALE")
-    # insert after arguments
-    insertafter = addto.find('break')
-    place = list(addto).index(insertafter) + 1
-    addto.insert(place, node)
-  # add adverb to prepared node
-  sub = ET.SubElement(node, "ADVERB")
-  sub.text = adverb
-  # Fragewörter
-  if adverb in Frageadverbien:
-    if addto.get('kind') == 'Hauptsatz':
-      addto.set('mood', 'Fragesatz')
-      sub.tag = 'FRAGEWORT'
-      # by default: maybe better explicit?
-      Vorfeld(node)
-    elif addto.tag == 'SATZ':
-      sub.tag = 'RELATOR'
-      # by default: maybe better explicit?
-      Relator(node)
-  # return for specification
-  return node
-
-def Adjektiv(addto, adjective):
-  # In coordination, get label from parent
-  if addto.tag == 'KOORDINATION':
-    tags = {'SATZ': 'ADVERBIALE', 'PHRASE': 'ATTRIBUT', 'PRÄDIKATIV': 'ADVERBIALE'}
-    parent = addto.getparent()
-    node = ET.SubElement(addto, tags[parent.tag])
-  # Adjective Prädikat
-  elif addto.tag == 'PRÄDIKATIV':
-    node = ET.SubElement(addto, "ADVERBIALE")
-  # Adjective Attribut
-  elif addto.tag == 'PHRASE':
-    node = ET.Element('ATTRIBUT')
-    addto.insert(1, node)
-  # Adjective Adverbiale
-  elif addto.tag == 'SATZ':
-    node = ET.Element("ADVERBIALE")
-    # insert after arguments
-    insertafter = addto.find('break')
-    place = list(addto).index(insertafter) + 1
-    addto.insert(place, node)
-  # Adjective agreement
-  parent = addto.getparent()
-  search = None
-  if addto.tag == 'PHRASE':
-      search = addto
-  elif parent is not None:
-    if parent.tag == 'PHRASE':
-      search = parent
-  if search is not None:
-    case = search.get('case')
-    gender = search.get('gender')
-    declension = search.get('declension')
-    adjective = adjective + Adjektivflexion[declension][case][gender]
-  # Add adjective to prepared node
-  sub = ET.SubElement(node, "ADJEKTIV")
-  sub.text = adjective
-  # Adjective as head
-  referent = addto.find('REFERENT')
-  if addto.tag == 'PHRASE' and referent.text is None:
-    referent.text = adjective.capitalize()
-    addto.remove(node)
-  # return for Gradpartikel
-  return node
-
-# =============
-# Specifikation
-# =============
-
-def Gradpartikel(adjective, intensifier):
-  # insert before adjective
-  node = ET.Element('GRADPARTIKEL')
-  node.text = intensifier
-  adjective.insert(0, node)
-  # deal with interrogative Gradpartikel 'wie'
-  addto = adjective.getparent()
-  while addto.tag != 'SATZ':
-    addto = addto.getparent()
-  if intensifier == 'wie':
-    if addto.get('kind') == 'Hauptsatz':
-      adjective.set('mood', 'Fragesatz')
-      node.tag = 'FRAGEWORT'
-      Vorfeld(adjective)
-    else:
-      node.tag = 'RELATOR'
-      Relator(adjective)
-
-# after some prepositions it is possible to add an adverb:
-# bis morgen, seit gestern, ab heute, von gestern
-# nach links, von hier, nach oben, für gleich  
-
-# Also with general adverbials:
-# bis in den frühen Morgen
-# seit unser letztes Treffen
-
-# NOTE: the following is a combination of two adverbials
-# "vorne/hinten im Garten"
-# they have to be inserted separately
-# semantics are inferred from regular scoping of multiple modifiers
-# also for 'noch nicht' ???
-
-# TODO: what about 'nur heute' ? cf. Fokuspartikel!
-
-def Adverbialpräposition(adverbial, preposition):
-  # insert before adverbial
-  node = ET.Element('ADVERBIALPRÄPOSITION')
-  node.text = preposition
-  adverbial.insert(0, node)
-
-def Vorwärts(adverbial):
-  # move adverbial in front of preceding constituent
-  clause = adverbial.getparent()
-  while clause.tag != 'SATZ':
-    clause = clause.getparent()
-    adverbial = adverbial.getparent()
-  # move one constituent to the front
-  position = list(clause).index(adverbial) - 2
-  clause.insert(position, adverbial)
-  #infront = adverbial.getprevious()
-  #infront.addprevious(adverbial)
-
-# attributes can be detached to become secondary predicates
-
-def Frei(attribute):
-  # adjectives go to before predicate
-  # NOTE: they do not have agreement there!
-  if attribute.tag == 'ATTRIBUT':
-    pass
-  elif attribute.get('kind') == 'Partizipsatz':
-    pass
-  # relative clauses move to after predicate of containing clause
-  elif attribute.get('kind') == 'Relativsatz':
-    attribute.set('move', 'hinterVerb')
-    clause = attribute.getparent()
-    while clause.tag != 'SATZ':
-      clause = clause.getparent()
-    predicate = clause.find('PRÄDIKAT')
-    predicate.addnext(attribute.getparent())
-
-# ========
-# Referenz
-# ========
-
-def Referenz(phrase, referent = None):
+def Referent(phrase, referent = None):
   # insert personal pronoun
   if referent in list('12'):
     Pronomen(phrase, referent)
@@ -732,6 +462,99 @@ def Referenz(phrase, referent = None):
   # insert noun
   else:
     Nomen(phrase, referent)
+
+# =======
+# Phrasen
+# =======
+
+def Argument(clause, connection = None):
+  argument = clause.find(f'*[@role="{connection}"]')
+  # Check for already filled predicative: do not add another phrase then
+  # this happens with lexicalised constructions like 'Angst haben'
+  phrase = argument.find('PHRASE')
+  if connection == 'Prädikativ' and phrase is not None:
+    return phrase
+  # go to tip of branch to add stuff
+  leaf = list(argument.iter())[-1]
+  # change arguments for Partizipsatz
+  leaf = switchPartizipsatz(clause, leaf)
+  # get the prepositional juncture, if available
+  if connection in Präpositionen:
+    juncture = connection
+  else:
+    juncture = leaf.get('juncture')
+  # no juncture, direct case from argument
+  if juncture is None:
+    case = leaf.get('case')
+  # or add juncture and get case from juncture
+  else:
+    ET.SubElement(leaf, 'JUNKTOR').text = juncture
+    # special case assignment for governed prepositions
+    if juncture in ['an', 'in', 'auf', 'über']:
+      case = 'Akkusativ'
+    else:
+      case = Präpositionen[juncture]
+  # add phrase
+  phrase = ET.SubElement(leaf, 'PHRASE', attrib = {'case': case})
+  return phrase
+
+def Phrasenkoordination(coordination):
+  # simply add phrase to end of the koordination
+  case = coordination.get('case')
+  phrase = ET.SubElement(coordination, 'PHRASE', attrib = {'case': case})
+  return phrase
+
+def Adverbialphrase(addto, connection = None):
+  # prepare node
+  node = ET.Element('ADVERBIALE')
+  # prepositionphrase
+  if connection is not None:
+    ET.SubElement(node, 'JUNKTOR').text = connection
+    phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': Präpositionen[connection]})
+  # No juncture then measure-phrase in accusative, e.g. 'den ganzen Tag'
+  else:
+    phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': 'Akkusativ'})
+  # find insertion point for branch
+  if addto.tag == 'KOORDINATION':
+    addto.append(node)
+  else:
+    insert = addto.find('break')
+    insert.addnext(node)
+  return phrase
+
+def Attributivphrase(addto, connection = None):
+  # prepare node
+  node = ET.Element('ATTRIBUT')
+  # prepositionphrase
+  if connection is not None:
+    ET.SubElement(node, 'JUNKTOR').text = connection
+    phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': Präpositionen[connection]})
+  # for coordination: when added to empty phrase, then new phrase is doubled, later replaced by coordination
+  elif len(addto) == 0:
+    case = addto.get('case')
+    phrase = ET.SubElement(addto, 'PHRASE', attrib = {'case': case})
+    return phrase
+  # Genitive when no juncture
+  else:
+    phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': 'Genitiv'})
+  # find insertion point for branch
+  addto.append(node)
+  return phrase
+
+  ## ======
+  ## For relators: add info to all phrases
+  #relative = addto.get('relative')
+  #if relative is not None:
+  #  phrase.set('relative', relative)
+  #kind = addto.get('kind')
+  #if kind is not None:
+  #  phrase.set('kind', kind)
+  ## ======
+  #return phrase
+
+# ========
+# Referenz
+# ========
 
 def Pronomen(phrase, person):
   # make new node
@@ -1024,6 +847,165 @@ def Unbestimmt(phrase):
     node.tag == 'Fragepronomen'
     Vorfeld(phrase)
 
+# ========
+# Addendum
+# ========
+
+def Addendum(addto, connection = None):
+  if connection == 'Prädikativ':
+    return Prädikativaddendum(addto)
+  elif addto.tag == 'SATZ':
+    return Adverbiale(addto)
+  elif addto.tag == 'PHRASE':
+    return Attribut(addto)
+  elif addto.tag == 'KOORDINATION':
+    pass
+
+def Eigenschaft(addendum, adword):
+  if adword in Frageadverbien:
+    Frageadverb(addendum, adword)
+  elif adword in Adverbien + Negationen:
+    Adverb(addendum, adword)
+  elif adword in Adjektive:
+    Adjektiv(addendum, adword)
+
+# ======= 
+# Addenda
+# =======
+
+def Prädikativaddendum(addto):
+  predicate = addto.find('PRÄDIKATIV')
+  node = ET.SubElement(predicate, "ADDENDUM")
+  return node
+
+def Attribut(addto):
+  # defaults: insert after determiner, set agreement to true
+  node = ET.Element('ATTRIBUT', attrib = {'form': 'agreement'})
+  addto.insert(1, node)
+  return node
+
+def Adverbiale(addto):
+  # insert after arguments
+  node = ET.SubElement(addto, 'ADVERBIALE')
+  insertafter = addto.find('break')
+  insertafter.addnext(node)
+  return node
+
+# =============
+# Eigenschaften 
+# =============
+
+# there is something not right, because the parent has to be accessed every time
+
+def Adverb(addendum, adverb):
+  # insert adverb
+  ET.SubElement(addendum, "ADVERB").text = adverb
+  # move node after referent when adverb in phrase, e.g. 'das Treffen gestern'
+  parent = addendum.getparent()
+  if parent.tag == 'PHRASE':
+    insertafter = parent.find('REFERENT')
+    insertafter.addnext(addendum)
+
+def Adjektiv(addendum, adjective):
+  # agreement
+  parent = addendum.getparent()
+  if addendum.get('form') == 'agreement':
+    case = parent.get('case')
+    gender = parent.get('gender')
+    declension = parent.get('declension')
+    adjective = adjective + Adjektivflexion[declension][case][gender]
+  # insert adjective
+  ET.SubElement(addendum, "ADJEKTIV").text = adjective
+  # adjective as head
+  referent = parent.find('REFERENT')
+  if parent.tag == 'PHRASE' and referent.text is None:
+    referent.text = adjective.capitalize()
+    parent.remove(addendum)
+
+def Frageadverb(addendum, qword):
+  parent = addendum.getparent()
+  if parent.get('kind') == 'Hauptsatz' and parent.get('mood') == 'Fragesatz':
+    ET.SubElement(addendum, "FRAGEWORT").text = qword
+    Vorfeld(addendum)
+  elif parent.tag == 'SATZ':
+    ET.SubElement(addendum, "RELATOR").text = qword
+    Relator(addendum)
+  pass
+
+# ===========
+# Eingrenzung
+# ===========
+
+def Gradpartikel(adjective, intensifier):
+  # insert before adjective
+  node = ET.Element('GRADPARTIKEL')
+  node.text = intensifier
+  adjective.insert(0, node)
+  # deal with interrogative Gradpartikel 'wie'
+  addto = adjective.getparent()
+  while addto.tag != 'SATZ':
+    addto = addto.getparent()
+  if intensifier == 'wie':
+    if addto.get('kind') == 'Hauptsatz':
+      adjective.set('mood', 'Fragesatz')
+      node.tag = 'FRAGEWORT'
+      Vorfeld(adjective)
+    else:
+      node.tag = 'RELATOR'
+      Relator(adjective)
+
+# after some prepositions it is possible to add an adverb:
+# bis morgen, seit gestern, ab heute, von gestern
+# nach links, von hier, nach oben, für gleich  
+
+# Also with general adverbials:
+# bis in den frühen Morgen
+# seit unser letztes Treffen
+
+# NOTE: the following is a combination of two adverbials
+# "vorne/hinten im Garten"
+# they have to be inserted separately
+# semantics are inferred from regular scoping of multiple modifiers
+# also for 'noch nicht' ???
+
+# TODO: what about 'nur heute' ? cf. Fokuspartikel!
+
+def Adverbialpräposition(adverbial, preposition):
+  # insert before adverbial
+  node = ET.Element('ADVERBIALPRÄPOSITION')
+  node.text = preposition
+  adverbial.insert(0, node)
+
+def Vorwärts(adverbial):
+  # move adverbial in front of preceding constituent
+  clause = adverbial.getparent()
+  while clause.tag != 'SATZ':
+    clause = clause.getparent()
+    adverbial = adverbial.getparent()
+  # move one constituent to the front
+  position = list(clause).index(adverbial) - 2
+  clause.insert(position, adverbial)
+  #infront = adverbial.getprevious()
+  #infront.addprevious(adverbial)
+
+# attributes can be detached to become secondary predicates
+
+def Frei(attribute):
+  # adjectives go to before predicate
+  # NOTE: they do not have agreement there!
+  if attribute.tag == 'ATTRIBUT':
+    pass
+  elif attribute.get('kind') == 'Partizipsatz':
+    pass
+  # relative clauses move to after predicate of containing clause
+  elif attribute.get('kind') == 'Relativsatz':
+    attribute.set('move', 'hinterVerb')
+    clause = attribute.getparent()
+    while clause.tag != 'SATZ':
+      clause = clause.getparent()
+    predicate = clause.find('PRÄDIKAT')
+    predicate.addnext(attribute.getparent())
+
 # ============
 # Markierungen
 # ============
@@ -1114,8 +1096,10 @@ def Koordination(addto, conjunction = 'und'):
   parent = addto.getparent()
   if parent is not None:
     grandparent = parent.getparent()
-  # prepare koordination node
+  # prepare koordination node and attach original coordinant
   node = ET.Element('KOORDINATION')
+  ET.SubElement(node, 'KONJUNKTION').text = conjunction
+  node.append(addto)
   # do nothing special for main clauses
   if addto.tag == 'SATZ' and addto.get('kind') == 'Hauptsatz':
     node.set('kind', addto.get('kind'))
@@ -1130,11 +1114,14 @@ def Koordination(addto, conjunction = 'und'):
         node.set('referent', addto.get('head'))
       if kind == 'Partizipsatz':
         setcontrol(addto, node)
+    elif addto.tag == 'PHRASE':
+      case = addto.get('case')
+      node.set('case', case)
     # double-S/P trick, leading to coordination under the same juncture, both for:
     # addto.tag == 'PHRASE' and parent.tag == 'PHRASE'
     # addto.tag == 'SATZ' and parent.tag == 'SATZ'
     if grandparent.tag in ['ATTRIBUT', 'ADVERBIALE']:
-      insertion = grandparent
+      parent.addnext(node)
       grandparent.remove(parent)
     # doubling of whole attributes/adverbial nodes, both for SATZ and PHRASE
     elif parent.tag in ['ATTRIBUT', 'ADVERBIALE']:
@@ -1148,12 +1135,11 @@ def Koordination(addto, conjunction = 'und'):
       insertion = parent
       node.set('case', addto.get('case'))
     # insert new coordination node
-    position = list(insertion).index(addto)
-    insertion.insert(position, node)
-  # attach original coordinant
-  node.append(addto)
-  # add conjunction
-  ET.SubElement(node, 'KONJUNKTION').text = conjunction
+    #position = list(insertion).index(addto)
+    #insertion.insert(position, node)
+    
+
+
   return node
 
 # ========
@@ -1162,7 +1148,7 @@ def Koordination(addto, conjunction = 'und'):
 
 def Satzende(satz, clean = True):
   # set agreement of anaphora
-  Anapherauflösung(satz)
+  # Anapherauflösung(satz)
   # go through all clauses 
   for clause in findallclauses(satz):
     Kongruenz(clause)
@@ -1746,14 +1732,38 @@ def readfile(path):
 # global list of participants
 Teilnehmer = dict()
 
-voll = {
+# TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
+Konjunktionen = ['und', 'aber', 'doch', 'sondern', 'denn']
+# NOTE: 'wie/wo' here in the meaning of 'als'
+# NOTE: combination 'als ob' and 'als wenn' are unclear. Maybe just a single subjunction?
+Subjunktionen = ['als', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls ', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
+# NOTE: there is an old-fashioned usage of 'bis dass', which is not possible now
+Satzpräpositionen = ['ohne', 'außer', 'statt', 'anstatt', 'im Falle', 'für den Fall']
+Satzpartizipien = ['vorausgesetzt', 'ausgenommen', 'gegeben', 'ungeachtet', 'unterstellt', 'angenommen', 'gesetzt']
+
+# newly grammaticalised adverbial junktors with following relator-clause 'dass'
+Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen', 'aufgrund dessen', 'unbeschadet dessen', 'ungeachtet dessen']
+
+# Begründung (um)
+# Alternative (statt, anstatt, anstelle)
+# Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
+Kontrollsatzpräpositionen = ['um', 'statt', 'anstatt', 'anstelle', 'ohne', 'außer', 'ausser']
+
+Adverbien = ['abends', 'allerdings', 'anfangs', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', ]
+Frageadverbien = ['warum', 'weshalb', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
+Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
+
+# NOTE: it looks like adjectives can not be used productively!
+# new ones are mainly added through derivation or complete new innovation
+Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'böse', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'feige', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
+
+Kopula = ['sein', 'werden', 'bleiben', 'haben']
+
+Genera = {
   'm': 'Maskulin',
   'f': 'Feminin', 
   'n': 'Neutrum',
-  'p': 'Plural',
-  '0': 'Unbekannte',
-  '1': 'Sprecher',
-  '2': 'Adressat'
+  'p': 'Plural'
 }
 
 # default Perfect-Auxiliary is 'haben'
@@ -2094,38 +2104,6 @@ Substantive = {
     'Plural': 'Menschen',
     'Deklination': 'schwach'
   },
-}
-
-# TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
-Konjunktionen = ['und', 'aber', 'doch', 'sondern', 'denn']
-# NOTE: 'wie/wo' here in the meaning of 'als'
-# NOTE: combination 'als ob' and 'als wenn' are unclear. Maybe just a single subjunction?
-Subjunktionen = ['als', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls ', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
-# NOTE: there is an old-fashioned usage of 'bis dass', which is not possible now
-Satzpräpositionen = ['ohne', 'außer', 'statt', 'anstatt', 'im Falle', 'für den Fall']
-Satzpartizipien = ['vorausgesetzt', 'ausgenommen', 'gegeben', 'ungeachtet', 'unterstellt', 'angenommen', 'gesetzt']
-
-# newly grammaticalised adverbial junktors with following relator-clause 'dass'
-Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen', 'aufgrund dessen', 'unbeschadet dessen', 'ungeachtet dessen']
-
-# Begründung (um)
-# Alternative (statt, anstatt, anstelle)
-# Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
-Kontrollsatzpräpositionen = ['um', 'statt', 'anstatt', 'anstelle', 'ohne', 'außer', 'ausser']
-
-Adverbien = ['abends', 'allerdings', 'anfangs', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', ]
-Frageadverbien = ['warum', 'weshalb', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
-Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
-
-# NOTE: it looks like adjectives can not be used productively!
-# new ones are mainly added through derivation or complete new innovation
-Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'böse', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'feige', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
-
-Genera = {
-  'm': 'Maskulin',
-  'f': 'Feminin', 
-  'n': 'Neutrum',
-  'p': 'Plural'
 }
 
 Präpositionen = {
