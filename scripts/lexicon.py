@@ -1,0 +1,780 @@
+
+# TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
+Konjunktionen = ['und', 'aber', 'doch', 'sondern', 'denn']
+# NOTE: 'wie/wo' here in the meaning of 'als'
+# NOTE: combination 'als ob' and 'als wenn' are unclear. Maybe just a single subjunction?
+Subjunktionen = ['als', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls ', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
+# NOTE: there is an old-fashioned usage of 'bis dass', which is not possible now
+Satzpräpositionen = ['ohne', 'außer', 'statt', 'anstatt', 'im Falle', 'für den Fall']
+Satzpartizipien = ['vorausgesetzt', 'ausgenommen', 'gegeben', 'ungeachtet', 'unterstellt', 'angenommen', 'gesetzt']
+
+# newly grammaticalised adverbial junktors with following relator-clause 'dass'
+Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen', 'aufgrund dessen', 'unbeschadet dessen', 'ungeachtet dessen']
+
+# Begründung (um)
+# Alternative (statt, anstatt, anstelle)
+# Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
+Kontrollsatzpräpositionen = ['um', 'statt', 'anstatt', 'anstelle', 'ohne', 'außer', 'ausser']
+
+Adverbien = ['abends', 'allerdings', 'anfangs', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', ]
+Frageadverbien = ['warum', 'weshalb', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
+Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
+
+# NOTE: it looks like adjectives can not be used productively!
+# new ones are mainly added through derivation or complete new innovation
+Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
+
+Kopula = ['sein', 'werden', 'bleiben']
+
+Genera = {
+  'm': 'Maskulin',
+  'f': 'Feminin', 
+  'n': 'Neutrum',
+  'p': 'Plural'
+}
+
+# default Perfect-Auxiliary is 'haben'
+# default Nominative role is 'verb+de'
+
+Verben = {
+  'glauben':{
+    'Rollen':{
+      'Geglaubte': 'Akkusativ'
+    },
+    'Kontrolle': 'Glaubende',
+    'Kontrolliert': 'Geglaubte'
+  },
+  'bekommen':{
+    'Partizip': 'bekommen'
+  },
+  'schenken':{
+    'Rollen':{
+      'Geschenkte': 'Akkusativ',
+      'Rezipient': 'Dativ',
+    },
+  },
+  'stellen':{
+    'Rollen':{
+      'Gestellte': 'Akkusativ',
+      'in': 'Akkusativ'
+    }
+  },
+  'darstellen':{
+    'Präverb': 'dar',
+    'Stamm': 'stellen',
+    'Rollen':{
+      'Dargestellte': 'Akkusativ'
+    }
+  },
+  'vorliegen':{
+    'Präverb': 'vor',
+    'Stamm': 'liegen',
+    'Rollen':{
+      'Vorgelegte': 'Akkusativ'
+    }
+  },
+  'Angst haben':{
+    'Prädikativ': 'Angst',
+    'Stamm': 'haben',
+    'Rollen':{
+      'Beangstige': 'vor'
+    }
+  },
+  'hoffen':{
+    'Rollen':{
+      'Gehoffte': 'Akkusativ',
+      'Gehoffte auf': 'auf'
+    },
+    'Kontrolle': 'Hoffende',
+    'Kontrolliert': 'Gehoffte auf'
+  },
+  'warten':{
+    'Rollen':{
+      'Bewartete': 'auf'
+    },
+    'Kontrolle': 'Wartende',
+    'Kontrolliert': 'Bewartete'
+  },
+  'versprechen':{
+    'Partizip': 'versprochen',
+    'Rollen':{
+      'Rezipient': 'Dativ',
+      'Versprochene': 'Akkusativ',
+    },
+    'Kontrolle': 'Versprechende',
+    'Kontrolliert': 'Versprochene',
+  },
+  'weglaufen':{
+    'Präverb': 'weg',
+    'Stamm': 'laufen',
+  },
+  'kommen':{
+    'Partizip': 'gekommmen',
+    'Perfekt': 'sein',
+  },
+  'ärgern':{
+    'Konversiv': 'über',
+    'Rollen':{
+      'Auslöser': 'Nominativ',
+      'Ärgernde': 'Akkusativ',
+    },
+    'Kontrolle': 'Ärgernde',
+    'Kontrolliert': 'Auslöser',
+  },
+  'freuen':{
+    'Konversiv': 'über',
+    'Rollen':{
+      'Auslöser': 'Nominativ',
+      'Freuende': 'Akkusativ',
+    },
+    'Kontrolle': 'Freuende',
+    'Kontrolliert': 'Auslöser',
+  },
+  'erwarten':{
+    'Rollen':{
+      'Erwartete': 'Akkusativ'
+    },
+    'Kontrolle': 'Erwartende',
+    'Kontrolliert': 'Erwartete',
+  },
+  'laufen':{
+    'Partizip': 'gelaufen',
+    'Präsens':{
+      'Singular':{
+        '1': 'laufe',
+        '2': 'läufst',
+        '3': 'läuft'
+      },
+      'Plural':{
+        '1': 'laufen',
+        '2': 'läuft',
+        '3': 'laufen'
+      }
+    }
+  },
+  'schlafen':{
+    'Partizip': 'geschlafen',
+    'Präsens':{
+      'Singular':{
+        '1': 'schlafe',
+        '2': 'schläfst',
+        '3': 'schläft'
+      },
+      'Plural':{
+        '1': 'schlafen',
+        '2': 'schläft',
+        '3': 'schlafen'
+      }
+    }
+  },
+  'sehen':{
+    'Partizip': 'gesehen',
+    'Rollen': {
+      'Gesehene': 'Akkusativ'
+    },
+    'Kontrolle': 'Seher',
+    'Präsens':{
+      'Singular':{
+        '1': 'sehe',
+        '2': 'siehst',
+        '3': 'sieht'
+      },
+      'Plural':{
+        '1': 'sehen',
+        '2': 'sieht',
+        '3': 'sehen'
+      }
+    }
+  },
+  'sein':{
+    'Partizip': 'gewesen',
+    'Perfekt': 'sein',
+    'Präsens':{
+      'Singular':{
+        '1': 'bin',
+        '2': 'bist',
+        '3': 'ist'
+      },
+      'Plural':{
+        '1': 'sind',
+        '2': 'seit',
+        '3': 'sind'
+      }
+    }
+  },
+  'haben':{
+    'Präsens':{
+      'Singular':{
+        '1': 'habe',
+        '2': 'hast',
+        '3': 'hat'
+      },
+      'Plural':{
+        '1': 'haben',
+        '2': 'habt',
+        '3': 'haben'
+      }
+    }
+  },
+  'werden':{
+    'Partizip': 'geworden',
+    'Perfekt': 'sein',
+    'Präsens':{
+      'Singular':{
+        '1': 'werde',
+        '2': 'wirst',
+        '3': 'wird'
+      },
+      'Plural':{
+        '1': 'werden',
+        '2': 'werdet',
+        '3': 'werden'
+      }
+    }
+  },
+  'bleiben':{
+    'Partizip': 'geblieben',
+    'Perfekt': 'sein',
+  },
+  'müssen':{
+    'Partizip': 'gemusst',
+    'Präsens':{
+      'Singular':{
+        '1': 'muss',
+        '2': 'musst',
+        '3': 'muss'
+      },
+      'Plural':{
+        '1': 'müssen',
+        '2': 'müsst',
+        '3': 'müssen'
+      }
+    }
+  },
+  'können':{
+    'Partizip': 'gekonnt',
+    'Präsens':{
+      'Singular':{
+        '1': 'kann',
+        '2': 'kannst',
+        '3': 'kann'
+      },
+      'Plural':{
+        '1': 'können',
+        '2': 'könnt',
+        '3': 'können'
+      }
+    }
+  },
+  'dürfen':{
+    'Partizip': 'gedurtf',
+    'Präsens':{
+      'Singular':{
+        '1': 'darf',
+        '2': 'darfst',
+        '3': 'darf'
+      },
+      'Plural':{
+        '1': 'dürfen',
+        '2': 'darfst',
+        '3': 'dürfen'
+      }
+    }
+  }
+}
+
+Substantive = {
+  'Tag':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Tage'
+  }, 
+  'Mann':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Männer'
+  }, 
+  'Karl':{
+    'Geschlecht': 'Maskulin'
+  },
+  'Maria':{
+    'Geschlecht': 'Feminin'
+  },
+  'Frau':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Frauen'
+  },  
+  'Schrank':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Schränke'
+  },  
+  'Rat':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Räte'
+  },
+  'Beschluss':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Beschlüsse'
+  },
+  'Grundlage':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Grundlagen'
+  },
+  'Dokument':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Dokumente'
+  },
+  'Angst':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Ängste'
+  },
+  'Mutter':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Mütter',
+  },
+  'Vater':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Väter'
+  },
+  'Zuschauer':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Zuschauer',
+  },
+  'Buch':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Bücher',
+  },
+  'Kind':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Kinder',
+  },
+  'Plan':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Pläne',
+  },
+  'Frage':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Fragen',
+  },
+  'Haus':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Häuser'
+  },
+  'Fenster':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Fenster',
+  },
+  'Ursache':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Ursachen'
+  },
+  'Tanz':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Tänze'
+  },
+  'Mensch':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Menschen',
+    'Deklination': 'schwach'
+  },
+}
+
+Präpositionen = {
+  'mit': 'Dativ',
+  'nach': 'Dativ',
+  'bei': 'Dativ',
+  'seit': 'Dativ',
+  'von': 'Dativ',
+  'zu': 'Dativ',
+  'außer': 'Dativ',
+  'aus': 'Dativ',
+  'für': 'Akkusativ',
+  'durch': 'Akkusativ',
+  'gegen': 'Akkusativ',
+  'ohne': 'Akkusativ',
+  'um': 'Akkusativ',
+  # Wechselpräpositionen: dative default for stative location!
+  # only accusative through diathesis???
+  # governed roles are variable, but: auf/über/in/vor take accusative when governed
+  # an is variable (denken an Dativ, Dativ alternation with accusative)
+  'an': 'Dativ',
+  'auf': 'Dativ',
+  'hinter': 'Dativ',
+  'neben': 'Dativ',
+  'in': 'Dativ',
+  'über': 'Dativ',
+  'unter': 'Dativ',
+  'vor': 'Dativ',
+  'zwischen': 'Dativ',
+}
+
+Personalpronomina = {
+  'Singular':{
+    '1':{
+      'Nominativ': 'ich',
+      'Akkusativ': 'mich',
+      'Dativ': 'mir',
+      'Genitiv': 'meiner',
+      'Attributiv': 'mein'
+    },
+    '2':{
+      'Nominativ': 'du',
+      'Akkusativ': 'dich',
+      'Dativ': 'dir',
+      'Genitiv': 'deiner',
+      'Attributiv': 'dein'
+    },
+  },
+  'Plural':{
+    '1':{
+      'Nominativ': 'wir',
+      'Akkusativ': 'uns',
+      'Dativ': 'uns',
+      'Genitiv': 'unser',
+      'Attributiv': 'unser'
+    },
+    '2':{
+      'Nominativ': 'ihr',
+      'Akkusativ': 'euch',
+      'Dativ': 'euch',
+      'Genitiv': 'euer',
+      'Attributiv': 'euer'
+    }
+  }
+}
+
+Anaphora = {
+  'Maskulin':{
+    'Nominativ': 'er',
+    'Akkusativ': 'ihn',
+    'Dativ': 'ihm',
+    'Genitiv': 'seiner',
+    'Attributiv': 'sein'
+  },
+  'Neutrum':{
+    'Nominativ': 'es',
+    'Akkusativ': 'es',
+    'Dativ': 'ihm',
+    'Genitiv': 'seiner',
+    'Attributiv': 'sein'
+  },
+  'Feminin':{
+    'Nominativ': 'sie',
+    'Akkusativ': 'sie',
+    'Dativ': 'ihr',
+    'Genitiv': 'ihrer',
+    'Attributiv': 'ihr'
+  },
+  'Plural':{
+    'Nominativ': 'sie',
+    'Akkusativ': 'sie',
+    'Dativ': 'ihnen',
+    'Genitiv': 'ihrer',
+    'Attributiv': 'ihr'
+  }
+}
+
+Fragepronomina = {
+  'Mensch':{
+    'Nominativ': 'wer',
+    'Akkusativ': 'wen',
+    'Dativ': 'wem',
+    'Genitiv': 'wessen',
+    'Attributiv': 'wessen'
+  },
+  'Neutral':{
+    'Nominativ': 'was',
+    'Akkusativ': 'was',
+    'Dativ': 'was',
+    'Genitiv': 'wessen',
+    'Attributiv': 'wessen'
+  }
+}
+
+Relativpronomina = { # ist auch demonstrativ!
+  'Nominativ':{
+    'Maskulin': 'der',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+    },
+  'Akkusativ':{
+    'Maskulin': 'den',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+  },
+  'Dativ':{
+    'Maskulin': 'dem',
+    'Neutrum': 'dem',
+    'Feminin': 'der',
+    'Plural': 'denen'
+  },
+  'Genitiv':{
+    'Maskulin': 'dessen',
+    'Neutrum': 'dessen',
+    'Feminin': 'deren',
+    'Plural': 'deren'
+  }
+}
+
+Definitartikel = {
+  'Nominativ':{
+    'Maskulin': 'der',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+    },
+  'Akkusativ':{
+    'Maskulin': 'den',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+  },
+  'Dativ':{
+    'Maskulin': 'dem',
+    'Neutrum': 'dem',
+    'Feminin': 'der',
+    'Plural': 'den'
+  },
+  'Genitiv':{
+    'Maskulin': 'des',
+    'Neutrum': 'des',
+    'Feminin': 'der',
+    'Plural': 'der'
+  }
+}
+
+Quantoren = {
+  'dies':{
+    'Flexion': 'dies',
+    'Deklination': 'schwach',
+  },
+  'jen':{
+    'Flexion': 'dies',
+    'Deklination': 'schwach',
+  },
+  'all':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'jed':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'beid':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'solch':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'manch':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'welch':{
+    'Flexion': 'all',
+    'Deklination': 'schwach'
+  },
+  'ein':{
+    'Flexion': 'ein',
+    'Deklination': 'gemischt',
+  },
+  'kein':{
+    'Flexion': 'ein',
+    'Deklination': 'gemischt',
+  },
+}
+
+# ==========
+# Inflection
+# ==========
+
+Verbflexion = {
+  'Präsens':{
+    'Singular':{
+       '1': 'e',
+       '2': 'st',
+       '3': 't',
+     },
+     'Plural':{
+       '1': 'en',
+       '2': 't',
+       '3': 'en',
+    }
+  },
+  'Präteritum':{
+    'Singular':{
+       '1': 'te',
+       '2': 'test',
+       '3': 'te',
+     },
+     'Plural':{
+       '1': 'ten',
+       '2': 'tet',
+       '3': 'ten',
+    }
+  },
+}
+
+Adjektivflexion = {
+  'schwach':{
+    'Nominativ':{
+      'Maskulin': 'e',
+      'Neutrum': 'e',
+      'Feminin': 'e',
+      'Plural': 'en'
+    },
+    'Akkusativ':{
+      'Maskulin': 'en',
+      'Neutrum': 'e',
+      'Feminin': 'e',
+      'Plural': 'en'
+    },
+    'Dativ':{
+      'Maskulin': 'en',
+      'Neutrum': 'en',
+      'Feminin': 'en',
+      'Plural': 'en'
+    },
+    'Genitiv':{
+      'Maskulin': 'en',
+      'Neutrum': 'en',
+      'Feminin': 'en',
+      'Plural': 'en'
+    }
+  },
+  'gemischt':{
+    'Nominativ':{
+      'Maskulin': 'er',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'en'
+    },
+    'Akkusativ':{
+      'Maskulin': 'en',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'en'
+    },
+    'Dativ':{
+      'Maskulin': 'en',
+      'Neutrum': 'en',
+      'Feminin': 'en',
+      'Plural': 'en'
+    },
+    'Genitiv':{
+      'Maskulin': 'en',
+      'Neutrum': 'en',
+      'Feminin': 'en',
+      'Plural': 'en'
+    }
+  },
+  'stark':{
+    'Nominativ':{
+      'Maskulin': 'er',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'e'
+    },
+    'Akkusativ':{
+      'Maskulin': 'en',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'e'
+    },
+    'Dativ':{
+      'Maskulin': 'em',
+      'Neutrum': 'em',
+      'Feminin': 'er',
+      'Plural': 'en'
+    },
+    'Genitiv':{
+      'Maskulin': 'en',
+      'Neutrum': 'en',
+      'Feminin': 'er',
+      'Plural': 'er'
+    }
+  }
+}
+
+Quantorflexion = {
+  'ein':{
+    'Nominativ':{
+      'Maskulin': '',
+      'Neutrum': '',
+      'Feminin': 'e',
+      'Plural': 'e'
+      },
+    'Akkusativ':{
+      'Maskulin': 'en',
+      'Neutrum': '',
+      'Feminin': 'e',
+      'Plural': 'e'
+    },
+    'Dativ':{
+      'Maskulin': 'em',
+      'Neutrum': 'em',
+      'Feminin': 'er',
+      'Plural': 'en'
+    },
+    'Genitiv':{
+      'Maskulin': 'es',
+      'Neutrum': 'es',
+      'Feminin': 'er',
+      'Plural': 'er'
+    }
+  },
+  'dies':{
+    'Nominativ':{
+      'Maskulin': 'er',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'e'
+      },
+    'Akkusativ':{
+      'Maskulin': 'en',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'e'
+    },
+    'Dativ':{
+      'Maskulin': 'em',
+      'Neutrum': 'em',
+      'Feminin': 'er',
+      'Plural': 'en'
+    },
+    'Genitiv':{
+      'Maskulin': 'es',
+      'Neutrum': 'es',
+      'Feminin': 'er',
+      'Plural': 'er'
+    }
+  },
+  'all':{
+    'Nominativ':{
+      'Maskulin': 'er',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'e'
+      },
+    'Akkusativ':{
+      'Maskulin': 'en',
+      'Neutrum': 'es',
+      'Feminin': 'e',
+      'Plural': 'e'
+    },
+    'Dativ':{
+      'Maskulin': 'em',
+      'Neutrum': 'em',
+      'Feminin': 'er',
+      'Plural': 'en'
+    },
+    'Genitiv':{
+      'Maskulin': 'en',
+      'Neutrum': 'en',
+      'Feminin': 'er',
+      'Plural': 'er'
+    }
+  },
+}
