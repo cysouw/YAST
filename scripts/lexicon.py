@@ -1,16 +1,16 @@
+# global list of participants
+Teilnehmer = dict()
 
 # TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
-Konjunktionen = ['und', 'aber', 'doch', 'sondern', 'denn']
+Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn']
 # NOTE: 'wie/wo' here in the meaning of 'als'
 # NOTE: combination 'als ob' and 'als wenn' are unclear. Maybe just a single subjunction?
-Subjunktionen = ['als', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls ', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
+Subjunktionen = ['als', 'als ob', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls ', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
 # NOTE: there is an old-fashioned usage of 'bis dass', which is not possible now
 Satzpräpositionen = ['ohne', 'außer', 'statt', 'anstatt', 'im Falle', 'für den Fall']
 Satzpartizipien = ['vorausgesetzt', 'ausgenommen', 'gegeben', 'ungeachtet', 'unterstellt', 'angenommen', 'gesetzt']
-
 # newly grammaticalised adverbial junktors with following relator-clause 'dass'
 Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen', 'aufgrund dessen', 'unbeschadet dessen', 'ungeachtet dessen']
-
 # Begründung (um)
 # Alternative (statt, anstatt, anstelle)
 # Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
@@ -25,6 +25,76 @@ Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
 Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
 
 Kopula = ['sein', 'werden', 'bleiben']
+
+Präpositionen = {
+  # Akkusativ
+  'durch': 'Akkusativ',
+  'für': 'Akkusativ',
+  'gegen': 'Akkusativ',
+  'ohne': 'Akkusativ',
+  'um': 'Akkusativ',
+  # Dativ
+  'aus': 'Dativ',
+  'außer': 'Dativ',
+  'bei': 'Dativ',
+  'entgegen': 'Dativ',
+  'entsprechend': 'Dativ',
+  'gegenüber': 'Dativ',
+  'gemäß': 'Dativ',
+  'mit': 'Dativ',
+  'nach': 'Dativ',
+  'nahe': 'Dativ',
+  'seit': 'Dativ',
+  'von': 'Dativ',
+  'zu': 'Dativ',
+  # Wechselpräpositionen: dative default for stative location!
+  # only accusative through diathesis???
+  # governed roles are variable, but: auf/über/in/vor take accusative when governed
+  # an is variable (denken an Dativ, Dativ alternation with accusative)
+  'an': 'Dativ',
+  'auf': 'Dativ',
+  'hinter': 'Dativ',
+  'in': 'Dativ',
+  'neben': 'Dativ',
+  'über': 'Dativ',
+  'unter': 'Dativ',
+  'vor': 'Dativ',
+  'zwischen': 'Dativ',
+  # Genitiv
+  'abseits': 'Genitiv',
+  'abzüglich': 'Genitiv',
+  'angesichts': 'Genitiv',
+  'anfangs': 'Genitiv',
+  'anstatt': 'Genitiv',
+  'außerhalb': 'Genitiv',
+  'bar': 'Genitiv',
+  'behufs': 'Genitiv',
+  'bezüglich': 'Genitiv',
+  'dank': 'Genitiv',
+  'diesseits': 'Genitiv',
+  'einschließlich': 'Genitiv',
+  'entlang': 'Genitiv',
+  'infolge': 'Genitiv',
+  'innerhalb': 'Genitiv',
+  'inmitten': 'Genitiv',
+  'jenseits': 'Genitiv',
+  'kraft': 'Genitiv',
+  'längs': 'Genitiv',
+  'laut': 'Genitiv',
+  'mittels': 'Genitiv',
+  'ob': 'Genitiv',
+  'oberhalb': 'Genitiv',
+  'seitens': 'Genitiv',
+  'statt': 'Genitiv',
+  'trotz': 'Genitiv',
+  'unbeschadet': 'Genitiv',
+  'ungeachtet': 'Genitiv',
+  'unterhalb': 'Genitiv',
+  'unweit': 'Genitiv',
+  'während': 'Genitiv',
+  'wegen': 'Genitiv',
+  'zugunsten': 'Genitiv',
+}
 
 Genera = {
   'm': 'Maskulin',
@@ -284,6 +354,10 @@ Verben = {
 }
 
 Substantive = {
+  'Auto':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Autos',
+  },
   'Tag':{
     'Geschlecht': 'Maskulin',
     'Plural': 'Tage'
@@ -375,35 +449,6 @@ Substantive = {
     'Plural': 'Menschen',
     'Deklination': 'schwach'
   },
-}
-
-Präpositionen = {
-  'mit': 'Dativ',
-  'nach': 'Dativ',
-  'bei': 'Dativ',
-  'seit': 'Dativ',
-  'von': 'Dativ',
-  'zu': 'Dativ',
-  'außer': 'Dativ',
-  'aus': 'Dativ',
-  'für': 'Akkusativ',
-  'durch': 'Akkusativ',
-  'gegen': 'Akkusativ',
-  'ohne': 'Akkusativ',
-  'um': 'Akkusativ',
-  # Wechselpräpositionen: dative default for stative location!
-  # only accusative through diathesis???
-  # governed roles are variable, but: auf/über/in/vor take accusative when governed
-  # an is variable (denken an Dativ, Dativ alternation with accusative)
-  'an': 'Dativ',
-  'auf': 'Dativ',
-  'hinter': 'Dativ',
-  'neben': 'Dativ',
-  'in': 'Dativ',
-  'über': 'Dativ',
-  'unter': 'Dativ',
-  'vor': 'Dativ',
-  'zwischen': 'Dativ',
 }
 
 Personalpronomina = {
