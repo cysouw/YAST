@@ -1,5 +1,4 @@
 import re
-from copy import deepcopy
 from lxml import etree as ET
 from lexicon import *
 
@@ -37,56 +36,7 @@ def R(addto = None, lexeme = None, juncture = None, *early):
     Prädikat(out, lexeme)
   return out
 
-earlyfeatures = ['Plural', 'Kontrolle', 'Vorfeld']
-
-def Artikulator(addto):
-  # at the start of each new node, mark the previous node as done
-  # the content can then be sent to the articulator
-  # but not when signal comes from inside a coordination
-  if addto.tag != 'KOORDINATION':
-    clause = upClause(addto)
-    # syntactically, verb agreement is also triggered by this command
-    if clause.get('person') is not None and clause.get('agreement') is None:
-      Verbkongruenz(clause)
-      clause.set('agreement', 'done')
-
-# Vorfeld-positional 'es' has to be explicitly decided by speaker
-# Subject-replacing 'es' only occurs through diathesis
-
-def Verbkongruenz(clause):
-  # get verb
-  finitum = clause.find('PRÄDIKAT')[-1]
-  verb = finitum.get('verb')
-  # get agreement attributes
-  tense = clause.get('tense')
-  person = clause.get('person')
-  number = clause.get('number')
-  # only make finite form
-  if tense != 'Infinit':
-    finite = verbfinite(verb, person, number, tense)
-    # insert finite verb
-    node = ET.SubElement(finitum, 'FINITUM', 
-      attrib = {'verb': verb, 'tense': tense, 'person': person, 'number': number})
-    node.text = finite
-  # Verbzweit
-  if clause.get('kind') == 'Hauptsatz':
-    # leave trace
-    ET.SubElement(finitum, 'FINITUM', attrib = {'move': 'Verbzweit'})
-    # move to second position
-    verbzweit = ET.Element('VERBZWEIT')
-    verbzweit.append(node)
-    clause.insert(1, verbzweit)
-    # insert position-es when nothing in Vorfeld yet
-    vorfeld = clause.find('VORFELD')
-    if len(vorfeld) == 0:
-      ET.SubElement(vorfeld, 'VORFELDERSATZ').text = 'es'
-  # reorder verbcluster for Erstatzinfinitiv
-  elif clause.get('cluster') == 'Ersatzinfinitiv':
-    # leave trace
-    ET.SubElement(finitum, 'FINITUM', attrib = {'move': 'Finiterst'})
-    # move finite to front of verb cluster
-    predicate = clause.find('PRÄDIKAT')
-    predicate.insert(0, node)
+earlyfeatures = ['Plural', 'Kontrolle', 'Vorfeld', 'Relator']
 
 def Vorfeld(node):
   branch = upSubClause(node)
@@ -104,7 +54,7 @@ def Satz(addto = None, juncture = None):
     return Hauptsatz()
   else:
     # finish up everything before
-    Artikulator(addto)
+    articulator(addto)
     # look for lexical roles
     if juncture is not None:
       role = addto.find(f'*[@role="{juncture}"]')
@@ -154,26 +104,28 @@ def Prädikat(clause, verb):
 # now: pass on tense to the next clause by default
 
 def Hauptsatz(addto = None, juncture = None):
-  # start with default Präsens tense
+  # start new sentence
   if addto is None:
     clause = ET.Element('SATZ', attrib = {'kind': 'Hauptsatz', 'tense': 'Präsens'})
-    ET.SubElement(clause, 'VORFELD')
+  # Hauptsatz in coordination
   else:
     tense = addto.get('tense')
     clause = ET.SubElement(addto, 'SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
+  # add vorfeld
+  ET.SubElement(clause, 'VORFELD')
   return clause
 
 def Subjunktionsatz(clause, juncture):
+  tense = clause.get('tense')
   node = ET.SubElement(clause, 'ADVERBIALE')
   ET.SubElement(node, 'JUNKTOR').text = juncture
-  tense = clause.get('tense')
   newclause = ET.SubElement(node, 'SATZ', attrib = {'kind': 'Subjunktionsatz', 'tense': tense})
   return newclause
 
 def Präpositionssatz(clause, preposition):
+  tense = clause.get('tense')
   node = ET.SubElement(clause, 'ADVERBIALE')
   ET.SubElement(node, 'JUNKTOR').text = preposition
-  tense = clause.get('tense')
   newclause = ET.SubElement(node, 'SATZ', attrib = {'kind': 'Präpositionssatz', 'tense': tense})
   ET.SubElement(newclause, 'RELATOR').text = 'dass'
   return newclause
@@ -428,7 +380,7 @@ def Prädikativ(clause, verb):
   copula = parts[0]
   # location
   if len(parts) > 1:
-    ET.SubElement(predicative, 'ORT', attrib = {'juncture': parts[1]})
+    ET.SubElement(predicative, 'PRÄDIKATIV', attrib = {'role': 'Ort', 'juncture': parts[1]})
   # add predicate node
   predicate = ET.SubElement(clause, 'PRÄDIKAT')
   ET.SubElement(predicate, 'VERB', attrib = {'verb': copula})
@@ -454,9 +406,6 @@ def Präsens(clause):
 
 def Präteritum(clause):
   clause.set('tense', 'Präteritum')
-
-def Modalverb(clause, modal):
-  addlightverb(clause, modal, 'Infinitiv', 'MODALVERB')
   
 def Perfekt(clause):
   # get info
@@ -476,29 +425,31 @@ def Perfekt(clause):
   else:
     addlightverb(clause, auxiliary, 'Partizip', 'PERFEKT')
 
-def Vorgangspassiv(clause, demoted = 'von'):
-  # add light verb
-  addlightverb(clause, 'werden', 'Partizip', 'VORGANGSPASSIV')
-  # change arguments
-  for node in clause.findall('ARGUMENT'):
-    leaf = list(node.iter())[-1]
-    if leaf.get('case') == 'Nominativ':
-      ET.SubElement(node, 'VORGANGSPASSIV', attrib = {'case': demoted})
-    if leaf.get('case') == "Akkusativ":
-      ET.SubElement(node, 'VORGANGSPASSIV', attrib = {'case': 'Nominativ'})
-      # default order nominative first
-      clause.insert(1, node)
+def Modalverb(clause, modal):
+  addlightverb(clause, modal, 'Infinitiv', 'MODALVERB')
 
-def Rezipientenpassiv(clause):
+def Vorgangspassiv(clause, demoted = 'von'):
+  Passiv(clause, 'werden', 'Partizip', 'VORGANGSPASSIV', 'Akkusativ', demoted)
+
+def Zustandspassiv(clause, demoted = 'von'):
+  Passiv(clause, 'sein', 'Partizip', 'ZUSTANDSPASSIV', 'Akkusativ', demoted)
+
+def Rezipientenpassiv(clause, demoted = 'von'):
+  Passiv(clause, 'bekommen', 'Partizip', 'REZIPIENTENPASSIV', 'Dativ', demoted)
+
+def Modalpassiv(clause, demoted = 'von'):
+  Passiv(clause, 'sein', 'zu-Infinitiv', 'MODALPASSIV', 'Akkusativ', demoted)
+
+def Passiv(clause, auxiliary = 'werden', nonfinite = 'Partizip', name = 'VORGANGSPASSIV', promoted = 'Akkusativ', demoted = 'von'):
   # add light verb
-  addlightverb(clause, 'bekommen', 'Partizip', 'REZIPIENTENPASSIV')
+  addlightverb(clause, auxiliary, nonfinite, name)
   # change arguments
   for node in clause.findall('ARGUMENT'):
     leaf = list(node.iter())[-1]
     if leaf.get('case') == 'Nominativ':
-      ET.SubElement(node, 'REZIPIENTENPASSIV', attrib = {'case': 'von'})
-    if leaf.get('case') == "Dativ":
-      ET.SubElement(node, 'REZIPIENTENPASSIV', attrib = {'case': 'Nominativ'})
+      ET.SubElement(node, name, attrib = {'case': demoted})
+    if leaf.get('case') == promoted:
+      ET.SubElement(node, name, attrib = {'case': 'Nominativ'})
       # default order nominative first
       clause.insert(1, node)
 
@@ -523,27 +474,26 @@ def ReflexivErlebniskonversiv(clause):
 
 def Phrase(addto, connection = None):
   # finish up everything before
-  Artikulator(addto)
-  # get info
+  articulator(addto)
+  # abreviations
   parent = addto.getparent()
+  sub = upSubClause(addto)
   argument = addto.find(f'*[@role="{connection}"]')
   # possibilities
-  if argument is not None:
-    return Argument(addto, connection)
-  elif addto.tag == 'SATZ' or parent.tag == 'SATZ':
+  if argument is not None or (addto.tag == 'KOORDINATION' and sub.tag == 'ARGUMENT'):
+    return Argumentphrase(addto, connection)
+  elif addto.tag == 'SATZ' or (addto.tag == 'KOORDINATION' and parent.tag == 'SATZ'):
     return Adverbialphrase(addto, connection)
-  elif addto.tag == 'PHRASE' or parent.tag == 'PHRASE':
+  elif addto.tag == 'PHRASE' or addto.tag == 'KOORDINATION':
     return Attributphrase(addto, connection)
-  elif addto.tag == 'KOORDINATION':
-    return Argumentkoordination(addto)
 
 def Referent(phrase, referent = None):
-  # insert personal pronoun
-  if referent[:1] in list('12'):
-    Pronomen(phrase, referent)
   # with empty head, gender is needed
-  elif referent in list('mnfp'):
+  if referent in list('mnfp'):
     Genuskopf(phrase, referent)
+  # insert personal pronoun
+  elif referent[:1] in list('12'):
+    Pronomen(phrase, referent)
   # make reference to another referent
   elif referent in Teilnehmer:
     Anapher(phrase, referent)
@@ -555,14 +505,21 @@ def Referent(phrase, referent = None):
 # Phrasen
 # =======
 
-def Argument(clause, role = None):
+def Argumentphrase(clause, role = None):
   # also includes prädikativ here
   argument = clause.find(f'*[@role="{role}"]')
+  # simply add phrase to end of the koordination
+  if clause.tag == 'KOORDINATION':
+    case = clause.get('case')
+    phrase = ET.SubElement(clause, 'PHRASE', attrib = {'case': case})
+    # put conjunction in right position
+    shiftconjunction(clause)
+    return phrase
   # Check for already filled predicative: do not add another phrase then
   # this happens with lexicalised constructions like 'Angst haben'
-  phrase = argument.find('PHRASE')
-  if role == 'Prädikativ' and phrase is not None:
+  elif role == 'Prädikativ' and argument.find('PHRASE') is not None:
     return phrase
+  # ----
   # go to tip of branch to add stuff
   leaf = list(argument.iter())[-1]
   # get the prepositional juncture, if available
@@ -594,6 +551,9 @@ def Adverbialphrase(clause, connection = None):
     predicate[0].addprevious(node)
   else:
     clause.append(node)
+  # put conjunction in right position
+  if clause.tag == 'KOORDINATION':
+    shiftconjunction(clause)
   return phrase
 
 def Attributphrase(phrase, connection = None):
@@ -608,78 +568,35 @@ def Attributphrase(phrase, connection = None):
     case = phrase.get('case')
     newphrase = ET.SubElement(phrase, 'PHRASE', attrib = {'case': case})
     return newphrase
+  # or add phrase to conjunction
+  elif phrase.tag == 'KOORDINATION':
+    case = phrase.get('case')
+    newphrase = ET.SubElement(phrase, 'PHRASE', attrib = {'case': case})
+    # put conjunction in right position
+    shiftconjunction(phrase)
   # Genitive when no juncture
   else:
     newphrase = ET.SubElement(node, 'PHRASE', attrib = {'case': 'Genitiv'})
-  # find insertion point for branch
+  # simply add to end of phrase
   phrase.append(node)
   return newphrase
 
-def Argumentkoordination(coordination):
-  # simply add phrase to end of the koordination
-  case = coordination.get('case')
-  phrase = ET.SubElement(coordination, 'PHRASE', attrib = {'case': case})
-  # put conjunction in right position
-  shiftconjunction(coordination)
-  return phrase
+# ==========
+# Referenten
+# ==========
 
-  ## ======
-  ## For relators: add info to all phrases
-  #relative = addto.get('relative')
-  #if relative is not None:
-  #  phrase.set('relative', relative)
-  #kind = addto.get('kind')
-  #if kind is not None:
-  #  phrase.set('kind', kind)
-  ## ======
-  #return phrase
-
-def checkArgument(node):
-  while node.tag != 'ARGUMENT':
-    node = node.getparent()
-    if node.tag == 'SATZ':
-      return False
-    else:
-      return True
-
-def passPersonNumber(phrase, case, person, gender):
-  number = 'Plural' if gender == 'Plural' else 'Singular'
-  # verb agreement flagging
-  # only for nominative in argument (not for predicative nominative!)
-  if case == 'Nominativ' and checkArgument(phrase):
-    clause = upClause(phrase)
-    # check whether already present, in case of coordination
-    existing = clause.get('person')
-    if existing is not None:
-      # person hierarchy
-      person = min(existing, person)
-      number = 'Plural'
-    # set flags for verb agreement at clause level
-    clause.set('person', person)
-    clause.set('number', number)
-  # setting argument-attached reflexives from diathesis
-  parent = phrase.getparent()
-  if parent.find('REFLEXIV') is not None:
-    reflexive = parent.find('REFLEXIV')
-    case = reflexive.get('case')
-    if person in list('12'):
-      pronoun = Personalpronomina[number][person][case]
-    else:
-      pronoun = 'sich'
-    reflexive.text = pronoun
-    # move reflexive to other side of branch
-    parent.append(reflexive)
-
-# ===================
-# Early determination
-# ===================
-
-def Plural(phrase):
-  phrase.set('gender', 'Plural')
-
-# ========
-# Referenz
-# ========
+def Genuskopf(phrase, referent):
+  # adjective can be used as head, also used in 'freier relativsatz'
+  gender = Genera[referent] if len(referent) == 1 else referent
+  # insert nodes
+  ET.SubElement(phrase, 'DETERMINATIV')   
+  ET.SubElement(phrase, 'REFERENT')
+  # set flags at phrase for phrasal agreement
+  phrase.set('gender', gender)
+  phrase.set('declension', 'stark')
+  # check verb agreement
+  case = phrase.get('case')
+  passPersonNumber(phrase, case, '3', gender)
 
 def Pronomen(phrase, person):
   # get info from phrase
@@ -726,19 +643,6 @@ def Anapher(phrase, referent):
     local = referent if local is None else local + ',' + referent
     upClause(phrase).set('local', local)
   # check verb agreement
-  passPersonNumber(phrase, case, '3', gender)
-
-def Genuskopf(phrase, referent):
-  # adjective can be used as head, also used in 'freier relativsatz'
-  gender = Genera[referent] if len(referent) == 1 else referent
-  # insert nodes
-  ET.SubElement(phrase, 'DETERMINATIV')   
-  ET.SubElement(phrase, 'REFERENT')
-  # set flags at phrase for phrasal agreement
-  phrase.set('gender', gender)
-  phrase.set('declension', 'stark')
-  # check verb agreement
-  case = phrase.get('case')
   passPersonNumber(phrase, case, '3', gender)
 
 def Nomen(phrase, referent):
@@ -788,6 +692,9 @@ def Nomen(phrase, referent):
 # Determination
 # =============
 
+def Plural(phrase):
+  phrase.set('gender', 'Plural')
+
 def KeinAnapher(phrase):
   # reverse anaphor and make a full noun phrase instead
   referent = phrase.find('ANAPHER').get('referent')
@@ -810,22 +717,6 @@ def Definit(phrase):
   # set declension for agreement
   phrase.set('declension', 'schwach')
 
-def Demonstrativ(phrase):
-  determiner = phrase.find('DETERMINATIV')
-  # ignore when no determiner
-  if determiner is None:
-    return
-  # get attributes from phrase
-  case = phrase.get('case')
-  gender = phrase.get('gender') 
-  # make demonstrative/relative
-  demonstrative = Relativpronomina[case][gender]
-  # find insertion point
-  ET.strip_elements(determiner, '*')
-  ET.SubElement(determiner, 'DEMONSTRATIVE').text = demonstrative
-  # set declension for agreement
-  phrase.set('declension', 'schwach')
-
 def Indefinit(phrase):
   determiner = phrase.find('DETERMINATIV')
   # ignore when no determiner
@@ -842,6 +733,22 @@ def Indefinit(phrase):
   ET.SubElement(determiner, 'ARTIKEL').text = article
   # set declension for agreement
   phrase.set('declension', 'gemischt')
+
+def Demonstrativ(phrase):
+  determiner = phrase.find('DETERMINATIV')
+  # ignore when no determiner
+  if determiner is None:
+    return
+  # get attributes from phrase
+  case = phrase.get('case')
+  gender = phrase.get('gender') 
+  # make demonstrative/relative
+  demonstrative = Relativpronomina[case][gender]
+  # find insertion point
+  ET.strip_elements(determiner, '*')
+  ET.SubElement(determiner, 'DEMONSTRATIVE').text = demonstrative
+  # set declension for agreement
+  phrase.set('declension', 'schwach')
 
 def Quantor(phrase, quantor):
   determiner = phrase.find('DETERMINATIV')
@@ -923,10 +830,10 @@ def Link(clause):
 
 def Addendum(addto, adword):
   # finish up everything before
-  Artikulator(addto)
+  articulator(addto)
   # choices
   if addto.tag in ['SATZ', 'PRÄDIKATIV']:
-    return Adverbial(addto, adword)
+    return Adverbiale(addto, adword)
   elif addto.tag == 'PHRASE':
     return Attribut(addto, adword)
   elif addto.tag == 'KOORDINATION':
@@ -973,10 +880,13 @@ def Attribut(phrase, adword):
       upClause(phrase).set('local', local)
   return attribute
 
-def Adverbial(clause, adword):
+def Adverbiale(clause, adword):
   # insert adverbial
   adverbial = ET.SubElement(clause, 'ADVERBIALE')
-  ET.SubElement(adverbial, "ADVERB").text = adword
+  if adword in Adjektive:
+    ET.SubElement(adverbial, "ADJEKTIV").text = adword
+  else:
+    ET.SubElement(adverbial, "ADVERB").text = adword
   # location to insert
   predicate = clause.xpath('PRÄDIKATIV|PRÄDIKAT')
   # without predication, this a vorfeld adverbial
@@ -1033,6 +943,17 @@ def Adverbialpräposition(adverbial, preposition):
 # =======
 
 # has to be combined in 'unbestimmt' below
+
+  ## ======
+  ## For relators: add info to all phrases
+  #relative = addto.get('relative')
+  #if relative is not None:
+  #  phrase.set('relative', relative)
+  #kind = addto.get('kind')
+  #if kind is not None:
+  #  phrase.set('kind', kind)
+  ## ======
+  #return phrase
 
 def Relator(node):
   # set relator attribute
@@ -1245,155 +1166,66 @@ def Koordination(addto, conjunction = 'und'):
   coordination.append(conj)
   return coordination
 
-def shiftconjunction(coordination):
-  conjunction = coordination.find('KONJUNKTION')
-  goal = len(coordination) - 1
-  coordination.insert(goal, conjunction)
-
 # ========
 # Satzende
 # ========
 
 def Satzende(satz, clean = True):
-  Artikulator(satz)
-  # set agreement of anaphora
-  # Anapherauflösung(satz)
-  # go through all clauses 
-  #for clause in findallclauses(satz):
-    #Kongruenz(clause)
-    #Verbzweitposition(clause)
-    #Vorfeldposition(clause)
-    #Reflexive(clause)
-  # re-ordering inside koordination
-  #Konjunktionposition(satz)
-  # separation of da-preposition with complement clause
-  Komplementsatzposition(satz)
+  articulator(satz)
   # optional cleanup of attributes for readability
   if clean:
    cleanup(satz)
 
-def Kongruenz_old(clause, person, number):
-  kind = clause.get('kind')
-  # find verb
+def articulator(addto):
+  # at the start of each new node, mark the previous node as done
+  # the content can then be sent to the articulator
+  # but not when signal comes from inside a coordination
+  if addto.tag != 'KOORDINATION':
+    clause = upClause(addto)
+    # syntactically, verb agreement is also triggered by this command
+    if clause.get('person') is not None and clause.get('agreement') is None:
+      verbkongruenz(clause)
+      clause.set('agreement', 'done')
+
+# Vorfeld-positional 'es' has to be explicitly decided by speaker
+# Subject-replacing 'es' only occurs through diathesis
+
+def verbkongruenz(clause):
+  # get verb
   finitum = clause.find('PRÄDIKAT')[-1]
   verb = finitum.get('verb')
-  tense = finitum.get('tense')
-  finitum.attrib.pop('tense')
-  # Non-finite: zu-Infinitiv Kontrollsatz
-  if kind == 'Partizipsatz':
-    if subject is not None:
-      subject.clear()
-  # Control replaces subject person/number
-  if kind in ['Kontrollsatz', 'Präpositionskontrollsatz']:
-    person = clause.get('person')
-    gender = clause.get('gender')
-    if subject is not None:
-      subject.clear()
-      subject.set('person', person)
-      subject.set('gender', gender)
-      subject.set('controller', clause.get('controller'))
-    # insert zu-Infinitiv
-    ET.SubElement(finitum, 'INFINITUM', 
-      attrib = {'verb': verb, 'non-finite': 'zu-Infinitiv'}).text = 'zu ' + verb
-  # Non-finite: Partizipsatz
-  elif clause.get('kind') == 'Partizipsatz':
-    partizip = makePartizipsatz(clause, verb)
-    kind = clause.get('variant') + 'partizip'
-    ET.SubElement(finitum, 'INFINITUM', 
-      attrib = {'verb': verb, 'non-finite': kind}).text = partizip
-  # Finite: only agreement when tense is finite
-  elif tense != 'Infinit':
-    number = gender
-    if number != 'Plural':
-      number = 'Singular'
-    if verb not in Verben or tense not in Verben[verb]:
-      finite = verbfinite(verb, person, number, tense)
-    else:
-      finite = Verben[verb][tense][number][person]
+  # get agreement attributes
+  tense = clause.get('tense')
+  person = clause.get('person')
+  number = clause.get('number')
+  # only make finite form
+  if tense != 'Infinit':
+    finite = verbfinite(verb, person, number, tense)
     # insert finite verb
     node = ET.SubElement(finitum, 'FINITUM', 
       attrib = {'verb': verb, 'tense': tense, 'person': person, 'number': number})
     node.text = finite
-  # reorder for Erstatzinfinitiv
-  if clause.get('cluster') == 'Ersatzinfinitiv':
+  # Verbzweit
+  if clause.get('kind') == 'Hauptsatz':
+    # leave trace
+    ET.SubElement(finitum, 'FINITUM', attrib = {'move': 'Verbzweit'})
+    # move to second position
+    verbzweit = ET.Element('VERBZWEIT')
+    verbzweit.append(node)
+    clause.insert(1, verbzweit)
+    # insert position-es when nothing in Vorfeld yet
+    vorfeld = clause.find('VORFELD')
+    if len(vorfeld) == 0:
+      ET.SubElement(vorfeld, 'VORFELDERSATZ').text = 'es'
+  # reorder verbcluster for Erstatzinfinitiv
+  elif clause.get('cluster') == 'Ersatzinfinitiv':
     # leave trace
     ET.SubElement(finitum, 'FINITUM', attrib = {'move': 'Finiterst'})
-    # move finite to front
+    # move finite to front of verb cluster
     predicate = clause.find('PRÄDIKAT')
     predicate.insert(0, node)
-  # find reflexives and set person/number agreement
-  # only reflexives from diathesis!
-  for child in clause:
-    for node in child.iter():
-      if node.tag == 'REFLEXIV': 
-        setreflexive(node, person, gender)
-      if node.tag == "SATZ":
-        break
 
-def Reflexive(clause):
-  # search for marks in the clause 
-  marks = []
-  # move the search one clause up when in Kontrollsatz
-  start = clause
-  if start.get('kind') in ['Kontrollsatz', 'Präpositionskontrollsatz']:
-    start = start.getparent()
-    while start.tag != 'SATZ':
-      start = start.getparent()
-  for child in start:
-    for node in child.iter():
-      mark = node.get('mark')
-      if mark is not None:
-        marks.append(mark)
-        node.set('test', 'test')
-      if node.tag == "SATZ" and node != clause:
-        break
-  # search for anaphors to be replaces by reflexives
-  for child in clause:
-    for node in child.iter():
-      referent = node.get('referent')
-      if node.tag == 'ANAPHER' and referent in marks:
-        person = Teilnehmer[referent]['Person']
-        gender = Teilnehmer[referent]['Geschlecht']
-        node.tag = "REFLEXIV"
-        setreflexive(node, person, gender)
-      if node.tag == "SATZ":
-        break
-
-def Anapherauflösung(satz):
-  marks = []
-  # find all marks in the sentence
-  for node in satz.iter():
-    mark = node.get('mark')
-    if mark is not None:
-      marks.append(mark)
-  # set all anaphora
-  for node in satz.iter():
-    if node.tag == 'ANAPHER':
-      case = node.get('case')
-      referent = node.get('referent')
-      person = Teilnehmer[referent]['Person']
-      gender = Teilnehmer[referent]['Geschlecht']
-      # set info for agreement
-      node.getparent().set('person', person)
-      node.getparent().set('gender', gender)
-      # prepare pronoun
-      if gender == 'Plural':
-        number = 'Plural'
-      else:
-        number = 'Singular'
-      if person == '3' and number == 'Singular':
-        person = person + gender[0].lower()
-      node.text = Personalpronomina[number][person][case]
-
-def Verbzweitposition(clause):
-  # only in Hauptsatz
-  if clause.get('kind') == 'Hauptsatz':
-    finitum = clause.find('PRÄDIKAT')[-1].find('FINITUM')
-    second = deepcopy(finitum)
-    second.tag = 'VERBZWEIT'
-    clause.insert(0, second)
-    finitum.clear()
-    finitum.set('move', 'Verbzweit')
+# === REMOVE ===
 
 def Vorfeldposition(clause):
   # search for 'Vorfeld' tag and copy upwards
@@ -1470,37 +1302,6 @@ def Vorfeldposition(clause):
     #verb = clause.find('PRÄDIKAT').get('verb')
     #complement = Verben[verb]['Kontrolliert'] 
 
-def Konjunktionposition(satz):
-  # easy solution to allow for arbitrary number of coordinants
-  for coordination in satz.findall('.//KOORDINATION'):
-    coordination.insert(-1, coordination[0])
-  # also for root node as coordination
-  if satz.tag == 'KOORDINATION':
-    satz.insert(-1, satz[0])
-
-def Komplementsatzposition(satz):
-  # separate complement clause from its preposition
-  for clause in findallclauses(satz):
-    for child in clause:
-      if child.get('move') == 'da-Junktor' and child.get('position') is None:
-          child.attrib.pop('move')
-          # copy juncture
-          daJunktor = deepcopy(child)
-          drop = daJunktor.find('.//SATZ')
-          if drop.getparent().tag == 'KOORDINATION':
-            drop = drop.getparent()
-          drop.clear()
-          drop.tag = 'SATZ'
-          drop.set('move', 'Satzende')
-          # insert juncture in Mittelfeld
-          insertion = clause.find('PRÄDIKAT')
-          #insertion = clause.find('break')
-          place = list(clause).index(insertion)
-          clause.insert(place, daJunktor)
-          # remove Junktor from clause
-          drop = child.find('.//JUNKTOR')
-          drop.getparent().remove(drop)
-
 # ==============
 # help functions
 # ==============
@@ -1512,6 +1313,9 @@ def upClause(node):
   return node
 
 def upSubClause(node):
+  # ignore when at root
+  if node.getparent() is None:
+    return node
   # go up last node in branch before clause
   while node.getparent().tag != 'SATZ':
     node = node.getparent()
@@ -1522,14 +1326,6 @@ def upPhrase(node):
   while node.tag != 'PHRASE':
     node = node.getparent()
   return node
-
-def findallclauses(satz):
-  # clauses that are named with 'kind'
-  clauses = satz.findall('.//SATZ[@kind]')
-  # add main clause, when Hauptsatz
-  if satz.tag == 'SATZ' and satz.get('kind') == 'Hauptsatz':
-    clauses.append(satz)
-  return clauses
 
 def findcase(clause, value):
   result = None
@@ -1601,7 +1397,7 @@ def participle(verb):
   return participle
 
 def verbfinite(verb, person, number, tense):
-  # various rules for the right verb inflection
+  # various rules for verb inflection
   if verb not in Verben or tense not in Verben[verb]:
     stem = verbstem(verb)
     if tense == 'Präsens' and stem[-1:] in list('td'):
@@ -1624,30 +1420,46 @@ def verbfinite(verb, person, number, tense):
       finite = Verben[verb][tense][number][person]
   return finite
 
-def setreflexive(node, person, number):
-  if number != 'Plural':
-    number = 'Singular'
-  node.set('person', person)
-  node.set('number', number)
-  if person == '3':
-    node.text = 'sich'
-  else:
-    case = node.get('case')
-    node.text = Personalpronomina[number][person][case]
-  node.attrib.pop('case')
+def checkArgument(node):
+  while node.tag != 'ARGUMENT':
+    node = node.getparent()
+    if node.tag == 'SATZ':
+      return False
+    else:
+      return True
 
-def switchPartizipsatz(clause, leaf):
-  # Participants are switched in Partizipsatz
-  # somewhat reminiscent of passive
-  kind = clause.get('kind')
-  variant = clause.get('variant')
-  case = leaf.get('case')
-  if kind == 'Partizipsatz' and variant in ['Vorzeit', 'Nachzeit']:
-    if case == 'Akkusativ':
-      leaf = ET.SubElement(leaf, 'PARTIZIPSATZ', attrib = {'case': 'Nominativ'})
-    elif case == 'Nominativ':
-      leaf = ET.SubElement(leaf, 'PARTIZIPSATZ', attrib = {'juncture': 'von'})
-  return leaf
+def passPersonNumber(phrase, case, person, gender):
+  number = 'Plural' if gender == 'Plural' else 'Singular'
+  # verb agreement flagging
+  # only for nominative in argument (not for predicative nominative!)
+  if case == 'Nominativ' and checkArgument(phrase):
+    clause = upClause(phrase)
+    # check whether already present, in case of coordination
+    existing = clause.get('person')
+    if existing is not None:
+      # person hierarchy
+      person = min(existing, person)
+      number = 'Plural'
+    # set flags for verb agreement at clause level
+    clause.set('person', person)
+    clause.set('number', number)
+  # setting argument-attached reflexives from diathesis
+  parent = phrase.getparent()
+  if parent.find('REFLEXIV') is not None:
+    reflexive = parent.find('REFLEXIV')
+    case = reflexive.get('case')
+    if person in list('12'):
+      pronoun = Personalpronomina[number][person][case]
+    else:
+      pronoun = 'sich'
+    reflexive.text = pronoun
+    # move reflexive to other side of branch
+    parent.append(reflexive)
+
+def shiftconjunction(coordination):
+  conjunction = coordination.find('KONJUNKTION')
+  goal = len(coordination) - 1
+  coordination.insert(goal, conjunction)
 
 def makePartizipsatz(clause, verb):
   # participle for Partizipsatz
@@ -1709,6 +1521,14 @@ def add(name, gender = None):
 # ======
 # Output
 # ======
+
+def findallclauses(satz):
+  # clauses that are named with 'kind'
+  clauses = satz.findall('.//SATZ[@kind]')
+  # add main clause, when Hauptsatz
+  if satz.tag == 'SATZ' and satz.get('kind') == 'Hauptsatz':
+    clauses.append(satz)
+  return clauses
 
 def cleanup(satz):
   for clause in findallclauses(satz):
