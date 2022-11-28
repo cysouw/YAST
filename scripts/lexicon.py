@@ -1,5 +1,7 @@
 # global list of participants
 Teilnehmer = dict()
+# global list of topics, just a list of verbs for now
+Themen = list()
 
 # TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
 Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn']
@@ -16,7 +18,7 @@ Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen',
 # Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
 Kontrollsatzpräpositionen = ['um', 'statt', 'anstatt', 'anstelle', 'ohne', 'außer', 'ausser']
 
-Adverbien = ['abends', 'allerdings', 'anfangs', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', ]
+Adverbien = ['abends', 'allerdings', 'anfangs', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', ]
 Frageadverbien = ['warum', 'weshalb', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
 Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
 
@@ -25,6 +27,9 @@ Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
 Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
 
 Kopula = ['sein', 'werden', 'bleiben']
+
+# TODO: 'wollen' has modal usage and full usage 'ich will dass...'
+Modalverben = ['dürfen', 'können', 'mögen', 'möchten', 'müssen', 'sollen', 'werden', 'brauchen']
 
 Präpositionen = {
   # Akkusativ
@@ -68,7 +73,6 @@ Präpositionen = {
   'anstatt': 'Genitiv',
   'außerhalb': 'Genitiv',
   'bar': 'Genitiv',
-  'behufs': 'Genitiv',
   'bezüglich': 'Genitiv',
   'dank': 'Genitiv',
   'diesseits': 'Genitiv',
@@ -107,6 +111,11 @@ Genera = {
 # default Nominative role is 'verb+de'
 
 Verben = {
+  'einschlafen':{
+    'Präverb': 'ein',
+    'Stamm': 'schlafen',
+    'Perfekt': 'sein'
+  },
   'glauben':{
     'Rollen':{
       'Geglaubte': 'Akkusativ'
@@ -114,19 +123,41 @@ Verben = {
     'Kontrolle': 'Glaubende',
     'Kontrolliert': 'Geglaubte'
   },
+  'schlagen':{
+    'Partizip': 'geschlagen',
+    'Rollen':{
+      'Geschlagene': 'Akkusativ'
+    },
+  },
+  'betrügen':{
+    'Partizip': 'betrogen',
+    'Rollen':{
+      'Betrogene': 'Akkusativ'
+    },
+  },
+  'malen':{
+    'Rollen':{
+      'Gemalte': 'Akkusativ'
+    },
+  },
+  'kennen':{
+    'Partizip': 'gekannt',
+    'Rollen':{
+      'Gekannte': 'Akkusativ'
+    },
+  },
   'bekommen':{
     'Partizip': 'bekommen'
   },
   'schenken':{
     'Rollen':{
-      'Geschenkte': 'Akkusativ',
       'Rezipient': 'Dativ',
+      'Geschenkte': 'Akkusativ',
     },
   },
   'stellen':{
     'Rollen':{
       'Gestellte': 'Akkusativ',
-      'in': 'Akkusativ'
     }
   },
   'darstellen':{
@@ -152,8 +183,7 @@ Verben = {
   },
   'hoffen':{
     'Rollen':{
-      'Gehoffte': 'Akkusativ',
-      'Gehoffte auf': 'auf'
+      'Gehoffte': 'auf'
     },
     'Kontrolle': 'Hoffende',
     'Kontrolliert': 'Gehoffte auf'
@@ -284,6 +314,18 @@ Verben = {
         '2': 'habt',
         '3': 'haben'
       }
+    },
+    'Präteritum':{
+      'Singular':{
+        '1': 'hatte',
+        '2': 'hattest',
+        '3': 'hatte'
+      },
+      'Plural':{
+        '1': 'hatten',
+        '2': 'hattet',
+        '3': 'hatten'
+      }
     }
   },
   'werden':{
@@ -337,7 +379,7 @@ Verben = {
     }
   },
   'dürfen':{
-    'Partizip': 'gedurtf',
+    'Partizip': 'gedurft',
     'Präsens':{
       'Singular':{
         '1': 'darf',
@@ -360,21 +402,25 @@ Substantive = {
   },
   'Tag':{
     'Geschlecht': 'Maskulin',
-    'Plural': 'Tage'
+    'Plural': 'Tage',
   }, 
   'Mann':{
     'Geschlecht': 'Maskulin',
-    'Plural': 'Männer'
+    'Belebt': True,
+    'Plural': 'Männer',
   }, 
   'Karl':{
-    'Geschlecht': 'Maskulin'
+    'Geschlecht': 'Maskulin',
+    'Belebt': True,
   },
   'Maria':{
-    'Geschlecht': 'Feminin'
+    'Geschlecht': 'Feminin',
+    'Belebt': True,
   },
   'Frau':{
     'Geschlecht': 'Feminin',
-    'Plural': 'Frauen'
+    'Belebt': True,
+    'Plural': 'Frauen',
   },  
   'Schrank':{
     'Geschlecht': 'Maskulin',
@@ -402,14 +448,17 @@ Substantive = {
   },
   'Mutter':{
     'Geschlecht': 'Feminin',
+    'Belebt': True,
     'Plural': 'Mütter',
   },
   'Vater':{
     'Geschlecht': 'Maskulin',
-    'Plural': 'Väter'
+    'Belebt': True,
+    'Plural': 'Väter',
   },
   'Zuschauer':{
     'Geschlecht': 'Maskulin',
+    'Belebt': True,
     'Plural': 'Zuschauer',
   },
   'Buch':{
@@ -418,6 +467,7 @@ Substantive = {
   },
   'Kind':{
     'Geschlecht': 'Neutrum',
+    'Belebt': True,
     'Plural': 'Kinder',
   },
   'Plan':{
@@ -438,16 +488,17 @@ Substantive = {
   },
   'Ursache':{
     'Geschlecht': 'Feminin',
-    'Plural': 'Ursachen'
+    'Plural': 'Ursachen',
   },
   'Tanz':{
     'Geschlecht': 'Maskulin',
-    'Plural': 'Tänze'
+    'Plural': 'Tänze',
   },
   'Mensch':{
     'Geschlecht': 'Maskulin',
+    'Belebt': True,
     'Plural': 'Menschen',
-    'Deklination': 'schwach'
+    'Deklination': 'schwach',
   },
 }
 
@@ -486,6 +537,21 @@ Personalpronomina = {
   }
 }
 
+Fragepronomina = {
+  'Belebt':{
+    'Nominativ': 'wer',
+    'Akkusativ': 'wen',
+    'Dativ': 'wem',
+    'Genitiv': 'wessen',
+  },
+  'Unbelebt':{
+    'Nominativ': 'was',
+    'Akkusativ': 'was',
+    'Dativ': 'was',
+    'Genitiv': 'wessen',
+  }
+}
+
 Anaphora = {
   'Maskulin':{
     'Nominativ': 'er',
@@ -514,23 +580,6 @@ Anaphora = {
     'Dativ': 'ihnen',
     'Genitiv': 'ihrer',
     'Attributiv': 'ihr'
-  }
-}
-
-Fragepronomina = {
-  'Mensch':{
-    'Nominativ': 'wer',
-    'Akkusativ': 'wen',
-    'Dativ': 'wem',
-    'Genitiv': 'wessen',
-    'Attributiv': 'wessen'
-  },
-  'Neutral':{
-    'Nominativ': 'was',
-    'Akkusativ': 'was',
-    'Dativ': 'was',
-    'Genitiv': 'wessen',
-    'Attributiv': 'wessen'
   }
 }
 
@@ -616,14 +665,6 @@ Quantoren = {
   'manch':{
     'Flexion': 'all',
     'Deklination': 'schwach',
-  },
-  'welch':{
-    'Flexion': 'all',
-    'Deklination': 'schwach'
-  },
-  'ein':{
-    'Flexion': 'ein',
-    'Deklination': 'gemischt',
   },
   'kein':{
     'Flexion': 'ein',
