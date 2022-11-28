@@ -6,7 +6,7 @@ from lexicon import *
 # Satz
 # ====
 
-def Satz(addto = None, juncture = None, *early):
+def Satz(addto = None, juncture = None):
   # start new sentence
   if addto is None:
     return Hauptsatz()
@@ -16,7 +16,7 @@ def Satz(addto = None, juncture = None, *early):
       role = addto.find(f'*[@role="{juncture}"]')
     # different options for subordinate clauses
     if role is not None:
-      node = Komplementsatz(addto, juncture, *early)
+      node = Komplementsatz(addto, juncture)
     elif addto.tag == 'SATZ':
       if juncture in Subjunktionen:
         node = Subjunktionsatz(addto, juncture)
@@ -102,10 +102,11 @@ def Präpositionssatz(clause, preposition):
   ET.SubElement(newclause, 'VORFELD').text = 'dass'
   return newclause
 
-def Komplementsatz(clause, role, *early):
+def Komplementsatz(clause, role):
   if clause.tag == 'KOORDINATION':
     leaf = clause
   else:
+    # find role
     node = clause.find(f'*[@role="{role}"]')
     # go to tip of branch to add junktor
     leaf = list(node.iter())[-1]
@@ -119,15 +120,16 @@ def Komplementsatz(clause, role, *early):
   tense = clause.get('tense')
   newclause = ET.SubElement(leaf, 'SATZ', attrib = {'kind': 'Komplementsatz', 'tense': tense})
   # add default relator when not interrogative
-  if 'Frage' in early:
+  if clause.get('mood') != 'Frage':
     relator = None
-  elif 'Unbestimmt' in early:
+  elif clause.get('truth') == 'Unbestimmt':
     relator = 'ob'
   else:
     relator = 'dass'
   ET.SubElement(newclause, 'VORFELD').text = relator
-  # if not vorfeld: clause to back, but correlative stays
-  if 'Vorfeld' not in early:
+  # if vorfeld already filled: clause to back, but correlative stays
+  vorfeld = clause.find('VORFELD')
+  if len(vorfeld) != 0:
     predicate = clause.find('PRÄDIKAT')
     clause.append(node)
     if correlative is not None:
@@ -1367,16 +1369,12 @@ def level(file):
   depth = []
   for line in file:
     depth.append(len(line) - len(line.lstrip()))
-  # ignore first indent, because every sentence starts automatically
-  # first indent is just for user-consistency
-  #level2 = sorted(depth)[1]
-  #depth = [0 if i == level2 else i for i in depth]
   return depth
 
 def reference(file):
   depth = [0] + level(file)
   stack = {0: 0}
-  ref = []
+  ref = [0]
   for nr,elem in enumerate(depth[1:]):
     if elem > depth[nr]:
       ref.append(nr)
@@ -1385,12 +1383,23 @@ def reference(file):
       ref.append(ref[-1])
     elif elem < depth[nr]:
       ref.append(stack[elem])
-  return ref
+  return ref[1:]
 
-def specification(raw, lineNr, refs):
+def isReferent(lexeme):
+  lexeme[:1].isupper() \
+  or lexeme[:1] in list('012') \
+  or lexeme in list('mnfp') \
+  or lexeme in Genera.values()
+
+def isAddendum(lexeme):
+  lexeme in Adverbien + Frageadverbien + Negationen + Adjektive
+
+def specification(raw, lineNr, refs, head):
   # prepare line number
-  id = 's' + str(lineNr+1)
-  if lineNr == 0:
+  id = 's' if lineNr == head else 's' + str(lineNr+1)
+  if refs[lineNr] == 0:
+    ref = 's'
+  elif refs[lineNr] == head + 1:
     ref = 's'
   else:
     ref = 's' + str(refs[lineNr])
@@ -1401,43 +1410,69 @@ def specification(raw, lineNr, refs):
   recursion = spec[0].lstrip()
   recursion = recursion.split(':')
   recursion = [x.strip() for x in recursion]
-  base = id + ' = R(' + ref
-  if len(recursion) == 1:
-    recursion = base + ', \'' + recursion[0] + '\', None'
-  elif len(recursion) == 2:
-    if recursion[1] in ['', '-']:
-      recursion = base + ', None, \'' + recursion[0] + '\''
-    else:
-      recursion = base + ', \'' + recursion[1] + '\', \'' + recursion[0] + '\''
+  lexeme = recursion[-1]
+  connection = recursion[0] if len(recursion) == 2 else ''
   # specification part
   features = ''
+  early = ''
   if len(spec) > 1:
     parts = spec[1].split(' + ')
     for part in parts:
       feature = part.split(': ')
       # early features
       if feature[0] in earlyfeatures:
-        recursion = recursion + ', \'' + feature[0] + '\''
+        early = early + feature[0] + '(' + id + ')\n'
       # lexical abbreviations
       elif feature[0][:1].islower():
-        features = features + '\nR(' + id + ', \'' + feature[0] + '\')'
+        if feature[0] in Modalverben:
+          features = features + 'Modalverb(' + id + ', \'' + feature[0] + '\')\n'
+        elif feature[0] in Quantoren:
+          features = features + 'Quantor(' + id + ', \'' + feature[0] + '\')\n'
       else:
-        base = feature[0] + '(' + id
-        # format features
         if len(feature) == 1:
-          feature = base + ')'
+          features = features + feature[0] + '(' + id + ')\n'
         else:
-          feature = base + ', \'' + feature[1] + '\')'
-        features = features + '\n' + feature
-  return recursion + ')' + features
+          features = features + feature[0] + '(' + id + ', \'' + feature[1] + '\')\n'
+  # build commands
+  if lexeme in Adverbien + Frageadverbien + Negationen + Adjektive:
+    if connection == 'Prädikativ':
+      return id + ' = Addendum(Link(' + ref + '), \'' + lexeme + '\')\n' + features
+    else:
+      return id + ' = Addendum(' + ref + ', \'' + lexeme + '\')\n' + features
+  elif lexeme in Konjunktionen:
+    if lexeme == '':
+      return id + ' = Koordination(' + ref + ', \'' + lexeme + '\')\n' + features
+    else:
+      return id + ' = Koordination(' + ref + '\')\n' + features
+  elif lexeme[:1].isupper() or lexeme[:1] in list('012') or lexeme in list('mnfp') or lexeme in Genera.values() or lexeme == '':
+    linkage = 'Phrase'
+    content = 'Referent'
+  else:
+    linkage = 'Satz'
+    content = 'Prädikat'
+  # options linkage
+  if linkage == 'Satz' and lineNr == head:
+    linkage = ''
+  elif connection == '':
+    linkage = id + ' = ' + linkage + '(' + ref + ')\n'
+  else:
+    linkage = id + ' = ' + linkage + '(' + ref + ', \'' + connection + '\')\n'
+  # options content
+  if lexeme == '':
+    content = ''
+  else:
+    content = content + '(' + id + ', \'' + lexeme + '\')\n'
+  # all combined
+  return linkage + early + content + features
 
 def convert(sentence, clean = True):
   sentence = re.split('\n', sentence)
   sentence = list(filter(None, sentence))
   refs = reference(sentence)
+  head = level(sentence).index(0)
   for nr,elem in enumerate(sentence):
-    sentence[nr] = specification(elem, nr, refs) 
-  rules = 's = Start()\n' + '\n'.join(sentence) + f'\nEnde(s, {clean})\n'
+    sentence[nr] = specification(elem, nr, refs, head) 
+  rules = 's = Start()\n' + ''.join(sentence) + f'Ende(s, {clean})\n'
   return rules
 
 def makeTree(rules):
@@ -1445,12 +1480,14 @@ def makeTree(rules):
   exec(rules, globals(), loc)
   return loc['s']
 
+earlyfeatures = ['Plural', 'Bewegung', 'Belebt', 'Frage', 'Unbestimmt']
+
 # ================
 # Output from file
 # ================
 
-def Syntax(file, code = False, xml = False, all = False, raw = False):
-  clean = not all
+def Syntax(file, code = False, xml = False, details = False, raw = False):
+  clean = not details
   # split into sentences separated by empty line
   sentences = re.split('\n\s*\n', file)
   parsed = [convert(s, clean) for s in sentences]
@@ -1517,4 +1554,4 @@ def R(addto = None, lexeme = None, juncture = None, *early):
     Prädikat(out, lexeme)
   return out
 
-earlyfeatures = ['Plural', 'Bewegung', 'Belebt', 'Vorfeld', 'Frage', 'Unbestimmt']
+

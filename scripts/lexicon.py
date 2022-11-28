@@ -396,6 +396,10 @@ Verben = {
 }
 
 Substantive = {
+  'Schuh':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Schuhe',
+  },
   'Auto':{
     'Geschlecht': 'Neutrum',
     'Plural': 'Autos',
