@@ -6,41 +6,29 @@ from lexicon import *
 # Satz
 # ====
 
-def Satz(addto = None, juncture = None):
-  # start new sentence
-  if addto is None:
-    return Hauptsatz()
-  else:
-    # look for lexical roles
-    if addto is not None:
-      role = addto.find(f'*[@role="{juncture}"]')
-    # different options for subordinate clauses
-    if role is not None:
-      node = Komplementsatz(addto, juncture)
-    elif addto.tag == 'SATZ':
-      if juncture in Subjunktionen:
-        node = Subjunktionsatz(addto, juncture)
-      elif juncture in Satzpartizipien + Satzpräpositionen:
-        node = Präpositionssatz(addto, juncture)
-      elif juncture in Relatorsubjunktionen:
-        node = Adverbialrelativsatz(addto, juncture)
-      else:
-        node = Relativsatz(addto, juncture)
-    elif addto.tag == 'PHRASE':
-        node = Relativsatz(addto, juncture)
-    # check vorfeld
-    Vorfeld(node)
-    # return for predicate
-    return node
-
-   #elif juncture in Genera:
-   #  return Pronominalrelativsatz(addto, juncture)
-   #elif addto.tag == 'SATZ' and juncture
-   #elif addto.tag == 'SATZ' and addto[0] is not None:
-   #  return Weiterführungssatz(addto)
-   #elif addto.tag == 'PHRASE':
-   #elif addto.tag in ['KOORDINATION', 'SATZ']:
-   #  return Satzkoordination(addto, juncture)
+def Satz(addto, juncture = None):
+  # look for lexical roles
+  role = addto.find(f'*[@role="{juncture}"]')
+  # different options for subordinate clauses
+  if role is not None:
+    node = Komplementsatz(addto, juncture)
+  elif addto.tag == 'SATZ':
+    if juncture in Subjunktionen:
+      node = Subjunktionsatz(addto, juncture)
+    elif juncture in Satzpartizipien + Satzpräpositionen:
+      node = Präpositionssatz(addto, juncture)
+      if juncture == 'um':
+        Infinit(node)
+    elif juncture in Relatorsubjunktionen:
+      node = Adverbialrelativsatz(addto, juncture)
+    else:
+      node = Relativsatz(addto, juncture)
+  elif addto.tag == 'PHRASE':
+      node = Relativsatz(addto, juncture)
+  # check vorfeld
+  Vorfeld(node)
+  # return for predicate
+  return node
 
 def Prädikat(clause, verb):
   if verb.split()[0] in Kopula:
@@ -61,7 +49,6 @@ def Prädikat(clause, verb):
 # TODO structures like 'wenn - dann', subordinate sentence to the front, but with 'dann' in Vorfeld
 # Conditional: Wenn er kommt, dann gehe ich. 
 # Temporal: Ich gehe wenn er kommt.
-
 # TODO without juncture possible in Vorfeld, but then with 'Verberst'
 # only conditional meaning?!
 # e.g. "Sollte die Heizung nicht dicht sein, wird der Installateur noch einmal kommen."
@@ -74,15 +61,10 @@ def Start():
   ET.SubElement(clause, 'VORFELD')
   return clause
 
-def Hauptsatz(addto = None, juncture = None):
-  # start new sentence
-  if addto is None:
-    clause = ET.Element('SATZ', attrib = {'kind': 'Hauptsatz', 'tense': 'Präsens'})
+def Hauptsatz(addto, juncture = None):
   # Hauptsatz in coordination
-  else:
-    tense = addto.get('tense')
-    clause = ET.SubElement(addto, 'SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
-  # add vorfeld
+  tense = addto.get('tense')
+  clause = ET.SubElement(addto, 'SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
   ET.SubElement(clause, 'VORFELD')
   return clause
 
@@ -120,13 +102,13 @@ def Komplementsatz(clause, role):
   tense = clause.get('tense')
   newclause = ET.SubElement(leaf, 'SATZ', attrib = {'kind': 'Komplementsatz', 'tense': tense})
   # add default relator when not interrogative
-  if clause.get('mood') != 'Frage':
-    relator = None
-  elif clause.get('truth') == 'Unbestimmt':
-    relator = 'ob'
-  else:
-    relator = 'dass'
-  ET.SubElement(newclause, 'VORFELD').text = relator
+  #if clause.get('mood') != 'Frage':
+  #  relator = None
+  #elif clause.get('truth') == 'Unbestimmt':
+  #  relator = 'ob'
+  #else:
+  #  relator = 'dass'
+  ET.SubElement(newclause, 'VORFELD')
   # if vorfeld already filled: clause to back, but correlative stays
   vorfeld = clause.find('VORFELD')
   if len(vorfeld) != 0:
@@ -138,27 +120,25 @@ def Komplementsatz(clause, role):
   return newclause
 
 def Relativsatz(phrase, head = None):
-  # get tense from high up
-  tense = upClause(phrase).get('tense')
   # make new node
+  tense = upClause(phrase).get('tense')
   function = 'ATTRIBUT' if phrase.tag == 'PHRASE' else 'ADVERBIALE'
   node = ET.SubElement(phrase, function)
   clause = ET.SubElement(node, 'SATZ', attrib = {'kind': 'Relativsatz', 'tense': tense})
-  # add relator position
   ET.SubElement(clause, 'VORFELD')
   # when no head, then extract head from phrase
-  if head is None:
-    gender = phrase.get('gender')
-    headnode = phrase.find('REFERENT')
-    if headnode is not None:
-      head = headnode.text
-  else:
-    gender = Genera[head] if len(head) == 1 else Teilnehmer[head]
-  # when there is a head, pass it on to relative clause
-  if head is not None:
-    clause.set('head', head)
-  if gender is not None:
-    clause.set('gender', gender)
+  #if head is None:
+  #  gender = phrase.get('gender')
+  #  headnode = phrase.find('REFERENT')
+  #  if headnode is not None:
+  #    head = headnode.text
+  #else:
+  #  gender = Genera[head] if len(head) == 1 else Teilnehmer[head]
+  ## when there is a head, pass it on to relative clause
+  #if head is not None:
+  #  clause.set('head', head)
+  #if gender is not None:
+  #  clause.set('gender', gender)
   return clause
 
 # NOTE: 'das, was' Konstruktion, 'freier Relativsatz'
@@ -1384,15 +1364,6 @@ def reference(file):
     elif elem < depth[nr]:
       ref.append(stack[elem])
   return ref[1:]
-
-def isReferent(lexeme):
-  lexeme[:1].isupper() \
-  or lexeme[:1] in list('012') \
-  or lexeme in list('mnfp') \
-  or lexeme in Genera.values()
-
-def isAddendum(lexeme):
-  lexeme in Adverbien + Frageadverbien + Negationen + Adjektive
 
 def specification(raw, lineNr, refs, head):
   # prepare line number
