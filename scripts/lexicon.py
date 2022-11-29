@@ -18,7 +18,7 @@ Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen',
 # Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
 Kontrollsatzpräpositionen = ['um', 'statt', 'anstatt', 'anstelle', 'ohne', 'außer', 'ausser']
 
-Adverbien = ['abends', 'allerdings', 'anfangs', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', ]
+Adverbien = ['abends', 'allerdings', 'anfangs', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', ]
 Frageadverbien = ['warum', 'weshalb', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
 Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
 
@@ -70,6 +70,7 @@ Präpositionen = {
   'abzüglich': 'Genitiv',
   'angesichts': 'Genitiv',
   'anfangs': 'Genitiv',
+  'anhand': 'Genitiv',
   'anstatt': 'Genitiv',
   'außerhalb': 'Genitiv',
   'bar': 'Genitiv',
@@ -111,6 +112,12 @@ Genera = {
 # default Nominative role is 'verb+de'
 
 Verben = {
+  'nehmen':{
+    'Partizip': 'genommen',
+    'Rollen':{
+      'Genommene': 'Akkusativ'
+    },
+  },
   'einschlafen':{
     'Präverb': 'ein',
     'Stamm': 'schlafen',
@@ -300,6 +307,18 @@ Verben = {
         '2': 'seit',
         '3': 'sind'
       }
+    },
+    'Präteritum':{
+      'Singular':{
+        '1': 'war',
+        '2': 'warst',
+        '3': 'war'
+      },
+      'Plural':{
+        '1': 'waren',
+        '2': 'wart',
+        '3': 'waren'
+      }
     }
   },
   'haben':{
@@ -396,6 +415,14 @@ Verben = {
 }
 
 Substantive = {
+  'Lächeln':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Lächeln',
+  },
+  'Grund':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Gründe',
+  },
   'Schuh':{
     'Geschlecht': 'Maskulin',
     'Plural': 'Schuhe',
@@ -587,7 +614,7 @@ Anaphora = {
   }
 }
 
-Relativpronomina = { # ist auch demonstrativ!
+Demonstrativpronomina = { # ist auch relativ!
   'Nominativ':{
     'Maskulin': 'der',
     'Neutrum': 'das',
