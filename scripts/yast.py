@@ -264,6 +264,12 @@ def Präsens(clause):
 def Präteritum(clause):
   clause.set('tense', 'Präteritum')
 
+def Konjunktiv(clause):
+  clause.set('tense', 'Konjunktiv')
+
+def Irrealis(clause):
+  clause.set('tense', 'Irrealis')
+
 def Modalverb(clause, modal):
   addlightverb(clause, modal, 'Infinitiv', 'MODALVERB')
   
@@ -331,8 +337,8 @@ def ReflexivErlebniskonversiv(clause):
 
 def Phrase(addto, connection = None):
   # abreviations
-  parent = addto.getparent()
   sub = upSubClause(addto)
+  parent = addto.getparent()
   argument = addto.find(f'*[@role="{connection}"]')
   # possibilities
   if argument is not None or (addto.tag == 'KOORDINATION' and sub.tag == 'ARGUMENT'):
@@ -1088,9 +1094,13 @@ def addR(preposition):
   if preposition[0] in list('aeiouäöü'):
     return 'r'
 
-def verbstem(verb):
+def verbstem(verb, tense = None):
+  # stem listed in dictionary
+  tenseform = Verben.get(verb, {}).get(tense)
+  if tenseform is not None and isinstance(tenseform, str):
+    stem = Verben[verb][tense]
   # common -en infinitive
-  if verb[-2:] == 'en':
+  elif verb[-2:] == 'en':
     stem = verb[:-2]
   # e.g infinitive like ärgern
   elif verb[-3:] in ['ern', 'eln']:
@@ -1118,14 +1128,21 @@ def participle(verb):
 
 def finiteverb(verb, person, number, tense):
   # various rules for verb inflection
-  if verb not in Verben or tense not in Verben[verb]:
-    stem = verbstem(verb)
+  if verb not in Verben or tense not in Verben[verb] or isinstance(Verben[verb][tense], str):
+    stem = verbstem(verb, tense)
     if tense == 'Präsens' and stem[-1:] in list('td'):
       if person == '2' or (person == '3' and number == 'Singular'):
         stem = stem + 'e'
     elif tense == 'Präsens' and stem[-1:] in list('mn') and stem[-2:-1] not in list('mnrl'):
       if person == '2' or (person == '3' and number == 'Singular'):
         stem = stem + 'e'
+    elif tense == 'Präteritum':
+      stem = stem + 't'
+    elif tense == 'Konjunktiv':
+      tense = 'Präteritum'
+    elif tense == 'Irrealis':
+      stem = stem + 't'
+      tense = 'Präteritum'
     finite = stem + Verbflexion[tense][number][person]
     # drop of 's' in second singular
     if tense == 'Präsens' and stem[-1:] in list('szxß'):
@@ -1135,9 +1152,9 @@ def finiteverb(verb, person, number, tense):
     elif tense == 'Präsens' and stem[-2:] == 'el':
       if person == '1' and number == 'Singular':
         finite = finite[:-3] + 'le'
-  # lookup in dictionary 
+  # lookup in dictionary when whole paradigm is irregular
   else:
-      finite = Verben[verb][tense][number][person]
+    finite = Verben[verb][tense][number][person]
   return finite
 
 def adjectiveAgreement(phrase):

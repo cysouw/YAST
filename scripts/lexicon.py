@@ -294,8 +294,10 @@ Verben = {
     }
   },
   'sein':{
-    'Partizip': 'gewesen',
     'Perfekt': 'sein',
+    'Partizip': 'gewesen',
+    'Konjunktiv': 'sei',
+    'Irrealis': 'wär',
     'Präsens':{
       'Singular':{
         '1': 'bin',
@@ -319,9 +321,11 @@ Verben = {
         '2': 'wart',
         '3': 'waren'
       }
-    }
+    },
   },
   'haben':{
+    'Präteritum': 'hat',
+    'Irrealis': 'hät',
     'Präsens':{
       'Singular':{
         '1': 'habe',
@@ -334,18 +338,6 @@ Verben = {
         '3': 'haben'
       }
     },
-    'Präteritum':{
-      'Singular':{
-        '1': 'hatte',
-        '2': 'hattest',
-        '3': 'hatte'
-      },
-      'Plural':{
-        '1': 'hatten',
-        '2': 'hattet',
-        '3': 'hatten'
-      }
-    }
   },
   'werden':{
     'Partizip': 'geworden',
@@ -722,14 +714,14 @@ Verbflexion = {
   },
   'Präteritum':{
     'Singular':{
-       '1': 'te',
-       '2': 'test',
-       '3': 'te',
+       '1': 'e',
+       '2': 'est',
+       '3': 'e',
      },
      'Plural':{
-       '1': 'ten',
-       '2': 'tet',
-       '3': 'ten',
+       '1': 'en',
+       '2': 'et',
+       '3': 'en',
     }
   },
 }
