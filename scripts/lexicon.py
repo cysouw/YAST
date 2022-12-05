@@ -24,8 +24,8 @@ Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
 
 # NOTE: it looks like adjectives cannot be used productively!
 # new ones are mainly added through derivation or complete new innovation
-Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
-Adverbien = ['abends', 'allerdings', 'anfangs', 'auch', 'bald', 'bisher', 'blindlings', 'da', 'dort', 'draußen', 'drinnen', 'drüben', 'endlich', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'vorgestern', 'vorn', 'wieder']
+Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gegebenenfalls', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'kostspielig', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'pflichtgemäß', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'sonstig', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'vollständig', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
+Adverbien = ['abends', 'allerdings', 'anfangs', 'auch', 'bald', 'bisher', 'blindlings', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'endlich', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'noch', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vorn', 'wieder']
 
 
 # TODO: 'wollen' has modal usage and full usage 'ich will dass...'
@@ -113,10 +113,46 @@ Genera = {
 # default Nominative role is 'verb+de'
 
 Verben = {
+  'erlauben':{
+    'Rollen':{
+      'Erlaubte': 'Akkusativ',
+      'Rezipient': 'Dativ',
+    },
+  },
+  'überlassen':{
+    'Partizip': 'überlassen',
+    'Rollen':{
+      'Überlassene': 'Akkusativ',
+      'Rezipient': 'Dativ',
+    },
+  },
+  'befinden':{
+    'Partizip': 'befunden',
+    'Irrealis': 'befänd',
+    'Reflexiv': True,
+  },
+  'versetzen':{
+    'Rollen':{
+      'Versetzte': 'Akkusativ',
+    },
+  },
+  'ergänzen':{
+    'Rollen':{
+      'Ergänzte': 'Akkusativ'
+    },
+  },
+  'nachholen':{
+    'Präverb': 'nach',
+    'Stamm': 'holen',
+    'Rollen':{
+      'Nachgeholte': 'Akkusativ'
+    },
+  },
   'nehmen':{
     'Partizip': 'genommen',
     'Rollen':{
-      'Genommene': 'Akkusativ'
+      'Genommene': 'Akkusativ',
+      'Rezipient': 'Dativ',
     },
   },
   'einschlafen':{
@@ -200,15 +236,11 @@ Verben = {
     'Rollen':{
       'Gehoffte': 'auf'
     },
-    'Kontrolle': 'Hoffende',
-    'Kontrolliert': 'Gehoffte auf'
   },
   'warten':{
     'Rollen':{
       'Bewartete': 'auf'
     },
-    'Kontrolle': 'Wartende',
-    'Kontrolliert': 'Bewartete'
   },
   'versprechen':{
     'Partizip': 'versprochen',
@@ -216,8 +248,6 @@ Verben = {
       'Rezipient': 'Dativ',
       'Versprochene': 'Akkusativ',
     },
-    'Kontrolle': 'Versprechende',
-    'Kontrolliert': 'Versprochene',
   },
   'weglaufen':{
     'Präverb': 'weg',
@@ -233,8 +263,6 @@ Verben = {
       'Auslöser': 'Nominativ',
       'Ärgernde': 'Akkusativ',
     },
-    'Kontrolle': 'Ärgernde',
-    'Kontrolliert': 'Auslöser',
   },
   'freuen':{
     'Konversiv': 'über',
@@ -242,15 +270,11 @@ Verben = {
       'Auslöser': 'Nominativ',
       'Freuende': 'Akkusativ',
     },
-    'Kontrolle': 'Freuende',
-    'Kontrolliert': 'Auslöser',
   },
   'erwarten':{
     'Rollen':{
       'Erwartete': 'Akkusativ'
     },
-    'Kontrolle': 'Erwartende',
-    'Kontrolliert': 'Erwartete',
   },
   'laufen':{
     'Partizip': 'gelaufen',
@@ -279,6 +303,21 @@ Verben = {
         '1': 'schlafen',
         '2': 'schläft',
         '3': 'schlafen'
+      }
+    }
+  },
+  'lassen':{
+    'Partizip': 'gelassen',
+    'Präsens':{
+      'Singular':{
+        '1': 'lasse',
+        '2': 'lässt',
+        '3': 'lässt'
+      },
+      'Plural':{
+        '1': 'lassen',
+        '2': 'lässt',
+        '3': 'lassen'
       }
     }
   },
@@ -328,6 +367,35 @@ Verben = {
         '1': 'waren',
         '2': 'wart',
         '3': 'waren'
+      }
+    },
+  },
+  'geben':{
+    'Perfekt': 'haben',
+    'Partizip': 'gegeben',
+    'Irrealis': 'gäb',
+    'Präsens':{
+      'Singular':{
+        '1': 'gebe',
+        '2': 'gibst',
+        '3': 'gibt'
+      },
+      'Plural':{
+        '1': 'geben',
+        '2': 'gibt',
+        '3': 'geben'
+      }
+    },
+    'Präteritum':{
+      'Singular':{
+        '1': 'gab',
+        '2': 'gabst',
+        '3': 'gab'
+      },
+      'Plural':{
+        '1': 'gaben',
+        '2': 'gabt',
+        '3': 'gaben'
       }
     },
   },
@@ -418,6 +486,76 @@ Verben = {
 }
 
 Substantive = {
+  'Leistungserbringung':{
+    'Geschlecht': 'Feminin',
+    'Plural': None,
+  },
+  'Kostenvorteil':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Kostenvorteile',
+  },
+  'Wahl':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Wahlen',
+  },
+  'Erfüllung':{
+    'Geschlecht': 'Feminin',
+    'Plural': None,
+  },
+  'Entscheidung':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Entscheidungen',
+  },
+  'Grund':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Gründe',
+  },
+  'Schadenersatz':{
+    'Geschlecht': 'Maskulin',
+    'Plural': None,
+  },
+  'Zahlung':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Zahlungen',
+  },
+  'Schuldner':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Schuldner',
+    'Belebt': True,
+  },
+  'Leistung':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Leistungen',
+  },
+  'Lage':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Lagen',
+  },
+  'Verzögerungsschaden':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Verzögerungsschäden',
+  },
+  'Schaden':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Schäden',
+  },
+  'Ersatz':{
+    'Geschlecht': 'Maskulin',
+    'Plural': None,
+  },
+  'Natur':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Naturen',
+  },
+  'Leistung':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Leistungen',
+  },
+  'Gläubiger':{
+    'Geschlecht': 'Maskulin',
+    'Plural': 'Gläubiger',
+    'Belebt': True,
+  },
   'Grund':{
     'Geschlecht': 'Maskulin',
     'Plural': 'Gründe',
