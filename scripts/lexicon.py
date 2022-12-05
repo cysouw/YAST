@@ -4,7 +4,9 @@ Teilnehmer = dict()
 Themen = list()
 
 # TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
-Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt']
+# A noch B, A sowie B
+Phrasenkonjunktionen = ['Und', 'Oder', 'Noch', 'Sowie']
+Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt', 'jedoch']
 # NOTE: 'wie/wo' here in the meaning of 'als'
 # NOTE: combination 'als ob' and 'als wenn' are unclear. Maybe just a single subjunction?
 Subjunktionen = ['als', 'als ob', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls ', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']

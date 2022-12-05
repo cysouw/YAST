@@ -11,12 +11,15 @@ def Satz(addto, juncture = None):
   sub = upSubClause(addto)
   parent = addto.getparent()
   role = addto.find(f'*[@role="{juncture}"]')
+  # coordination of main clauses
+  if addto.tag == 'KOORDINATION' and addto.getparent() is None:
+    node = Hauptsatz(addto)
   # subordinate clauses
-  if juncture in Subjunktionen:
+  elif juncture in Subjunktionen:
     node = Subjunktionsatz(addto, juncture)
   elif juncture in Satzpartizipien + Satzpräpositionen:
     node = Präpositionssatz(addto, juncture)
-  elif role is not None or juncture in Präpositionen:
+  elif juncture in Präpositionen or role is not None:
     node = Komplementsatz(addto, juncture)
   elif juncture is None:
     node = Relativsatz(addto)
@@ -30,6 +33,13 @@ def Prädikat(clause, verb):
     Prädikativ(clause, verb)
   else:
     Verb(clause, verb)
+
+def checkCoordination(addto):
+
+  if addto.tag == 'PHRASE' and len(addto) == 0:
+    junctor = addto.getparent().find('JUNKTOR').text
+    role = addto.getparent().get('role')
+    pass
 
 # =====
 # Sätze
@@ -47,12 +57,8 @@ def Hauptsatz(addto):
   ET.SubElement(clause, 'VORFELD')
   return clause
 
-def Satzkoordination(addto, juncture):
-  return eval(addto.get('kind'))(addto, juncture)
-# put conjunction in right position
-# shiftconjunction(coordination)
-
 def Subjunktionsatz(clause, juncture):
+  # includes a vorfeld, although there is no evidence for it
   tense = clause.get('tense')
   node = ET.SubElement(clause, 'ADVERBIALE')
   ET.SubElement(node, 'JUNKTOR').text = juncture
@@ -113,7 +119,7 @@ def Komplementsatz(clause, role):
   tense = upClause(clause).get('tense') if tense is None else tense
   newclause = ET.SubElement(leaf, 'SATZ', attrib = {'kind': 'Komplementsatz', 'tense': tense})
   ET.SubElement(newclause, 'VORFELD')
-  # if vorfeld already filled: clause to back, but correlative stays
+  # --- position: if vorfeld already filled: clause to back, but correlative stays
   vorfeld = clause.find('VORFELD')
   if len(vorfeld) != 0:
     predicate = clause.find('PRÄDIKAT')
@@ -122,7 +128,7 @@ def Komplementsatz(clause, role):
       predicate.addprevious(correlative)
       correlative.set('role', role)
       node.set('role', role)
-  # in case this clause is nominative
+  # --- agreement, in case this clause is the nominative
   passPersonNumber(newclause, juncture, '3', 'Singular')
   return newclause
 
@@ -216,6 +222,18 @@ def Irrealis(clause):
 
 def Modalverb(clause, modal):
   addlightverb(clause, modal, 'Infinitiv', 'MODALVERB')
+
+def Vorgangspassiv(clause, demoted = 'von'):
+  passiv(clause, 'werden', 'Partizip', 'VORGANGSPASSIV', 'Akkusativ', demoted)
+
+def Zustandspassiv(clause, demoted = 'von'):
+  passiv(clause, 'sein', 'Partizip', 'ZUSTANDSPASSIV', 'Akkusativ', demoted)
+
+def Rezipientenpassiv(clause, demoted = 'von'):
+  passiv(clause, 'bekommen', 'Partizip', 'REZIPIENTENPASSIV', 'Dativ', demoted)
+
+def Modalpassiv(clause, demoted = 'von'):
+  passiv(clause, 'sein', 'zu-Infinitiv', 'MODALPASSIV', 'Akkusativ', demoted)
   
 def Perfekt(clause):
   # get info
@@ -234,31 +252,6 @@ def Perfekt(clause):
   # Regular perfect
   else:
     addlightverb(clause, auxiliary, 'Partizip', 'PERFEKT')
-
-def Vorgangspassiv(clause, demoted = 'von'):
-  Passiv(clause, 'werden', 'Partizip', 'VORGANGSPASSIV', 'Akkusativ', demoted)
-
-def Zustandspassiv(clause, demoted = 'von'):
-  Passiv(clause, 'sein', 'Partizip', 'ZUSTANDSPASSIV', 'Akkusativ', demoted)
-
-def Rezipientenpassiv(clause, demoted = 'von'):
-  Passiv(clause, 'bekommen', 'Partizip', 'REZIPIENTENPASSIV', 'Dativ', demoted)
-
-def Modalpassiv(clause, demoted = 'von'):
-  Passiv(clause, 'sein', 'zu-Infinitiv', 'MODALPASSIV', 'Akkusativ', demoted)
-
-def Passiv(clause, auxiliary = 'werden', nonfinite = 'Partizip', name = 'VORGANGSPASSIV', promoted = 'Akkusativ', demoted = 'von'):
-  # add light verb
-  addlightverb(clause, auxiliary, nonfinite, name)
-  # change arguments
-  for node in clause.findall('ARGUMENT'):
-    leaf = list(node.iter())[-1]
-    if leaf.get('case') == 'Nominativ':
-      ET.SubElement(node, name, attrib = {'case': demoted})
-    if leaf.get('case') == promoted:
-      ET.SubElement(node, name, attrib = {'case': 'Nominativ'})
-      # default order nominative first
-      clause.insert(1, node)
 
 def ReflexivErlebniskonversiv(clause):
   # get verb to find junture from lexicon
@@ -872,27 +865,32 @@ def Adverbialpräposition(adverbial, preposition):
 # ============
 
 def Koordination(addto, conjunction = 'und'):
-  parent = addto.getparent()
-  if parent is not None:
-    grandparent = parent.getparent()
-  # prepare koordination node and attach original coordinant
-  coordination = ET.Element('KOORDINATION')
-  # do nothing special for main clauses
+  # remodel root for hauptsatz, because root is hardcoded currently
   if addto.tag == 'SATZ' and addto.get('kind') == 'Hauptsatz':
-    coordination.set('kind', addto.get('kind'))
+    new = ET.Element('SATZ')
+    # copy all informtion and change original root
+    [new.set(key, value) for key,value in addto.attrib.items()]
+    for node in addto:
+      new.append(node)
+    addto.tag = 'KOORDINATION'
+    addto.attrib.clear()
+    addto.set('tense', new.get('tense'))
+    coordination = addto
+    # add 'old' sentence to coordination
+    coordination.append(new)
+  # subordinate sentences
   else:
+    # prepare koordination node
+    coordination = ET.Element('KOORDINATION')
     # === settings ===
     if addto.tag == 'SATZ':
-      kind = addto.get('kind')
-      coordination.set('kind', kind)
-      # for relative clause reference
-      if kind in 'Relativsatz':
-        coordination.set('gender', addto.get('relative'))
-        coordination.set('referent', addto.get('head'))
+      coordination.set('tense', addto.get('tense'))
     elif addto.tag == 'PHRASE':
-      case = addto.get('case')
-      coordination.set('case', case)
+      coordination.set('case', addto.get('case'))
     # === insertion ====
+    parent = addto.getparent()
+    if parent is not None:
+      grandparent = parent.getparent()
     # simple insertion with addendum
     if addto.tag in ['ATTRIBUT', 'ADVERBIALE']:
       addto.addnext(coordination)
@@ -914,9 +912,9 @@ def Koordination(addto, conjunction = 'und'):
       coordination.append(addto)
   # add conjunction to end
   conjunction = '' if conjunction == None else conjunction
-  conj = ET.Element('KONJUNKTION')
-  conj.text = conjunction
-  coordination.append(conj)
+  conjnode = ET.Element('KONJUNKTION')
+  conjnode.text = conjunction
+  coordination.append(conjnode)
   return coordination
 
 # ========
@@ -938,8 +936,10 @@ def articulator(addto):
       addto.set('agreement', 'done')
 
 def vorfeld(node):
+  # ignore for coordination of Hauptsatz
+  if node.get('kind') == 'Hauptsatz':
+    return
   clause = upClause(node)
-  branch = upSubClause(node)
   vorfeld = clause.find('VORFELD')
   if vorfeld is not None: # because of infinit clauses
     if len(vorfeld) == 0:
@@ -952,6 +952,7 @@ def vorfeld(node):
         else:
           node.text = 'dass'
       else:
+        branch = upSubClause(node)
         vorfeld.append(branch)
 
 def verbkongruenz(clause):
@@ -1122,6 +1123,19 @@ def finiteverb(verb, person, number, tense):
     finite = Verben[verb][tense][number][person]
   return finite
 
+def passiv(clause, auxiliary = 'werden', nonfinite = 'Partizip', name = 'VORGANGSPASSIV', promoted = 'Akkusativ', demoted = 'von'):
+  # add light verb
+  addlightverb(clause, auxiliary, nonfinite, name)
+  # change arguments
+  for node in clause.findall('ARGUMENT'):
+    leaf = list(node.iter())[-1]
+    if leaf.get('case') == 'Nominativ':
+      ET.SubElement(node, name, attrib = {'case': demoted})
+    if leaf.get('case') == promoted:
+      ET.SubElement(node, name, attrib = {'case': 'Nominativ'})
+      # default order nominative first
+      clause.insert(1, node)
+
 def adjectiveAgreement(phrase):
   case = phrase.get('case')
   gender = phrase.get('gender')
@@ -1194,8 +1208,8 @@ def upPhrase(node):
   return node
 
 def upClause(node):
-  # ignore when at root
-  if node.getparent() is None:
+  # ignore when at root or Hauptsatz
+  if node.getparent() is None or node.get('kind') == 'Hauptsatz':
     return node
   # go up to clause, also when already at clause
   while node.getparent().tag != 'SATZ':
@@ -1203,8 +1217,8 @@ def upClause(node):
   return node.getparent()
 
 def upSubClause(node):
-  # ignore when at root
-  if node.getparent() is None:
+  # ignore when at root or Hauptsatz
+  if node.getparent() is None or node.get('kind') == 'Hauptsatz':
     return node
   # go up last node in branch before clause
   while node.getparent().tag != 'SATZ':
@@ -1274,9 +1288,6 @@ def add(name, gender = None):
 def cleanup(satz):
   for node in [satz] + satz.findall('.//SATZ'):
     keep = ['kind', 'controller', 'move', 'mood', 'head']
-    clean(node, keep)
-  for node in satz.findall('.//KONTROLLSATZ'):
-    keep = ['kind', 'head']
     clean(node, keep)
   for node in satz.findall('.//PHRASE'):
     keep = ['case', 'controller', 'move', 'mark']
@@ -1369,41 +1380,45 @@ def specification(raw, lineNr, refs, head):
   lexeme = recursion[-1]
   connection = recursion[0] if len(recursion) == 2 else ''
   # specification part
-  features = ''
-  early = ''
+  features = dict()
   if len(spec) > 1:
     parts = spec[1].split(' + ')
     for part in parts:
       feature = part.split(': ')
-      # early features
-      if feature[0] in earlyfeatures:
-        early = early + feature[0] + '(' + id + ')\n'
       # lexical abbreviations
-      elif feature[0][:1].islower():
+      if feature[0][:1].islower():
         if feature[0] in Modalverben:
-          features = features + 'Modalverb(' + id + ', \'' + feature[0] + '\')\n'
+          command = 'Modalverb(' + id + ', \'' + feature[0] + '\')\n'
+          feature[0] = 'Modalverb'
         elif feature[0] in Quantoren:
-          features = features + 'Quantor(' + id + ', \'' + feature[0] + '\')\n'
+          command = 'Quantor(' + id + ', \'' + feature[0] + '\')\n'
+          feature[0] = 'Quantor'
+      # other features
       else:
         if len(feature) == 1:
-          features = features + feature[0] + '(' + id + ')\n'
+          command = feature[0] + '(' + id + ')\n'
         else:
-          features = features + feature[0] + '(' + id + ', \'' + feature[1] + '\')\n'
+          command = feature[0] + '(' + id + ', \'' + feature[1] + '\')\n'
+      # collect features and names
+      features[feature[0]] = command
+  # combine features
+  early = ''.join([command for name,command in features.items() if name in earlyfeatures])
+  late = ''.join([command for name,command in features.items() if name not in earlyfeatures])
   # build commands
   if lexeme in Adverbien + Frageadverbien + Negationen + Adjektive:
     if connection == 'Prädikativ':
-      return id + ' = Addendum(Link(' + ref + '), \'' + lexeme + '\')\n' + features
+      return id + ' = Addendum(Link(' + ref + '), \'' + lexeme + '\')\n' + late
     else:
-      return id + ' = Addendum(' + ref + ', \'' + lexeme + '\')\n' + features
+      return id + ' = Addendum(' + ref + ', \'' + lexeme + '\')\n' + late
+  elif connection in Konjunktionen:
+    linkage = 'Koordination'
+    content = ''
   elif isReferential(lexeme) or lexeme == '':
     linkage = 'Phrase'
     content = 'Referent'
   else:
     linkage = 'Satz'
     content = 'Prädikat'
-  # conjunction
-  if connection in Konjunktionen:
-    linkage = 'Koordination'
   # options linkage
   if linkage == 'Satz' and lineNr == head:
     linkage = ''
@@ -1417,7 +1432,7 @@ def specification(raw, lineNr, refs, head):
   else:
     content = content + '(' + id + ', \'' + lexeme + '\')\n'
   # all combined
-  return linkage + early + content + features
+  return linkage + early + content + late
 
 def convert(sentence, clean = True):
   sentence = re.split('\n', sentence)
