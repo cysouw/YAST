@@ -1,64 +1,353 @@
 <?xml version="1.0"?>
 <!--
-Manche Zuschauer deren kleinen doch lieben Kinder dich mit mir gesehen haben laufen sehr schnell.
+Solange der Gläubiger sich noch durch die nachgeholte Leistung in Natur gegebenenfalls ergänzt durch den Ersatz von Verzögerungsschäden und sonstige Schäden vollständig in die Lage versetzen lässt in der er sich bei pflichtgemäßer Leistung befände und die Leistung für den Schuldner weniger kostspielig ist als die Zahlung von Schadenersatz statt der Leistung gibt es keinen Grund um dem Gläubiger von vornherein die Entscheidung zwischen Erfüllung in Natur und Schadenersatz zu überlassen und ihm zu erlauben dem Schuldner durch die Wahl des Schadenersatzes den Kostenvorteil der Leistungserbringung zu nehmen.
 -->
 <SATZ kind="Hauptsatz">
   <VORFELD>
-    <ARGUMENT role="Läufer" case="Nominativ" position="Vorfeld">
-      <PHRASE case="Nominativ">
-        <DETERMINATIV>
-          <ARTIKEL>manche</ARTIKEL>
-        </DETERMINATIV>
-        <REFERENT>Zuschauer</REFERENT>
-        <ATTRIBUT>
-          <SATZ kind="Relativsatz">
-            <ARGUMENT role="Seher" case="Nominativ" position="Relator">
+    <ADVERBIALE>
+      <JUNKTOR>solange</JUNKTOR>
+      <SATZ kind="Subjunktionsatz">
+        <VORFELD>
+          <ARGUMENT role="Versetzte" case="Akkusativ">
+            <Permissivpassiv case="Nominativ">
               <PHRASE case="Nominativ">
                 <DETERMINATIV>
-                  <RELATOR relative="Plural" case="Genitiv">deren</RELATOR>
+                  <ARTIKEL>der</ARTIKEL>
                 </DETERMINATIV>
-                <ATTRIBUT kind="Koordination">
-                  <KOORDINATION>
-                    <ATTRIBUT>
-                      <ADJEKTIV>kleinen</ADJEKTIV>
-                    </ATTRIBUT>
-                    <KONJUNKTION>doch</KONJUNKTION>
-                    <ATTRIBUT>
-                      <ADJEKTIV>lieben</ADJEKTIV>
-                    </ATTRIBUT>
-                  </KOORDINATION>
-                </ATTRIBUT>
-                <REFERENT>Kinder</REFERENT>
+                <REFERENT>Gläubiger</REFERENT>
               </PHRASE>
-            </ARGUMENT>
-            <ARGUMENT role="Gesehene" case="Akkusativ">
-              <PHRASE case="Akkusativ">
-                <PRONOMEN person="2" number="Singular">dich</PRONOMEN>
-              </PHRASE>
-            </ARGUMENT>
-            <ADVERBIALE>
-              <JUNKTOR>mit</JUNKTOR>
+            </Permissivpassiv>
+          </ARGUMENT>
+        </VORFELD>
+        <REFLEXIV case="Akkusativ">sich</REFLEXIV>
+        <ADVERBIALE>
+          <ADVERB>noch</ADVERB>
+        </ADVERBIALE>
+        <ADVERBIALE>
+          <JUNKTOR>durch</JUNKTOR>
+          <PHRASE case="Akkusativ">
+            <DETERMINATIV>
+              <ARTIKEL>die</ARTIKEL>
+            </DETERMINATIV>
+            <ATTRIBUT>
+              <SATZ kind="Relativsatz">
+                <VORFELD/>
+                <PRÄDIKAT>
+                  <ZUSTANDSPASSIV verb="sein">
+                    <VERB verb="holen">
+                      <PRÄVERBIALE>nach+</PRÄVERBIALE>
+                      <PARTIZIP>geholt</PARTIZIP>
+                    </VERB>
+                    <PARTIZIP removed="sein">+e</PARTIZIP>
+                  </ZUSTANDSPASSIV>
+                </PRÄDIKAT>
+              </SATZ>
+            </ATTRIBUT>
+            <REFERENT>Leistung</REFERENT>
+            <ATTRIBUT>
+              <JUNKTOR>in</JUNKTOR>
               <PHRASE case="Dativ">
-                <PRONOMEN person="1" number="Singular">mir</PRONOMEN>
+                <DETERMINATIV/>
+                <REFERENT>Natur</REFERENT>
+              </PHRASE>
+            </ATTRIBUT>
+          </PHRASE>
+        </ADVERBIALE>
+        <ADVERBIALE>
+          <ADJEKTIV>gegebenenfalls</ADJEKTIV>
+        </ADVERBIALE>
+        <ADVERBIALE>
+          <SATZ kind="Relativsatz">
+            <VORFELD>
+              <VERB verb="ergänzen">
+                <PARTIZIP>ergänzt</PARTIZIP>
+              </VERB>
+            </VORFELD>
+            <ADVERBIALE>
+              <JUNKTOR>durch</JUNKTOR>
+              <PHRASE case="Akkusativ">
+                <DETERMINATIV>
+                  <ARTIKEL>den</ARTIKEL>
+                </DETERMINATIV>
+                <REFERENT>Ersatz</REFERENT>
+                <ATTRIBUT>
+                  <JUNKTOR>von</JUNKTOR>
+                  <PHRASE case="Dativ">
+                    <DETERMINATIV/>
+                    <REFERENT>Verzögerungsschäden</REFERENT>
+                  </PHRASE>
+                </ATTRIBUT>
+                <KOORDINATION>
+                  <KONJUNKTION>und</KONJUNKTION>
+                  <PHRASE case="Akkusativ">
+                    <DETERMINATIV/>
+                    <ATTRIBUT>
+                      <ADJEKTIV>sonstige</ADJEKTIV>
+                    </ATTRIBUT>
+                    <REFERENT>Schäden</REFERENT>
+                  </PHRASE>
+                </KOORDINATION>
               </PHRASE>
             </ADVERBIALE>
-            <PRÄDIKAT verb="sehen">
-              <PARTIZIP>gesehen</PARTIZIP>
-              <PERFEKT verb="haben">
-                <FINITUM verb="haben" tense="Präsens" person="3" number="Plural">haben</FINITUM>
-              </PERFEKT>
+            <PRÄDIKAT>
+              <ZUSTANDSPASSIV verb="sein">
+                <PARTIZIP removed="sein"/>
+              </ZUSTANDSPASSIV>
             </PRÄDIKAT>
           </SATZ>
-        </ATTRIBUT>
-      </PHRASE>
-    </ARGUMENT>
+        </ADVERBIALE>
+        <ADVERBIALE>
+          <ADJEKTIV>vollständig</ADJEKTIV>
+        </ADVERBIALE>
+        <ADVERBIALE>
+          <JUNKTOR>in</JUNKTOR>
+          <PHRASE case="Akkusativ">
+            <DETERMINATIV>
+              <ARTIKEL>die</ARTIKEL>
+            </DETERMINATIV>
+            <REFERENT>Lage</REFERENT>
+          </PHRASE>
+        </ADVERBIALE>
+        <PRÄDIKAT>
+          <PERMISSIVPASSIV verb="lassen">
+            <VERB verb="versetzen">
+              <INFINITIV>versetzen</INFINITIV>
+            </VERB>
+            <FINITUM verb="lassen" tense="Präsens" person="3" number="Singular">lässt</FINITUM>
+          </PERMISSIVPASSIV>
+        </PRÄDIKAT>
+        <ADVERBIALE>
+          <SATZ kind="Relativsatz">
+            <VORFELD>
+              <ADVERBIALE>
+                <JUNKTOR>in</JUNKTOR>
+                <PHRASE case="Dativ">
+                  <RELATIVPRONOMEN referent="Lage">der</RELATIVPRONOMEN>
+                </PHRASE>
+              </ADVERBIALE>
+            </VORFELD>
+            <ARGUMENT role="Befindende" case="Nominativ">
+              <PHRASE case="Nominativ">
+                <ANAPHER referent="Gläubiger">er</ANAPHER>
+              </PHRASE>
+            </ARGUMENT>
+            <REFLEXIV case="Akkusativ">sich</REFLEXIV>
+            <ADVERBIALE>
+              <JUNKTOR>bei</JUNKTOR>
+              <PHRASE case="Dativ">
+                <DETERMINATIV/>
+                <ATTRIBUT>
+                  <ADJEKTIV>pflichtgemäßer</ADJEKTIV>
+                </ATTRIBUT>
+                <REFERENT>Leistung</REFERENT>
+              </PHRASE>
+            </ADVERBIALE>
+            <PRÄDIKAT>
+              <VERB verb="befinden">
+                <FINITUM verb="befinden" tense="Irrealis" person="3" number="Singular">befände</FINITUM>
+              </VERB>
+            </PRÄDIKAT>
+          </SATZ>
+        </ADVERBIALE>
+        <KOORDINATION>
+          <KONJUNKTION>und</KONJUNKTION>
+          <SATZ kind="Subjunktionsatz">
+            <VORFELD>
+              <ARGUMENT role="Subjekt" case="Nominativ">
+                <PHRASE case="Nominativ">
+                  <DETERMINATIV>
+                    <ARTIKEL>die</ARTIKEL>
+                  </DETERMINATIV>
+                  <REFERENT>Leistung</REFERENT>
+                  <ATTRIBUT>
+                    <JUNKTOR>für</JUNKTOR>
+                    <PHRASE case="Akkusativ">
+                      <DETERMINATIV>
+                        <ARTIKEL>den</ARTIKEL>
+                      </DETERMINATIV>
+                      <REFERENT>Schuldner</REFERENT>
+                    </PHRASE>
+                  </ATTRIBUT>
+                </PHRASE>
+              </ARGUMENT>
+            </VORFELD>
+            <PRÄDIKATIV>
+              <ADVERBIALE>
+                <GRADPARTIKEL>weniger</GRADPARTIKEL>
+                <ADJEKTIV>kostspielig</ADJEKTIV>
+              </ADVERBIALE>
+            </PRÄDIKATIV>
+            <PRÄDIKAT>
+              <VERB verb="sein">
+                <FINITUM verb="sein" tense="Präsens" person="3" number="Singular">ist</FINITUM>
+              </VERB>
+            </PRÄDIKAT>
+            <ADVERBIALE>
+              <JUNKTOR>als</JUNKTOR>
+              <PHRASE case="Nominativ">
+                <DETERMINATIV>
+                  <ARTIKEL>die</ARTIKEL>
+                </DETERMINATIV>
+                <REFERENT>Zahlung</REFERENT>
+                <ATTRIBUT>
+                  <JUNKTOR>von</JUNKTOR>
+                  <PHRASE case="Dativ">
+                    <DETERMINATIV/>
+                    <REFERENT>Schadenersatz</REFERENT>
+                  </PHRASE>
+                </ATTRIBUT>
+                <ATTRIBUT>
+                  <JUNKTOR>statt</JUNKTOR>
+                  <PHRASE case="Genitiv">
+                    <DETERMINATIV>
+                      <ARTIKEL>der</ARTIKEL>
+                    </DETERMINATIV>
+                    <REFERENT>Leistung</REFERENT>
+                  </PHRASE>
+                </ATTRIBUT>
+              </PHRASE>
+            </ADVERBIALE>
+          </SATZ>
+        </KOORDINATION>
+      </SATZ>
+    </ADVERBIALE>
   </VORFELD>
-  <VERBZWEIT verb="laufen" tense="Präsens" person="3" number="Plural">laufen</VERBZWEIT>
-  <ADVERBIALE>
-    <GRADPARTIKEL>sehr</GRADPARTIKEL>
-    <ADJEKTIV>schnell</ADJEKTIV>
-  </ADVERBIALE>
-  <PRÄDIKAT verb="laufen">
-    <FINITUM move="Verbzweit" />
+  <VERBZWEIT>
+    <FINITUM verb="geben" tense="Präsens" person="3" number="Singular">gibt</FINITUM>
+  </VERBZWEIT>
+  <SUBJEKTERSATZ role="Subjekt" case="Nominativ">es</SUBJEKTERSATZ>
+  <PRÄDIKATIV case="Akkusativ" role="Prädikat">
+    <PHRASE case="Akkusativ">
+      <DETERMINATIV>
+        <QUANTOR>keinen</QUANTOR>
+      </DETERMINATIV>
+      <REFERENT>Grund</REFERENT>
+    </PHRASE>
+  </PRÄDIKATIV>
+  <PRÄDIKAT>
+    <VERB verb="geben">
+      <FINITUM move="Verbzweit"/>
+    </VERB>
   </PRÄDIKAT>
+  <ADVERBIALE tense="Infinit">
+    <JUNKTOR>um</JUNKTOR>
+    <SATZ kind="Präpositionssatz">
+      <VORFELD>
+        <ARGUMENT role="Rezipient" case="Dativ">
+          <PHRASE case="Dativ">
+            <DETERMINATIV>
+              <ARTIKEL>dem</ARTIKEL>
+            </DETERMINATIV>
+            <REFERENT>Gläubiger</REFERENT>
+          </PHRASE>
+        </ARGUMENT>
+      </VORFELD>
+      <ADVERBIALE>
+        <ADVERB>von vornherein</ADVERB>
+      </ADVERBIALE>
+      <ARGUMENT role="Überlassene" case="Akkusativ">
+        <PHRASE case="Akkusativ">
+          <DETERMINATIV>
+            <ARTIKEL>die</ARTIKEL>
+          </DETERMINATIV>
+          <REFERENT>Entscheidung</REFERENT>
+          <ATTRIBUT>
+            <JUNKTOR>zwischen</JUNKTOR>
+            <PHRASE case="Dativ">
+              <DETERMINATIV/>
+              <REFERENT>Erfüllung</REFERENT>
+              <ATTRIBUT>
+                <JUNKTOR>in</JUNKTOR>
+                <PHRASE case="Dativ">
+                  <DETERMINATIV/>
+                  <REFERENT>Natur</REFERENT>
+                </PHRASE>
+              </ATTRIBUT>
+              <KOORDINATION>
+                <KONJUNKTION>und</KONJUNKTION>
+                <PHRASE case="Dativ">
+                  <DETERMINATIV/>
+                  <REFERENT>Schadenersatz</REFERENT>
+                </PHRASE>
+              </KOORDINATION>
+            </PHRASE>
+          </ATTRIBUT>
+        </PHRASE>
+      </ARGUMENT>
+      <PRÄDIKAT>
+        <VERB verb="überlassen">
+          <ZU-INFINITIV>zu überlassen</ZU-INFINITIV>
+        </VERB>
+      </PRÄDIKAT>
+      <KOORDINATION>
+        <KONJUNKTION>und</KONJUNKTION>
+        <SATZ kind="Präpositionssatz">
+          <VORFELD>
+            <ARGUMENT role="Rezipient" case="Dativ">
+              <PHRASE case="Dativ">
+                <ANAPHER referent="Gläubiger">ihm</ANAPHER>
+              </PHRASE>
+            </ARGUMENT>
+          </VORFELD>
+          <PRÄDIKAT>
+            <VERB verb="erlauben">
+              <ZU-INFINITIV>zu erlauben</ZU-INFINITIV>
+            </VERB>
+          </PRÄDIKAT>
+          <ARGUMENT role="Erlaubte" case="Akkusativ">
+            <SATZ kind="Komplementsatz">
+              <VORFELD>
+                <ARGUMENT role="Rezipient" case="Dativ">
+                  <PHRASE case="Dativ">
+                    <DETERMINATIV>
+                      <ARTIKEL>dem</ARTIKEL>
+                    </DETERMINATIV>
+                    <REFERENT>Schuldner</REFERENT>
+                  </PHRASE>
+                </ARGUMENT>
+              </VORFELD>
+              <ADVERBIALE>
+                <JUNKTOR>durch</JUNKTOR>
+                <PHRASE case="Akkusativ">
+                  <DETERMINATIV>
+                    <ARTIKEL>die</ARTIKEL>
+                  </DETERMINATIV>
+                  <REFERENT>Wahl</REFERENT>
+                  <ATTRIBUT>
+                    <PHRASE case="Genitiv">
+                      <DETERMINATIV>
+                        <ARTIKEL>des</ARTIKEL>
+                      </DETERMINATIV>
+                      <REFERENT>Schadenersatzes</REFERENT>
+                    </PHRASE>
+                  </ATTRIBUT>
+                </PHRASE>
+              </ADVERBIALE>
+              <ARGUMENT role="Genommene" case="Akkusativ">
+                <PHRASE case="Akkusativ">
+                  <DETERMINATIV>
+                    <ARTIKEL>den</ARTIKEL>
+                  </DETERMINATIV>
+                  <REFERENT>Kostenvorteil</REFERENT>
+                  <ATTRIBUT>
+                    <PHRASE case="Genitiv">
+                      <DETERMINATIV>
+                        <ARTIKEL>der</ARTIKEL>
+                      </DETERMINATIV>
+                      <REFERENT>Leistungserbringung</REFERENT>
+                    </PHRASE>
+                  </ATTRIBUT>
+                </PHRASE>
+              </ARGUMENT>
+              <PRÄDIKAT>
+                <VERB verb="nehmen">
+                  <ZU-INFINITIV>zu nehmen</ZU-INFINITIV>
+                </VERB>
+              </PRÄDIKAT>
+            </SATZ>
+          </ARGUMENT>
+        </SATZ>
+      </KOORDINATION>
+    </SATZ>
+  </ADVERBIALE>
 </SATZ>

@@ -4,9 +4,8 @@ Teilnehmer = dict()
 Themen = list()
 
 # TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
-# A noch B, A sowie B
-Phrasenkonjunktionen = ['Und', 'Oder', 'Noch', 'Sowie']
-Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt', 'jedoch']
+# TODO: difference between nominal and clausal conjunction
+Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt', 'jedoch', 'sowie', 'noch']
 # NOTE: 'wie/wo' here in the meaning of 'als'
 # NOTE: combination 'als ob' and 'als wenn' are unclear. Maybe just a single subjunction?
 Subjunktionen = ['als', 'als ob', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls ', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
@@ -25,14 +24,17 @@ Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
 # NOTE: it looks like adjectives cannot be used productively!
 # new ones are mainly added through derivation or complete new innovation
 Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gegebenenfalls', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoh', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'kostspielig', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'langsam', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'pflichtgemäß', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'sonstig', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'unscharf', 'übel', 'vag', 'viel', 'voll', 'vollständig', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
-Adverbien = ['abends', 'allerdings', 'anfangs', 'auch', 'bald', 'bisher', 'blindlings', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'endlich', 'früh', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'noch', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vorn', 'wieder']
+Adverbien = ['abends', 'allerdings', 'anfangs', 'auch', 'bald', 'bisher', 'blindlings', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'endlich', 'früh', 'gerne', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'meinerseits', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'noch', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'sofort', 'stündlich', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vorn', 'wieder']
 
 
 # TODO: 'wollen' has modal usage and full usage 'ich will dass...'
 Modalverben = ['dürfen', 'können', 'mögen', 'möchten', 'müssen', 'sollen', 'werden', 'brauchen']
-Kopulas = ['sein', 'werden', 'bleiben']
+Kopulas = ['sein', 'werden', 'bleiben', 'geben']
 
 Präpositionen = {
+  # temporary solution
+  'wie': 'Nominativ',
+  'als': 'Nominativ',
   # Akkusativ
   'durch': 'Akkusativ',
   'für': 'Akkusativ',

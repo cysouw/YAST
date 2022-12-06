@@ -204,3 +204,13 @@ only changes here that are really optional, e.g. preposition+article that can al
 - Details of Negation scope
 
 - Quantoren are strange, e.g.: 'alle meine Bücher', 'jedes meiner Bücher', 'Die Bücher habe ich alle/beide gelesen', 'alle die Bücher in der Schublade'
+
+
+
+NOTE: the following is a combination of two adverbials
+"vorne/hinten im Garten"
+they have to be inserted separately
+semantics are inferred from regular scoping of multiple modifiers
+also for 'noch nicht' ???
+
+TODO: what about 'nur heute' ? cf. Fokuspartikel!?
