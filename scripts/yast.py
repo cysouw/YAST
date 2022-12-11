@@ -10,7 +10,9 @@ def Satz(addto, juncture = None):
   # abbreviations
   role = addto.find(f'*[@role="{juncture}"]')
   # subordinate clauses
-  if juncture in Subjunktionen:
+  if juncture in Konjunktionaladverbien:
+    return Hauptsatz(addto, juncture)
+  elif juncture in Subjunktionen:
     return Subjunktionsatz(addto, juncture)
   elif juncture in Satzpartizipien + Satzpräpositionen:
     return Präpositionsatz(addto, juncture)
@@ -42,10 +44,19 @@ def Start():
   ET.SubElement(clause, 'VORFELD')
   return clause
 
-def Hauptsatz(addto):
-  # Hauptsatz in coordination
+def Hauptsatz(addto, juncture = None):
+  # make clause
   tense = addto.get('tense')
-  clause = ET.SubElement(addto, 'SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
+  clause = ET.Element('SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
+  # Konjunktionaladverb
+  if juncture is not None:
+    node = ET.SubElement(addto, 'ADVERBIALE')
+    node.append(clause)
+    vorfeld = ET.SubElement(clause, 'VORFELD')
+    ET.SubElement(vorfeld, 'KONJUNKTIONALADVERB').text = juncture
+  # Hauptsatz in coordination
+  elif addto.tag == 'KOORDINATION':
+    addto.append(clause)
   return clause
 
 def Subjunktionsatz(clause, juncture):
@@ -885,13 +896,13 @@ def Koordination(addto, conjunction = 'und'):
   coordination = ET.SubElement(addto, 'KOORDINATION')
   ET.SubElement(coordination, 'KONJUNKTION').text = conjunction
   node = ET.SubElement(coordination, addto.tag)
-  # copy info from above
+  # copy info from above to downstream
   if addto.tag == 'PHRASE':
     node.set('case', addto.get('case'))
   elif addto.tag == 'SATZ':
     node.set('tense' , addto.get('tense'))
     node.set('kind', addto.get('kind'))
-  # pass plurality upwards for finite verb
+  # pass plurality upwards to make finite verb for immediate articulation
   case = addto.get('case')
   if case is not None and case == 'Nominativ':
     clause = upClause(addto)
@@ -967,17 +978,20 @@ def Kopfeinsatz (addto, lexeme):
 # ========
 
 def Vorfeldcheck(addto, node):
-  vorfeld = addto.find('VORFELD')
   branch = upSubClause(node)
-  if addto.tag == 'SATZ' and vorfeld is not None:
+  if addto.tag == 'SATZ':
+    # find vorfeld
+    vorfeld = addto.find('VORFELD')
+    # get info from clause
+    kind = addto.get('kind')
+    mood = addto.get('mood')
+    truth = addto.get('truth')
+    tense = addto.get('tense')
+    person = addto.get('person')
+    predicate = addto.get('predicate')
+    discourse = addto.get('discourse')
+    # fill in the vorfeld if there is nothing yet
     if len(vorfeld) == 0:
-      kind = addto.get('kind')
-      mood = addto.get('mood')
-      truth = addto.get('truth')
-      tense = addto.get('tense')
-      person = addto.get('person')
-      predicate = addto.get('predicate')
-      discourse = addto.get('discourse')
       # complementclause dass/ob
       if kind in ['Komplementsatz', 'Präpositionssatz'] and mood != 'Frage':
         node = ET.SubElement(vorfeld, 'VORFELDERSATZ')
@@ -1007,8 +1021,9 @@ def Vorfeldcheck(addto, node):
         # move predicative if it exists
         if predicative is not None:
           vorfeld.append(predicative)
-        # take verb, but only when there is an auxiliary, else do support!
+        # take verb to the front
         else:
+          # when there is no auxiliary, do-support in German!
           if addto.find('PRÄDIKAT/VERB') is not None:
             addlightverb(addto, 'tun', 'Infinitiv', 'TUN-UNTERSTÜTZUNG')
           nonfinite = addto.xpath('PRÄDIKAT/*/*')[0]
@@ -1019,6 +1034,10 @@ def Vorfeldcheck(addto, node):
       # else: move branch with inserted node to the front
       else:
         vorfeld.append(branch)
+    # non-finite sentences can have a filled vorfeld, then predicate most forward position
+    elif tense == 'Infinit' and predicate == 'Vorfeld':
+      nonfinite = addto.xpath('PRÄDIKAT/*/*')[0]
+      vorfeld.addnext(nonfinite)
 
 def Verbcheck(addto):
   clauses = addto.iter('SATZ') if addto.tag == 'SATZ' else []
@@ -1093,14 +1112,22 @@ def isReferential(lexeme):
     or lexeme in list('emnfpqr') \
 
 def isAdjectival(lexeme):
-  return lexeme in Adjektive \
+  return lexeme[:1].islower() and \
+    (  lexeme in Adjektive \
     or lexeme[-2:] in ['ig'] \
     or lexeme[-3:] in ['bar', 'sam'] \
     or lexeme[-4:] in ['lich', 'haft', 'isch'] \
-    or lexeme[-5:] in ['gemäß']
+    or lexeme[-5:] in ['gemäß'] \
+    )
 
 def isAdverbial(lexeme):
-  return lexeme in Adverbien + Frageadverbien + Negationen
+  return lexeme[:1].islower() and \
+    (  lexeme in Adverbien \
+    or lexeme in Frageadverbien + Konjunktionaladverbien \
+    or lexeme in Modalpartikel + Negationen \
+    or lexeme[-3:] in ['mal'] \
+    or lexeme[-5:] in ['lings'] \
+    )
 
 def adjectiveInflection(phrase):
   case = phrase.get('case')
@@ -1292,7 +1319,7 @@ def finiteverb(verb, person, number, tense):
 
 def makeInfinite(clause):
   # complex rules for infinite relative clause
-  if clause.get('kind') == 'Relativsatz':
+  if clause.get('kind') in ['Relativsatz', 'Hauptsatz', 'Subjunktionssatz']:
     makeRelativecontrol(clause)
   # simple for others
   elif clause.get('kind') in ['Präpositionssatz', 'Komplementsatz']:
@@ -1482,10 +1509,10 @@ def Endcheck(satz):
 def cleanup(satz):
   # remove many flags for readability
   for node in [satz] + satz.findall('.//SATZ'):
-    keep = ['kind', 'controller', 'move', 'mood', 'head']
+    keep = ['kind', 'move', 'mood', 'tense']
     clean(node, keep)
   for node in satz.findall('.//PHRASE'):
-    keep = ['case', 'controller', 'move', 'mark']
+    keep = ['case', 'move']
     clean(node, keep)
   for node in satz.findall('.//KOORDINATION'):
     keep = []
