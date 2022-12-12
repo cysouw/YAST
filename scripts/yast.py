@@ -206,7 +206,7 @@ def Prädikativ(clause, predicate = None):
   if clause.find('VORFELD') is None:
     ET.SubElement(clause, 'VORFELD')
   # --- subject and predicate for default nominal predicate
-  subject = ET.SubElement(clause, 'ARGUMENT', attrib = {'role': 'Subjekt', 'case': 'Nominativ'})
+  subject = ET.SubElement(clause, 'ARGUMENT', attrib = {'role': 'Seinde', 'case': 'Nominativ'})
   predicative = ET.SubElement(clause, 'PRÄDIKATIV', attrib = {'role': 'Prädikat', 'case': 'Nominativ'})
   # --- copula
   copula = clause.get('verb')
@@ -265,12 +265,6 @@ def Verb(clause, verb):
   # lexicalised preverbs from lexicon are split
   if Verben.get(verb, {}).get('Präverb', False):
     ET.SubElement(verbnode, 'PRÄVERBIALE').text = Verben[verb]['Präverb'] + '+'
-    verb = Verben[verb]['Stamm']
-  # lexicalised nominal predicatives from lexicon are split
-  if Verben.get(verb, {}).get('Prädikat', False):
-    predicative = ET.SubElement(clause, 'PRÄDIKATIV', attrib = {'role': 'Prädikat', 'case': 'Akkusativ'})
-    phrase = Phrase(predicative, 'Prädikat')
-    Referent(phrase, Verben[verb]['Prädikat'])
     verb = Verben[verb]['Stamm']
   # add verb to info
   verbnode.set('verb', verb)
