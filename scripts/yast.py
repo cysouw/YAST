@@ -9,13 +9,14 @@ from lexicon import *
 def Satz(addto, juncture = None):
   # abbreviations
   role = addto.find(f'*[@role="{juncture}"]')
-  # subordinate clauses
-  if juncture in Konjunktionaladverbien:
-    return Hauptsatz(addto, juncture)
-  elif juncture in Subjunktionen:
+  root = addto.get('kind') == 'Wurzel'
+  # clauses: first adverbial clauses because of early vorfeld
+  if juncture in Subjunktionen:
     return Subjunktionsatz(addto, juncture)
   elif juncture in Satzpartizipien + Satzpräpositionen:
     return Präpositionsatz(addto, juncture)
+  elif root or juncture in Konjunktionaladverbien:
+    return Hauptsatz(addto, juncture)
   elif juncture in Präpositionen or role is not None:
     return Komplementsatz(addto, juncture)
   elif juncture is None:
@@ -38,25 +39,29 @@ def Ereignis(clause, verb = None):
 # Sätze
 # =====
 
-def Start():
-  clause = ET.Element('SATZ', attrib = {'kind': 'Hauptsatz', 'tense': 'Präsens'})
-  # add vorfeld for early vorfeld specification
-  ET.SubElement(clause, 'VORFELD')
-  return clause
+def Root():
+  root = ET.Element('SATZ', attrib = {'kind': 'Wurzel', 'tense': 'Präsens'})
+  return root
 
 def Hauptsatz(addto, juncture = None):
   # make clause
   tense = addto.get('tense')
   clause = ET.Element('SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
+  # possibly include already added adverbials into vorfeld
+  if addto.get('kind') == 'Wurzel' and len(addto) > 0:
+    vorfeld = ET.SubElement(clause, 'VORFELD')
+    vorfeld.append(addto[0])
+    # copy local participants (from adverbial phrase)
+    local = addto.get('local')
+    if local is not None:
+      clause.set('local', local)
   # Konjunktionaladverb
-  if juncture is not None:
-    node = ET.SubElement(addto, 'ADVERBIALE')
-    node.append(clause)
+  elif juncture is not None:
     vorfeld = ET.SubElement(clause, 'VORFELD')
     ET.SubElement(vorfeld, 'KONJUNKTIONALADVERB').text = juncture
-  # Hauptsatz in coordination
-  elif addto.tag == 'KOORDINATION':
-    addto.append(clause)
+    addto = ET.SubElement(addto, 'FORTSETZUNG')
+  # add clause
+  addto.append(clause)
   return clause
 
 def Subjunktionsatz(clause, juncture):
@@ -73,7 +78,7 @@ def Präpositionsatz(clause, juncture):
   node = ET.SubElement(clause, 'ADVERBIALE')
   ET.SubElement(node, 'JUNKTOR').text = juncture
   newclause = ET.SubElement(node, 'SATZ', attrib = {'kind': 'Präpositionssatz', 'tense': tense})
-  # special case of 'um'
+  # special case of 'um': always non-finite
   if juncture == 'um':
     Infinit(node)
   return newclause
@@ -141,7 +146,7 @@ def Prädikativ(clause, predicate = None):
   if clause.tag == 'ATTRIBUT':
     clause.tag = 'SATZ'
     clause.set('kind', 'Relativsatz')
-   # get copula from clause
+  # --- get copula from clause
   copula = clause.get('verb')
   # add vorfeld
   if clause.find('VORFELD') is None:
@@ -152,7 +157,7 @@ def Prädikativ(clause, predicate = None):
   # add copula
   verb = ET.SubElement(clause, 'PRÄDIKAT')
   ET.SubElement(verb, 'VERB', attrib = {'verb': copula})
-  # different kinds of predication
+  # --- different kinds of predication
   if predicate is not None and isAdjectival(predicate):
     adverbial = ET.SubElement(predicative, 'ADVERBIALE')
     ET.SubElement(adverbial, 'ADJEKTIV').text = predicate
@@ -185,7 +190,7 @@ def Verb(clause, verb):
   # add vorfeld
   if clause.find('VORFELD') is None:
     ET.SubElement(clause, 'VORFELD')
-  # --- roles ---
+  # --- roles
   # start with a default nominative role, except when Nominative listed in dictionary
   if not 'Nominativ' in Verben.get(verb, {}).get('Rollen', {}).values():
     nominative = verb.capitalize() + 'de'
@@ -198,7 +203,7 @@ def Verb(clause, verb):
   if Verben.get(verb, {}).get('Reflexiv', False):
     nominative = clause.find('*[@case="Nominativ"]')
     ET.SubElement(nominative, 'REFLEXIV', attrib = {'case': 'Akkusativ'})
-  # --- verb ---
+  # --- verb
   predicate = ET.SubElement(clause, 'PRÄDIKAT')
   verbnode = ET.SubElement(predicate, 'VERB')
   # lexicalised preverbs from lexicon are split
@@ -388,16 +393,14 @@ def Präpositionphrase(addto, juncture):
     node = ET.SubElement(addto, 'ATTRIBUT')
   # adverbial phrase
   elif addto.tag == 'SATZ':
-    node = ET.Element('ADVERBIALE')
+    node = ET.SubElement(addto, 'ADVERBIALE')
     # ad-hoc solution for comparative phrases
-    if juncture in ['als', 'wie']:
-      addto.append(node)
-    else:
+    if juncture not in ['als', 'wie']:
       moveBeforeHead(addto, node)
   # for Vollkoordination
   elif addto.tag == 'KOORDINATION':
     node = addto
-  # add nodes
+  # add phrase
   case = Präpositionen[juncture]
   ET.SubElement(node, 'JUNKTOR').text = juncture
   phrase = ET.SubElement(node, 'PHRASE', attrib = {'case': case})
@@ -793,7 +796,7 @@ def Admodifikation(addto):
     return ET.SubElement(predicative, 'ATTRIBUT')
   elif addto.tag == 'PHRASE':
     return ET.SubElement(addto, 'ATTRIBUT')
-  elif addto.tag == 'SATZ':
+  elif addto.tag in 'SATZ':
     return ET.SubElement(addto, 'ADVERBIALE')
 
 def Addendum(addto, adword):
@@ -844,21 +847,15 @@ def Adverb(addto, adverb):
     node.text = adverb
     moveBeforeHead(clause, node)
 
-# ==========
-# Komparativ
-# ==========
-
-# added as rules because the suffixes ruin the recognition of word class
+# ======
+# Ausmaß
+# ======
 
 def Komparativ(addto):
   addto.set('comparison', 'Komparativ')
 
 def Superlativ(addto):
   addto.set('comparison', 'Superlativ')
-
-# ===========
-# Eingrenzung
-# ===========
 
 def Grad(addto, intensifier):
   # rebase with predicative adjectives
@@ -1039,16 +1036,50 @@ def Vorfeldcheck(addto, node):
       nonfinite = addto.xpath('PRÄDIKAT/*/*')[0]
       vorfeld.addnext(nonfinite)
 
-def Verbcheck(addto):
+ready = ET.Element('FERTIG')
+ready.text = ' |'
+
+def Outputcheck(node):
+  # wait when there is no finite verb in main clause
+  clause = node
+  while clause.getparent().tag not in ['SATZ', 'PHRASE']:
+    clause = clause.getparent()
+  verbzweit = clause.find('VERBZWEIT')
+  if clause.get('kind') == 'Hauptsatz' and verbzweit is None:
+    ready.text = ready.text + ' |'
+  else:
+    # before clause, except when already something in output
+    if node.tag == 'SATZ': 
+      already = node.findall('.//FERTIG')
+      if len(already) > 0:
+        already[-1].addnext(ready)
+      else:
+        node.addprevious(ready)
+    # addendum is ready
+    elif node.tag in ['ADVERBIALE', 'ATTRIBUT']:
+      node.append(ready)
+    # in phrase
+    elif node.tag == 'PHRASE':
+      # determiner is ready
+      determiner = node.find('DETERMINATIV')
+      if determiner is not None:
+        determiner.addnext(ready)
+      # pronoun/anapher are ready
+      else:
+        node.addnext(ready)
+    # reset symbol
+    ready.text = ' |'
+
+def Verbcheck(addto, node):
   clauses = addto.iter('SATZ') if addto.tag == 'SATZ' else []
   for clause in clauses:
-    if clause.get('agreement') is None:
+    if clause.get('inflection') is None:
       if clause.get('tense') == 'Infinit':
         makeInfinite(clause)
-        clause.set('agreement', 'done')
+        clause.set('inflection', 'done')
       elif clause.get('person') is not None:
         verbInflection(clause)
-        clause.set('agreement', 'done')
+        clause.set('inflection', 'done')
 
 def passPersonNumber(trigger, case, person, gender):
   # only for nominative in argument (not for predicative nominative!)
@@ -1335,7 +1366,7 @@ def makeRelativecontrol(clause):
     # move relativsatz before referent
     referent = addto.find('REFERENT')
     referent.addprevious(link)
-  elif link.tag == 'ADVERBIALE':
+  elif link.tag in ['ADVERBIALE', 'FORTSETZUNG']:
     # move before predicate
     predicate = addto.find('PRÄDIKAT')
     predicate.addprevious(link)
@@ -1448,7 +1479,7 @@ def upClause(node):
 
 def upSubClause(node):
   # ignore when at root or Hauptsatz
-  if node.getparent() is None or node.get('kind') == 'Hauptsatz':
+  if node.getparent() is None or node.getparent().get('kind') == 'Wurzel' or node.get('kind') == 'Hauptsatz':
     return node
   # go up last node in branch before clause
   while node.getparent().tag != 'SATZ':
@@ -1456,8 +1487,8 @@ def upSubClause(node):
   return node
 
 def moveBeforeHead(addto, node):
-  # ignore for adverbs in Vorfeld
-  if addto.tag == 'VORFELD':
+  # ignore for adverbs in Vorfeld or early adverbials
+  if addto.tag == 'VORFELD' or addto.get('kind') == 'Wurzel':
     return
   # find head
   elif addto.tag == 'SATZ':
@@ -1503,8 +1534,9 @@ def add(name, gender = None):
 # Output
 # ======
 
-def Endcheck(satz):
-  Verbcheck(satz)
+def Endcheck(satz, node):
+  Outputcheck(node)
+  Verbcheck(satz, node)
 
 def cleanup(satz):
   # remove many flags for readability
@@ -1586,13 +1618,15 @@ def reference(file):
 
 def specification(raw, lineNr, refs, head):
   # prepare line number
-  id = 's' if lineNr == head else 's' + str(lineNr+1)
-  if refs[lineNr] == 0:
-    ref = 's'
-  elif refs[lineNr] == head + 1:
-    ref = 's'
-  else:
-    ref = 's' + str(refs[lineNr])
+  #id = 's' if lineNr == head else 's' + str(lineNr+1)
+  #if refs[lineNr] == 0:
+  #  ref = 's'
+  #elif refs[lineNr] == head + 1:
+  #  ref = 's'
+  #else:
+  #  ref = 's' + str(refs[lineNr])
+  id = 's' + str(lineNr+1)
+  ref = 's' if refs[lineNr] == 0 else 's' + str(refs[lineNr])
   # parse brackets
   raw = raw.replace(')', '')
   spec = raw.split(' (')
@@ -1632,17 +1666,15 @@ def specification(raw, lineNr, refs, head):
   recursion = [x.strip() for x in recursion]
   lexeme = recursion[-1]
   connection = recursion[0] if len(recursion) == 2 else None
-  # check vorfeld
+  # checks
   vorfeld = 'Vorfeldcheck(' + ref + ', ' + id + ')\n'
-  end = 'Endcheck(' + ref + ')\n'
+  end = 'Endcheck(' + ref + ', ' + id + ')\n'
+  if ref == 's':
+    vorfeld = ''
   # special case for predication
   if 'Kopula' in features:
     if isReferential(lexeme):
-      if lineNr == head:
-        satz = ''
-        vorfeld = ''
-        end = ''
-      elif connection is None:
+      if connection is None:
         satz = id + ' = Satz(' + ref + ')\n'
       else:
         satz = id + ' = Satz(' + ref + ', \'' + connection + '\')\n'
@@ -1652,8 +1684,8 @@ def specification(raw, lineNr, refs, head):
       early = re.sub('\(s\d*', '(p', early)
       late = re.sub('\(s\d*', '(p', late)
       vorfeld2 = 'Vorfeldcheck(' + id + ', p)\n'
-      end2 = 'Endcheck(' + id + ')\n'
-      return end + satz + vorfeld + kopula + prädikativ + verbal + end2 + phrase + vorfeld2 + early + referent + late
+      end2 = 'Endcheck(' + id + ', p)\n'
+      return satz + vorfeld + kopula + prädikativ + verbal + end + phrase + vorfeld2 + early + referent + late + end2
     else:
       linkage = 'Satz'
       content = 'Prädikativ'
@@ -1671,12 +1703,7 @@ def specification(raw, lineNr, refs, head):
   if connection in Konjunktionen or connection == '':
     linkage = 'Vollkoordination' if lexeme == '' else 'Koordination'
   # linkcommand
-  if linkage == 'Satz' and lineNr == head:
-    # start of sentence
-    linkcommand = ''
-    vorfeld = ''
-    end = ''
-  elif connection is None:
+  if connection is None:
     linkcommand = id + ' = ' + linkage + '(' + ref + ')\n'
   else:
     linkcommand = id + ' = ' + linkage + '(' + ref + ', \'' + connection + '\')\n'
@@ -1687,7 +1714,7 @@ def specification(raw, lineNr, refs, head):
   else:
     contentcommand = content + '(' + id + ', \'' + lexeme + '\')\n'
   # --- all commands together ---
-  return end + linkcommand + vorfeld + kopula + early + contentcommand + late + verbal
+  return  linkcommand + vorfeld + kopula + early + contentcommand + late + verbal + end
 
 def convert(sentence):
   sentence = re.split('\n', sentence)
@@ -1696,7 +1723,7 @@ def convert(sentence):
   head = level(sentence).index(0)
   for nr,elem in enumerate(sentence):
     sentence[nr] = specification(elem, nr, refs, head) 
-  rules = 's = Start()\n' + ''.join(sentence) + 'Endcheck(s)\n'
+  rules = 's = Root()\n' + ''.join(sentence)
   return rules
 
 def makeTree(rules):
