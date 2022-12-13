@@ -1,22 +1,17 @@
-# global list of participants
-Teilnehmer = dict()
-# global list of topics, just a list of verbs for now
-Themen = list()
-
-# TODO: double conjuncturs: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
+# TODO: double conjuncts: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
 # TODO: difference between nominal and clausal conjunction
 Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt', 'jedoch', 'sowie', 'noch']
 # NOTE: 'wie/wo' here in the meaning of 'als'
-# NOTE: combination 'als ob' and 'als wenn' are unclear. Maybe just a single subjunction?
 Subjunktionen = ['als', 'als ob', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
-# NOTE: there is an old-fashioned usage of 'bis dass'
-# Begründung (um)
-# Alternative (statt, anstatt, anstelle)
-# Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
+# Begründung (um), Alternative (statt, anstatt, anstelle), Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
+# NOTE: there is an old-fashioned usage of 'bis dass' not included here
 Satzpräpositionen = ['um', 'ohne', 'außer', 'ausser', 'statt', 'anstatt', 'anstelle', 'im Falle', 'für den Fall']
-Satzpartizipien = ['vorausgesetzt', 'ausgenommen', 'gegeben', 'ungeachtet', 'unterstellt', 'angenommen', 'gesetzt']
-# newly grammaticalised adverbial junktors with following relator-clause 'dass'
-Relatorsubjunktionen = ['abgesehen davon', 'angesichts dessen', 'anhand dessen', 'aufgrund dessen', 'unbeschadet dessen', 'ungeachtet dessen']
+Satzpartizipien = ['angenommen', 'ausgenommen', 'gegeben', 'gesetzt', 'ungeachtet', 'unterstellt', 'vorausgesetzt']
+# the following can be combined with adverbials, even adverbs
+# bis morgen, seit gestern, ab heute, von gestern
+# nach links, von hier, nach oben, für gleich  
+# bis in den frühen Morgen, seit unser letztes Treffen
+Grenzpräpositionen = ['von', 'seit', 'ab', 'bis', 'nach']
 
 # note 'werden' in both classes!
 Modalverben = ['dürfen', 'können', 'mögen', 'möchten', 'müssen', 'sollen', 'werden', 'brauchen']
@@ -28,23 +23,14 @@ Kopulas = ['sein', 'werden', 'bleiben', 'geben', 'haben']
 Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoch', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'sonstig', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
 
 Adverbien = ['abends', 'anfangs', 'bald', 'bisher', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'endlich', 'früh', 'geradewegs', 'gerne', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'hoch', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'noch', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'sofort', 'unterwegs', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vorn', 'wieder']
+
 Konjunktionaladverbien = ['abermals', 'allein', 'allemal', 'allenfalls', 'allerdings', 'alsbald', 'alsdann', 'also', 'anderenfalls', 'andererseits', 'andernteils', 'anschließend', 'ansonsten', 'anstatt dessen', 'auch', 'aufgrund dessen', 'ausschließlich', 'außerdem', 'beispielsweise', 'beziehungsweise', 'bestenfalls', 'bloß', 'da', 'dabei', 'dadurch', 'dafür', 'daher', 'dahingegen', 'damit', 'danach', 'daneben', 'dann', 'darauf', 'darauhfin', 'darüber hinaus', 'darum', 'davor', 'dazu', 'dazwischen', 'dementgegen', 'dementsprechend', 'demgegenüber', 'demgemäß', 'demnach', 'demzufolge', 'dennoch', 'derweilen', 'desgleichen', 'deshalb', 'deswegen', 'ferner', 'folglich', 'freilich', 'gegebenenfalls', 'genauso', 'gleichwohl', 'gleichfalls', 'gleichzeitig', 'hernach', 'hierbei', 'hierdurch', 'hiermit', 'hingegen', 'hinterher', 'hinwiederum', 'immerhin', 'im Übrigen', 'indes', 'indessen', 'infolgedessen', 'insbesondere', 'insofern', 'insoweit', 'inzwischen', 'jedoch', 'kaum', 'mal', 'mithin', 'meinerseits', 'mittlerweile', 'nachher', 'nämlich', 'nebenbei', 'nebenher', 'nichtsdestominder', 'nichtsdestoweniger', 'nichtsdestotrotz', 'nunmehr', 'nur', 'obendrein', 'ohnedies', 'ohnehin', 'schließlich', 'schon', 'seitdem', 'seither', 'selbst', 'so', 'sodann', 'somit', 'sonst', 'soviel', 'soweit', 'sowieso', 'stattdessen', 'trotzdem', 'überdies', 'überhaupt', 'unterdessen', 'vielmehr', 'vor allem', 'vorher', 'währenddessen', 'weiter', 'weiterhin', 'weiters', 'wieder', 'wiederum', 'wohlgemerkt', 'zudem', 'zuguterletzt', 'zumal', 'zusätzlich', 'zuvor', 'zwar', 'zwischendurch', 'zwischenzeitlich']
+
 Frageadverbien = ['warum', 'weshalb', 'weswegen', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
+
 Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
+
 Modalpartikel = ['aber', 'auch', 'bloß', 'denn', 'doch', 'eben', 'eh', 'etwa', 'gar', 'halt', 'ja', 'nur', 'rein', 'ruhig', 'schon', 'wohl']
-
-comparisonUmlaut = ['alt', 'arm', 'dumm', 'fromm', 'gesund', 'grob', 'groß', 'hart', 'hoh', 'kalt', 'klug', 'kurz', 'lang', 'nah', 'scharf', 'stark', 'warm']
-
-comparisonSuppletion = {
-  'gut':{
-    'Komparativ': 'besser',
-    'Superlativ': 'best',
-  },
-  'viel':{
-    'Komparativ': 'mehr',
-    'Superlativ': 'meist',
-  },
-}
 
 Genera = {
   'm': 'Maskulin',
@@ -56,16 +42,19 @@ Genera = {
 }
 
 Präpositionen = {
-  # temporary solution
+  # temporary solution for comparison: treat them as prepositions
   'wie': 'Nominativ',
   'als': 'Nominativ',
   # Akkusativ
+  'bis': 'Akkusativ',
   'durch': 'Akkusativ',
+  'entlang': 'Akkusativ',
   'für': 'Akkusativ',
   'gegen': 'Akkusativ',
   'ohne': 'Akkusativ',
   'um': 'Akkusativ',
   # Dativ
+  'ab': 'Dativ',
   'aus': 'Dativ',
   'außer': 'Dativ',
   'bei': 'Dativ',
@@ -79,8 +68,7 @@ Präpositionen = {
   'seit': 'Dativ',
   'von': 'Dativ',
   'zu': 'Dativ',
-  # Wechselpräpositionen: dative default for stative location!
-  # only accusative through diathesis???
+  # Wechselpräpositionen: dative default for stative location, use 'Bewegung' to make accusative
   # governed roles are variable, but: auf/über/in/vor take accusative when governed
   # an is variable (denken an Dativ, Dativ alternation with accusative)
   'an': 'Dativ',
@@ -126,6 +114,189 @@ Präpositionen = {
   'während': 'Genitiv',
   'wegen': 'Genitiv',
   'zugunsten': 'Genitiv',
+}
+
+comparisonUmlaut = ['alt', 'arm', 'dumm', 'fromm', 'gesund', 'grob', 'groß', 'hart', 'hoh', 'kalt', 'klug', 'kurz', 'lang', 'nah', 'scharf', 'stark', 'warm']
+
+comparisonSuppletion = {
+  'gut':{
+    'Komparativ': 'besser',
+    'Superlativ': 'best',
+  },
+  'viel':{
+    'Komparativ': 'mehr',
+    'Superlativ': 'meist',
+  },
+}
+
+Personalpronomina = {
+  'Singular':{
+    '1':{
+      'Nominativ': 'ich',
+      'Akkusativ': 'mich',
+      'Dativ': 'mir',
+      'Genitiv': 'meiner',
+      'Attributiv': 'mein'
+    },
+    '2':{
+      'Nominativ': 'du',
+      'Akkusativ': 'dich',
+      'Dativ': 'dir',
+      'Genitiv': 'deiner',
+      'Attributiv': 'dein'
+    },
+  },
+  'Plural':{
+    '1':{
+      'Nominativ': 'wir',
+      'Akkusativ': 'uns',
+      'Dativ': 'uns',
+      'Genitiv': 'unser',
+      'Attributiv': 'unser'
+    },
+    '2':{
+      'Nominativ': 'ihr',
+      'Akkusativ': 'euch',
+      'Dativ': 'euch',
+      'Genitiv': 'euer',
+      'Attributiv': 'euer'
+    }
+  }
+}
+
+Fragepronomina = {
+  'Belebt':{
+    'Nominativ': 'wer',
+    'Akkusativ': 'wen',
+    'Dativ': 'wem',
+    'Genitiv': 'wessen',
+  },
+  'Unbelebt':{
+    'Nominativ': 'was',
+    'Akkusativ': 'was',
+    'Dativ': 'was',
+    'Genitiv': 'wessen',
+  }
+}
+
+Anaphora = {
+  'Maskulin':{
+    'Nominativ': 'er',
+    'Akkusativ': 'ihn',
+    'Dativ': 'ihm',
+    'Genitiv': 'seiner',
+    'Attributiv': 'sein'
+  },
+  'Neutrum':{
+    'Nominativ': 'es',
+    'Akkusativ': 'es',
+    'Dativ': 'ihm',
+    'Genitiv': 'seiner',
+    'Attributiv': 'sein'
+  },
+  'Feminin':{
+    'Nominativ': 'sie',
+    'Akkusativ': 'sie',
+    'Dativ': 'ihr',
+    'Genitiv': 'ihrer',
+    'Attributiv': 'ihr'
+  },
+  'Plural':{
+    'Nominativ': 'sie',
+    'Akkusativ': 'sie',
+    'Dativ': 'ihnen',
+    'Genitiv': 'ihrer',
+    'Attributiv': 'ihr'
+  }
+}
+
+Demonstrativpronomina = { # also relative pronoun!
+  'Nominativ':{
+    'Maskulin': 'der',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+    },
+  'Akkusativ':{
+    'Maskulin': 'den',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+  },
+  'Dativ':{
+    'Maskulin': 'dem',
+    'Neutrum': 'dem',
+    'Feminin': 'der',
+    'Plural': 'denen'
+  },
+  'Genitiv':{
+    'Maskulin': 'dessen',
+    'Neutrum': 'dessen',
+    'Feminin': 'deren',
+    'Plural': 'deren'
+  }
+}
+
+Definitartikel = {
+  'Nominativ':{
+    'Maskulin': 'der',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+    },
+  'Akkusativ':{
+    'Maskulin': 'den',
+    'Neutrum': 'das',
+    'Feminin': 'die',
+    'Plural': 'die'
+  },
+  'Dativ':{
+    'Maskulin': 'dem',
+    'Neutrum': 'dem',
+    'Feminin': 'der',
+    'Plural': 'den'
+  },
+  'Genitiv':{
+    'Maskulin': 'des',
+    'Neutrum': 'des',
+    'Feminin': 'der',
+    'Plural': 'der'
+  }
+}
+
+Quantoren = {
+  'dies':{
+    'Flexion': 'dies',
+    'Deklination': 'schwach',
+  },
+  'jen':{
+    'Flexion': 'dies',
+    'Deklination': 'schwach',
+  },
+  'all':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'jed':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'beid':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'solch':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'manch':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'kein':{
+    'Flexion': 'ein',
+    'Deklination': 'gemischt',
+  },
 }
 
 # default Perfect-Auxiliary is 'haben'
@@ -702,176 +873,6 @@ Substantive = {
     'Belebt': True,
     'Plural': 'Menschen',
     'n-Deklination': True,
-  },
-}
-
-Personalpronomina = {
-  'Singular':{
-    '1':{
-      'Nominativ': 'ich',
-      'Akkusativ': 'mich',
-      'Dativ': 'mir',
-      'Genitiv': 'meiner',
-      'Attributiv': 'mein'
-    },
-    '2':{
-      'Nominativ': 'du',
-      'Akkusativ': 'dich',
-      'Dativ': 'dir',
-      'Genitiv': 'deiner',
-      'Attributiv': 'dein'
-    },
-  },
-  'Plural':{
-    '1':{
-      'Nominativ': 'wir',
-      'Akkusativ': 'uns',
-      'Dativ': 'uns',
-      'Genitiv': 'unser',
-      'Attributiv': 'unser'
-    },
-    '2':{
-      'Nominativ': 'ihr',
-      'Akkusativ': 'euch',
-      'Dativ': 'euch',
-      'Genitiv': 'euer',
-      'Attributiv': 'euer'
-    }
-  }
-}
-
-Fragepronomina = {
-  'Belebt':{
-    'Nominativ': 'wer',
-    'Akkusativ': 'wen',
-    'Dativ': 'wem',
-    'Genitiv': 'wessen',
-  },
-  'Unbelebt':{
-    'Nominativ': 'was',
-    'Akkusativ': 'was',
-    'Dativ': 'was',
-    'Genitiv': 'wessen',
-  }
-}
-
-Anaphora = {
-  'Maskulin':{
-    'Nominativ': 'er',
-    'Akkusativ': 'ihn',
-    'Dativ': 'ihm',
-    'Genitiv': 'seiner',
-    'Attributiv': 'sein'
-  },
-  'Neutrum':{
-    'Nominativ': 'es',
-    'Akkusativ': 'es',
-    'Dativ': 'ihm',
-    'Genitiv': 'seiner',
-    'Attributiv': 'sein'
-  },
-  'Feminin':{
-    'Nominativ': 'sie',
-    'Akkusativ': 'sie',
-    'Dativ': 'ihr',
-    'Genitiv': 'ihrer',
-    'Attributiv': 'ihr'
-  },
-  'Plural':{
-    'Nominativ': 'sie',
-    'Akkusativ': 'sie',
-    'Dativ': 'ihnen',
-    'Genitiv': 'ihrer',
-    'Attributiv': 'ihr'
-  }
-}
-
-Demonstrativpronomina = { # ist auch relativ!
-  'Nominativ':{
-    'Maskulin': 'der',
-    'Neutrum': 'das',
-    'Feminin': 'die',
-    'Plural': 'die'
-    },
-  'Akkusativ':{
-    'Maskulin': 'den',
-    'Neutrum': 'das',
-    'Feminin': 'die',
-    'Plural': 'die'
-  },
-  'Dativ':{
-    'Maskulin': 'dem',
-    'Neutrum': 'dem',
-    'Feminin': 'der',
-    'Plural': 'denen'
-  },
-  'Genitiv':{
-    'Maskulin': 'dessen',
-    'Neutrum': 'dessen',
-    'Feminin': 'deren',
-    'Plural': 'deren'
-  }
-}
-
-Definitartikel = {
-  'Nominativ':{
-    'Maskulin': 'der',
-    'Neutrum': 'das',
-    'Feminin': 'die',
-    'Plural': 'die'
-    },
-  'Akkusativ':{
-    'Maskulin': 'den',
-    'Neutrum': 'das',
-    'Feminin': 'die',
-    'Plural': 'die'
-  },
-  'Dativ':{
-    'Maskulin': 'dem',
-    'Neutrum': 'dem',
-    'Feminin': 'der',
-    'Plural': 'den'
-  },
-  'Genitiv':{
-    'Maskulin': 'des',
-    'Neutrum': 'des',
-    'Feminin': 'der',
-    'Plural': 'der'
-  }
-}
-
-Quantoren = {
-  'dies':{
-    'Flexion': 'dies',
-    'Deklination': 'schwach',
-  },
-  'jen':{
-    'Flexion': 'dies',
-    'Deklination': 'schwach',
-  },
-  'all':{
-    'Flexion': 'all',
-    'Deklination': 'schwach',
-  },
-  'jed':{
-    'Flexion': 'all',
-    'Deklination': 'schwach',
-  },
-  'beid':{
-    'Flexion': 'all',
-    'Deklination': 'schwach',
-  },
-  'solch':{
-    'Flexion': 'all',
-    'Deklination': 'schwach',
-  },
-  'manch':{
-    'Flexion': 'all',
-    'Deklination': 'schwach',
-  },
-  'kein':{
-    'Flexion': 'ein',
-    'Deklination': 'gemischt',
   },
 }
 
