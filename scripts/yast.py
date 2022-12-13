@@ -58,7 +58,7 @@ def Referent(phrase, referent = None):
   # phrasal structure depends on lexeme
   if referent[:1] in list('012'):
     Pronomen(phrase, referent)
-  elif (referent in Teilnehmer or referent == 'e') and anaphor != 'Voll':
+  elif (referent in Teilnehmer or referent == 'E') and anaphor != 'Voll':
     Anapher(phrase, referent)
   elif referent in list('mnfpqr'):
     Genuskopf(phrase, referent)
@@ -195,7 +195,12 @@ def Komplementsatz(clause, role):
 
 def Ereigniskopf(clause):
   ET.SubElement(clause, 'VORFELD')
-  ET.SubElement(clause, 'PRÄDIKAT')
+  ET.SubElement(clause, 'ARGUMENT', attrib = {'role': 'Nominativ', 'case': 'Nominativ'})
+  ET.SubElement(clause, 'ARGUMENT', attrib = {'role': 'Akkusativ', 'case': 'Akkusativ'})
+  ET.SubElement(clause, 'ARGUMENT', attrib = {'role': 'Genitiv', 'case': 'Genitiv'})
+  ET.SubElement(clause, 'ARGUMENT', attrib = {'role': 'Dativ', 'case': 'Dativ'})
+  predicate = ET.SubElement(clause, 'PRÄDIKAT')
+  ET.SubElement(predicate, 'VERB')
 
 def Prädikativ(clause, predicate = None):
   # ad hoc solution for coordination of adjektive with relative clause
@@ -500,7 +505,7 @@ def Anapher(phrase, referent):
   if referent in Genera.values():
     gender = referent
   else:
-    gender = 'Neutrum' if referent == 'e' else Teilnehmer[referent]
+    gender = 'Neutrum' if referent == 'E' else Teilnehmer[referent]
   # can be plural ('+3') when marked at phrase
   number = phrase.get('gender')
   gender = 'Plural' if number in ['Plural', 'Runde'] else gender
@@ -525,7 +530,7 @@ def Anapher(phrase, referent):
   # relative pronoun
   elif kind in ['Relativsatz', 'Komplementsatz'] and position == 'Vorfeld':
     # correlative relative with 'wo'
-    if referent == 'e':
+    if referent == 'E':
       node.tag = 'KORRELAT'
       if junctor in Präpositionen:
         node.text = 'wo' + addR(junctor) + junctor
@@ -544,7 +549,7 @@ def Anapher(phrase, referent):
   # anaphoric pronoun
   else:
     # correlative anapher with 'da'
-    if junctor in Präpositionen and (animacy == 'Unbelebt' or referent == 'e'):
+    if junctor in Präpositionen and (animacy == 'Unbelebt' or referent == 'E'):
       node.tag = 'KORRELAT'
       node.text = 'da' + addR(junctor) + junctor
       junctornode.text = None
@@ -924,6 +929,12 @@ def Kopfeinsatz(addto, lexeme):
         head.text = nounInflection(form, case, gender)
     # --- adjective as head
     elif isAdjectival(lexeme):
+      # make comparison
+      if addto.get('comparison') == 'Komparativ':
+        lexeme = makeComparative(lexeme)
+      elif addto.get('comparison') == 'Superlativ':
+        lexeme = makeSuperlative(lexeme)
+      # insert head
       if head.text is None:
         head.text = lexeme.capitalize() + adjectiveInflection(insert)
       # name for Teilnehmer
@@ -948,6 +959,28 @@ def Kopfeinsatz(addto, lexeme):
       pass
     # insert verb
     else:
+      # re-label nominative
+      nominative = insert.find('*[@role="Nominativ"]')
+      if nominative is not None:
+        label = lexeme.capitalize() + 'de'
+        nominative.set('role', label)
+      # then go through all roles listed in the lexicon
+      if Verben.get(lexeme, {}).get('Rollen', False):
+        for role,case in Verben[lexeme]['Rollen'].items():
+          available = insert.find(f'.//*[@role="{case}"]')
+          if available is not None:
+            available.set('role', role)
+      # insert verb
+      verb = insert.find('PRÄDIKAT//VERB')
+      verb.set('verb', lexeme)
+      if len(verb) > 0:
+        form = verb[0].tag
+        if form == 'PARTIZIP':
+          verb[0].text = participle(lexeme)
+        elif form == 'INFINITIV':
+          verb[0].text = lexeme
+        elif form == 'ZU-INFINITIV':
+          verb[0].text = 'zu ' + lexeme
       pass
 
 # =======
@@ -955,10 +988,11 @@ def Kopfeinsatz(addto, lexeme):
 # =======
 
 def Vorfeld(addto, node):
-  branch = upSubClause(node)
   if addto.tag == 'SATZ':
     # find vorfeld
     vorfeld = addto.find('VORFELD')
+    # find branch to move
+    branch = upSubClause(node)
     # get info from clause
     kind = addto.get('kind')
     mood = addto.get('mood')
@@ -1012,7 +1046,7 @@ def Vorfeld(addto, node):
       # else: move branch with inserted node to the front
       else:
         vorfeld.append(branch)
-    # non-finite sentences can have a filled vorfeld, then predicate most forward position
+    # non-finite sentences can have a filled vorfeld, then predicate to most forward position
     elif tense == 'Infinit' and predicate == 'Vorfeld':
       nonfinite = addto.xpath('PRÄDIKAT/*/*')[0]
       vorfeld.addnext(nonfinite)
@@ -1149,7 +1183,7 @@ def getAnimacy(referent):
 def isReferential(lexeme):
   return lexeme[:1].isupper() \
     or lexeme[:1] in list('012') \
-    or lexeme in list('emnfpqr') \
+    or lexeme in list('Emnfpqr') \
 
 def isAdjectival(lexeme):
   return lexeme[:1].islower() and \
@@ -1385,7 +1419,9 @@ def addlightverb(clause, auxiliary, nonfinite, label, form = None):
   verb = node.get('verb')
   # make nonfinite form
   if form is None:
-    if nonfinite == 'Partizip':
+    if verb is None:
+      form = None
+    elif nonfinite == 'Partizip':
       form = participle(verb)
     elif nonfinite == 'zu-Infinitiv':
       form = 'zu ' + verb
@@ -1725,7 +1761,7 @@ def makeTree(rules):
   exec(rules, globals(), loc)
   return loc['s']
 
-earlyfeatures = ['Plural', 'Demonstrativ', 'Bewegung', 'Belebt', 'Voll', 'Kopf', 'Komparativ', 'Superlativ']
+earlyfeatures = ['Plural', 'Demonstrativ', 'Bewegung', 'Belebt', 'Voll', 'Komparativ', 'Superlativ', 'Kopf']
 nominalfeatures = ['Definit', 'Indefinit', 'Quantor', 'Besitzer', 'Numerale', 'Fokuspartikel']
 
 # ====

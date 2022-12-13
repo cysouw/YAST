@@ -303,6 +303,25 @@ Quantoren = {
 # default Nominative role is 'verb+de'
 
 Verben = {
+  'tun':{
+    'Partizip': 'getan',
+    'Präteritum': 'tat',
+    'Irrealis': 'tät',
+    'Rollen':{
+      'Getane': 'Akkusativ',
+    },
+  },
+  'denken':{
+    'Partizip': 'gedacht',
+    'Rollen':{
+      'Gedachte': 'Akkusativ',
+    },
+  },
+  'verpassen':{
+    'Rollen':{
+      'Verpasste': 'Akkusativ',
+    },
+  },
   'erlauben':{
     'Rollen':{
       'Erlaubte': 'Akkusativ',
