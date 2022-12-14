@@ -1587,7 +1587,7 @@ def cleanup(satz):
     keep = []
     clean(node, keep)
   # remove unused arguments
-  for node in satz.findall('.//ARGUMENT'):
+  for node in satz.xpath('.//ARGUMENT|.//ADVERBIALE'):
     if ''.join(node.itertext()) == '':
       node.getparent().remove(node)
   return satz
