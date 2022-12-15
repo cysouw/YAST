@@ -41,6 +41,8 @@ Genera = {
   'r': 'Runde',
 }
 
+Kasus = ['Nominativ', 'Akkusativ', 'Dativ', 'Genitiv']
+
 Präpositionen = {
   # temporary solution for comparison: treat them as prepositions
   'wie': 'Nominativ',
@@ -116,9 +118,9 @@ Präpositionen = {
   'zugunsten': 'Genitiv',
 }
 
-comparisonUmlaut = ['alt', 'arm', 'dumm', 'fromm', 'gesund', 'grob', 'groß', 'hart', 'hoh', 'kalt', 'klug', 'kurz', 'lang', 'nah', 'scharf', 'stark', 'warm']
+KomparativUmlaut = ['alt', 'arm', 'dumm', 'fromm', 'gesund', 'grob', 'groß', 'hart', 'hoh', 'kalt', 'klug', 'kurz', 'lang', 'nah', 'scharf', 'stark', 'warm']
 
-comparisonSuppletion = {
+KomparativSuppletion = {
   'gut':{
     'Komparativ': 'besser',
     'Superlativ': 'best',
@@ -540,7 +542,7 @@ Verben = {
     'Rollen': {
       'Gesehene': 'Akkusativ'
     },
-    'Kontrolle': 'Seher',
+    'Präteritum': 'sah',
     'Präsens':{
       'Singular':{
         '1': 'sehe',
@@ -552,7 +554,7 @@ Verben = {
         '2': 'sieht',
         '3': 'sehen'
       }
-    }
+    },
   },
   'sein':{
     'Perfekt': 'sein',
