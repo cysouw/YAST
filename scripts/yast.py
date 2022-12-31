@@ -8,28 +8,30 @@ from lexicon import *
 # ====
 
 def Satz(addto, juncture = None):
-  # abbreviations
-  role = addto.find(f'*[@role="{juncture}"]')
-  root = addto.get('kind') == 'Wurzel'
   # different clauses (first adverbial clauses because of early vorfeld)
   if juncture in Subjunktionen:
     return Subjunktionsatz(addto, juncture)
   elif juncture in Satzpartizipien + Satzpräpositionen:
     return Präpositionsatz(addto, juncture)
-  elif root or juncture in Konjunktionaladverbien:
+  elif juncture in Konjunktionaladverbien or isRoot(addto):
     return Hauptsatz(addto, juncture)
-  elif juncture in Präpositionen or role is not None:
+  elif juncture in Präpositionen or isRole(addto, juncture):
     return Komplementsatz(addto, juncture)
   elif juncture is None:
     return Relativsatz(addto)
 
 def Ereignis(clause, verb):
-  # Verbal structure depends on lexeme
+  # clausal structure depends on lexeme
   if verb == 'e':
     Ereigniskopf(clause)
-  elif isAdjectival(verb) or verb in Adverbien or verb in Präpositionen or verb is None:
+  # non-verbal predication
+  elif verb in Präpositionen or isAdjectival(verb) or isAdverbial(verb):
     Prädikativ(clause, verb)
-  else:
+  # Nominal predication is done in two steps
+  elif verb is None:
+    Prädikativ(clause, verb)
+  # verbal predication
+  elif isVerbal(verb):
     Verb(clause, verb)
 
 # ======
@@ -37,29 +39,27 @@ def Ereignis(clause, verb):
 # ======
 
 def Phrase(addto, juncture = None):
-  # abbreviations
-  role = addto.find(f'*[@role="{juncture}"]')
-  # possibilities
-  if juncture in Präpositionen:
-    return Präpositionphrase(addto, juncture)
-  elif role is not None:
+  # different kinds of phrases
+  if isRole(addto, juncture):
     return Komplementphrase(addto, juncture)
+  elif juncture in Präpositionen:
+    return Präpositionphrase(addto, juncture)
   elif juncture in Kasus:
     return Vorläufigphrase(addto, juncture)
   elif juncture is None:
     return Relativphrase(addto)
 
 def Referent(phrase, referent):
-  # abbreviations
-  anaphor = phrase.get('anaphor')
+  # abbreviation
+  anaphor = phrase.get('anaphor') != 'Voll'
   # phrasal structure depends on lexeme
   if referent[:1] in list('012'):
     Pronomen(phrase, referent)
-  elif (referent in Teilnehmer or referent == 'E') and anaphor != 'Voll':
+  elif (referent in Teilnehmer or referent == 'E') and anaphor:
     Anapher(phrase, referent)
   elif referent in list('mnfpqr'):
     Referentkopf(phrase, referent)
-  else:
+  elif isReferential(referent):
     Nomen(phrase, referent)
 
 # =============
@@ -73,7 +73,7 @@ def Admodifikator(addto):
     return ET.SubElement(addto, 'ADVERBIALE')
 
 def Addendum(addto, adword):
-  # different kinds of lexemes
+  # admodifier depends on lexeme
   if isAdjectival(adword):
     Adjektiv(addto, adword)
   elif isAdverbial(adword):
@@ -234,7 +234,7 @@ def Verb(clause, verb):
   addVerb(clause, verb)
 
 def addVerb(clause, verb):
-  # remember original full verb
+  # remember original full verb at clause
   clause.set('verb', verb)
   verbnode = clause.find('PRÄDIKAT//VERB')
   # obligatory reflexive verbs
@@ -249,7 +249,7 @@ def addVerb(clause, verb):
   verbnode.set('verb', verb)
 
 def addCopula(clause, nonverbal = None):
-  # add copula
+  # get copula from clause
   copula = clause.get('verb')
   verbnode = clause.find('PRÄDIKAT//VERB')
   verbnode.set('verb', copula)
@@ -284,6 +284,7 @@ def addCopula(clause, nonverbal = None):
     subject.text = 'es'
     clause.set('person', '3')
     clause.set('number', 'Singular')
+  # nominal predication: add phrase to role 'Prädikat'
   else:
     predicative.set('case', 'Nominativ')
 
@@ -294,7 +295,7 @@ def addCopula(clause, nonverbal = None):
 def Frage(clause):
   clause.set('mood', 'Frage')
 
-def Imperativ(clause):
+def Befehl(clause):
   clause.set('mood', 'Imperativ')
 
 def Thetisch(clause):
@@ -1567,6 +1568,12 @@ def checkArgument(node):
     if node.tag == 'SATZ':
       return False
   return True
+
+def isRole(clause, role):
+  return clause.find(f'*[@role="{role}"]') is not None
+
+def isRoot(clause):
+  return clause.get('kind') == 'Wurzel'
 
 # =======
 # Kontext
