@@ -82,25 +82,25 @@ def Start():
 def Hauptsatz(addto, juncture = None):
   # make clause
   tense = addto.get('tense')
-  clause = ET.Element('SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
+  newclause = ET.Element('SATZ', attrib = {'kind': 'Hauptsatz', 'tense': tense})
   # include already added adverbials into Vorfeld
   if addto.get('kind') == 'Wurzel' and len(addto) > 0:
-    vorfeld = ET.SubElement(clause, 'VORFELD')
+    vorfeld = ET.SubElement(newclause, 'VORFELD')
     vorfeld.append(addto[0])
     # copy info if available
     for info in ['local', 'person', 'number']:
       if addto.get(info) is not None:
-        clause.set(info, addto.get(info))
+        newclause.set(info, addto.get(info))
         addto.attrib.pop(info)
-  # add Konjunktionaladverb to Vorfeld
+  # or add Konjunktionaladverb to Vorfeld
   elif juncture is not None:
-    vorfeld = ET.SubElement(clause, 'VORFELD')
+    vorfeld = ET.SubElement(newclause, 'VORFELD')
     adverbiale = ET.SubElement(vorfeld, 'ADVERBIALE')
     ET.SubElement(adverbiale, 'KONJUNKTIONALADVERB').text = juncture
     addto = ET.SubElement(addto, 'FORTSETZUNG')
   # add clause
-  addto.append(clause)
-  return clause
+  addto.append(newclause)
+  return newclause
 
 def Subjunktionsatz(clause, juncture):
   # includes a vorfeld, although there is no evidence for it
@@ -131,8 +131,8 @@ def Relativsatz(addto):
     node = ET.SubElement(addto, 'ADVERBIALE')
   elif isPhrase(addto):
     node = ET.SubElement(addto, 'ATTRIBUT')
-  clause = ET.SubElement(node, 'SATZ', attrib = {'kind': 'Relativsatz', 'tense': tense})
-  return clause
+  newclause = ET.SubElement(node, 'SATZ', attrib = {'kind': 'Relativsatz', 'tense': tense})
+  return newclause
 
 def Komplementsatz(clause, role):
   # präposition-komplementsatz for early specification
@@ -233,9 +233,11 @@ def addVerb(clause, verb):
     nominative = clause.find('.//*[@case="Nominativ"]')
     ET.SubElement(nominative, 'REFLEXIV', attrib = {'case': 'Akkusativ'})
   # lexicalised preverbs from lexicon are split
-  if Verben.get(verb, {}).get('Präverb', False):
-    ET.SubElement(verbnode, 'PRÄVERBIALE').text = Verben[verb]['Präverb'] + '+'
-    verb = Verben[verb]['Stamm']
+  if Verben.get(verb, {}).get('Stamm', False):
+    stem = Verben[verb]['Stamm']
+    preverb = verb[0:len(verb)-len(stem)]
+    ET.SubElement(verbnode, 'PRÄVERBIALE').text = preverb + '+'
+    verb = stem
   # add verb to verbnode
   verbnode.set('verb', verb)
 
@@ -1673,6 +1675,7 @@ def sentence(clause):
   sentence = sentence.replace(' +', '')
   sentence = sentence.replace('+ zu ', 'zu')
   sentence = sentence.replace('+ ', '')
+  sentence = sentence.replace('+', '')
   sentence = sentence.replace('  ', ' ')
   # end of sentence
   if clause[0].get('mood') == 'Frage':

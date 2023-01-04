@@ -1,8 +1,11 @@
 befinden:
+  Präteritum: befand
   Irrealis: befänd
   Partizip: befunden
   Reflexiv: true
 bekommen:
+  Präteritum: bekam
+  Irrealis: bekäm
   Partizip: bekommen
   Rollen:
     Bekommene: Akkusativ
@@ -11,10 +14,10 @@ betrügen:
   Rollen:
     Betrogene: Akkusativ
 bleiben:
+  Präteritum: blieb
   Partizip: geblieben
   Perfekt: sein
 darstellen:
-  Präverb: dar
   Stamm: stellen
   Rollen:
     Dargestellte: Akkusativ
@@ -35,7 +38,6 @@ dürfen:
       3: dürfen
 einschlafen:
   Perfekt: sein
-  Präverb: ein
   Stamm: schlafen
 ergänzen:
   Rollen:
@@ -70,7 +72,6 @@ glauben:
     Geglaubte: Akkusativ
 haben:
   Präteritum: hat
-  Konjunktiv: hab
   Irrealis: hätt
   Präsens:
     Singular:
@@ -140,10 +141,9 @@ müssen:
       2: müsst
       3: müssen
 nachholen:
-  Präverb: nach
+  Stamm: holen
   Rollen:
     Nachgeholte: Akkusativ
-  Stamm: holen
 nehmen:
   Partizip: genommen
   Rollen:
@@ -218,7 +218,6 @@ versprechen:
     Versprochene: Akkusativ
     Rezipient: Dativ
 vorliegen:
-  Präverb: vor
   Rollen:
     Vorgelegte: Akkusativ
   Stamm: liegen
@@ -226,7 +225,6 @@ warten:
   Rollen:
     Bewartete: auf
 weglaufen:
-  Präverb: weg
   Stamm: laufen
 werden:
   Irrealis: würd
