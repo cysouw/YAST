@@ -1,0 +1,124 @@
+# Konjunktionen
+# -------------
+# TODO: double conjuncts: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
+# TODO: difference between nominal and clausal conjunction
+[aber, denn, doch, jedoch, noch, oder, sondern, sowie, und, vorausgesetzt]
+---
+# Subjunktionen
+# -------------
+# NOTE: wie/wo here in the meaning of als
+[als, als ob, bevor, bis, da, damit, ehe, falls, indem, insofern, insoweit, nachdem, obgleich, obschon, obwohl, obzwar, seit, seitdem, sobald, sofern, solange, sooft, sosehr, soviel, soweit, sowie, trotzdem, während, weil, wenn, wenngleich, wie, wo]
+---
+# Satzpräpositionen
+# -----------------
+# Begründung (um), Alternative (statt, anstatt, anstelle), Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
+# NOTE: there is an old-fashioned usage of bis dass not included here
+[um, ohne, außer, ausser, statt, anstatt, anstelle, im Falle, für den Fall]
+---
+# Satzpartizipien
+# ---------------
+[angenommen, ausgenommen, gegeben, gesetzt, ungeachtet, unterstellt, vorausgesetzt]
+---
+# Grenzpräpositionen
+# ------------------
+# the following can be combined with adverbials, even adverbs
+# bis morgen, seit gestern, ab heute, von gestern
+# nach links, von hier, nach oben, für gleich  
+# bis in den frühen Morgen, seit unser letztes Treffen
+[von, seit, ab, bis, nach]
+---
+# Modalverben
+# -----------
+# note werden in both modalverben and kopulas!
+[dürfen, können, mögen, möchten, müssen, sollen, werden, brauchen]
+---
+# Kopulas
+# -------
+[sein, werden, bleiben, geben, haben]
+---
+# Präpositionen 
+# -------------
+# ad-hoc solution for comparison: treat them as prepositions
+wie: Nominativ
+als: Nominativ
+# Akkusativ
+bis: Akkusativ
+durch: Akkusativ
+entlang: Akkusativ
+für: Akkusativ
+gegen: Akkusativ
+ohne: Akkusativ
+um: Akkusativ
+# Dativ
+ab: Dativ
+aus: Dativ
+außer: Dativ
+bei: Dativ
+entgegen: Dativ
+entsprechend: Dativ
+gegenüber: Dativ
+gemäß: Dativ
+mit: Dativ
+nach: Dativ
+nahe: Dativ
+seit: Dativ
+von: Dativ
+zu: Dativ
+# Wechselpräpositionen: dative default for stative location, use Bewegung to make accusative
+# governed roles are variable, but: auf/über/in/vor take accusative when governed
+# an is variable (denken an Dativ, Dativ alternation with accusative
+an: Dativ
+auf: Dativ
+hinter: Dativ
+in: Dativ
+neben: Dativ
+über: Dativ
+unter: Dativ
+vor: Dativ
+zwischen: Dativ
+# Genitiv
+abseits: Genitiv
+abzüglich: Genitiv
+angesichts: Genitiv
+anfangs: Genitiv
+anhand: Genitiv
+anstatt: Genitiv
+außerhalb: Genitiv
+aufgrund: Genitiv
+bar: Genitiv
+bezüglich: Genitiv
+dank: Genitiv
+diesseits: Genitiv
+einschließlich: Genitiv
+entlang: Genitiv
+infolge: Genitiv
+innerhalb: Genitiv
+inmitten: Genitiv
+jenseits: Genitiv
+kraft: Genitiv
+längs: Genitiv
+laut: Genitiv
+mittels: Genitiv
+ob: Genitiv
+oberhalb: Genitiv
+seitens: Genitiv
+statt: Genitiv
+trotz: Genitiv
+ungeachtet: Genitiv
+unterhalb: Genitiv
+unweit: Genitiv
+während: Genitiv
+wegen: Genitiv
+zugunsten: Genitiv
+
+---
+
+# Substantive
+
+Bäcker:
+  Geschlecht: Maskulin
+  Plural: Bäcker
+  Belebt: true
+Leistungserbringung:
+  Geschleckt: Feminin
+  Plural: null

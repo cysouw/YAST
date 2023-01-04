@@ -1,0 +1,259 @@
+befinden:
+  Irrealis: befänd
+  Partizip: befunden
+  Reflexiv: true
+bekommen:
+  Partizip: bekommen
+  Rollen:
+    Bekommene: Akkusativ
+betrügen:
+  Partizip: betrogen
+  Rollen:
+    Betrogene: Akkusativ
+bleiben:
+  Partizip: geblieben
+  Perfekt: sein
+darstellen:
+  Präverb: dar
+  Stamm: stellen
+  Rollen:
+    Dargestellte: Akkusativ
+denken:
+  Partizip: gedacht
+  Rollen:
+    Gedachte: Akkusativ
+dürfen:
+  Partizip: gedurft
+  Präsens:
+    Singular:
+      1: darf
+      2: darfst
+      3: darf
+    Plural:
+      1: dürfen
+      2: darfst
+      3: dürfen
+einschlafen:
+  Perfekt: sein
+  Präverb: ein
+  Stamm: schlafen
+ergänzen:
+  Rollen:
+    Ergänzte: Akkusativ
+erlauben:
+  Rollen:
+    Erlaubte: Akkusativ
+    Rezipient: Dativ
+erwarten:
+  Rollen:
+    Erwartete: Akkusativ
+freuen:
+  Konversiv: über
+  Rollen:
+    Auslöser: Nominativ
+    Freuende: Akkusativ
+geben:
+  Präteritum: gab
+  Irrealis: gäb
+  Partizip: gegeben
+  Präsens:
+    Singular:
+      1: gebe
+      2: gibst
+      3: gibt
+    Plural:
+      1: geben
+      2: gibt
+      3: geben
+glauben:
+  Rollen:
+    Geglaubte: Akkusativ
+haben:
+  Präteritum: hat
+  Konjunktiv: hab
+  Irrealis: hätt
+  Präsens:
+    Singular:
+      1: habe
+      2: hast
+      3: hat
+    Plural:
+      1: haben
+      2: habt
+      3: haben
+hoffen:
+  Rollen:
+    Gehoffte: auf
+kennen:
+  Partizip: gekannt
+  Rollen:
+    Gekannte: Akkusativ
+kommen:
+  Partizip: gekommmen
+  Perfekt: sein
+können:
+  Partizip: gekonnt
+  Präsens:
+    Singular:
+      1: kann
+      2: kannst
+      3: kann
+    Plural:
+      1: können
+      2: könnt
+      3: können
+lassen:
+  Partizip: gelassen
+  Präsens:
+    Singular:
+      1: lasse
+      2: lässt
+      3: lässt
+    Plural:
+      1: lassen
+      2: lässt
+      3: lassen
+laufen:
+  Partizip: gelaufen
+  Präsens:
+    Singular:
+      1: laufe
+      2: läufst
+      3: läuft
+    Plural:
+      1: laufen
+      2: läuft
+      3: laufen
+  Präteritum: lief
+malen:
+  Rollen:
+    Gemalte: Akkusativ
+müssen:
+  Partizip: gemusst
+  Präsens:
+    Singular:
+      1: muss
+      2: musst
+      3: muss
+    Plural:
+      1: müssen
+      2: müsst
+      3: müssen
+nachholen:
+  Präverb: nach
+  Rollen:
+    Nachgeholte: Akkusativ
+  Stamm: holen
+nehmen:
+  Partizip: genommen
+  Rollen:
+    Genommene: Akkusativ
+    Rezipient: Dativ
+schenken:
+  Rollen:
+    Geschenkte: Akkusativ
+    Rezipient: Dativ
+schlafen:
+  Partizip: geschlafen
+  Präsens:
+    Singular:
+      1: schlafe
+      2: schläfst
+      3: schläft
+    Plural:
+      1: schlafen
+      2: schläft
+      3: schlafen
+schlagen:
+  Partizip: geschlagen
+  Rollen:
+    Geschlagene: Akkusativ
+sehen:
+  Partizip: gesehen
+  Präsens:
+    Singular:
+      1: sehe
+      2: siehst
+      3: sieht
+    Plural:
+      1: sehen
+      2: sieht
+      3: sehen
+  Präteritum: sah
+  Rollen:
+    Gesehene: Akkusativ
+sein:
+  Irrealis: wär
+  Konjunktiv: sei
+  Partizip: gewesen
+  Perfekt: sein
+  Präsens:
+    Singular:
+      1: bin
+      2: bist
+      3: ist
+    Plural:
+      1: sind
+      2: seit
+      3: sind
+  Präteritum: war
+stellen:
+  Rollen:
+    Gestellte: Akkusativ
+tun:
+  Irrealis: tät
+  Partizip: getan
+  Präteritum: tat
+  Rollen:
+    Getane: Akkusativ
+verpassen:
+  Rollen:
+    Verpasste: Akkusativ
+versetzen:
+  Rollen:
+    Versetzte: Akkusativ
+versprechen:
+  Partizip: versprochen
+  Rollen:
+    Versprochene: Akkusativ
+    Rezipient: Dativ
+vorliegen:
+  Präverb: vor
+  Rollen:
+    Vorgelegte: Akkusativ
+  Stamm: liegen
+warten:
+  Rollen:
+    Bewartete: auf
+weglaufen:
+  Präverb: weg
+  Stamm: laufen
+werden:
+  Irrealis: würd
+  Partizip: geworden
+  Perfekt: sein
+  Präsens:
+    Singular:
+      1: werde
+      2: wirst
+      3: wird
+    Plural:
+      1: werden
+      2: werdet
+      3: werden
+  Präteritum: wurd
+wundern:
+  Konversiv: über
+  Rollen:
+    Auslöser: Nominativ
+    Verwunderte: Akkusativ
+ärgern:
+  Konversiv: über
+  Rollen:
+    Auslöser: Nominativ
+    Ärgernde: Akkusativ
+überlassen:
+  Partizip: überlassen
+  Rollen:
+    Überlassene: Akkusativ
+    Rezipient: Dativ
