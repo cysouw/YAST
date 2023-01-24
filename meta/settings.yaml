@@ -1,0 +1,37 @@
+# main settings
+
+mainfont: Libertinus Serif
+top-level-division: chapter
+toc-title: Contents
+lang: en-GB # important for hyphenation
+margin-left: 4cm
+margin-right: 4cm
+
+# pandoc-crossref settings
+
+secPrefix: 
+  - Sec­tion
+  - Sec­tions
+tblPrefix:
+  - Table
+  - Tables
+figPrefix:
+  - Figure
+  - Figures
+pairDelim: "-"
+chapters: true
+linkReferences: true
+setLabelAttribute: true
+
+# pandoc-ling settings
+
+addChapterNumber: false
+xrefSuffixSep: " "
+latexPackage: gb4e
+formatGloss: true
+
+# citeproc settings
+
+bibliography: /Users/cysouw/Documents/Bibdesk/michaellibrary.bib
+citation-style: /Users/cysouw/Documents/Bibdesk/unified.csl
+link-citations: true
