@@ -12,17 +12,29 @@ The syntactic rules presented here describe (standard) German. However, the gene
 
 ## Basic principles
 
-In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the ~~rules~~ machinery, lead to an ~~utterance~~, i.e. a sequence of pronounceable linguistic elements. Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might be a useful model for syntax processing (but note that the current model is based purely on syntactic analysis, without any actual research into psychological processing). To produce utterances there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply can be uttered immediately. The outcome of the instructions can be recorded, and this ~~receipt~~ looks like a familiar syntactic tree. Crucially, such syntactic trees are not necessary for the production of the utterance. The tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe. 
+In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, result in an utterance, i.e. a sequence of pronounceable linguistic elements.
 
-The ephemeral role of the syntactic tree is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruction the tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying instructions. In the current implementation this involves a lot of trial and error in that simply many different instructions are attempted (within the range of possibilities as constrained by the utterance). Each attempt is fed into the rules until the actually observed utterance is replicated. In a sense, this parser is like an unexperienced learner of the language that knows the rules, but does not know any shortcuts to quickly home in on the right interpretation. Future versions of the parser should clearly improve on this performance. Then the parser will then actually be a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing the same generation in parallel and checking the results with the observerd utterance.
+Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might also be a useful model for syntax processing, though note that the current model is based purely on syntactic analysis, without any actual research into real psychological processing. To produce utterances there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply lead to linguistic elements that can be uttered immediately.
+
+The results of the instructions can be recorded, and this ~~receipt~~ looks like a familiar syntactic tree. Crucially, such syntactic trees are not necessary for the production of the utterance. The tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe. 
+
+The ephemeral role of the syntactic tree is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruction the tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying instructions. In the current implementation simply many different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. In a sense, this parser is like an unexperienced learner of the language that knows the rules, but does not know any shortcuts to quickly arrive at the right interpretation.  The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results with the observed utterance.
 
 ![Basic workflow of YAST](figures/basis){#fig:basis}
 
-Instructions consist of different kind of information, ~~content~~, ~~connection~~ and ~~specification~~. All specified information concerns the subject matter, not the syntactic structure of the utterance. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The syntactic structure is simply added automatically to an utterance by the rules. 
+## Instructions
 
-- Content, mostly a single lexeme
-- Connection to previous content
-- Specification, i.e. language-specific grammatical 'features'
+Instructions consist of three different kinds of information, namely ~~linkage~~, ~~content~~ and ~~specification~~. All information in an instruction is of a functional/semantic nature. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The syntactic structure is added to an utterance by the (automatic) rules. 
+
+::: ex
+Parts of an instruction in YAST
+
+- ~~linkage~~: relation to earlier content (can be empty)
+- ~~content~~: a single base lexeme
+- ~~specification~~: language-specific grammatical marking (can be empty)
+:::
+
+As an example, consider the German sentence in [@next] as an appetizer. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this will not be pursued here. Note that the instructions are intentionally formulated with language-specific categories, so the semantic interpretation will have to be language-specific as well.
 
 ::: ex
 - Die Männer, deren kleinen Kinder schlecht schlafen, habe ich gestern in deinem schönen Garten gesehen.
@@ -31,9 +43,9 @@ Instructions consist of different kind of information, ~~content~~, ~~connection
 ::: {.ex noFormat=true}
 ```
 sehen (Perfekt)
-  Gesehene: Mann (Definit + Plural)
+  Gesehene: Mann (Plural + Definit)
     schlafen
-      Schlafende: Kind (Besitzer: Mann + Plural)
+      Schlafende: Kind (Plural + Besitzer: Mann)
         klein
       schlecht
   Sehende: 1
@@ -43,16 +55,130 @@ sehen (Perfekt)
 ```
 :::
 
-The actual lexemes to be used are typically included into the instructions, as the language-specific lexemes are the best summary of their meaning.
+Each line in [@last] is a single instruction, possibly consisting of up to three different kinds of elements. Anything before any colon is the explicit ~~linkage~~, typically a lexical role, an adposition or a subjunction. When there is no colon than the linkage is of a default nature. 
 
-Ordering of instructions is "free". The generator is allowed to specify any order (within certain limits to be specified) and the rules will sometimes have to work around to make this order work in accordance to the structure of the language. A proficient speaker with much experience takes this into account. 
+After the linkage (or first in line when there is no explicit linkage) follows the main ~~content~~. This is typically a German lexeme, though there are a few codes used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning.
+
+Following the lexeme are explicit grammatical ~~specifications~~ between brackets. When there are no grammatical specifications the rules will infer a default ('unmarked') intention. Multiple grammatical specifications are separated with a plus-sign.
+
+The ~~order of instructions~~ is to a large extend "free". The speaker is allowed to specify the intructions in any order (within certain limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to make this order work in accordance to the structure of the language. A proficient speaker with much experience will take the expected output into account in building the instructions.
+
+## Syntactic model
+
+The basic building blocks of human language are ~~lexemes~~. Lexemes induce a state-of-mind at the addressee, consisting of possible situations in accordance to the communally developed practice of using the lexeme (i.e. the lexeme's 'meaning'). The act of uttering a lexeme aims to conjure up some of those possible situations in the mind of the addressee.
+
+Language extends the usefulness of these building blocks by combining multiple lexemes into utterances. The basic meaning of a combination of lexemes is the intersection of the two sets of possible situations. If the addressee is not able to find any intersection, the utterance of a lexeme combination forces the addressee to further search for possible situations that meet the desired combination.
+
+However, a central tenet of human language is that combinations of linguistic elements is typicaly asymmetrical. Lexemes are not simply combined as equals, but there is always a ~~base~~ lexeme that is modified by another linguistic element.^[Explicitly symmetrical connections like coordination seem to be a much more recent add-on.] Such modifiers can become grammaticalised to a point at which they cannot be used themselves as a base anymore and become pure ~~operators~~. Base lexemes can be further differentiated in admodifiers and predicates.^[By using functional terms like 'base' and 'modifier' I explicitly refrain from using more structurally-oriented terms like 'head' and 'dependent', respectively, although those terms can largely be taken as synonymous. However, the discussion about the 'right' definition of the notion 'head' has become too contentious for it to be suitable in my opinion.]
+
+I propose the following definitions for these three different kinds of syntactic elements: ~~operators~~, ~~admodifiers~~ and ~~predicates~~. Note that the statements below are definitions that might not always coincide with what one might otherwise conceive of as an operator, admodifier or predicate. However, the effect of these definitions seem close enough to most applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion. To disambiguate the following definitions from other approaches using these terms one might think of them as 'YAST-operator', etc., but such clarification will here simply be omitted.
+
+::: ex
+Syntactic elements in YAST
+
+- ~~operator~~: a modifier that itself cannot be modified.
+- ~~admodifier~~: a base that can only be modified by operators.
+- ~~predicate~~: a base that can be modified by operators, admodifiers and predicates.
+:::
+
+Prototypical operators are bound morphemes, but there are many other linguistic elements that are operators under the current definition (viz. they cannot themselves be modified), e.g. intensifiers, quantifiers, adpositions, subjunctions, etc. Prototypical admodifiers are adjectives and adverbs that allow for only limited modification like gradation and intensification. The syntactic function of a predicate is defined here in a very general sense. Predicates typically are verbs, but it also includes nouns as predicator of a referential entity. By definition, predicates can be modified by other predicates, so this is the moment where recursion becomes necessary.
+
+## Hierarchical structure
+
+The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modelled by using the mechanisam of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.
+
+Coinciding with the three kinds of syntactic elements introduced in [@last], I propose to break down the hierarchical structure of human utterances into three different levels, which I will refer to as ~~stacking~~, ~~redoubling~~ and ~~embedding~~. These three levels of hierarchical structure are conceptually build on top of each other, i.e. redoubling is a special case of stacking, and embedding is a special case of iteration. In practice, I will use the term 'stacking' only when there is no redoubling nor embedding, and 'redoubling' is likewise only used for constructions that are not embedding. Crucially, only embedding will be modelled with recursion. Stacking and redoubling are much simpler and do not need recursion because they can easily be modelled by iteration.
+
+::: ex
+Hierarchical structures in YAST
+
+- ~~stacking~~ is the modification of a base by operators.
+- ~~redoubling~~ is the modification of a base by admodifiers.
+- ~~embedding~~ is the modification of a base by predicates.
+:::
+
+These three levels suggest an evolutionary development in that human language first developed stacking, then redoubling and then embedding. However, that is purely speculation as all human languages currenty appear to employ all three kinds of hierarchical structure. Also note that contemporary language change does not follow the path from stacking to redoubling to embedding. In contrast, grammaticalisation typically develops in the reverse direction.
+
+## Expressing the syntactic model
+
+The syntactic model is turned into YAST-instructions as follows. Each base is a content lexeme that makes up a single instruction (i.e. a single line in the YAST-format as in the earlier example, repeated below). Redoubling and embedding are specified by indenting of the instructions. The difference between redoubling and embedding is not explicitly specified. However, embedding typically can have further modifications and their relation to the superordinate base can be specified with a linkage (before the colon). Syntactically, each linkage is an operator. All other operators are added in brackets after the base lexeme.
+
+::: {.ex noFormat=true}
+```
+sehen (Perfekt)
+  Gesehene: Mann (Plural + Definit)
+    schlafen
+      Schlafende: Kind (Plural + Besitzer: Mann)
+        klein
+      schlecht
+  Sehende: 1
+  gestern
+  in: Garten (Definit + Besitzer: 2)
+    schön
+```
+:::
+
+- **level 0: morpheme combination**
+  - a ~~morpheme~~ is a unanalyzable linguistic symbol, i.e a conventional and mostly arbitrary form-meaning pairing that cannot be meaningfully further subdivided.
+  - two lexemes can be combined using simple set-intersection semantics
+  - linear ordering of lexemes is not consistently used
+  - combinations of more than two lexemes are difficult to interpret, but not impossible
+  - this level of structure seems to be attested in other lifeforms as well
+- **level 1: base-operator stacking**
+  - lexemes are used in two different functions, i.e. there is an asymmetry between a ~~base~~-lexeme and an ~~operator~~-lexeme
+  - in set-semantic terms, an operator restricts the reference of its base
+  - multiple operators can hierarchically be added to a base
+  - operators themselves cannot be further modified
+  - ~~linear ordering~~ between base and operator is typically employed to indicate the asymmetry between base and operator
+  - ordering base-operator seems more 'natural', typically leading to postposed operators
+- **level 2: head-dependent iteration**
+  - a base-lexeme is called a ~~head~~ when its operators can themselves have operators
+  - an operator-lexeme is called a ~~dependent~~ when it can have operators for itself
+  - dependents can have operators, but they cannot have dependents, i.e. there is only one level of embedding
+  - multiple dependents per head are possible, but without further internal structure these are just lists of dependents added to a single head.
+  - ~~bound morphology~~ is typically used to make operator scope explicit
+- **level 3: subordination**
+  - dependents can themselves have dependents, i.e. full recursion as a dependent can be a head
+  - explicit relations to mark heads-as-dependents
+  - complex internal ordering structure of constituents
+  - specialisation of lexemes
+
+
+
+Because of the spoken mode, language is necessarily ~~ordered~~. All utterances progress in time, necessitating the ordering of elements in a linear fashion. So, when combining two lexemes a decision has to be taken in which order to utter them. 
+
+A typical correlate to a head-dependency asymmetry is to fix the ordering, in essence marking the asymmetry by the ordering.
+
+Dependency:
+- Unmarked
+- Relation
+
+Constituency:
+- Binary
+- Multiple
+
+Hierarchical structure:
+- Iteration (“tail-recursion”)
+- Recursion
+
+Order:
+- External (before, after)
+- Internal (first, second, pre-head, post-head, end)
+
+Lexeme classes
+
+Note the difference between "operated on" and "modified by". Modifier become operator through grammaticalisation, e.g. compounds leading to derivational morphology or auxiliaries becoming inflection.
+
+Relationship-grammaticalisation: 
+- junktor > relator > operator > contributor
+- lexical relation > abstract relation > head specification > automatic rule ('double marking', probably rare)
 
 ## Syntactic rules
 
 The basic syntactic principles are the following.
 
 - YAST makes a strict separation between monoclausal ~~stacking~~ and multiclausal ~~subordination~~.
-- A sentence is constructed by a hierarchical sequence of ~~operations~~ that closely mimic descriptive approaches to linguistic structure. 
+- A sentence is constructed by a hierarchical sequence of ~~instructions~~ that closely mimic descriptive approaches to linguistic structure. 
 - The operations and their lexical variables are supposed to be the minimal information needed to produce a sentence. All other syntactic details follow automatically from this information, with the help of a static dictionary.
 - A YAST operation typically adds linguistic material to the sentence, i.e. ~~generation~~, but it can also change already available material, i.e. ~~transformation~~. Aspects of generation and transformation are thus intermixed in YAST.
 - The nodes in the resulting hierarchical sentence structure record the operations applied, so the final YAST tree can be read as an archive of the building process.
