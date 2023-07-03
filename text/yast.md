@@ -1,8 +1,8 @@
 ## Preface {.unnumbered}
 
-The motivation to develop yet another syntactic model for an already well-described language like German grew out of a large research project on German diathesis (Cysouw 2023). That book claims to provide a complete list of all monoclausal syntactic derivations for German. This list is long (currently more than 300 clause derivations, and counting), but clearly finite. Now, the impetus for the current syntactic model was the simple idea to investigate what remains to be done for the syntax once all these monoclausal derivations are put aside. In other words, how does a syntactic model look like when monoclausal derivations are reduced to just checkboxes to be ticked, alike to treating other finite morphosyntactic categories like tense or number. The current proposal is the result of following that premise through. In essence, the current approach is an experiment build on a single fundamental question, namely what a syntax would look like when monoclausal derivation (called 'stacking' in Cysouw 2023) is strictly separated from biclausal subordination.
+The motivation to develop yet another syntactic model for an already well-described language like German grew out of a large research project on German diathesis (Cysouw 2023). That book claims to provide a complete list of all monoclausal syntactic derivations for German. This list is long (currently more than 300 clause derivations, and counting), but clearly finite. The impetus for the current syntactic model was the simple idea to investigate what remains to be done for the syntax once all these monoclausal derivations are put aside. In other words, what does a syntactic model look like when monoclausal derivations are reduced to just checkboxes to be ticked, alike to treating other finite morphosyntactic categories like tense or number. The current proposal is the result of following that premise through. In essence, the current approach is an experiment build on a single fundamental question, namely what a syntax would look like when monoclausal derivation (called 'stacking' in Cysouw 2023) is strictly separated from subordination.
 
-Syntactic models need an acronym, so here I present to you YAST. This name started out in jest for 'Yet Another Syntax Theory', but I got enamoured by the name, so it stuck. There is a slightly deeper meaning to this name, however. The acronym YAST is an obvious nod to YAML, which started out as meaning 'Yet Another Markup Language'. But then, as YAML was developed further, it turned out to be much more powerful than anticipated, which lead to a recursive 'backronym' meaning 'YAML Ain't Markup Language'. In the same vein as YAML, the YAST approach turned out to be much more powerful than I had anticipated, so I now interpret the acronym YAST as a backronym meaning 'YAST Ain't (just) Syntax Theory'. But what's in a name? In the end it's just a sequence of letters to identify the approach to morphosyntactic analysis as outlined in this book.
+Syntactic models need an acronym, so here I present to you YAST. This name started out in jest for 'Yet Another Syntax Theory', but I got enamoured by the name, so it stuck. There is a slightly deeper meaning to this name, however. The acronym YAST is an obvious nod to YAML, which started out as meaning 'Yet Another Markup Language'. But then, as YAML was developed further, it turned out to be much more powerful than anticipated, which lead to a recursive 'backronym' meaning 'YAML Ain't Markup Language'. In the same vein, the YAST approach turned out to be much more powerful than I had anticipated, so I now interpret the acronym YAST as a backronym meaning 'YAST Ain't (just) Syntax Theory'. But what's in a name? In the end it's just a sequence of letters to identify the approach to morphosyntactic analysis as outlined in this book.
 
 The result is remarkable: with the hundreds of clause derivations out of the way, a reasonably fragment of a syntax for German can be formulated with just very few rules. I have implemented these rules in Python using XML-tree structures, and this part of the syntax takes just a few hundred lines of code. It can produce complete sentences with ordering, case marking, agreement and syntactic control for a wide range of complex syntactic structures. The remaining hundreds of clausal derivations (as described in Cysouw 2023) also can be easily implemented in just a dozen or so lines of code each. Currently only a small exemplary subset of those has been implemented. There is also a basic parser, which is not very good yet, but there is amply room for improvement.
 
@@ -10,31 +10,31 @@ The syntactic rules presented here describe (standard) German. However, the gene
 
 # The YAST approach
 
-## Basic principles
+## The recipe-rule-result-receipt model
 
-In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, result in an utterance, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline for which elements should appear in the instructions is predictability: all parts of the utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. The  necessary research to write the morphosyntactic YAST-rules for a specific language has to explicate which parts of the utterance are predictable and which are non-predictable.
+In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, result in an utterance, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline determining what should appear in the instructions is the notion of predictability: all parts of an actual utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. So, the research that is needed to write the morphosyntactic YAST-rules for a specific language is to explicate which parts of the utterance are predictable and which are non-predictable. As it turns out, the structure of a set of instructions to produce a sentence is very close to a dependency tree.
 
 Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might also be a useful model for language processing, though note that the current model is based purely on syntactic analysis, without any actual research into real psychological processing. To produce utterances there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply lead to linguistic elements that can be uttered immediately.
 
-The results of the evaluated instructions can be recorded, and this ~~receipt~~ looks like a familiar syntactic tree. Crucially, such syntactic trees are not necessary for the production of the utterance in YAST. The tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe. 
+The results of the evaluated instructions can be recorded, and this ~~receipt~~ looks like a constituent tree. Crucially, the creation of such constituent trees are not necessary for the production of the utterance. The constituent tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe. In short, the syntactic approach of YAST can be summarised as a ~~recipe-rule-result-receipt~~ model. The (dependency-like) instructions are the recipe. The recipe is fed into the the rules to produce a resulting utterance. Additionally, a (constituent-like) receipt is a summary of all the procedures leading to the result.
 
-The ephemeral role of the syntactic tree is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruction the tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying instructions. In the current implementation simply many different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. In a sense, this parser is like an unexperienced learner of the language that knows the rules, but does not know any shortcuts to quickly arrive at the right interpretation.  The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results of these mirrorred generation with the observed utterance. The parser mostly does not have to wait untill an utterance is finished, but can already start prediciting while the utterance is still ungoing. This aspect of YAST seems to be a very fruitful for modelling language processing. 
+The ephemeral role of the constituent-like receipt is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruct the constituent tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying dependency-like instructions. In the current implementation, simply many different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. In a sense, this parser is like an unexperienced learner of the language that knows the rules, but does not know any shortcuts to quickly arrive at the right interpretation.  The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results of these mirrored generation with the observed utterance. The parser mostly does not have to wait until an utterance is finished, but can already start predicting while the utterance is still ongoing. This aspect of YAST seems to be a very fruitful approach for modelling language processing. 
 
 ![Basic workflow of YAST](figures/basis){#fig:basis}
 
-## Instructions
+## The recipe
 
-Instructions consist of three different kinds of information, namely ~~linkage~~, ~~content~~ and ~~specification~~. All information in an instruction turns out to be of a functional/semantic nature. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The formal syntactic structure is added to an utterance by the (automatic) rules. 
+The recipe consists of a collection of one-line instructions that can be indented to indicate modifications. Instructions consist of three different kinds of information, namely ~~junction~~, ~~content~~ and ~~specification~~. All information in an instruction ideally will be of a functional/semantic nature. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The formal syntactic structure is added to an utterance by the (automatic) rules. However, the most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. A speaker of a specific language is necessarily juggling with the language-specific tools available to construct an utterance.
 
 ::: ex
 Parts of an instruction in YAST
 
-- ~~linkage~~: relation to earlier content (can be empty)
+- ~~junction~~: explicit relation to earlier content (can be empty for default modification)
 - ~~content~~: a single base lexeme
-- ~~specification~~: language-specific grammatical marking (can be empty)
+- ~~specification~~: language-specific grammatical marking (can be empty for unmarked morphosyntax)
 :::
 
-As an example, consider the German sentence in [@next] as an appetizer. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this will has to be worked out in more detail. Note that the instructions are intentionally formulated with language-specific categories, so the semantic interpretation will have to be language-specific as well.
+As an example, consider the German sentence in [@next] as an appetiser. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this will has to be worked out in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic categories, so their semantic interpretation will have to be language-specific as well. Any cross-linguistic generalisation over language-specific elements is a highly important, though separate, endeavour.
 
 ::: ex
 - Die Männer, deren kleinen Kinder schlecht schlafen, habe ich gestern in deinem schönen Garten gesehen.
@@ -55,35 +55,93 @@ sehen (Perfekt)
 ```
 :::
 
-Each line in [@last] is a single instruction, possibly consisting of up to three different kinds of elements. Anything before any colon is an explicit ~~linkage~~, either a lexical role, an adposition or a subjunction. When there is no colon than the linkage is of a default nature that can be predicted by the rules. After the linkage (or first in line when there is no explicit linkage) follows the main ~~content~~. This is typically a German lexeme, though there are a few codes used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. Following the lexeme are explicit grammatical ~~specifications~~ between brackets. When there are no grammatical specifications the rules will infer a default ('unmarked') intention. Multiple grammatical specifications are separated with a plus-sign.
+Each line in [@last] is a single instruction, possibly consisting of up to three different kinds of elements. Anything before the colon is an explicit ~~junctor~~ that marks the relation to the superordinate instruction. It is either a lexical role, an adposition or a subjunction/conjunction. When there is no colon, then the junction will be default modification. After the linkage follows the main ~~content~~. This is typically a German lexeme, though there are a few codes used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. Following the content lexeme comes a list (between brackets) with explicit grammatical ~~specifications~~. When there are no grammatical specifications the rules will infer a default ('unmarked') grammatical structure. Multiple grammatical specifications are separated with a plus-sign, and their order is relevant in some situations.
 
-The ~~order of instructions~~ is to a large extend "free" (of course only when on the same level of indentation, which marks modification). The speaker is allowed to specify the intructions in any order (within certain limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to make this order work in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.
+## The rules
 
-## Syntactic model
+The rules transform the instructions into an actual utterance.
 
-The basic building blocks of human language are ~~lexemes~~. Lexemes induce a state-of-mind at the addressee, consisting of possible situations in accordance to the communally developed practice of using the lexeme (i.e. the lexeme's 'meaning'). The act of uttering a lexeme aims to conjure up some of those possible situations in the mind of the addressee.
+How to put everything in its proper place and give it its proper form. 
+
+Most rules are context-free. It might be only diatheses that are mildly-context-sensitive, in that multiple different (named) elements are transformed.
+
+Basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instruction.
+
+Template insertion, morpheme insertion and agreement/government resolution.
+
+Two kinds of syntactic templates: ~~clause~~ template and ~~phrase~~ template.
+
+## The receipt
+
+Constituent structure
+
+# Generating the recipe
+
+## Generation: creating a recipe
+
+incremental, lot's of free choice, restrictions pile up as a result of previous choices
+
+In some situation, the ordering of specifications is relevant. 
+
+In a formal sense, recipe-generation is a purely regular (type-3) grammar. It just consists of the rules R->i, R->iR, i.e. a Recipe *R* can be an instruction *i*
+
+The order of instructions in a recipe is to a large extend "free". The speaker is allowed to specify the instructions in any order in accordance with the intended message (within certain language-specific limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to mould the result in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.
+
+## Ingredients: building blocks of a recipe
+
+The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor user here). 
+
+Lexemes induce a state-of-mind at the addressee, consisting of possible situations in accordance to the communally developed practice of using the lexeme (i.e. the lexeme's 'meaning'). The act of uttering a lexeme aims to conjure up some of those possible situations in the mind of the addressee.
 
 Language extends the usefulness of these building blocks by combining multiple lexemes into utterances. The basic meaning of a combination of lexemes is the intersection of the two sets of possible situations. If the addressee is not able to find any intersection, the utterance of a lexeme combination forces the addressee to further search for possible situations that meet the desired combination.
 
-However, a central tenet of human language is that combinations of linguistic elements is typicaly asymmetrical. Lexemes are not simply combined as equals, but there is always a ~~base~~ lexeme that is modified by another linguistic element.^[Explicitly symmetrical connections like coordination seem to be a much more recent add-on.] Such modifiers can become grammaticalised to a point at which they cannot be used themselves as a base anymore and become pure ~~operators~~. Base lexemes can be further differentiated in admodifiers and predicates.^[By using functional terms like 'base' and 'modifier' I explicitly refrain from using more structurally-oriented terms like 'head' and 'dependent', respectively, although those terms can largely be taken as synonymous. However, the discussion about the 'right' definition of the notion 'head' has become too contentious for it to be suitable in my opinion.]
+However, a central tenet of human language is that combinations of linguistic elements is typicaly asymmetrical. Lexemes are not simply combined as equals, but there is always a ~~base~~ lexeme that is modified by another linguistic element.^[Explicitly symmetrical connections like coordination seem to be a much more recent add-on.] Modifiers can become grammaticalised to a point at which they cannot be used themselves as a base anymore and become pure ~~operators~~.^[By using functional terms like 'base' and 'modifier' I explicitly refrain from using more structurally-oriented terms like 'head' and 'dependent', respectively, although those terms can largely be taken as synonymous.]
+
+Base lexemes can be further differentiated into admodifiers and predicates.
 
 I propose the following definitions for these three different kinds of syntactic elements: ~~operators~~, ~~admodifiers~~ and ~~predicates~~. Note that the statements below are definitions that might not always coincide with what one might otherwise conceive of as an operator, admodifier or predicate. However, the effect of these definitions seem close enough to most applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion. To disambiguate the following definitions from other approaches using these terms one might think of them as 'YAST-operator', etc., but such clarification will here simply be omitted.
 
 ::: ex
-Syntactic elements in YAST
+Primary syntactic functions in YAST
 
-- ~~operator~~: a modifier that itself cannot be modified.
-- ~~admodifier~~: a base that can only be modified by operators.
-- ~~predicate~~: a base that can be modified by operators, admodifiers and predicates.
+- ~~base~~: a linguistic element that can be modified.
+- ~~operator~~: a linguistic element that itself cannot be modified.
 :::
 
-Prototypical operators are bound morphemes, but there are many other linguistic elements that are operators under the current definition (viz. they cannot themselves be modified), e.g. intensifiers, quantifiers, adpositions, subjunctions, etc. Prototypical admodifiers are adjectives and adverbs that allow for only limited modification like gradation and intensification. The syntactic function of a predicate is defined here in a very general sense. Predicates typically are verbs, but it also includes nouns as predicator of a referential entity. By definition, predicates can be modified by other predicates, so this is the moment where recursion becomes necessary.
+The German language has a rather strict seperation into morphemes that are bases and morphemes that are operators.
+
+::: ex
+Base functions in YAST
+
+- ~~predicate~~: a base that can be modified by operators and by other bases.
+  - ~~reference~~ ('noun') does not need a modifier
+  - ~~predication~~ ('verb') needs a modifier
+- ~~admodifier~~: a base that can only be modified by operators.
+  - ~~modifying reference~~ ('adjective')
+  - ~~modifying predication~~ ('adverb')
+:::
+
+::: ex
+Operator functions
+
+- ~~juncture~~: an operator that encodes the relation between a superodinate and a subordinate predicate.
+  - ~~juncture for subordinate reference~~ ('adposition/case')
+  - ~~juncture for subordinate predication~~ ('subjunction/conjunction')
+- ~~quantifier~~
+  - ~~quantifier of predicate~~ ('quantifier')
+  - ~~quantifier of admodifier~~ ('intensifier')
+
+:::
+
+Prototypical operators are bound morphemes, but there are many other linguistic elements that are operators under the current definition (viz. they cannot themselves be modified), e.g. intensifiers, quantifiers, adpositions, subjunctions, etc. Prototypical admodifiers are adjectives and adverbs that allow for only limited modification like gradation and intensification. 
+
+The syntactic function of a predicate is defined here in a very general sense as bases that can be modified by other bases. Predicates typically are verbs, but it also includes nouns as predicator of a referential entity. By definition, predicates can be modified by other predicates, so this is the moment where recursion becomes necessary. Additionally, 
 
 ## Hierarchical structure
 
 The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modelled by using the mechanisam of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.
 
-Coinciding with the three kinds of syntactic elements introduced in [@last], I propose to break down the hierarchical structure of human utterances into three different levels, which I will refer to as ~~stacking~~, ~~redoubling~~ and ~~embedding~~. These three levels of hierarchical structure are conceptually build on top of each other, i.e. redoubling is a special case of stacking, and embedding is a special case of iteration. In practice, I will use the term 'stacking' only when there is no redoubling nor embedding, and 'redoubling' is likewise only used for constructions that are not embedding. Crucially, only embedding will be modelled with recursion. Stacking and redoubling are much simpler and do not need recursion because they can easily be modelled by iteration.
+Coinciding with the three kinds of syntactic elements introduced in [@last], I propose to break down the hierarchical structure of human utterances into three different levels, which I will refer to as ~~stacking~~, ~~redoubling~~ and ~~embedding~~. These three levels of hierarchical structure are conceptually build on top of each other, i.e. redoubling is a special case of stacking, and embedding is a special case of iteration. In practice, I will use the term 'stacking' only when there is no redoubling nor embedding, and 'redoubling' is likewise only used for constructions that are not embedding. Crucially, only embedding will be modelled with recursion. Stacking and redoubling are much simpler and do not need recursion. They can easily be modelled by sinmple iteration.
 
 ::: ex
 Hierarchical structures in YAST
@@ -241,145 +299,3 @@ Connecting tissue in YAST:
 
 - ~~junction~~ (*Junktion*) sometimes an explicit juncture (*Junktor*) is inserted at recursion, describing the relation between the subordinate and the embedded element ('link downwards'). Although there is some overlap, I will use the name preposition (*Präposition*, also with *da-*) for junctures used with an embedded phrase and subordinator (*Subjunktion*) for junctures used with an embedded clause. also conjunctions (*Konjunktion*).
 - ~~linkage~~ (*Verbindung*) is made with relators (*Relator*) inside clauses 'link upwards'. In German relative pronouns ('d'-*Relativpronomen*) and question words ('w'-*Fragewort*), with the default entries *dass* and *was*. Additionally the particle *ob* is used as relator. Relators always occur in the first position of a clause and there is a strong connection to the *Vorfeld* position in the German main clause (which can be interpreted as the linkage to the preceding context with a default entry *es*).
-
-# Rules for predication
-
-## Clause (*Satz*)
-
-## Predication (*Prädikation*)
-
-Basically a verb with lexical arguments. A PHRASE leads to *Prädikatives Substantiv*
-Lexical arguments can be filled with either PHRASE or SATZ (*Komplementsatz*)
-
-- verbal predication
-
-Nonverbal predication in German is 'overloaded': the same auxiliary/copula(!) constructions are used fro various different kinds of predication. In YAST they are treated as the same structures, but the interpretation is of course different. They all have roles 'Subjekt' and 'Prädikativ'
-
-- possession (possessor(SUBJ) + possessee + auxiliary)
-- nominal predication (SUBJ + role 'noun predicate' + auxiliary)
-- identification (noun predicate with definite marking)
-- adjectival predication (SUBJ + attribute 'adjectival predicate' + auxiliary)
-- adverbial predications (local/temporal)
-- location predication with prepositions.
-
-To be done:
-
-- comparison (comparee(SUBJ) + 'comparison adjectival predicate' + auxiliary + role 'standard of comparison': both SATZ and PHRASE possible, additional Junktion *als, wie*)
-
-## Event structure (*Ereignisstruktur*)
-
-Epitheses, diatheses, tense
-
-## Adverbial modification of predication (*Adverbiale*)
-
-Either a PHRASE or SATZ (*Adverbialsatz*)
-also: adverbs, negation, particles, adjectives+gradation
-
-# Rules for reference
-
-## Phrase (*Phrase*)
-
-## Reference (*Referenz*)
-
-Determination (quantification+article+numeral) and phrasal head
-If SATZ then *Nominalisation*
-
-## Identification (*Identifikation*)
-
-## Attributive modification of reference (*Attribut*)
-
-either PHRASE (*Präpositionalphrase*) or SATZ (*Relativsatz*)
-also: adjectives+gradation
-
-# Subordination
-
-Clauses can be inserted at various places, leading to different kinds of *Subordination*. 
-
-- *Koordination*
-- *Subordination*
-  - *Vollsatz*
-    - *Subjunktionssatz* (adverbial + juncture)
-    - *Präpositionssatz* (adverbial + juncture)
-  - *Relatorsatz*
-    - *Komplementsatz* (argument ± juncture)
-    - *Weiterführungssatz* (= *weiterführender Relativsatz*) (adverbial)
-    - *Adverbialrelativsatz* (adverbial + juncture)
-    - *Relativsatz* (attributive)
-  - *Kontrollsatz* (= *infiniter Nebensatz*)
-    - *Kontrollkomplementsatz* (argument ± juncture)
-    - *Kontrollpräpositionssatz* (adverbial + juncture)
-    - *Partizipsatz* (= *Kontrollrelativsatz*) (attributive)
-
-nonfinite:
-
-Komplementsatz -> Kontrollkomplementsatz
-präpositionssatz -> Kontrollpräpositionssatz (delete 'dass')
-Relativsatz -> Partizipsatz
-
-NOTE: *freier Relativsatz* is transparent combination of 'free' relative pronoun as head with a relative clause referring to it. This construction can grammaticalise, e.g. *Adverbialrelativsatz* is an example of this.
-
-Three dimensions, 10 of 18 theoretical possiblities attested (Vollsatz always adverbial, Attributsatz never juncture. missing: Adverbialsatz+Kontrollsatz without juncture)
-
-- Place of attachment (*Argumentsatz, Adverbialsatz, Attributsatz*)
-- Structure of subordinate clause (*Vollsatz, Relatorsatz, Kontrollsatz*)
-- Presence of juncture (*ja, nein*)
-
-Lexical interpretation important
-
-
-Sie wartet darauf, dass ihr Kind tanzt
-Sie wartet auf den Tanz ihres Kindes
-
-# Finishing up
-
-## Lexical insertion
-
-## Government and agreement
-
-mostly inside phrase, except
-
-- verbagreement between subject and finite verb
-- reflexive pronoun agreement
-- anaphoric reference inside sentence
-
-## Flexible word order & fusion
-
-only changes here that are really optional, e.g. preposition+article that can also be spelled out. Or reordering that are synchronically flexible
-
-# Reducing YAST
-
-## YAST to constituent structure
-
-## YAST to dependency structure
-
-## YAST to basic school grammar
-
-## YAST to advanced school grammar
-
-# Currently excluded
-
-- dislocated structures, e.g. "Aussenfeld"
-- comparative *wie/als* constructions
-- 'Mittelfeld' ordering variations based on size
-- secondary predication (dislocation of attributes)
-- Details of Negation scope
-
-- Quantoren are strange, e.g.: 'alle meine Bücher', 'jedes meiner Bücher', 'Die Bücher habe ich alle/beide gelesen', 'alle die Bücher in der Schublade'
-
-
-
-NOTE: the following is a combination of two adverbials
-"vorne/hinten im Garten"
-they have to be inserted separately
-semantics are inferred from regular scoping of multiple modifiers
-also for 'noch nicht' ???
-
-TODO: what about 'nur heute' ? cf. Fokuspartikel!?
-
-# An (almost) one-rule syntax for German
-
-To be clear up-front: no, of course it is not possible to write a complete syntax for the German language with just a single rule. However, I will argue that it is (almost) possible to condense the basic recursive syntax of German into such a single rule, which basically amounts to the instruction ~~insert lexeme here~~. Clearly, this one rule alone is not sufficient to capture all the details of actual German sentences. In practice, dozends of additional rules are necessary to completely specify a sentence structure. However, these specifying rules are simple non-recursive instructions like 'make this lexeme plural' or 'put this lexeme in the past tense'. Also, while I think that this condensation into a single recursive rule is theoretically neat, in practice I prefer a slightly more verbose notation using six rules: ~~clause + predication~~, ~~phrase + reference~~, ~~addendum~~ and ~~coordination~~.
-
-about the 'almost': lexemes have to be explicitly told to be either reference or predicate. So actually there are two rules 'insert lexeme as predicate' and 'insert lexeme as reference'. In practice: this is mostly done by marking the lexeme itself as 'verb' (non-capitalized) or 'noun' (capitalized). For some constructions an additional specification 'finite/infinite' is necessary to get the right syntactic structure. So this might be considered as an additional 'syntactic' rule
-
-Crucially, these proposals are not purely theoretical. The necessary rules for the German language are implemented in a surprisingly small amount of just a few hundred lines of code. They can be applied to produce actual sentences of German, simultaneously constructing a detailed underlying syntactic structure. However, there are two important caveats. First, the current implementation captures very many actual German sentence structures, but it is clearly not complete. However, the claim I would like to stake here is that everything missing can be accomplished with a few additional specifying rules. The basic recursive architecture is claimed to be complete. The second caveat is that the current implementation can (still) result in sentences that are ungrammatical. However, there is a transparent framework in place to formulate restrictions on rule application. Many such restrictions are already implemented, but many more are needed to bar the generation of ungrammatical sentences. In most cases, though, the formulation of such restrictions needs much more research than I have been able to perform until now.
