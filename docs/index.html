@@ -5,13 +5,11 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Michael Cysouw" />
-  <meta name="dcterms.date" content="2023-01-24" />
+  <meta name="dcterms.date" content="2023-07-03" />
   <title>YAST for German</title>
   <style>
 html {
-line-height: 1.5;
 font-family: Libertinus Serif;
-font-size: 20px;
 color: #1a1a1a;
 background-color: #fdfdfd;
 }
@@ -30,13 +28,16 @@ font-kerning: normal;
 @media (max-width: 600px) {
 body {
 font-size: 0.9em;
-padding: 1em;
+padding: 12px;
 }
 h1 {
 font-size: 1.8em;
 }
 }
 @media print {
+html {
+background-color: white;
+}
 body {
 background-color: transparent;
 color: black;
@@ -86,9 +87,10 @@ border-left: 2px solid #e6e6e6;
 color: #606060;
 }
 code {
-font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
 font-size: 85%;
 margin: 0;
+hyphens: manual;
 }
 pre {
 margin: 1em 0;
@@ -153,8 +155,10 @@ span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
 div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
+
+ul.task-list[class]{list-style: none;}
 ul.task-list li input[type="checkbox"] {
+font-size: inherit;
 width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
@@ -370,7 +374,7 @@ vertical-align: top;
 <header id="title-block-header">
 <h1 class="title">YAST for German</h1>
 <p class="author">Michael Cysouw</p>
-<p class="date">January 24, 2023</p>
+<p class="date">July 3, 2023</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Contents</h2>
@@ -378,86 +382,91 @@ vertical-align: top;
 <li><a href="#preface" id="toc-preface">Preface</a></li>
 <li><a href="#sec1" id="toc-sec1"><span class="toc-section-number">1</span> The YAST approach</a>
 <ul>
-<li><a href="#sec1.1" id="toc-sec1.1"><span class="toc-section-number">1.1</span> Basic principles</a></li>
-<li><a href="#sec1.2" id="toc-sec1.2"><span class="toc-section-number">1.2</span> Syntactic rules</a></li>
-<li><a href="#sec1.3" id="toc-sec1.3"><span class="toc-section-number">1.3</span> Restrictions</a></li>
-<li><a href="#sec1.4" id="toc-sec1.4"><span class="toc-section-number">1.4</span> YAST in a nutshell</a></li>
-<li><a href="#sec1.5" id="toc-sec1.5"><span class="toc-section-number">1.5</span> Infinity and recursion</a></li>
-<li><a href="#sec1.6" id="toc-sec1.6"><span class="toc-section-number">1.6</span> Elements of YAST</a></li>
+<li><a href="#sec1.1" id="toc-sec1.1"><span class="toc-section-number">1.1</span> The recipe-rule-result-receipt model</a></li>
+<li><a href="#sec1.2" id="toc-sec1.2"><span class="toc-section-number">1.2</span> The recipe</a></li>
+<li><a href="#sec1.3" id="toc-sec1.3"><span class="toc-section-number">1.3</span> The rules</a></li>
+<li><a href="#sec1.4" id="toc-sec1.4"><span class="toc-section-number">1.4</span> The receipt</a></li>
 </ul></li>
-<li><a href="#sec2" id="toc-sec2"><span class="toc-section-number">2</span> Rules for predication</a>
+<li><a href="#sec2" id="toc-sec2"><span class="toc-section-number">2</span> Generating the recipe</a>
 <ul>
-<li><a href="#sec2.1" id="toc-sec2.1"><span class="toc-section-number">2.1</span> Clause (<em>Satz</em>)</a></li>
-<li><a href="#sec2.2" id="toc-sec2.2"><span class="toc-section-number">2.2</span> Predication (<em>Prädikation</em>)</a></li>
-<li><a href="#sec2.3" id="toc-sec2.3"><span class="toc-section-number">2.3</span> Event structure (<em>Ereignisstruktur</em>)</a></li>
-<li><a href="#sec2.4" id="toc-sec2.4"><span class="toc-section-number">2.4</span> Adverbial modification of predication (<em>Adverbiale</em>)</a></li>
+<li><a href="#sec2.1" id="toc-sec2.1"><span class="toc-section-number">2.1</span> Generation: creating a recipe</a></li>
+<li><a href="#sec2.2" id="toc-sec2.2"><span class="toc-section-number">2.2</span> Ingredients: building blocks of a recipe</a></li>
+<li><a href="#sec2.3" id="toc-sec2.3"><span class="toc-section-number">2.3</span> Hierarchical structure</a></li>
+<li><a href="#sec2.4" id="toc-sec2.4"><span class="toc-section-number">2.4</span> Expressing the syntactic model</a></li>
+<li><a href="#sec2.5" id="toc-sec2.5"><span class="toc-section-number">2.5</span> Syntactic rules</a></li>
+<li><a href="#sec2.6" id="toc-sec2.6"><span class="toc-section-number">2.6</span> Restrictions</a></li>
+<li><a href="#sec2.7" id="toc-sec2.7"><span class="toc-section-number">2.7</span> YAST in a nutshell</a></li>
+<li><a href="#sec2.8" id="toc-sec2.8"><span class="toc-section-number">2.8</span> Infinity and recursion</a></li>
+<li><a href="#sec2.9" id="toc-sec2.9"><span class="toc-section-number">2.9</span> Elements of YAST</a></li>
 </ul></li>
-<li><a href="#sec3" id="toc-sec3"><span class="toc-section-number">3</span> Rules for reference</a>
-<ul>
-<li><a href="#sec3.1" id="toc-sec3.1"><span class="toc-section-number">3.1</span> Phrase (<em>Phrase</em>)</a></li>
-<li><a href="#sec3.2" id="toc-sec3.2"><span class="toc-section-number">3.2</span> Reference (<em>Referenz</em>)</a></li>
-<li><a href="#sec3.3" id="toc-sec3.3"><span class="toc-section-number">3.3</span> Identification (<em>Identifikation</em>)</a></li>
-<li><a href="#sec3.4" id="toc-sec3.4"><span class="toc-section-number">3.4</span> Attributive modification of reference (<em>Attribut</em>)</a></li>
-</ul></li>
-<li><a href="#sec4" id="toc-sec4"><span class="toc-section-number">4</span> Subordination</a></li>
-<li><a href="#sec5" id="toc-sec5"><span class="toc-section-number">5</span> Finishing up</a>
-<ul>
-<li><a href="#sec5.1" id="toc-sec5.1"><span class="toc-section-number">5.1</span> Lexical insertion</a></li>
-<li><a href="#sec5.2" id="toc-sec5.2"><span class="toc-section-number">5.2</span> Government and agreement</a></li>
-<li><a href="#sec5.3" id="toc-sec5.3"><span class="toc-section-number">5.3</span> Flexible word order &amp; fusion</a></li>
-</ul></li>
-<li><a href="#sec6" id="toc-sec6"><span class="toc-section-number">6</span> Reducing YAST</a>
-<ul>
-<li><a href="#sec6.1" id="toc-sec6.1"><span class="toc-section-number">6.1</span> YAST to constituent structure</a></li>
-<li><a href="#sec6.2" id="toc-sec6.2"><span class="toc-section-number">6.2</span> YAST to dependency structure</a></li>
-<li><a href="#sec6.3" id="toc-sec6.3"><span class="toc-section-number">6.3</span> YAST to basic school grammar</a></li>
-<li><a href="#sec6.4" id="toc-sec6.4"><span class="toc-section-number">6.4</span> YAST to advanced school grammar</a></li>
-</ul></li>
-<li><a href="#sec7" id="toc-sec7"><span class="toc-section-number">7</span> Currently excluded</a></li>
-<li><a href="#sec8" id="toc-sec8"><span class="toc-section-number">8</span> An (almost) one-rule syntax for German</a></li>
 </ul>
 </nav>
 <h2 class="unnumbered" id="preface">Preface</h2>
-<p>The motivation to develop yet another syntactic model for an already well-described language like German grew out of a large research project on German diathesis (Cysouw 2023). That book claims to provide a complete list of all monoclausal syntactic derivations for German. This list is long (currently more than 300 clause derivations, and counting), but clearly finite. Now, the impetus for the current syntactic model was the simple idea to investigate what remains to be done for the syntax once all these monoclausal derivations are put aside. In other words, how does a syntactic model look like when monoclausal derivations are reduced to just checkboxes to be ticked, alike to treating other finite morphosyntactic categories like tense or number. The current proposal is the result of following that premise through. In essence, the current approach is an experiment build on a single fundamental question, namely what a syntax would look like when monoclausal derivation (called ‘stacking’ in Cysouw 2023) is strictly separated from biclausal subordination.</p>
-<p>Syntactic models need an acronym, so here I present to you YAST. This name started out in jest for ‘Yet Another Syntax Theory’, but I got enamoured by the name, so it stuck. There is a slightly deeper meaning to this name, however. The acronym YAST is an obvious nod to YAML, which started out as meaning ‘Yet Another Markup Language’. But then, as YAML was developed further, it turned out to be much more powerful than anticipated, which lead to a recursive ‘backronym’ meaning ‘YAML Ain’t Markup Language’. In the same vein as YAML, the YAST approach turned out to be much more powerful than I had anticipated, so I now interpret the acronym YAST as a backronym meaning ‘YAST Ain’t (just) Syntax Theory’. But what’s in a name? In the end it’s just a sequence of letters to identify the approach to morphosyntactic analysis as outlined in this book.</p>
+<p>The motivation to develop yet another syntactic model for an already well-described language like German grew out of a large research project on German diathesis (Cysouw 2023). That book claims to provide a complete list of all monoclausal syntactic derivations for German. This list is long (currently more than 300 clause derivations, and counting), but clearly finite. The impetus for the current syntactic model was the simple idea to investigate what remains to be done for the syntax once all these monoclausal derivations are put aside. In other words, what does a syntactic model look like when monoclausal derivations are reduced to just checkboxes to be ticked, alike to treating other finite morphosyntactic categories like tense or number. The current proposal is the result of following that premise through. In essence, the current approach is an experiment build on a single fundamental question, namely what a syntax would look like when monoclausal derivation (called ‘stacking’ in Cysouw 2023) is strictly separated from subordination.</p>
+<p>Syntactic models need an acronym, so here I present to you YAST. This name started out in jest for ‘Yet Another Syntax Theory’, but I got enamoured by the name, so it stuck. There is a slightly deeper meaning to this name, however. The acronym YAST is an obvious nod to YAML, which started out as meaning ‘Yet Another Markup Language’. But then, as YAML was developed further, it turned out to be much more powerful than anticipated, which lead to a recursive ‘backronym’ meaning ‘YAML Ain’t Markup Language’. In the same vein, the YAST approach turned out to be much more powerful than I had anticipated, so I now interpret the acronym YAST as a backronym meaning ‘YAST Ain’t (just) Syntax Theory’. But what’s in a name? In the end it’s just a sequence of letters to identify the approach to morphosyntactic analysis as outlined in this book.</p>
 <p>The result is remarkable: with the hundreds of clause derivations out of the way, a reasonably fragment of a syntax for German can be formulated with just very few rules. I have implemented these rules in Python using XML-tree structures, and this part of the syntax takes just a few hundred lines of code. It can produce complete sentences with ordering, case marking, agreement and syntactic control for a wide range of complex syntactic structures. The remaining hundreds of clausal derivations (as described in Cysouw 2023) also can be easily implemented in just a dozen or so lines of code each. Currently only a small exemplary subset of those has been implemented. There is also a basic parser, which is not very good yet, but there is amply room for improvement.</p>
 <p>The syntactic rules presented here describe (standard) German. However, the general architecture of YAST seems transferable to other languages. The analysis of sentence structures in YAST is fully compatible with typological insights about the worldwide linguistic diversity as, for example, summarised in Croft (2022). I have tried to adapt my terminology to Croft’s to make the parallels even more obvious. Still, linguistic diversity is vast, and I do not dare to predict how much work is necessary to adapt the current framework to other languages.</p>
 <h1 data-number="1" label="1" id="sec1"><span class="header-section-number">1</span> The YAST approach</h1>
-<h2 data-number="1.1" label="1.1" id="sec1.1"><span class="header-section-number">1.1</span> Basic principles</h2>
-<p>In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of <span class="smallcaps">instructions</span> that, when fed into the <span class="smallcaps">rules</span> machinery, lead to an <span class="smallcaps">utterance</span>, i.e. a sequence of pronounceable linguistic elements. Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might be a useful model for syntax processing (but note that the current model is based purely on syntactic analysis, without any actual research into psychological processing). To produce utterances there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply can be uttered immediately. The outcome of the instructions can be recorded, and this <span class="smallcaps">receipt</span> looks like a familiar syntactic tree. Crucially, such syntactic trees are not necessary for the production of the utterance. The tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe.</p>
-<p>The ephemeral role of the syntactic tree is also reflected in the workings of the <span class="smallcaps">parser</span>. The parser does not attempt to reconstruction the tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying instructions. In the current implementation this involves a lot of trial and error in that simply many different instructions are attempted (within the range of possibilities as constrained by the utterance). Each attempt is fed into the rules until the actually observed utterance is replicated. In a sense, this parser is like an unexperienced learner of the language that knows the rules, but does not know any shortcuts to quickly home in on the right interpretation. Future versions of the parser should clearly improve on this performance. Then the parser will then actually be a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing the same generation in parallel and checking the results with the observerd utterance.</p>
-<figure>
-<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmlld0JveD0iMCAwIDgwMCAyNjYuNjY2NjYiCiAgIGhlaWdodD0iMjY2LjY2NjY2IgogICB3aWR0aD0iODAwIgogICB4bWw6c3BhY2U9InByZXNlcnZlIgogICBpZD0ic3ZnMiIKICAgdmVyc2lvbj0iMS4xIj48bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGE4Ij48cmRmOlJERj48Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+PGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+PGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPjwvY2M6V29yaz48L3JkZjpSREY+PC9tZXRhZGF0YT48ZGVmcwogICAgIGlkPSJkZWZzNiI+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyMCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDE4IgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMzQiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgzMiIKICAgICAgICAgZD0ibSAxNDguNzA3NywxNDUuNzcwNiBoIDE1OS4yOTk1IHYgNDAuNjgwMDMgSCAxNDguNzA3NyBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGg0OCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDQ2IgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoNjAiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGg1OCIKICAgICAgICAgZD0ibSA0NjMuMDQxNCwxNDUuNzcwNiBoIDEyNC44MzU1IHYgNDAuNjgwMDMgSCA0NjMuMDQxNCBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGg3NCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDcyIgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMTIyIgogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoCiAgICAgICAgIGlkPSJwYXRoMTIwIgogICAgICAgICBkPSJtIDE0OC43MDc3LDUuOTAxMzk4IGggMTU5LjI5OTUgdiA2Ny42ODAwMyBIIDE0OC43MDc3IFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDE0MiIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDE0MCIKICAgICAgICAgZD0iTSAwLDAgSCA2MDAgViAyMDAgSCAwIFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDE2NCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDE2MiIKICAgICAgICAgZD0ibSAzNTAuMTIwNywxNjYuMjQxOCBoIDU2LjExNzc2IHYgMjcuMTIwMDIgSCAzNTAuMTIwNyBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgxNzgiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgxNzYiCiAgICAgICAgIGQ9Ik0gMCwwIEggNjAwIFYgMjAwIEggMCBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyMDAiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgxOTgiCiAgICAgICAgIGQ9Im0gMzUwLjEyMDcsNi42NTM2NzQgaCA1Ni4xMTc3NiB2IDI3LjEyMDAyIEggMzUwLjEyMDcgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMjE0IgogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoCiAgICAgICAgIGlkPSJwYXRoMjEyIgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMjMyIgogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoCiAgICAgICAgIGlkPSJwYXRoMjMwIgogICAgICAgICBkPSJtIDQ2My4wNDE0LDUuOTAxMzk4IGggMTI0LjgzNTUgdiA2Ny42ODAwMyBIIDQ2My4wNDE0IFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDI1MiIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDI1MCIKICAgICAgICAgZD0iTSAwLDAgSCA2MDAgViAyMDAgSCAwIFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDI2MiIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDI2MCIKICAgICAgICAgZD0ibSA1MzIuMTIwNyw4Ni40Mzk5OSBoIDU2LjExNzc2IHYgMjcuMTIwMDIgSCA1MzIuMTIwNyBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyNzYiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgyNzQiCiAgICAgICAgIGQ9Ik0gMCwwIEggNjAwIFYgMjAwIEggMCBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyODYiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgyODQiCiAgICAgICAgIGQ9Im0gMjk1Ljk2NTYsOTkuMjM5OTkgaCA2NC41NTUyNiB2IDI3LjEyMDAyIEggMjk1Ljk2NTYgWiIgLz48L2NsaXBQYXRoPjwvZGVmcz48ZwogICAgIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywwLDI2Ni42NjY2NykiCiAgICAgaWQ9ImcxMCI+PGcKICAgICAgIGlkPSJnMTIiIC8+PGcKICAgICAgIGlkPSJnMTQiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDIwKSIKICAgICAgICAgaWQ9ImcxNiI+PHBhdGgKICAgICAgICAgICBpZD0icGF0aDIyIgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0iTSAwLDAgSCA2MDAgViAyMDAgSCAwIFoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNTEuMDQ3NywxODQuMTEwNikiCiAgICAgICAgICAgaWQ9ImcyNCI+PHBhdGgKICAgICAgICAgICAgIGlkPSJwYXRoMjYiCiAgICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgICBkPSJNIDAsMCBIIDE1NC42MTk1IFYgMzYgSCAwIFoiIC8+PC9nPjwvZz48L2c+PGcKICAgICAgIGlkPSJnMjgiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDM0KSIKICAgICAgICAgaWQ9ImczMCI+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNjIsMTU5KSIKICAgICAgICAgICBpZD0iZzM2Ij48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQ0MCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6TGliZXJ0aW51c1NlcmlmOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246TGliZXJ0aW51c1NlcmlmLUJvbGQ7d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ic2NhbGUoMSwtMSkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW4zOCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCA4LjgwNzk5OTYgMjMuNTkxOTk5IDMzLjg0IDQyLjQzMTk5OSA1Mi43MDM5OTkgNjcuMDU2IDc4IDg2LjU5MjAwMyA5NC4zMiAxMDcuNTQ0IDEyMi4zMjgiPkluc3RydWN0aW9uczwvdHNwYW4+PC90ZXh0Pgo8L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9Imc0MiI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoNDgpIgogICAgICAgICBpZD0iZzQ0Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDQ2NS4zODE0LDE4NC4xMTA2KSIKICAgICAgICAgICBpZD0iZzUwIj48cGF0aAogICAgICAgICAgICAgaWQ9InBhdGg1MiIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwwIEggMTIwLjE1NTUgViAzNiBIIDAgWiIgLz48L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9Imc1NCI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoNjApIgogICAgICAgICBpZD0iZzU2Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ3MiwxNTkpIgogICAgICAgICAgIGlkPSJnNjIiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDY2IgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtQm9sZDt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjY0IgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDE3LjU2ODAwMSAyNi4xNiAzNC43NTE5OTkgNDYuNDg3OTk5IDU2Ljc1OTk5OCA2OC45MDM5OTkgODMuNjg4MDA0IDk0LjYzMjAwNCI+VXR0ZXJhbmNlPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzY4Ij48ZwogICAgICAgICBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGg3NCkiCiAgICAgICAgIGlkPSJnNzAiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjUsMTcyKSIKICAgICAgICAgICBpZD0iZzc2Ij48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQ4MCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3Bhbjc4IgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDE2LjQ0MDAwMSAyNy4xNjc5OTkgNDAuMTc1OTk5IDUwLjkwMzk5OSA1OS44MzIwMDEgNzAuODAwMDAzIDc4LjM4NDAwMyA5MC40ODAwMDMgOTkuNDA3OTk3Ij5HZW5lcmF0b3IvPC90c3Bhbj48L3RleHQ+CjwvZz48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1LDE3MikiCiAgICAgICAgICAgaWQ9Imc4MiI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0ODYiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6THVjaWRhR3JhbmRlOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246THVjaWRhR3JhbmRlO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxMDcuMTYsMCkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW44NCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCI+4oCoPC90c3Bhbj48L3RleHQ+CjwvZz48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM3LDE0NSkiCiAgICAgICAgICAgaWQ9Imc4OCI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0OTIiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6TGliZXJ0aW51c1NlcmlmOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246TGliZXJ0aW51c1NlcmlmLVJlZ3VsYXI7d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ic2NhbGUoMSwtMSkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW45MCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxMS42NCAyNC4yNjQgMzQuOTkyMDAxIDQ1Ljk1OTk5OSA1OC4yNDgwMDEgNjguOTc1OTk4IDc3LjkwMzk5OSI+U3BlYWtlcjo8L3RzcGFuPjwvdGV4dD4KPC9nPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQsNDYpIgogICAgICAgICAgIGlkPSJnOTQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDk4IgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToyNHB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1SZWd1bGFyO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuOTYiCiAgICAgICAgICAgICAgIHk9IjAiCiAgICAgICAgICAgICAgIHg9IjAgMTIuOTg0IDIzLjk1MiAzMi44ODAwMDEgNDIuMjQwMDAyIDUyLjk2Nzk5OSA2MS44OTYiPlBhcnNlci88L3RzcGFuPjwvdGV4dD4KPC9nPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQsNDYpIgogICAgICAgICAgIGlkPSJnMTAwIj48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQxMDQiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6THVjaWRhR3JhbmRlOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246THVjaWRhR3JhbmRlO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw2OS42NDgsMCkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW4xMDIiCiAgICAgICAgICAgICAgIHk9IjAiCiAgICAgICAgICAgICAgIHg9IjAiPuKAqDwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNSwxOSkiCiAgICAgICAgICAgaWQ9ImcxMDYiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDExMCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjEwOCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxNi4zOTIgMjguNTM1OTk5IDQwLjY4IDQ5LjQxNiA2MC4xNDQwMDEgNjkuNTAzOTk4IDc4Ljg2Mzk5OCA4OS43NjAwMDIgMTAwLjQ4OCI+QWRkcmVzc2VlOjwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNTEuMDQ3Nyw3MS4yNDE0MSkiCiAgICAgICAgICAgaWQ9ImcxMTIiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDExNCIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwwIEggMTU0LjYxOTUgViA2MyBIIDAgWiIgLz48L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcxMTYiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDEyMikiCiAgICAgICAgIGlkPSJnMTE4Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4NSw0NikiCiAgICAgICAgICAgaWQ9ImcxMjQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDEyOCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjEyNiIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxOC45NTk5OTkgMjUuNDY0MDAxIDM0LjM5MTk5OCA0My4xMjc5OTggNTUuMjIzOTk5IDYzLjk1OTk5OSA3NC44NTYwMDMgODciPm1pcnJvcmVkIDwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNjIsMTkpIgogICAgICAgICAgIGlkPSJnMTMwIj48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQxMzQiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNHB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1Cb2xkO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuMTMyIgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDguODA3OTk5NiAyMy41OTE5OTkgMzMuODQgNDIuNDMxOTk5IDUyLjcwMzk5OSA2Ny4wNTYgNzggODYuNTkyMDAzIDk0LjMyIDEwNy41NDQgMTIyLjMyOCI+SW5zdHJ1Y3Rpb25zPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzEzNiI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMTQyKSIKICAgICAgICAgaWQ9ImcxMzgiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMzU5Ljk2MDksMTQ3LjYxMDYpIgogICAgICAgICAgIGlkPSJnMTQ0Ij48cGF0aAogICAgICAgICAgICAgaWQ9InBhdGgxNDYiCiAgICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDozO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgICBkPSJtIDExLjY5ODEyLDM2LjEyNTU2IDEuNDk5NzYsMC4wMjY4OSBDIDExMC40OTU1LDM3LjM0Njc0IDE2Mi4xMzczLDI1LjI5NTkyIDE2OC4xMjMzLDAiIC8+PC9nPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgxNDgiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDM3My4yNzcxLDExOC4wNTcxIC0xMy4zMTYyLC02LjM2MjMgMTMuMDc5NSwtNi44MzU2IHoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwzMDYuMTc0MSwxNzkuNjE3MykiCiAgICAgICAgICAgaWQ9ImcxNTAiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDE1MiIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjM7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwzLjYwNjU3NyBDIDUxLjEzOTcyLC0wLjkzODgwNjUgOTkuNjYzMzIsLTEuMTg3NzY2IDE0NS41NzA4LDIuODU5Njk4IGwgMS40OTMzLDAuMTQ1ODU3IiAvPjwvZz48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMTU0IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSA0NTEuMTAzNywxNzAuMTg4OCAxMy43NzkxLDUuMjg1NSAtMTIuNDk1OSw3Ljg1MiB6IiAvPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgxNTYiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDM1MC42ODA3LDE5Mi44MDE4IGggNTQuOTk3OCB2IC0yNiBoIC01NC45OTc4IHoiIC8+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcxNTgiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDE2NCkiCiAgICAgICAgIGlkPSJnMTYwIj48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM1OCwxNzUpIgogICAgICAgICAgIGlkPSJnMTY2Ij48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQxNzAiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTppdGFsaWM7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxNnB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1Cb2xkSXRhbGljO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuMTY4IgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDEwLjk3NiAyMS4zMTIgMjYuNDk2IDMzLjA0MDAwMSI+UnVsZXM8L3RzcGFuPjwvdGV4dD4KPC9nPjwvZz48L2c+PGcKICAgICAgIGlkPSJnMTcyIj48ZwogICAgICAgICBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgxNzgpIgogICAgICAgICBpZD0iZzE3NCI+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwyMzAuNDc5OCwxMDMuNjk1NCkiCiAgICAgICAgICAgaWQ9ImcxODAiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDE4MiIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjM7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gOS4yMjQwMTYsMjQuNzU2MTkgMTAuNDA2NTgsMjMuODMzNCBDIDIyLjg0ODIzLDE1Ljc1NzA5IDQxLjM5NDMyLDcuODEyODggNjYuMDQ1ODEsMCIgLz48L2c+PHBhdGgKICAgICAgICAgICBpZD0icGF0aDE4NCIKICAgICAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgIGQ9Im0gMjM2LjgyNjEsODUuMDY1MjkgLTYuMzQ2MywtMTMuMzIzODIgMTQuNDY2OSwyLjkxNzI0IHoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwzMDYuMTcyNywyNS45MDgxOCkiCiAgICAgICAgICAgaWQ9ImcxODYiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDE4OCIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjM7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Im0gMCwwIGMgNTIuOTc1OTQsNi44OTE4MzkgMTAxLjUxOTgsNy42MzQwNzcgMTQ1LjYzMTcsMi4yMjY3MTQgbCAxLjQ4NjcsLTAuMjA0OTgyIiAvPjwvZz48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMTkwIgogICAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSA0NTIuNzA2NiwxNy4xNDM0MiAxMi4xNzQ4LDguMzQxMTIgLTEzLjk3NzcsNC43MzUxNyB6IiAvPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgxOTIiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDM1MC42ODA3LDMzLjIxMzY4IGggNTQuOTk3OCBWIDcuMjEzNjg1IGggLTU0Ljk5NzggeiIgLz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzE5NCI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMjAwKSIKICAgICAgICAgaWQ9ImcxOTYiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzU4LDE1KSIKICAgICAgICAgICBpZD0iZzIwMiI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0MjA2IgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6aXRhbGljO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTZweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtQm9sZEl0YWxpYzt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjIwNCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxMC45NzYgMjEuMzEyIDI2LjQ5NiAzMy4wNDAwMDEiPlJ1bGVzPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzIwOCI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMjE0KSIKICAgICAgICAgaWQ9ImcyMTAiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsNTQxLjkyODEsMTQ3LjYwNzQpIgogICAgICAgICAgIGlkPSJnMjE2Ij48cGF0aAogICAgICAgICAgICAgaWQ9InBhdGgyMTgiCiAgICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDozO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgICBkPSJNIDIyLjY3NzcyLDc1Ljg2NjAzIEMgMzEuMTM4MDgsNTguMTQ1MTMgMjYuMjM5NjcsMzYuMzYxMzkgNy45ODI1MTEsMTAuNTE0OCBMIDcuMDc0NTY0LDkuMzE4ODI4IiAvPjwvZz48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMjIwIgogICAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSA1NTUuMTY2NCwxNDEuMDg0NiAtMTMuMjM4Myw2LjUyMjggMi43MjQ3LC0xNC41MDQzIHoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0NjUuMzgxNCw3MS4yNDE0MSkiCiAgICAgICAgICAgaWQ9ImcyMjIiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDIyNCIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwwIEggMTIwLjE1NTUgViA2MyBIIDAgWiIgLz48L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcyMjYiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDIzMikiCiAgICAgICAgIGlkPSJnMjI4Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ4Miw0NikiCiAgICAgICAgICAgaWQ9ImcyMzQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDIzOCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjIzNiIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxOC45NTk5OTkgMjUuNDY0MDAxIDM0LjM5MTk5OCA0My4xMjc5OTggNTUuMjIzOTk5IDYzLjk1OTk5OSA3NC44NTYwMDMgODciPm1pcnJvcmVkIDwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NzIsMTkpIgogICAgICAgICAgIGlkPSJnMjQwIj48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQyNDQiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNHB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1Cb2xkO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuMjQyIgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDE3LjU2ODAwMSAyNi4xNiAzNC43NTE5OTkgNDYuNDg3OTk5IDU2Ljc1OTk5OCA2OC45MDM5OTkgODMuNjg4MDA0IDk0LjYzMjAwNCI+VXR0ZXJhbmNlPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzI0NiI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMjUyKSIKICAgICAgICAgaWQ9ImcyNDgiPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgyNTQiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDUzMi42ODA3LDExMyBoIDU0Ljk5NzggViA4NyBoIC01NC45OTc4IHoiIC8+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcyNTYiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDI2MikiCiAgICAgICAgIGlkPSJnMjU4Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUzOSw5NSkiCiAgICAgICAgICAgaWQ9ImcyNjQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDI2OCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOml0YWxpYztmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE2cHg7Zm9udC1mYW1pbHk6TGliZXJ0aW51c1NlcmlmOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246TGliZXJ0aW51c1NlcmlmLUJvbGRJdGFsaWM7d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ic2NhbGUoMSwtMSkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW4yNjYiCiAgICAgICAgICAgICAgIHk9IjAiCiAgICAgICAgICAgICAgIHg9IjAgMTAuOCAyMC43MTk5OTkgMjcuMzc1OTk5IDM0LjMyIj5DaGVjazwvdHNwYW4+PC90ZXh0Pgo8L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcyNzAiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDI3NikiCiAgICAgICAgIGlkPSJnMjcyIj48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMjc4IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSAyOTYuNTI1NiwxMjUuOCBoIDYzLjQzNTMgdiAtMjYgaCAtNjMuNDM1MyB6IiAvPjwvZz48L2c+PGcKICAgICAgIGlkPSJnMjgwIj48ZwogICAgICAgICBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgyODYpIgogICAgICAgICBpZD0iZzI4MiI+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMDMsMTA4KSIKICAgICAgICAgICBpZD0iZzI4OCI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0MjkyIgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6aXRhbGljO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTZweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtQm9sZEl0YWxpYzt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjI5MCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCA5LjQwOCAxNi4wOTYwMDEgMjIuNzUyMDAxIDMxLjcyODAwMSAzNy4yMDAwMDEgNDQuMTQ0MDAxIj5QcmVkaWN0PC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjwvZz48L3N2Zz4=" id="fig1.1" label="1.1" alt="Figure 1.1: Basic workflow of YAST" />
-<figcaption aria-hidden="true">Figure 1.1: Basic workflow of YAST</figcaption>
+<h2 data-number="1.1" label="1.1" id="sec1.1"><span class="header-section-number">1.1</span> The recipe-rule-result-receipt model</h2>
+<p>In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of <span class="smallcaps">instructions</span> that, when fed into the morphosyntactic <span class="smallcaps">rules</span>, result in an utterance, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline determining what should appear in the instructions is the notion of predictability: all parts of an actual utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. So, the research that is needed to write the morphosyntactic YAST-rules for a specific language is to explicate which parts of the utterance are predictable and which are non-predictable. As it turns out, the structure of a set of instructions to produce a sentence is very close to a dependency tree.</p>
+<p>Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might also be a useful model for language processing, though note that the current model is based purely on syntactic analysis, without any actual research into real psychological processing. To produce utterances there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply lead to linguistic elements that can be uttered immediately.</p>
+<p>The results of the evaluated instructions can be recorded, and this <span class="smallcaps">receipt</span> looks like a constituent tree. Crucially, the creation of such constituent trees are not necessary for the production of the utterance. The constituent tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe. In short, the syntactic approach of YAST can be summarised as a <span class="smallcaps">recipe-rule-result-receipt</span> model. The (dependency-like) instructions are the recipe. The recipe is fed into the the rules to produce a resulting utterance. Additionally, a (constituent-like) receipt is a summary of all the procedures leading to the result.</p>
+<p>The ephemeral role of the constituent-like receipt is also reflected in the workings of the <span class="smallcaps">parser</span>. The parser does not attempt to reconstruct the constituent tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying dependency-like instructions. In the current implementation, simply many different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. In a sense, this parser is like an unexperienced learner of the language that knows the rules, but does not know any shortcuts to quickly arrive at the right interpretation. The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results of these mirrored generation with the observed utterance. The parser mostly does not have to wait until an utterance is finished, but can already start predicting while the utterance is still ongoing. This aspect of YAST seems to be a very fruitful approach for modelling language processing.</p>
+<figure id="fig:basis" label="1.1">
+<img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgdmlld0JveD0iMCAwIDgwMCAyNjYuNjY2NjYiCiAgIGhlaWdodD0iMjY2LjY2NjY2IgogICB3aWR0aD0iODAwIgogICB4bWw6c3BhY2U9InByZXNlcnZlIgogICBpZD0ic3ZnMiIKICAgdmVyc2lvbj0iMS4xIj48bWV0YWRhdGEKICAgICBpZD0ibWV0YWRhdGE4Ij48cmRmOlJERj48Y2M6V29yawogICAgICAgICByZGY6YWJvdXQ9IiI+PGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+PGRjOnR5cGUKICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPjwvY2M6V29yaz48L3JkZjpSREY+PC9tZXRhZGF0YT48ZGVmcwogICAgIGlkPSJkZWZzNiI+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyMCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDE4IgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMzQiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgzMiIKICAgICAgICAgZD0ibSAxNDguNzA3NywxNDUuNzcwNiBoIDE1OS4yOTk1IHYgNDAuNjgwMDMgSCAxNDguNzA3NyBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGg0OCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDQ2IgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoNjAiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGg1OCIKICAgICAgICAgZD0ibSA0NjMuMDQxNCwxNDUuNzcwNiBoIDEyNC44MzU1IHYgNDAuNjgwMDMgSCA0NjMuMDQxNCBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGg3NCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDcyIgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMTIyIgogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoCiAgICAgICAgIGlkPSJwYXRoMTIwIgogICAgICAgICBkPSJtIDE0OC43MDc3LDUuOTAxMzk4IGggMTU5LjI5OTUgdiA2Ny42ODAwMyBIIDE0OC43MDc3IFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDE0MiIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDE0MCIKICAgICAgICAgZD0iTSAwLDAgSCA2MDAgViAyMDAgSCAwIFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDE2NCIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDE2MiIKICAgICAgICAgZD0ibSAzNTAuMTIwNywxNjYuMjQxOCBoIDU2LjExNzc2IHYgMjcuMTIwMDIgSCAzNTAuMTIwNyBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgxNzgiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgxNzYiCiAgICAgICAgIGQ9Ik0gMCwwIEggNjAwIFYgMjAwIEggMCBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyMDAiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgxOTgiCiAgICAgICAgIGQ9Im0gMzUwLjEyMDcsNi42NTM2NzQgaCA1Ni4xMTc3NiB2IDI3LjEyMDAyIEggMzUwLjEyMDcgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMjE0IgogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoCiAgICAgICAgIGlkPSJwYXRoMjEyIgogICAgICAgICBkPSJNIDAsMCBIIDYwMCBWIDIwMCBIIDAgWiIgLz48L2NsaXBQYXRoPjxjbGlwUGF0aAogICAgICAgaWQ9ImNsaXBQYXRoMjMyIgogICAgICAgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiPjxwYXRoCiAgICAgICAgIGlkPSJwYXRoMjMwIgogICAgICAgICBkPSJtIDQ2My4wNDE0LDUuOTAxMzk4IGggMTI0LjgzNTUgdiA2Ny42ODAwMyBIIDQ2My4wNDE0IFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDI1MiIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDI1MCIKICAgICAgICAgZD0iTSAwLDAgSCA2MDAgViAyMDAgSCAwIFoiIC8+PC9jbGlwUGF0aD48Y2xpcFBhdGgKICAgICAgIGlkPSJjbGlwUGF0aDI2MiIKICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aAogICAgICAgICBpZD0icGF0aDI2MCIKICAgICAgICAgZD0ibSA1MzIuMTIwNyw4Ni40Mzk5OSBoIDU2LjExNzc2IHYgMjcuMTIwMDIgSCA1MzIuMTIwNyBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyNzYiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgyNzQiCiAgICAgICAgIGQ9Ik0gMCwwIEggNjAwIFYgMjAwIEggMCBaIiAvPjwvY2xpcFBhdGg+PGNsaXBQYXRoCiAgICAgICBpZD0iY2xpcFBhdGgyODYiCiAgICAgICBjbGlwUGF0aFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGgKICAgICAgICAgaWQ9InBhdGgyODQiCiAgICAgICAgIGQ9Im0gMjk1Ljk2NTYsOTkuMjM5OTkgaCA2NC41NTUyNiB2IDI3LjEyMDAyIEggMjk1Ljk2NTYgWiIgLz48L2NsaXBQYXRoPjwvZGVmcz48ZwogICAgIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywwLDI2Ni42NjY2NykiCiAgICAgaWQ9ImcxMCI+PGcKICAgICAgIGlkPSJnMTIiIC8+PGcKICAgICAgIGlkPSJnMTQiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDIwKSIKICAgICAgICAgaWQ9ImcxNiI+PHBhdGgKICAgICAgICAgICBpZD0icGF0aDIyIgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0iTSAwLDAgSCA2MDAgViAyMDAgSCAwIFoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNTEuMDQ3NywxODQuMTEwNikiCiAgICAgICAgICAgaWQ9ImcyNCI+PHBhdGgKICAgICAgICAgICAgIGlkPSJwYXRoMjYiCiAgICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgICBkPSJNIDAsMCBIIDE1NC42MTk1IFYgMzYgSCAwIFoiIC8+PC9nPjwvZz48L2c+PGcKICAgICAgIGlkPSJnMjgiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDM0KSIKICAgICAgICAgaWQ9ImczMCI+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNjIsMTU5KSIKICAgICAgICAgICBpZD0iZzM2Ij48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQ0MCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6TGliZXJ0aW51c1NlcmlmOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246TGliZXJ0aW51c1NlcmlmLUJvbGQ7d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ic2NhbGUoMSwtMSkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW4zOCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCA4LjgwNzk5OTYgMjMuNTkxOTk5IDMzLjg0IDQyLjQzMTk5OSA1Mi43MDM5OTkgNjcuMDU2IDc4IDg2LjU5MjAwMyA5NC4zMiAxMDcuNTQ0IDEyMi4zMjgiPkluc3RydWN0aW9uczwvdHNwYW4+PC90ZXh0Pgo8L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9Imc0MiI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoNDgpIgogICAgICAgICBpZD0iZzQ0Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDQ2NS4zODE0LDE4NC4xMTA2KSIKICAgICAgICAgICBpZD0iZzUwIj48cGF0aAogICAgICAgICAgICAgaWQ9InBhdGg1MiIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwwIEggMTIwLjE1NTUgViAzNiBIIDAgWiIgLz48L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9Imc1NCI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoNjApIgogICAgICAgICBpZD0iZzU2Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ3MiwxNTkpIgogICAgICAgICAgIGlkPSJnNjIiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDY2IgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtQm9sZDt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjY0IgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDE3LjU2ODAwMSAyNi4xNiAzNC43NTE5OTkgNDYuNDg3OTk5IDU2Ljc1OTk5OCA2OC45MDM5OTkgODMuNjg4MDA0IDk0LjYzMjAwNCI+VXR0ZXJhbmNlPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzY4Ij48ZwogICAgICAgICBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGg3NCkiCiAgICAgICAgIGlkPSJnNzAiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjUsMTcyKSIKICAgICAgICAgICBpZD0iZzc2Ij48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQ4MCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3Bhbjc4IgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDE2LjQ0MDAwMSAyNy4xNjc5OTkgNDAuMTc1OTk5IDUwLjkwMzk5OSA1OS44MzIwMDEgNzAuODAwMDAzIDc4LjM4NDAwMyA5MC40ODAwMDMgOTkuNDA3OTk3Ij5HZW5lcmF0b3IvPC90c3Bhbj48L3RleHQ+CjwvZz48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1LDE3MikiCiAgICAgICAgICAgaWQ9Imc4MiI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0ODYiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6THVjaWRhR3JhbmRlOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246THVjaWRhR3JhbmRlO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxMDcuMTYsMCkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW44NCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCI+4oCoPC90c3Bhbj48L3RleHQ+CjwvZz48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM3LDE0NSkiCiAgICAgICAgICAgaWQ9Imc4OCI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0OTIiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6TGliZXJ0aW51c1NlcmlmOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246TGliZXJ0aW51c1NlcmlmLVJlZ3VsYXI7d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ic2NhbGUoMSwtMSkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW45MCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxMS42NCAyNC4yNjQgMzQuOTkyMDAxIDQ1Ljk1OTk5OSA1OC4yNDgwMDEgNjguOTc1OTk4IDc3LjkwMzk5OSI+U3BlYWtlcjo8L3RzcGFuPjwvdGV4dD4KPC9nPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQsNDYpIgogICAgICAgICAgIGlkPSJnOTQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDk4IgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToyNHB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1SZWd1bGFyO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuOTYiCiAgICAgICAgICAgICAgIHk9IjAiCiAgICAgICAgICAgICAgIHg9IjAgMTIuOTg0IDIzLjk1MiAzMi44ODAwMDEgNDIuMjQwMDAyIDUyLjk2Nzk5OSA2MS44OTYiPlBhcnNlci88L3RzcGFuPjwvdGV4dD4KPC9nPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQsNDYpIgogICAgICAgICAgIGlkPSJnMTAwIj48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQxMDQiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6THVjaWRhR3JhbmRlOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246THVjaWRhR3JhbmRlO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw2OS42NDgsMCkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW4xMDIiCiAgICAgICAgICAgICAgIHk9IjAiCiAgICAgICAgICAgICAgIHg9IjAiPuKAqDwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNSwxOSkiCiAgICAgICAgICAgaWQ9ImcxMDYiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDExMCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjEwOCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxNi4zOTIgMjguNTM1OTk5IDQwLjY4IDQ5LjQxNiA2MC4xNDQwMDEgNjkuNTAzOTk4IDc4Ljg2Mzk5OCA4OS43NjAwMDIgMTAwLjQ4OCI+QWRkcmVzc2VlOjwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxNTEuMDQ3Nyw3MS4yNDE0MSkiCiAgICAgICAgICAgaWQ9ImcxMTIiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDExNCIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwwIEggMTU0LjYxOTUgViA2MyBIIDAgWiIgLz48L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcxMTYiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDEyMikiCiAgICAgICAgIGlkPSJnMTE4Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4NSw0NikiCiAgICAgICAgICAgaWQ9ImcxMjQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDEyOCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjEyNiIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxOC45NTk5OTkgMjUuNDY0MDAxIDM0LjM5MTk5OCA0My4xMjc5OTggNTUuMjIzOTk5IDYzLjk1OTk5OSA3NC44NTYwMDMgODciPm1pcnJvcmVkIDwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNjIsMTkpIgogICAgICAgICAgIGlkPSJnMTMwIj48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQxMzQiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNHB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1Cb2xkO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuMTMyIgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDguODA3OTk5NiAyMy41OTE5OTkgMzMuODQgNDIuNDMxOTk5IDUyLjcwMzk5OSA2Ny4wNTYgNzggODYuNTkyMDAzIDk0LjMyIDEwNy41NDQgMTIyLjMyOCI+SW5zdHJ1Y3Rpb25zPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzEzNiI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMTQyKSIKICAgICAgICAgaWQ9ImcxMzgiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMzU5Ljk2MDksMTQ3LjYxMDYpIgogICAgICAgICAgIGlkPSJnMTQ0Ij48cGF0aAogICAgICAgICAgICAgaWQ9InBhdGgxNDYiCiAgICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDozO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgICBkPSJtIDExLjY5ODEyLDM2LjEyNTU2IDEuNDk5NzYsMC4wMjY4OSBDIDExMC40OTU1LDM3LjM0Njc0IDE2Mi4xMzczLDI1LjI5NTkyIDE2OC4xMjMzLDAiIC8+PC9nPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgxNDgiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDM3My4yNzcxLDExOC4wNTcxIC0xMy4zMTYyLC02LjM2MjMgMTMuMDc5NSwtNi44MzU2IHoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwzMDYuMTc0MSwxNzkuNjE3MykiCiAgICAgICAgICAgaWQ9ImcxNTAiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDE1MiIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjM7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwzLjYwNjU3NyBDIDUxLjEzOTcyLC0wLjkzODgwNjUgOTkuNjYzMzIsLTEuMTg3NzY2IDE0NS41NzA4LDIuODU5Njk4IGwgMS40OTMzLDAuMTQ1ODU3IiAvPjwvZz48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMTU0IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSA0NTEuMTAzNywxNzAuMTg4OCAxMy43NzkxLDUuMjg1NSAtMTIuNDk1OSw3Ljg1MiB6IiAvPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgxNTYiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDM1MC42ODA3LDE5Mi44MDE4IGggNTQuOTk3OCB2IC0yNiBoIC01NC45OTc4IHoiIC8+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcxNTgiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDE2NCkiCiAgICAgICAgIGlkPSJnMTYwIj48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM1OCwxNzUpIgogICAgICAgICAgIGlkPSJnMTY2Ij48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQxNzAiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTppdGFsaWM7Zm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxNnB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1Cb2xkSXRhbGljO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuMTY4IgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDEwLjk3NiAyMS4zMTIgMjYuNDk2IDMzLjA0MDAwMSI+UnVsZXM8L3RzcGFuPjwvdGV4dD4KPC9nPjwvZz48L2c+PGcKICAgICAgIGlkPSJnMTcyIj48ZwogICAgICAgICBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgxNzgpIgogICAgICAgICBpZD0iZzE3NCI+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwyMzAuNDc5OCwxMDMuNjk1NCkiCiAgICAgICAgICAgaWQ9ImcxODAiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDE4MiIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjM7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gOS4yMjQwMTYsMjQuNzU2MTkgMTAuNDA2NTgsMjMuODMzNCBDIDIyLjg0ODIzLDE1Ljc1NzA5IDQxLjM5NDMyLDcuODEyODggNjYuMDQ1ODEsMCIgLz48L2c+PHBhdGgKICAgICAgICAgICBpZD0icGF0aDE4NCIKICAgICAgICAgICBzdHlsZT0iZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgIGQ9Im0gMjM2LjgyNjEsODUuMDY1MjkgLTYuMzQ2MywtMTMuMzIzODIgMTQuNDY2OSwyLjkxNzI0IHoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwzMDYuMTcyNywyNS45MDgxOCkiCiAgICAgICAgICAgaWQ9ImcxODYiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDE4OCIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjM7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Im0gMCwwIGMgNTIuOTc1OTQsNi44OTE4MzkgMTAxLjUxOTgsNy42MzQwNzcgMTQ1LjYzMTcsMi4yMjY3MTQgbCAxLjQ4NjcsLTAuMjA0OTgyIiAvPjwvZz48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMTkwIgogICAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSA0NTIuNzA2NiwxNy4xNDM0MiAxMi4xNzQ4LDguMzQxMTIgLTEzLjk3NzcsNC43MzUxNyB6IiAvPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgxOTIiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDM1MC42ODA3LDMzLjIxMzY4IGggNTQuOTk3OCBWIDcuMjEzNjg1IGggLTU0Ljk5NzggeiIgLz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzE5NCI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMjAwKSIKICAgICAgICAgaWQ9ImcxOTYiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzU4LDE1KSIKICAgICAgICAgICBpZD0iZzIwMiI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0MjA2IgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6aXRhbGljO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTZweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtQm9sZEl0YWxpYzt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjIwNCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxMC45NzYgMjEuMzEyIDI2LjQ5NiAzMy4wNDAwMDEiPlJ1bGVzPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzIwOCI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMjE0KSIKICAgICAgICAgaWQ9ImcyMTAiPjxnCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsNTQxLjkyODEsMTQ3LjYwNzQpIgogICAgICAgICAgIGlkPSJnMjE2Ij48cGF0aAogICAgICAgICAgICAgaWQ9InBhdGgyMTgiCiAgICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDozO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjQ7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiCiAgICAgICAgICAgICBkPSJNIDIyLjY3NzcyLDc1Ljg2NjAzIEMgMzEuMTM4MDgsNTguMTQ1MTMgMjYuMjM5NjcsMzYuMzYxMzkgNy45ODI1MTEsMTAuNTE0OCBMIDcuMDc0NTY0LDkuMzE4ODI4IiAvPjwvZz48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMjIwIgogICAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSA1NTUuMTY2NCwxNDEuMDg0NiAtMTMuMjM4Myw2LjUyMjggMi43MjQ3LC0xNC41MDQzIHoiIC8+PGcKICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw0NjUuMzgxNCw3MS4yNDE0MSkiCiAgICAgICAgICAgaWQ9ImcyMjIiPjxwYXRoCiAgICAgICAgICAgICBpZD0icGF0aDIyNCIKICAgICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgICAgICAgIGQ9Ik0gMCwwIEggMTIwLjE1NTUgViA2MyBIIDAgWiIgLz48L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcyMjYiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDIzMikiCiAgICAgICAgIGlkPSJnMjI4Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ4Miw0NikiCiAgICAgICAgICAgaWQ9ImcyMzQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDIzOCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtUmVndWxhcjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjIzNiIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCAxOC45NTk5OTkgMjUuNDY0MDAxIDM0LjM5MTk5OCA0My4xMjc5OTggNTUuMjIzOTk5IDYzLjk1OTk5OSA3NC44NTYwMDMgODciPm1pcnJvcmVkIDwvdHNwYW4+PC90ZXh0Pgo8L2c+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NzIsMTkpIgogICAgICAgICAgIGlkPSJnMjQwIj48dGV4dAogICAgICAgICAgICAgaWQ9InRleHQyNDQiCiAgICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToyNHB4O2ZvbnQtZmFtaWx5OkxpYmVydGludXNTZXJpZjstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOkxpYmVydGludXNTZXJpZi1Cb2xkO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgICB0cmFuc2Zvcm09InNjYWxlKDEsLTEpIj48dHNwYW4KICAgICAgICAgICAgICAgaWQ9InRzcGFuMjQyIgogICAgICAgICAgICAgICB5PSIwIgogICAgICAgICAgICAgICB4PSIwIDE3LjU2ODAwMSAyNi4xNiAzNC43NTE5OTkgNDYuNDg3OTk5IDU2Ljc1OTk5OCA2OC45MDM5OTkgODMuNjg4MDA0IDk0LjYzMjAwNCI+VXR0ZXJhbmNlPC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjxnCiAgICAgICBpZD0iZzI0NiI+PGcKICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2NsaXBQYXRoMjUyKSIKICAgICAgICAgaWQ9ImcyNDgiPjxwYXRoCiAgICAgICAgICAgaWQ9InBhdGgyNTQiCiAgICAgICAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICBkPSJtIDUzMi42ODA3LDExMyBoIDU0Ljk5NzggViA4NyBoIC01NC45OTc4IHoiIC8+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcyNTYiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDI2MikiCiAgICAgICAgIGlkPSJnMjU4Ij48ZwogICAgICAgICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUzOSw5NSkiCiAgICAgICAgICAgaWQ9ImcyNjQiPjx0ZXh0CiAgICAgICAgICAgICBpZD0idGV4dDI2OCIKICAgICAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOml0YWxpYztmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE2cHg7Zm9udC1mYW1pbHk6TGliZXJ0aW51c1NlcmlmOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246TGliZXJ0aW51c1NlcmlmLUJvbGRJdGFsaWM7d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIKICAgICAgICAgICAgIHRyYW5zZm9ybT0ic2NhbGUoMSwtMSkiPjx0c3BhbgogICAgICAgICAgICAgICBpZD0idHNwYW4yNjYiCiAgICAgICAgICAgICAgIHk9IjAiCiAgICAgICAgICAgICAgIHg9IjAgMTAuOCAyMC43MTk5OTkgMjcuMzc1OTk5IDM0LjMyIj5DaGVjazwvdHNwYW4+PC90ZXh0Pgo8L2c+PC9nPjwvZz48ZwogICAgICAgaWQ9ImcyNzAiPjxnCiAgICAgICAgIGNsaXAtcGF0aD0idXJsKCNjbGlwUGF0aDI3NikiCiAgICAgICAgIGlkPSJnMjcyIj48cGF0aAogICAgICAgICAgIGlkPSJwYXRoMjc4IgogICAgICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgZD0ibSAyOTYuNTI1NiwxMjUuOCBoIDYzLjQzNTMgdiAtMjYgaCAtNjMuNDM1MyB6IiAvPjwvZz48L2c+PGcKICAgICAgIGlkPSJnMjgwIj48ZwogICAgICAgICBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgyODYpIgogICAgICAgICBpZD0iZzI4MiI+PGcKICAgICAgICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMDMsMTA4KSIKICAgICAgICAgICBpZD0iZzI4OCI+PHRleHQKICAgICAgICAgICAgIGlkPSJ0ZXh0MjkyIgogICAgICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6aXRhbGljO2ZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LXNpemU6MTZweDtmb250LWZhbWlseTpMaWJlcnRpbnVzU2VyaWY7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpMaWJlcnRpbnVzU2VyaWYtQm9sZEl0YWxpYzt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIgogICAgICAgICAgICAgdHJhbnNmb3JtPSJzY2FsZSgxLC0xKSI+PHRzcGFuCiAgICAgICAgICAgICAgIGlkPSJ0c3BhbjI5MCIKICAgICAgICAgICAgICAgeT0iMCIKICAgICAgICAgICAgICAgeD0iMCA5LjQwOCAxNi4wOTYwMDEgMjIuNzUyMDAxIDMxLjcyODAwMSAzNy4yMDAwMDEgNDQuMTQ0MDAxIj5QcmVkaWN0PC90c3Bhbj48L3RleHQ+CjwvZz48L2c+PC9nPjwvZz48L3N2Zz4=" alt="Basic workflow of YAST" />
+<figcaption>Figure 1.1: Basic workflow of YAST</figcaption>
 </figure>
-<p>Instructions consist of different kind of information, <span class="smallcaps">content</span>, <span class="smallcaps">connection</span> and <span class="smallcaps">specification</span>. All specified information concerns the subject matter, not the syntactic structure of the utterance. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The syntactic structure is simply added automatically to an utterance by the rules.</p>
-<ul>
-<li>Content, mostly a single lexeme</li>
-<li>Connection to previous content</li>
-<li>Specification, i.e. language-specific grammatical ‘features’</li>
-</ul>
+<h2 data-number="1.2" label="1.2" id="sec1.2"><span class="header-section-number">1.2</span> The recipe</h2>
+<p>The recipe consists of a collection of one-line instructions that can be indented to indicate modifications. Instructions consist of three different kinds of information, namely <span class="smallcaps">junction</span>, <span class="smallcaps">content</span> and <span class="smallcaps">specification</span>. All information in an instruction ideally will be of a functional/semantic nature. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The formal syntactic structure is added to an utterance by the (automatic) rules. However, the most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. A speaker of a specific language is necessarily juggling with the language-specific tools available to construct an utterance.</p>
 
 <div id="ex1">
 <table class="linguistic-example">
 <tbody>
 <tr class="odd">
 <td class="linguistic-example-number" style="vertical-align: top;">(1)</td>
+<td colspan="2" class="linguistic-example-preamble" style="text-align: left;">Parts of an instruction in YAST</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">junction</span>: explicit relation to earlier content (can be empty for default modification)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">content</span>: a single base lexeme</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">c.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">specification</span>: language-specific grammatical marking (can be empty for unmarked morphosyntax)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As an example, consider the German sentence in <a href="#ex2">(2)</a> as an appetiser. This German sentence is generated by the instructions in <a href="#ex3">(3)</a> using the grammatical rules as will be laid out in the rest of this book. The instructions in <a href="#ex3">(3)</a> can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this will has to be worked out in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic categories, so their semantic interpretation will have to be language-specific as well. Any cross-linguistic generalisation over language-specific elements is a highly important, though separate, endeavour.</p>
+
+<div id="ex2">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(2)</td>
 <td class="linguistic-example-content" style="text-align: left;">Die Männer, deren kleinen Kinder schlecht schlafen, habe ich gestern in deinem schönen Garten gesehen.</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="ex2">
+<div id="ex3">
 <table class="linguistic-example">
 <tbody>
 <tr class="odd">
-<td class="linguistic-example-number" style="vertical-align: middle;">(2)</td>
+<td class="linguistic-example-number" style="vertical-align: middle;">(3)</td>
 <td class="linguistic-example-content" style="text-align: left;"><div class="ex" data-noFormat="true">
 <pre><code>sehen (Perfekt)
-  Gesehene: Mann (Definit + Plural)
+  Gesehene: Mann (Plural + Definit)
     schlafen
-      Schlafende: Kind (Besitzer: Mann + Plural)
+      Schlafende: Kind (Plural + Besitzer: Mann)
         klein
       schlecht
   Sehende: 1
@@ -469,20 +478,208 @@ vertical-align: top;
 </tbody>
 </table>
 </div>
-<p>The actual lexemes to be used are typically included into the instructions, as the language-specific lexemes are the best summary of their meaning.</p>
-<p>Ordering of instructions is “free”. The generator is allowed to specify any order (within certain limits to be specified) and the rules will sometimes have to work around to make this order work in accordance to the structure of the language. A proficient speaker with much experience takes this into account.</p>
-<h2 data-number="1.2" label="1.2" id="sec1.2"><span class="header-section-number">1.2</span> Syntactic rules</h2>
+<p>Each line in <a href="#ex3">(3)</a> is a single instruction, possibly consisting of up to three different kinds of elements. Anything before the colon is an explicit <span class="smallcaps">junctor</span> that marks the relation to the superordinate instruction. It is either a lexical role, an adposition or a subjunction/conjunction. When there is no colon, then the junction will be default modification. After the linkage follows the main <span class="smallcaps">content</span>. This is typically a German lexeme, though there are a few codes used, like ‘1’ for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. Following the content lexeme comes a list (between brackets) with explicit grammatical <span class="smallcaps">specifications</span>. When there are no grammatical specifications the rules will infer a default (‘unmarked’) grammatical structure. Multiple grammatical specifications are separated with a plus-sign, and their order is relevant in some situations.</p>
+<h2 data-number="1.3" label="1.3" id="sec1.3"><span class="header-section-number">1.3</span> The rules</h2>
+<p>The instructions induce rules that produce an actual utterance. By definition, the rules take care of the part of the sentence production that is completely automatic and predictable. The rules are concerned with the task to put everything in its proper place and give it its proper form. The basic rule-action is the insertion of linguistic material into the structure prepared by the superordinate instruction. Such insertions can be either a template insertion or a filler insertion. There are two kinds of syntactic templates, which I will call <span class="smallcaps">clause</span> and <span class="smallcaps">phrase</span> (for obvious reasons). Most rules are context-free (type-2) and many even just regular (type-3). Only the rules to encode diatheses are mildly-context-sensitive, because that multiple different (named) elements are transformed.</p>
+<h2 data-number="1.4" label="1.4" id="sec1.4"><span class="header-section-number">1.4</span> The receipt</h2>
+<p>Constituent structure</p>
+<h1 data-number="2" label="2" id="sec2"><span class="header-section-number">2</span> Generating the recipe</h1>
+<h2 data-number="2.1" label="2.1" id="sec2.1"><span class="header-section-number">2.1</span> Generation: creating a recipe</h2>
+<p>incremental, lot’s of free choice, restrictions pile up as a result of previous choices</p>
+<p>In some situation, the ordering of specifications is relevant.</p>
+<p>The order of instructions in a recipe is to a large extend “free”. The speaker is allowed to specify the instructions in any order in accordance with the intended message (within certain language-specific limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to mould the result in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.</p>
+<h2 data-number="2.2" label="2.2" id="sec2.2"><span class="header-section-number">2.2</span> Ingredients: building blocks of a recipe</h2>
+<p>The basic building blocks of a recipe will be called <span class="smallcaps">ingredients</span> (in keeping with the cooking metaphor used here).</p>
+<p>Lexemes induce a state-of-mind at the addressee, consisting of possible situations in accordance to the communally developed practice of using the lexeme (i.e. the lexeme’s ‘meaning’). The act of uttering a lexeme aims to conjure up some of those possible situations in the mind of the addressee.</p>
+<p>Language extends the usefulness of these building blocks by combining multiple lexemes into utterances. The basic meaning of a combination of lexemes is the intersection of the two sets of possible situations. If the addressee is not able to find any intersection, the utterance of a lexeme combination forces the addressee to further search for possible situations that meet the desired combination.</p>
+<p>However, a central tenet of human language is that combinations of linguistic elements is typicaly asymmetrical. Lexemes are not simply combined as equals, but there is always a <span class="smallcaps">base</span> lexeme that is modified by another linguistic element.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Modifiers can become grammaticalised to a point at which they cannot be used themselves as a base anymore and become pure <span class="smallcaps">operators</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Base lexemes can be further differentiated into admodifiers and predicates.</p>
+<p>I propose the following definitions for these three different kinds of syntactic elements: <span class="smallcaps">operators</span>, <span class="smallcaps">admodifiers</span> and <span class="smallcaps">predicates</span>. Note that the statements below are definitions that might not always coincide with what one might otherwise conceive of as an operator, admodifier or predicate. However, the effect of these definitions seem close enough to most applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion. To disambiguate the following definitions from other approaches using these terms one might think of them as ‘YAST-operator’, etc., but such clarification will here simply be omitted.</p>
+
+<div id="ex4">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(4)</td>
+<td colspan="2" class="linguistic-example-preamble" style="text-align: left;">Primary syntactic functions in YAST</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">base</span>: a linguistic element that can be modified.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">operator</span>: a linguistic element that itself cannot be modified.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The German language has a rather strict seperation into morphemes that are bases and morphemes that are operators.</p>
+
+<div id="ex5">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(5)</td>
+<td colspan="2" class="linguistic-example-preamble" style="text-align: left;">Base functions in YAST</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">predicate</span>: a base that can be modified by operators and by other bases.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">admodifier</span>: a base that can only be modified by operators.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="ex6">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(6)</td>
+<td colspan="2" class="linguistic-example-preamble" style="text-align: left;">Operator functions</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">juncture</span>: an operator that encodes the relation between a superodinate and a subordinate predicate.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">quantifier</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Prototypical operators are bound morphemes, but there are many other linguistic elements that are operators under the current definition (viz. they cannot themselves be modified), e.g. intensifiers, quantifiers, adpositions, subjunctions, etc. Prototypical admodifiers are adjectives and adverbs that allow for only limited modification like gradation and intensification.</p>
+<p>The syntactic function of a predicate is defined here in a very general sense as bases that can be modified by other bases. Predicates typically are verbs, but it also includes nouns as predicator of a referential entity. By definition, predicates can be modified by other predicates, so this is the moment where recursion becomes necessary. Additionally,</p>
+<h2 data-number="2.3" label="2.3" id="sec2.3"><span class="header-section-number">2.3</span> Hierarchical structure</h2>
+<p>The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modelled by using the mechanisam of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.</p>
+<p>Coinciding with the three kinds of syntactic elements introduced in <a href="#ex6">(6)</a>, I propose to break down the hierarchical structure of human utterances into three different levels, which I will refer to as <span class="smallcaps">stacking</span>, <span class="smallcaps">redoubling</span> and <span class="smallcaps">embedding</span>. These three levels of hierarchical structure are conceptually build on top of each other, i.e. redoubling is a special case of stacking, and embedding is a special case of iteration. In practice, I will use the term ‘stacking’ only when there is no redoubling nor embedding, and ‘redoubling’ is likewise only used for constructions that are not embedding. Crucially, only embedding will be modelled with recursion. Stacking and redoubling are much simpler and do not need recursion. They can easily be modelled by sinmple iteration.</p>
+
+<div id="ex7">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(7)</td>
+<td colspan="2" class="linguistic-example-preamble" style="text-align: left;">Hierarchical structures in YAST</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">stacking</span> is the modification of a base by operators.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">redoubling</span> is the modification of a base by admodifiers.</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">c.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">embedding</span> is the modification of a base by predicates.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These three levels suggest an evolutionary development in that human language first developed stacking, then redoubling and then embedding. However, that is purely speculation as all human languages currenty appear to employ all three kinds of hierarchical structure. Also note that contemporary language change does not follow the path from stacking to redoubling to embedding. In contrast, grammaticalisation typically develops in the reverse direction.</p>
+<h2 data-number="2.4" label="2.4" id="sec2.4"><span class="header-section-number">2.4</span> Expressing the syntactic model</h2>
+<p>The syntactic model is turned into YAST-instructions as follows. Each base is a content lexeme that makes up a single instruction (i.e. a single line in the YAST-format as in the earlier example, repeated below). Redoubling and embedding are specified by indenting of the instructions. The difference between redoubling and embedding is not explicitly specified. However, embedding typically can have further modifications and their relation to the superordinate base can be specified with a linkage (before the colon). Syntactically, each linkage is an operator. All other operators are added in brackets after the base lexeme.</p>
+
+<div id="ex8">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: middle;">(8)</td>
+<td class="linguistic-example-content" style="text-align: left;"><div class="ex" data-noFormat="true">
+<pre><code>sehen (Perfekt)
+  Gesehene: Mann (Plural + Definit)
+    schlafen
+      Schlafende: Kind (Plural + Besitzer: Mann)
+        klein
+      schlecht
+  Sehende: 1
+  gestern
+  in: Garten (Definit + Besitzer: 2)
+    schön</code></pre>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>level 0: morpheme combination</strong>
+<ul>
+<li>a <span class="smallcaps">morpheme</span> is a unanalyzable linguistic symbol, i.e a conventional and mostly arbitrary form-meaning pairing that cannot be meaningfully further subdivided.</li>
+<li>two lexemes can be combined using simple set-intersection semantics</li>
+<li>linear ordering of lexemes is not consistently used</li>
+<li>combinations of more than two lexemes are difficult to interpret, but not impossible</li>
+<li>this level of structure seems to be attested in other lifeforms as well</li>
+</ul></li>
+<li><strong>level 1: base-operator stacking</strong>
+<ul>
+<li>lexemes are used in two different functions, i.e. there is an asymmetry between a <span class="smallcaps">base</span>-lexeme and an <span class="smallcaps">operator</span>-lexeme</li>
+<li>in set-semantic terms, an operator restricts the reference of its base</li>
+<li>multiple operators can hierarchically be added to a base</li>
+<li>operators themselves cannot be further modified</li>
+<li><span class="smallcaps">linear ordering</span> between base and operator is typically employed to indicate the asymmetry between base and operator</li>
+<li>ordering base-operator seems more ‘natural’, typically leading to postposed operators</li>
+</ul></li>
+<li><strong>level 2: head-dependent iteration</strong>
+<ul>
+<li>a base-lexeme is called a <span class="smallcaps">head</span> when its operators can themselves have operators</li>
+<li>an operator-lexeme is called a <span class="smallcaps">dependent</span> when it can have operators for itself</li>
+<li>dependents can have operators, but they cannot have dependents, i.e. there is only one level of embedding</li>
+<li>multiple dependents per head are possible, but without further internal structure these are just lists of dependents added to a single head.</li>
+<li><span class="smallcaps">bound morphology</span> is typically used to make operator scope explicit</li>
+</ul></li>
+<li><strong>level 3: subordination</strong>
+<ul>
+<li>dependents can themselves have dependents, i.e. full recursion as a dependent can be a head</li>
+<li>explicit relations to mark heads-as-dependents</li>
+<li>complex internal ordering structure of constituents</li>
+<li>specialisation of lexemes</li>
+</ul></li>
+</ul>
+<p>Because of the spoken mode, language is necessarily <span class="smallcaps">ordered</span>. All utterances progress in time, necessitating the ordering of elements in a linear fashion. So, when combining two lexemes a decision has to be taken in which order to utter them.</p>
+<p>A typical correlate to a head-dependency asymmetry is to fix the ordering, in essence marking the asymmetry by the ordering.</p>
+<p>Dependency:
+- Unmarked
+- Relation</p>
+<p>Constituency:
+- Binary
+- Multiple</p>
+<p>Hierarchical structure:
+- Iteration (“tail-recursion”)
+- Recursion</p>
+<p>Order:
+- External (before, after)
+- Internal (first, second, pre-head, post-head, end)</p>
+<p>Lexeme classes</p>
+<p>Note the difference between “operated on” and “modified by”. Modifier become operator through grammaticalisation, e.g. compounds leading to derivational morphology or auxiliaries becoming inflection.</p>
+<p>Relationship-grammaticalisation:
+- junktor &gt; relator &gt; operator &gt; contributor
+- lexical relation &gt; abstract relation &gt; head specification &gt; automatic rule (‘double marking’, probably rare)</p>
+<h2 data-number="2.5" label="2.5" id="sec2.5"><span class="header-section-number">2.5</span> Syntactic rules</h2>
 <p>The basic syntactic principles are the following.</p>
 <ul>
 <li>YAST makes a strict separation between monoclausal <span class="smallcaps">stacking</span> and multiclausal <span class="smallcaps">subordination</span>.</li>
-<li>A sentence is constructed by a hierarchical sequence of <span class="smallcaps">operations</span> that closely mimic descriptive approaches to linguistic structure.</li>
+<li>A sentence is constructed by a hierarchical sequence of <span class="smallcaps">instructions</span> that closely mimic descriptive approaches to linguistic structure.</li>
 <li>The operations and their lexical variables are supposed to be the minimal information needed to produce a sentence. All other syntactic details follow automatically from this information, with the help of a static dictionary.</li>
 <li>A YAST operation typically adds linguistic material to the sentence, i.e. <span class="smallcaps">generation</span>, but it can also change already available material, i.e. <span class="smallcaps">transformation</span>. Aspects of generation and transformation are thus intermixed in YAST.</li>
 <li>The nodes in the resulting hierarchical sentence structure record the operations applied, so the final YAST tree can be read as an archive of the building process.</li>
 <li>The leaves of the tree are the actual linguistic forms making up the sentence, making the YAST tree very similar to a <span class="smallcaps">constituency tree</span>.</li>
 <li>However, a YAST tree can easily be reformatted with the leaves (i.e. ‘words’) as nodes and the path to a leaf (i.e. ‘sequence of operations’) as the verteces. The result of that reformatting is very similar to a <span class="smallcaps">dependency tree</span> because sequences of operations can be interpreted as relations between words.</li>
 </ul>
-<h2 data-number="1.3" label="1.3" id="sec1.3"><span class="header-section-number">1.3</span> Restrictions</h2>
+<h2 data-number="2.6" label="2.6" id="sec2.6"><span class="header-section-number">2.6</span> Restrictions</h2>
 <p>The YAST system of rules is proposed as a tool to describe attested sentences. It is not (yet) a fully restrictive model to exclude all impossible sentences. I consider it a research project to fine-tune the rules and their restrictions, inching ever so closer to this ideal. There are three different kinds of restrictions on possible syntactic trees:</p>
 <ul>
 <li><span class="smallcaps">rule restrictions</span>: Some restrictions are inherent in the formulation of the rules, i.e. by choosing a particular rule there are some structural consquences. The number of such restrictions is conspicuously limited in YAST. Basically, there are event-structure rules that only can be applied to a predication and there are identification rules that can only be applied to a reference. Most other restrictions turn out to be lexically determined, as discussed below.</li>
@@ -490,18 +687,18 @@ vertical-align: top;
 <li><span class="smallcaps">lexical restrictions</span>: The most difficult, but also most interesting, kind of restrictions are lexical restrictions, i.e. the choice to insert a specific lexeme into the tree leads to restrictions later on in the syntactic tree. Such restrictions have to be documented in the extended lexicon, i.e. it has to be explicitly listed what are the consequences of each lexical entry.</li>
 <li><span class="smallcaps">semantic interpretation</span>: Finally, there are sentences that might seem syntactically fine, but are semantically strange or nonsensical, like the infamous ‘green ideas sleep furiously’. Such sentences are not necessarily wrong, they might just need some more (poetic) freedom to be amenable.</li>
 </ul>
-<h2 data-number="1.4" label="1.4" id="sec1.4"><span class="header-section-number">1.4</span> YAST in a nutshell</h2>
+<h2 data-number="2.7" label="2.7" id="sec2.7"><span class="header-section-number">2.7</span> YAST in a nutshell</h2>
 <p>A YAST-analysis of a sentence will form a syntactic tree, just like most modern syntax theories. However, different from most other proposals, the nodes of the tree will be <span class="smallcaps">operations</span> and the leaves will be <span class="smallcaps">linguistic forms</span>.</p>
 <p>There are basically two different kinds of operations, namely <span class="smallcaps">additions</span> and <span class="smallcaps">changes</span>. A tree with just additions would be completely comparable to any generative approach to syntactic trees. The role of changes is alike to the idea to allow transformations in the analysis of a sentence. In the YAST-tree additions (‘generation’) and changes (‘transformations’) are intermixed. They do not occur sequentially (i.e. first generation, then transformation), as in most classical transformational-generative aproaches. In contrast, the YAST-tree can have some generative steps, followed by transformational steps, returning to generative steps, and so on.</p>
 <p>From a different perspective, the YAST-tree can also be interpreted as a dependency tree. To achieve this, the operations (i.e. the nodes in the YAST-tree) can be reinterpreted as relations. In practice, the nodes of the YAST-tree will become the vertices of a dependency tree and the labels of the YAST-nodes will become the names of the dependency relations. At every bifurcation of the YAST-tree there is a natural head, which will be the main node to be connected. All other branches from that same YAST-bifurcation are then dependent on that main node.</p>
 <p>Finally, the idea of looking at the analysis of a sentence as a sequence of operations is very close to the common practice of grammatical analysis as used in schools and in the descriptive tradition, using concepts like ‘adding’ some part to a sentence, ‘expanding’ a particular section, or ‘changing’ a specific form to produce a coherent sentence.</p>
-<h2 data-number="1.5" label="1.5" id="sec1.5"><span class="header-section-number">1.5</span> Infinity and recursion</h2>
+<h2 data-number="2.8" label="2.8" id="sec2.8"><span class="header-section-number">2.8</span> Infinity and recursion</h2>
 <p>The number of all possible sentences that can theoretically be produced in a specific language is infinite. This insight led to the development of syntax theories that can model this infinity. Above all, the notion of recursion received high prominence to explain the infinite possibilties of human languages. However, there are at least three different kinds of theoretical infinity in human languages that need to be distinguished, and only one of them needs recursion to be modelled.</p>
 <p>First, some word classes are theoretically infinite, resulting in infinite different ways to form sentences. In practice, every language at a certain point in time of course has just a finite vocabulary, so this infinity is easy to handle. This kind of infinitiy led to a widespread practice to differentiate between the <span class="smallcaps">lexicon</span> (possibly infinite) and the <span class="smallcaps">grammar</span> (a finite set of specifications). Note that there are exist some very large semi-generative word classes like numerals.</p>
 <p>Second, some phenomena in language are theoretically infinite by linear connection. For example, adjectives before nouns can be (theoretically) iterated infinitely. However, such infinite lists do not need recursion to be modelled. They could be modelled with recursion, but YAST proposes not to. Such infinity is typically attested with different kinds of modification and conjunction.</p>
 <p>Third, infinity needing real recursion is reduced in YAST to only two different kinds of recursion, namely clausal (predication) and phrasal (reference) recursion.</p>
 <p>Futher, there are various elements in the structure of German that are finite templatic in nature. This means that there are options to include additional elements, but there is a finite set of ‘positions’ to be filled. Such templates are always modelled as such, i.e. as finite templates with a fixed number of clearly delimited slots. For example, adjectives can be graded (e.g. <em>sehr klein</em>) or determiners can have quantification (e.g. <em>die drei</em>, <em>alle drei</em>, sometimes even <em>alle die drei</em>) but only in a clearly finite number of possible combinations.</p>
-<h2 data-number="1.6" label="1.6" id="sec1.6"><span class="header-section-number">1.6</span> Elements of YAST</h2>
+<h2 data-number="2.9" label="2.9" id="sec2.9"><span class="header-section-number">2.9</span> Elements of YAST</h2>
 <p>The two main recursive elements of a YAST-analysis are <span class="smallcaps">predication</span> and <span class="smallcaps">reference</span>. Predication leads to a syntactic structure that will be called a <span class="smallcaps">clause</span> (<em>Teilsatz</em>) and reference leads to a <span class="smallcaps">noun phrase</span> (<em>Nominalphrase</em>). However, because there will be no other recursive elements, these two syntactic elements will simply be called <span class="smallcaps">clause</span> (<em>Satz</em>) and <span class="smallcaps">phrase</span> (<em>Phrase</em>).</p>
 <p>Recursive operations in YAST:</p>
 <ul>
@@ -528,116 +725,6 @@ vertical-align: top;
 <li><span class="smallcaps">junction</span> (<em>Junktion</em>) sometimes an explicit juncture (<em>Junktor</em>) is inserted at recursion, describing the relation between the subordinate and the embedded element (‘link downwards’). Although there is some overlap, I will use the name preposition (<em>Präposition</em>, also with <em>da-</em>) for junctures used with an embedded phrase and subordinator (<em>Subjunktion</em>) for junctures used with an embedded clause. also conjunctions (<em>Konjunktion</em>).</li>
 <li><span class="smallcaps">linkage</span> (<em>Verbindung</em>) is made with relators (<em>Relator</em>) inside clauses ‘link upwards’. In German relative pronouns (‘d’-<em>Relativpronomen</em>) and question words (‘w’-<em>Fragewort</em>), with the default entries <em>dass</em> and <em>was</em>. Additionally the particle <em>ob</em> is used as relator. Relators always occur in the first position of a clause and there is a strong connection to the <em>Vorfeld</em> position in the German main clause (which can be interpreted as the linkage to the preceding context with a default entry <em>es</em>).</li>
 </ul>
-<h1 data-number="2" label="2" id="sec2"><span class="header-section-number">2</span> Rules for predication</h1>
-<h2 data-number="2.1" label="2.1" id="sec2.1"><span class="header-section-number">2.1</span> Clause (<em>Satz</em>)</h2>
-<h2 data-number="2.2" label="2.2" id="sec2.2"><span class="header-section-number">2.2</span> Predication (<em>Prädikation</em>)</h2>
-<p>Basically a verb with lexical arguments. A PHRASE leads to <em>Prädikatives Substantiv</em>
-Lexical arguments can be filled with either PHRASE or SATZ (<em>Komplementsatz</em>)</p>
-<ul>
-<li>verbal predication</li>
-</ul>
-<p>Nonverbal predication in German is ‘overloaded’: the same auxiliary/copula(!) constructions are used fro various different kinds of predication. In YAST they are treated as the same structures, but the interpretation is of course different. They all have roles ‘Subjekt’ and ‘Prädikativ’</p>
-<ul>
-<li>possession (possessor(SUBJ) + possessee + auxiliary)</li>
-<li>nominal predication (SUBJ + role ‘noun predicate’ + auxiliary)</li>
-<li>identification (noun predicate with definite marking)</li>
-<li>adjectival predication (SUBJ + attribute ‘adjectival predicate’ + auxiliary)</li>
-<li>adverbial predications (local/temporal)</li>
-<li>location predication with prepositions.</li>
-</ul>
-<p>To be done:</p>
-<ul>
-<li>comparison (comparee(SUBJ) + ‘comparison adjectival predicate’ + auxiliary + role ‘standard of comparison’: both SATZ and PHRASE possible, additional Junktion <em>als, wie</em>)</li>
-</ul>
-<h2 data-number="2.3" label="2.3" id="sec2.3"><span class="header-section-number">2.3</span> Event structure (<em>Ereignisstruktur</em>)</h2>
-<p>Epitheses, diatheses, tense</p>
-<h2 data-number="2.4" label="2.4" id="sec2.4"><span class="header-section-number">2.4</span> Adverbial modification of predication (<em>Adverbiale</em>)</h2>
-<p>Either a PHRASE or SATZ (<em>Adverbialsatz</em>)
-also: adverbs, negation, particles, adjectives+gradation</p>
-<h1 data-number="3" label="3" id="sec3"><span class="header-section-number">3</span> Rules for reference</h1>
-<h2 data-number="3.1" label="3.1" id="sec3.1"><span class="header-section-number">3.1</span> Phrase (<em>Phrase</em>)</h2>
-<h2 data-number="3.2" label="3.2" id="sec3.2"><span class="header-section-number">3.2</span> Reference (<em>Referenz</em>)</h2>
-<p>Determination (quantification+article+numeral) and phrasal head
-If SATZ then <em>Nominalisation</em></p>
-<h2 data-number="3.3" label="3.3" id="sec3.3"><span class="header-section-number">3.3</span> Identification (<em>Identifikation</em>)</h2>
-<h2 data-number="3.4" label="3.4" id="sec3.4"><span class="header-section-number">3.4</span> Attributive modification of reference (<em>Attribut</em>)</h2>
-<p>either PHRASE (<em>Präpositionalphrase</em>) or SATZ (<em>Relativsatz</em>)
-also: adjectives+gradation</p>
-<h1 data-number="4" label="4" id="sec4"><span class="header-section-number">4</span> Subordination</h1>
-<p>Clauses can be inserted at various places, leading to different kinds of <em>Subordination</em>.</p>
-<ul>
-<li><em>Koordination</em></li>
-<li><em>Subordination</em>
-<ul>
-<li><em>Vollsatz</em>
-<ul>
-<li><em>Subjunktionssatz</em> (adverbial + juncture)</li>
-<li><em>Präpositionssatz</em> (adverbial + juncture)</li>
-</ul></li>
-<li><em>Relatorsatz</em>
-<ul>
-<li><em>Komplementsatz</em> (argument ± juncture)</li>
-<li><em>Weiterführungssatz</em> (= <em>weiterführender Relativsatz</em>) (adverbial)</li>
-<li><em>Adverbialrelativsatz</em> (adverbial + juncture)</li>
-<li><em>Relativsatz</em> (attributive)</li>
-</ul></li>
-<li><em>Kontrollsatz</em> (= <em>infiniter Nebensatz</em>)
-<ul>
-<li><em>Kontrollkomplementsatz</em> (argument ± juncture)</li>
-<li><em>Kontrollpräpositionssatz</em> (adverbial + juncture)</li>
-<li><em>Partizipsatz</em> (= <em>Kontrollrelativsatz</em>) (attributive)</li>
-</ul></li>
-</ul></li>
-</ul>
-<p>nonfinite:</p>
-<p>Komplementsatz -&gt; Kontrollkomplementsatz
-präpositionssatz -&gt; Kontrollpräpositionssatz (delete ‘dass’)
-Relativsatz -&gt; Partizipsatz</p>
-<p>NOTE: <em>freier Relativsatz</em> is transparent combination of ‘free’ relative pronoun as head with a relative clause referring to it. This construction can grammaticalise, e.g. <em>Adverbialrelativsatz</em> is an example of this.</p>
-<p>Three dimensions, 10 of 18 theoretical possiblities attested (Vollsatz always adverbial, Attributsatz never juncture. missing: Adverbialsatz+Kontrollsatz without juncture)</p>
-<ul>
-<li>Place of attachment (<em>Argumentsatz, Adverbialsatz, Attributsatz</em>)</li>
-<li>Structure of subordinate clause (<em>Vollsatz, Relatorsatz, Kontrollsatz</em>)</li>
-<li>Presence of juncture (<em>ja, nein</em>)</li>
-</ul>
-<p>Lexical interpretation important</p>
-<p>Sie wartet darauf, dass ihr Kind tanzt
-Sie wartet auf den Tanz ihres Kindes</p>
-<h1 data-number="5" label="5" id="sec5"><span class="header-section-number">5</span> Finishing up</h1>
-<h2 data-number="5.1" label="5.1" id="sec5.1"><span class="header-section-number">5.1</span> Lexical insertion</h2>
-<h2 data-number="5.2" label="5.2" id="sec5.2"><span class="header-section-number">5.2</span> Government and agreement</h2>
-<p>mostly inside phrase, except</p>
-<ul>
-<li>verbagreement between subject and finite verb</li>
-<li>reflexive pronoun agreement</li>
-<li>anaphoric reference inside sentence</li>
-</ul>
-<h2 data-number="5.3" label="5.3" id="sec5.3"><span class="header-section-number">5.3</span> Flexible word order &amp; fusion</h2>
-<p>only changes here that are really optional, e.g. preposition+article that can also be spelled out. Or reordering that are synchronically flexible</p>
-<h1 data-number="6" label="6" id="sec6"><span class="header-section-number">6</span> Reducing YAST</h1>
-<h2 data-number="6.1" label="6.1" id="sec6.1"><span class="header-section-number">6.1</span> YAST to constituent structure</h2>
-<h2 data-number="6.2" label="6.2" id="sec6.2"><span class="header-section-number">6.2</span> YAST to dependency structure</h2>
-<h2 data-number="6.3" label="6.3" id="sec6.3"><span class="header-section-number">6.3</span> YAST to basic school grammar</h2>
-<h2 data-number="6.4" label="6.4" id="sec6.4"><span class="header-section-number">6.4</span> YAST to advanced school grammar</h2>
-<h1 data-number="7" label="7" id="sec7"><span class="header-section-number">7</span> Currently excluded</h1>
-<ul>
-<li><p>dislocated structures, e.g. “Aussenfeld”</p></li>
-<li><p>comparative <em>wie/als</em> constructions</p></li>
-<li><p>‘Mittelfeld’ ordering variations based on size</p></li>
-<li><p>secondary predication (dislocation of attributes)</p></li>
-<li><p>Details of Negation scope</p></li>
-<li><p>Quantoren are strange, e.g.: ‘alle meine Bücher’, ‘jedes meiner Bücher’, ‘Die Bücher habe ich alle/beide gelesen’, ‘alle die Bücher in der Schublade’</p></li>
-</ul>
-<p>NOTE: the following is a combination of two adverbials
-“vorne/hinten im Garten”
-they have to be inserted separately
-semantics are inferred from regular scoping of multiple modifiers
-also for ‘noch nicht’ ???</p>
-<p>TODO: what about ‘nur heute’ ? cf. Fokuspartikel!?</p>
-<h1 data-number="8" label="8" id="sec8"><span class="header-section-number">8</span> An (almost) one-rule syntax for German</h1>
-<p>To be clear up-front: no, of course it is not possible to write a complete syntax for the German language with just a single rule. However, I will argue that it is (almost) possible to condense the basic recursive syntax of German into such a single rule, which basically amounts to the instruction <span class="smallcaps">insert lexeme here</span>. Clearly, this one rule alone is not sufficient to capture all the details of actual German sentences. In practice, dozends of additional rules are necessary to completely specify a sentence structure. However, these specifying rules are simple non-recursive instructions like ‘make this lexeme plural’ or ‘put this lexeme in the past tense’. Also, while I think that this condensation into a single recursive rule is theoretically neat, in practice I prefer a slightly more verbose notation using six rules: <span class="smallcaps">clause + predication</span>, <span class="smallcaps">phrase + reference</span>, <span class="smallcaps">addendum</span> and <span class="smallcaps">coordination</span>.</p>
-<p>about the ‘almost’: lexemes have to be explicitly told to be either reference or predicate. So actually there are two rules ‘insert lexeme as predicate’ and ‘insert lexeme as reference’. In practice: this is mostly done by marking the lexeme itself as ‘verb’ (non-capitalized) or ‘noun’ (capitalized). For some constructions an additional specification ‘finite/infinite’ is necessary to get the right syntactic structure. So this might be considered as an additional ‘syntactic’ rule</p>
-<p>Crucially, these proposals are not purely theoretical. The necessary rules for the German language are implemented in a surprisingly small amount of just a few hundred lines of code. They can be applied to produce actual sentences of German, simultaneously constructing a detailed underlying syntactic structure. However, there are two important caveats. First, the current implementation captures very many actual German sentence structures, but it is clearly not complete. However, the claim I would like to stake here is that everything missing can be accomplished with a few additional specifying rules. The basic recursive architecture is claimed to be complete. The second caveat is that the current implementation can (still) result in sentences that are ungrammatical. However, there is a transparent framework in place to formulate restrictions on rule application. Many such restrictions are already implemented, but many more are needed to bar the generation of ungrammatical sentences. In most cases, though, the formulation of such restrictions needs much more research than I have been able to perform until now.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
@@ -713,5 +800,13 @@ also for ‘noch nicht’ ???</p>
   });
 
 </script>
+
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Explicitly symmetrical connections like coordination seem to be a much more recent add-on.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>By using functional terms like ‘base’ and ‘modifier’ I explicitly refrain from using more structurally-oriented terms like ‘head’ and ‘dependent’, respectively, although those terms can largely be taken as synonymous.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 </body>
 </html>
