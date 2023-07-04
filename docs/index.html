@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Michael Cysouw" />
-  <meta name="dcterms.date" content="2023-07-03" />
+  <meta name="dcterms.date" content="2023-07-04" />
   <title>YAST for German</title>
   <style>
 html {
@@ -155,10 +155,8 @@ span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
 div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-
-ul.task-list[class]{list-style: none;}
+ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
-font-size: inherit;
 width: 0.8em;
 margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
@@ -374,7 +372,7 @@ vertical-align: top;
 <header id="title-block-header">
 <h1 class="title">YAST for German</h1>
 <p class="author">Michael Cysouw</p>
-<p class="date">July 3, 2023</p>
+<p class="date">July 4, 2023</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Contents</h2>
@@ -483,6 +481,8 @@ vertical-align: top;
 <p>The instructions induce rules that produce an actual utterance. By definition, the rules take care of the part of the sentence production that is completely automatic and predictable. The rules are concerned with the task to put everything in its proper place and give it its proper form. The basic rule-action is the insertion of linguistic material into the structure prepared by the superordinate instruction. Such insertions can be either a template insertion or a filler insertion. There are two kinds of syntactic templates, which I will call <span class="smallcaps">clause</span> and <span class="smallcaps">phrase</span> (for obvious reasons). Most rules are context-free (type-2) and many even just regular (type-3). Only the rules to encode diatheses are mildly-context-sensitive, because that multiple different (named) elements are transformed.</p>
 <h2 data-number="1.4" label="1.4" id="sec1.4"><span class="header-section-number">1.4</span> The receipt</h2>
 <p>Constituent structure</p>
+<p>The details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is left in the receipt. That is to say, most details of how the receipt currently looks like are easily changed to other preferences. For example, in the current implementation, I have even added a ‘cleanup’ stage, in which various details are removed to present a simpler receipt.</p>
+<p>Still, I have left in various ‘traces’ of the process leading to the end result, which very much look like transformational movements from early proposals in transformational grammar. This happens because some elements of the instructions have to be temporarily kept ‘in memory’ because they cannot immediately be cleared for pronunciation. This happens, for example, with verbs that are waiting for their subject specification to get subject agreement. Such ingredients ‘in waiting’ are stored internally somewhere in the constituent structure and are only uttered at the requisite moment/position. At the point when such ingredients are being processed for pronunciation, they are taken from their internal storage and ‘moved’ to their eventual position in the constituent structure. Crucially though, the location of the internal storage in the constituent structure is really arbitrary, so the ‘movement’ is actually more like a process of ‘preparing for pronunciation’.</p>
 <h1 data-number="2" label="2" id="sec2"><span class="header-section-number">2</span> Generating the recipe</h1>
 <h2 data-number="2.1" label="2.1" id="sec2.1"><span class="header-section-number">2.1</span> Generation: creating a recipe</h2>
 <p>incremental, lot’s of free choice, restrictions pile up as a result of previous choices</p>
@@ -801,12 +801,12 @@ vertical-align: top;
 
 </script>
 
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1"><p>Explicitly symmetrical connections like coordination seem to be a much more recent add-on.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>By using functional terms like ‘base’ and ‘modifier’ I explicitly refrain from using more structurally-oriented terms like ‘head’ and ‘dependent’, respectively, although those terms can largely be taken as synonymous.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</aside>
+</section>
 </body>
 </html>
