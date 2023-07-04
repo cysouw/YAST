@@ -305,6 +305,10 @@ Quantoren = {
 # Architekt, Bär, Bauer, Fotograf, Herr, Held, Katholik, Mensch, Monarch, Philosoph, Satellit, Prinz, Rebell, Soldat, Fürst, Graf, Prinz, Zar, Welf, Schenk, Hirt, Spatz, Fink, Pfau, Greif, Leu, Narr, Tor, Depp, Geck, Mohr, Oberst, Untertan, Vorfahr, Ahn, Typ, Graph, Tyrann, Kamerad
 
 Substantive = {
+  'Straße':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Straßen'
+  },
   'Bäcker':{
     'Geschlecht': 'Maskulin',
     'Plural': 'Bäcker',

@@ -75,6 +75,10 @@ Two kinds of syntactic templates: ~~clause~~ template and ~~phrase~~ template.
 
 Constituent structure
 
+The details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is left in the receipt. That is to say, most details of how the receipt currently looks like are easily changed to other preferences. For example, in the current implementation, I have even added a 'cleanup' stage, in which various details are removed to present a simpler receipt. 
+
+Still, I have left in various 'traces' of the process leading to the end result, which very much look like transformational movements from early proposals in transformational grammar. This happens because some elements of the instructions have to be temporarily kept 'in memory' because they cannot immediately be cleared for pronunciation. This happens, for example, with verbs that are waiting for their subject specification to get subject agreement. Such ingredients 'in waiting' are stored internally somewhere in the constituent structure and are only uttered at the requisite moment/position. At the point when such ingredients are being processed for pronunciation, they are taken from their internal storage and 'moved' to their eventual position in the constituent structure. Crucially though, the location of the internal storage in the constituent structure is really arbitrary, so the 'movement' is actually more like a process of 'preparing for pronunciation'.
+
 # Generating the recipe
 
 ## Generation: creating a recipe
