@@ -59,17 +59,7 @@ Each line in [@last] is a single instruction, possibly consisting of up to three
 
 ## The rules
 
-The rules transform the instructions into an actual utterance.
-
-How to put everything in its proper place and give it its proper form. 
-
-Most rules are context-free. It might be only diatheses that are mildly-context-sensitive, in that multiple different (named) elements are transformed.
-
-Basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instruction.
-
-Template insertion, morpheme insertion and agreement/government resolution.
-
-Two kinds of syntactic templates: ~~clause~~ template and ~~phrase~~ template.
+The instructions induce rules that produce an actual utterance. By definition, the rules take care of the part of the sentence production that is completely automatic and predictable. The rules are concerned with the task to put everything in its proper place and give it its proper form. The basic rule-action is the insertion of linguistic material into the structure prepared by the superordinate instruction. Such insertions can be either a template insertion or a filler insertion. There are two kinds of syntactic templates, which I will call ~~clause~~ and ~~phrase~~ (for obvious reasons). Most rules are context-free (type-2) and many even just regular (type-3). Only the rules to encode diatheses are mildly-context-sensitive, because that multiple different (named) elements are transformed.
 
 ## The receipt
 
@@ -87,13 +77,11 @@ incremental, lot's of free choice, restrictions pile up as a result of previous 
 
 In some situation, the ordering of specifications is relevant. 
 
-In a formal sense, recipe-generation is a purely regular (type-3) grammar. It just consists of the rules R->i, R->iR, i.e. a Recipe *R* can be an instruction *i*
-
 The order of instructions in a recipe is to a large extend "free". The speaker is allowed to specify the instructions in any order in accordance with the intended message (within certain language-specific limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to mould the result in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.
 
 ## Ingredients: building blocks of a recipe
 
-The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor user here). 
+The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor used here). 
 
 Lexemes induce a state-of-mind at the addressee, consisting of possible situations in accordance to the communally developed practice of using the lexeme (i.e. the lexeme's 'meaning'). The act of uttering a lexeme aims to conjure up some of those possible situations in the mind of the addressee.
 

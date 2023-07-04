@@ -12,7 +12,7 @@ filters:
 - filters/toc-css.lua
 - filters/strikeout-to-smallcaps.lua
 - filters/pandoc-ling.lua
-- filters/pandoc-crossref
+- pandoc-crossref
 - filters/crossref-adapt.lua
 - citeproc
 
