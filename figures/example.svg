@@ -1,0 +1,213 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+  <svg width="3975.2000000000003" height="2195.25" viewBox="-16.8, 0, 3992.0000000000005, 2206.5" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="16.8" markerHeight="16.8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10" fill="purple"/>
+    </marker>
+    <marker id="arrowBackward" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="16.8" markerHeight="16.8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="purple"/>
+    </marker>
+    <marker id="arrowForward" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="16.8" markerHeight="16.8" orient="auto">
+      <path d="M 10 0 L 0 5 L 10 10 z" fill="purple"/>
+    </marker>
+    <marker id="arrowBothways" markerUnits="userSpaceOnUse" viewBox="0 0 30 10" refX="15" refY="5" markerWidth="50.400000000000006" markerHeight="16.8" orient="auto">
+      <path d="M 0 5 L 10 0 L 10 5 L 20 5 L 20 0 L 30 5 L 20 10 L 20 5 L 10 5 L 10 10 z" fill="purple"/>
+    </marker>
+    <pattern id="hatchBlack" x="10" y="10" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y="0" x2="0" y2="10" stroke="black" stroke-width="4"></line>
+    </pattern>
+    <pattern id="hatchForNode" x="10" y="10" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y="0" x2="0" y2="10" stroke="blue" stroke-width="4"></line>
+    </pattern>
+    <pattern id="hatchForLeaf" x="10" y="10" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y="0" x2="0" y2="10" stroke="green" stroke-width="4"></line>
+    </pattern>
+  </defs>
+<rect x="-16.8" y="0" width="3992.0000000000005" height="2206.5" stroke="none" fill="white" />"
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2221.14375' y='67.5'><tspan x='2258.14375' y='67.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">SATZ<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='2221.14375' y='90.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">kind=Hauptsatz</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='680.6875000000002' y='273.5'><tspan x='680.6875000000002' y='273.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">VORFELD</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='654.1875000000002' y='446.5'><tspan x='654.1875000000002' y='446.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ARGUMENT<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='678.6875000000002' y='469.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">role=Gesehene</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='676.1796875000002' y='652.5'><tspan x='685.1875000000002' y='652.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PHRASE<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='676.1796875000002' y='675.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">case=Akkusativ</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='16.800000000000182' y='858.5'><tspan x='16.800000000000182' y='858.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">DETERMINATIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='75.30000000000018' y='1031.5'><tspan x='75.30000000000018' y='1031.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ARTIKEL</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='123.30000000000018' y='1204.5'><tspan x='123.30000000000018' y='1204.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">die</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='345.0000000000002' y='858.5'><tspan x='345.0000000000002' y='858.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">REFERENT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='371.0000000000002' y='1031.5'><tspan x='371.0000000000002' y='1031.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">Männer</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1286.5750000000003' y='858.5'><tspan x='1286.5750000000003' y='858.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ATTRIBUT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1282.0750000000003' y='1031.5'><tspan x='1322.5750000000003' y='1031.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">SATZ<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='1282.0750000000003' y='1054.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">kind=Relativsatz</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='901.1500000000003' y='1237.5'><tspan x='901.1500000000003' y='1237.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">VORFELD</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='874.6500000000003' y='1410.5'><tspan x='874.6500000000003' y='1410.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ARGUMENT<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='892.1500000000003' y='1433.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">role=Schlafende</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='892.6421875000003' y='1616.5'><tspan x='905.6500000000003' y='1616.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PHRASE<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='892.6421875000003' y='1639.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">case=Nominativ</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='588.2000000000003' y='1822.5'><tspan x='588.2000000000003' y='1822.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">DETERMINATIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='622.7000000000003' y='1995.5'><tspan x='622.7000000000003' y='1995.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">POSSESSSIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='672.7000000000003' y='2168.5'><tspan x='672.7000000000003' y='2168.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">deren</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='916.4000000000005' y='1822.5'><tspan x='916.4000000000005' y='1822.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ATTRIBUT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='919.9000000000005' y='1995.5'><tspan x='919.9000000000005' y='1995.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ADJEKTIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='942.4000000000005' y='2168.5'><tspan x='942.4000000000005' y='2168.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">kleinen</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1152.6000000000004' y='1822.5'><tspan x='1152.6000000000004' y='1822.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">REFERENT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='1187.1000000000004' y='1995.5'><tspan x='1187.1000000000004' y='1995.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">Kinder</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1395.8000000000002' y='1237.5'><tspan x='1395.8000000000002' y='1237.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ADVERBIALE</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1421.8000000000002' y='1410.5'><tspan x='1421.8000000000002' y='1410.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ADJEKTIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='1437.7687500000002' y='1583.5'><tspan x='1437.7687500000002' y='1583.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">schlecht</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1677.0000000000002' y='1237.5'><tspan x='1677.0000000000002' y='1237.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PRÄDIKAT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1718.0000000000002' y='1410.5'><tspan x='1718.0000000000002' y='1410.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">VERB</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1680.0000000000002' y='1583.5'><tspan x='1680.0000000000002' y='1583.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">FINITUM<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='1684.5000000000002' y='1606.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">tense=Präsens</tspan>
+<tspan x='1712.5000000000002' y='1639.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">person=3</tspan>
+<tspan x='1680.5000000000002' y='1672.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">number=Plural</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='1696.5000000000002' y='1855.5'><tspan x='1696.5000000000002' y='1855.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">schlafen</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1915.2000000000003' y='273.5'><tspan x='1915.2000000000003' y='273.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">VERBZWEIT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='1918.7000000000003' y='446.5'><tspan x='1931.2000000000003' y='446.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">FINITUM<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='1935.7000000000003' y='469.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">tense=Präsens</tspan>
+<tspan x='1963.7000000000003' y='502.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">person=1</tspan>
+<tspan x='1918.7000000000003' y='535.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">number=Singular</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='1975.2000000000003' y='718.5'><tspan x='1975.2000000000003' y='718.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">habe</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2179.4000000000005' y='273.5'><tspan x='2179.4000000000005' y='273.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ARGUMENT<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='2210.9000000000005' y='296.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">role=Sehende</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2197.3921875000005' y='479.5'><tspan x='2210.4000000000005' y='479.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PHRASE<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='2197.3921875000005' y='502.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">case=Nominativ</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2177.9000000000005' y='685.5'><tspan x='2177.9000000000005' y='685.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PRONOMEN<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='2234.4000000000005' y='708.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">person=1</tspan>
+<tspan x='2189.4000000000005' y='741.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">number=Singular</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='2260.4000000000005' y='924.5'><tspan x='2260.4000000000005' y='924.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ich</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2456.6000000000004' y='273.5'><tspan x='2456.6000000000004' y='273.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ADVERBIALE</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2495.1000000000004' y='446.5'><tspan x='2495.1000000000004' y='446.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ADVERB</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='2505.6000000000004' y='619.5'><tspan x='2505.6000000000004' y='619.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">gestern</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2977.1250000000005' y='273.5'><tspan x='2977.1250000000005' y='273.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ADVERBIALE</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2737.8' y='446.5'><tspan x='2737.8' y='446.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">JUNKTOR</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='2800.3' y='619.5'><tspan x='2800.3' y='619.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">in</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3278.4500000000003' y='446.5'><tspan x='3278.4500000000003' y='446.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PHRASE<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='3294.4421875000003' y='469.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">case=Dativ</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2961.0' y='652.5'><tspan x='2961.0' y='652.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">DETERMINATIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='2995.5' y='825.5'><tspan x='2995.5' y='825.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">POSSESSSIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='3032.5' y='998.5'><tspan x='3032.5' y='998.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">deinem</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3289.2000000000003' y='652.5'><tspan x='3289.2000000000003' y='652.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ATTRIBUT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3292.7000000000003' y='825.5'><tspan x='3292.7000000000003' y='825.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">ADJEKTIV</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='3307.7000000000003' y='998.5'><tspan x='3307.7000000000003' y='998.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">schönen</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3525.4000000000005' y='652.5'><tspan x='3525.4000000000005' y='652.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">REFERENT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='3559.9000000000005' y='825.5'><tspan x='3559.9000000000005' y='825.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">Garten</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3768.6000000000004' y='273.5'><tspan x='3768.6000000000004' y='273.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PRÄDIKAT</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3766.6000000000004' y='446.5'><tspan x='3771.6000000000004' y='446.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PERFEKT<tspan style='fill:none;'>￭</tspan></tspan>
+<tspan x='3766.6000000000004' y='469.25' style="font-size: 70%; " text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">auxiliary=haben</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3809.6000000000004' y='652.5'><tspan x='3809.6000000000004' y='652.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">VERB</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: blue; storoke-width: 0; font-size: 32px;' x='3778.1000000000004' y='825.5'><tspan x='3778.1000000000004' y='825.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">PARTIZIP</tspan>
+</text>
+<text white-space='pre' alignment-baseline='text-top' style='fill: green; storoke-width: 0; font-size: 32px;' x='3789.6000000000004' y='998.5'><tspan x='3789.6000000000004' y='998.5' style="" text-decoration="" font-family="'Noto Serif', 'Noto Serif JP', OpenMoji, 'OpenMoji Color', 'OpenMoji Black', serif">gesehen</tspan>
+</text>
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='759.1875000000002' y1='217.25' x2='2306.64375' y2='128.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2013.7000000000003' y1='217.25' x2='2306.64375' y2='128.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2284.4000000000005' y1='217.25' x2='2306.64375' y2='128.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2563.6000000000004' y1='217.25' x2='2306.64375' y2='128.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3084.1250000000005' y1='217.25' x2='2306.64375' y2='128.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3854.1000000000004' y1='217.25' x2='2306.64375' y2='128.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='759.1875000000002' y1='390.25' x2='759.1875000000002' y2='301.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='759.1875000000002' y1='596.25' x2='759.1875000000002' y2='507.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='147.30000000000018' y1='802.25' x2='759.1875000000002' y2='713.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='433.0000000000002' y1='802.25' x2='759.1875000000002' y2='713.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1371.0750000000003' y1='802.25' x2='759.1875000000002' y2='713.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='147.30000000000018' y1='975.25' x2='147.30000000000018' y2='886.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='147.30000000000018' y1='1148.25' x2='147.30000000000018' y2='1059.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='433.0000000000002' y1='975.25' x2='433.0000000000002' y2='886.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1371.0750000000003' y1='975.25' x2='1371.0750000000003' y2='886.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='979.6500000000003' y1='1181.25' x2='1371.0750000000003' y2='1092.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1502.8000000000002' y1='1181.25' x2='1371.0750000000003' y2='1092.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1762.5000000000002' y1='1181.25' x2='1371.0750000000003' y2='1092.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='979.6500000000003' y1='1354.25' x2='979.6500000000003' y2='1265.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='979.6500000000003' y1='1560.25' x2='979.6500000000003' y2='1471.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='718.7000000000003' y1='1766.25' x2='979.6500000000003' y2='1677.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1000.9000000000005' y1='1766.25' x2='979.6500000000003' y2='1677.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1240.6000000000004' y1='1766.25' x2='979.6500000000003' y2='1677.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='718.7000000000003' y1='1939.25' x2='718.7000000000003' y2='1850.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='718.7000000000003' y1='2112.25' x2='718.7000000000003' y2='2023.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1000.9000000000005' y1='1939.25' x2='1000.9000000000005' y2='1850.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1000.9000000000005' y1='2112.25' x2='1000.9000000000005' y2='2023.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1240.6000000000004' y1='1939.25' x2='1240.6000000000004' y2='1850.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1502.8000000000002' y1='1354.25' x2='1502.8000000000002' y2='1265.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1502.8000000000002' y1='1527.25' x2='1502.8000000000002' y2='1438.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1762.5000000000002' y1='1354.25' x2='1762.5000000000002' y2='1265.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1762.5000000000002' y1='1527.25' x2='1762.5000000000002' y2='1438.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='1762.5000000000002' y1='1799.25' x2='1762.5000000000002' y2='1710.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2013.7000000000003' y1='390.25' x2='2013.7000000000003' y2='301.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2013.7000000000003' y1='662.25' x2='2013.7000000000003' y2='573.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2284.4000000000005' y1='423.25' x2='2284.4000000000005' y2='334.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2284.4000000000005' y1='629.25' x2='2284.4000000000005' y2='540.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2284.4000000000005' y1='868.25' x2='2284.4000000000005' y2='779.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2563.6000000000004' y1='390.25' x2='2563.6000000000004' y2='301.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2563.6000000000004' y1='563.25' x2='2563.6000000000004' y2='474.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2815.8' y1='390.25' x2='3084.1250000000005' y2='301.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3352.4500000000003' y1='390.25' x2='3084.1250000000005' y2='301.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='2815.8' y1='563.25' x2='2815.8' y2='474.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3091.5' y1='596.25' x2='3352.4500000000003' y2='507.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3373.7000000000003' y1='596.25' x2='3352.4500000000003' y2='507.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3613.4000000000005' y1='596.25' x2='3352.4500000000003' y2='507.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3091.5' y1='769.25' x2='3091.5' y2='680.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3091.5' y1='942.25' x2='3091.5' y2='853.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3373.7000000000003' y1='769.25' x2='3373.7000000000003' y2='680.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3373.7000000000003' y1='942.25' x2='3373.7000000000003' y2='853.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3613.4000000000005' y1='769.25' x2='3613.4000000000005' y2='680.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3854.1000000000004' y1='390.25' x2='3854.1000000000004' y2='301.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3854.1000000000004' y1='596.25' x2='3854.1000000000004' y2='507.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3854.1000000000004' y1='769.25' x2='3854.1000000000004' y2='680.625' />
+<line style='fill: none; stroke:black; stroke-width:2; stroke-linejoin:round; stroke-linecap:round;' x1='3854.1000000000004' y1='942.25' x2='3854.1000000000004' y2='853.625' />
+</svg>

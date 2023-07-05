@@ -1,0 +1,91 @@
+[SATZ<>\
+  __kind\=Hauptsatz__
+  [VORFELD
+    [ARGUMENT<>\
+      __role\=Gesehene__
+      [PHRASE<>\
+        __case\=Akkusativ__
+        [DETERMINATIV
+          [ARTIKEL die]
+        ]
+        [REFERENT Männer]
+        [ATTRIBUT
+          [SATZ<>\
+            __kind\=Relativsatz__
+            [VORFELD
+              [ARGUMENT<>\
+                __role\=Schlafende__
+                [PHRASE<>\
+                  __case\=Nominativ__
+                  [DETERMINATIV
+                    [POSSESSSIV deren]
+                  ]
+                  [ATTRIBUT
+                    [ADJEKTIV kleinen]
+                  ]
+                  [REFERENT Kinder]
+                ]
+              ]
+            ]
+            [ADVERBIALE
+              [ADJEKTIV schlecht]
+            ]
+            [PRÄDIKAT
+              [VERB
+                [FINITUM<>\
+                  __tense\=Präsens__\
+                  __person\=3__\
+                  __number\=Plural__ 
+                  schlafen
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+  [VERBZWEIT
+    [FINITUM<>\
+      __tense\=Präsens__\
+      __person\=1__\
+      __number\=Singular__
+      habe
+    ]
+  ]
+  [ARGUMENT<>\
+    __role\=Sehende__
+    [PHRASE<>\
+      __case\=Nominativ__
+      [PRONOMEN<>\
+        __person\=1__\
+        __number\=Singular__
+        ich
+      ]
+    ]
+  ]
+  [ADVERBIALE
+    [ADVERB gestern]
+  ]
+  [ADVERBIALE
+    [JUNKTOR in]
+    [PHRASE<>\
+      __case\=Dativ__
+      [DETERMINATIV
+        [POSSESSSIV deinem]
+      ]
+      [ATTRIBUT
+        [ADJEKTIV schönen]
+      ]
+      [REFERENT Garten]
+    ]
+  ]
+  [PRÄDIKAT
+    [PERFEKT<>\
+      __auxiliary\=haben__
+      [VERB
+        [PARTIZIP gesehen]
+      ]
+    ]
+  ]
+]

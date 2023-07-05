@@ -15,6 +15,7 @@ header-includes:
   }
   html {
     font-size: 14pt;
+    line-height: 1.5;
   }
   h1 {
     margin-top: 5em;

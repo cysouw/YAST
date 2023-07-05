@@ -18,7 +18,7 @@ Pronunciation can often already start long before the instructions for even a si
 
 The results of the evaluated instructions can be recorded, and this ~~receipt~~ looks like a constituent tree. Crucially, the creation of such constituent trees are not necessary for the production of the utterance. The constituent tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe. In short, the syntactic approach of YAST can be summarised as a ~~recipe-rule-result-receipt~~ model. The (dependency-like) instructions are the recipe. The recipe is fed into the the rules to produce a resulting utterance. Additionally, a (constituent-like) receipt is a summary of all the procedures leading to the result.
 
-The ephemeral role of the constituent-like receipt is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruct the constituent tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying dependency-like instructions. In the current implementation, simply many different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. In a sense, this parser is like an unexperienced learner of the language that knows the rules, but does not know any shortcuts to quickly arrive at the right interpretation.  The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results of these mirrored generation with the observed utterance. The parser mostly does not have to wait until an utterance is finished, but can already start predicting while the utterance is still ongoing. This aspect of YAST seems to be a very fruitful approach for modelling language processing. 
+The ephemeral role of the constituent-like receipt is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruct the constituent tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying dependency-like instructions. In the current implementation, simply various different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results of these mirrored generation with the observed utterance. The parser mostly does not have to wait until an utterance is finished, but can already start predicting while the utterance is still ongoing. This aspect of YAST seems to be a very fruitful approach for modelling language processing. 
 
 ![Basic workflow of YAST](figures/basis){#fig:basis}
 
@@ -59,11 +59,25 @@ Each line in [@last] is a single instruction, possibly consisting of up to three
 
 ## The rules
 
-The instructions induce rules that produce an actual utterance. By definition, the rules take care of the part of the sentence production that is completely automatic and predictable. The rules are concerned with the task to put everything in its proper place and give it its proper form. The basic rule-action is the insertion of linguistic material into the structure prepared by the superordinate instruction. Such insertions can be either a template insertion or a filler insertion. There are two kinds of syntactic templates, which I will call ~~clause~~ and ~~phrase~~ (for obvious reasons). Most rules are context-free (type-2) and many even just regular (type-3). Only the rules to encode diatheses are mildly-context-sensitive, because that multiple different (named) elements are transformed.
+The rules transform the instructions into an actual utterance.
+
+How to put everything in its proper place and give it its proper form. 
+
+Most rules are context-free. It might be only diatheses that are mildly-context-sensitive, in that multiple different (named) elements are transformed.
+
+Basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instruction.
+
+Template insertion, morpheme insertion and agreement/government resolution.
+
+Two kinds of syntactic templates: ~~clause~~ template and ~~phrase~~ template.
+
+## The result
+
+In the current implementation, the result of applying the rules to a recipe are an utterance in orthographic form. Any part of the utterance is prepared as soon as possible, i.e. the first words of an utterance are often already available long before all instructions for a complete sentence are even finished. This intuitively seems similar to actual language production in that it is often possible to start a sentence without even knowing what to say in the rest of the sentence.
 
 ## The receipt
 
-Constituent structure
+![Simplified constituent structure in YAST](figures/example){#fig:example}
 
 The details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is left in the receipt. That is to say, most details of how the receipt currently looks like are easily changed to other preferences. For example, in the current implementation, I have even added a 'cleanup' stage, in which various details are removed to present a simpler receipt. 
 
@@ -73,15 +87,19 @@ Still, I have left in various 'traces' of the process leading to the end result,
 
 ## Generation: creating a recipe
 
+Planning an utterance means to create a recipe. This creation of a recipe is the main generative step, as 
+
 incremental, lot's of free choice, restrictions pile up as a result of previous choices
 
 In some situation, the ordering of specifications is relevant. 
+
+In a formal sense, recipe-generation is a purely regular (type-3) grammar. It just consists of the rules R->i, R->iR, i.e. a Recipe *R* can be an instruction *i*
 
 The order of instructions in a recipe is to a large extend "free". The speaker is allowed to specify the instructions in any order in accordance with the intended message (within certain language-specific limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to mould the result in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.
 
 ## Ingredients: building blocks of a recipe
 
-The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor used here). 
+The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor user here). 
 
 Lexemes induce a state-of-mind at the addressee, consisting of possible situations in accordance to the communally developed practice of using the lexeme (i.e. the lexeme's 'meaning'). The act of uttering a lexeme aims to conjure up some of those possible situations in the mind of the addressee.
 
