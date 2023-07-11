@@ -1,22 +1,20 @@
-[SATZ<>\
-  __kind\=Hauptsatz__
+[HAUPTSATZ
   [VORFELD
     [ARGUMENT<>\
-      __role\=Gesehene__
+      __Rolle\=Gesehene__
       [PHRASE<>\
-        __case\=Akkusativ__
+        __Kasus\=Akkusativ__
         [DETERMINATIV
           [ARTIKEL die]
         ]
         [REFERENT Männer]
         [ATTRIBUT
-          [SATZ<>\
-            __kind\=Relativsatz__
+          [RELATIVSATZ
             [VORFELD
               [ARGUMENT<>\
-                __role\=Schlafende__
+                __Rolle\=Schlafende__
                 [PHRASE<>\
-                  __case\=Nominativ__
+                  __Kasus\=Nominativ__
                   [DETERMINATIV
                     [POSSESSSIV deren]
                   ]
@@ -33,9 +31,9 @@
             [PRÄDIKAT
               [VERB
                 [FINITUM<>\
-                  __tense\=Präsens__\
-                  __person\=3__\
-                  __number\=Plural__ 
+                  __Tempus\=Präsens__\
+                  __Person\=3__\
+                  __Numerus\=Plural__ 
                   schlafen
                 ]
               ]
@@ -47,19 +45,19 @@
   ]
   [VERBZWEIT
     [FINITUM<>\
-      __tense\=Präsens__\
-      __person\=1__\
-      __number\=Singular__
+      __Tempus\=Präsens__\
+      __Person\=1__\
+      __Numerus\=Singular__
       habe
     ]
   ]
   [ARGUMENT<>\
-    __role\=Sehende__
+    __Rolle\=Sehende__
     [PHRASE<>\
-      __case\=Nominativ__
+      __Kasus\=Nominativ__
       [PRONOMEN<>\
-        __person\=1__\
-        __number\=Singular__
+        __Person\=1__\
+        __Numerus\=Singular__
         ich
       ]
     ]
@@ -70,7 +68,7 @@
   [ADVERBIALE
     [JUNKTOR in]
     [PHRASE<>\
-      __case\=Dativ__
+      __Kasus\=Dativ__
       [DETERMINATIV
         [POSSESSSIV deinem]
       ]
@@ -81,8 +79,7 @@
     ]
   ]
   [PRÄDIKAT
-    [PERFEKT<>\
-      __auxiliary\=haben__
+    [PERFEKT
       [VERB
         [PARTIZIP gesehen]
       ]

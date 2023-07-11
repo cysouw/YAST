@@ -8,19 +8,15 @@ The result is remarkable: with the hundreds of clause derivations out of the way
 
 The syntactic rules presented here describe (standard) German. However, the general architecture of YAST seems transferable to other languages. The analysis of sentence structures in YAST is fully compatible with typological insights about the worldwide linguistic diversity as, for example, summarised in Croft (2022). I have tried to adapt my terminology to Croft's to make the parallels even more obvious. Still, linguistic diversity is vast, and I do not dare to predict how much work is necessary to adapt the current framework to other languages.
 
-# The YAST approach
+# Recipe-rule-result-receipt
 
-## The recipe-rule-result-receipt model
+## Introducing the YAST model
 
-In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, result in an utterance, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline determining what should appear in the instructions is the notion of predictability: all parts of an actual utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. So, the research that is needed to write the morphosyntactic YAST-rules for a specific language is to explicate which parts of the utterance are predictable and which are non-predictable. As it turns out, the structure of a set of instructions to produce a sentence is very close to a dependency tree.
+In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, result in an utterance, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline determining what should appear in the instructions is the notion of predictability: all parts of an actual utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. So, the research that is needed to write the morphosyntactic YAST-rules for a specific language is to decide which parts of the utterance are predictable and which are non-predictable. As it turns out for the current case of German, the set of instructions to produce a sentence is very similar to a dependency tree.
 
 Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might also be a useful model for language processing, though note that the current model is based purely on syntactic analysis, without any actual research into real psychological processing. To produce utterances there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply lead to linguistic elements that can be uttered immediately.
 
-The results of the evaluated instructions can be recorded, and this ~~receipt~~ looks like a constituent tree. Crucially, the creation of such constituent trees are not necessary for the production of the utterance. The constituent tree is just the combined effect of all instructions. So, the tree is really a receipt and not a recipe. In short, the syntactic approach of YAST can be summarised as a ~~recipe-rule-result-receipt~~ model. The (dependency-like) instructions are the recipe. The recipe is fed into the the rules to produce a resulting utterance. Additionally, a (constituent-like) receipt is a summary of all the procedures leading to the result.
-
-The ephemeral role of the constituent-like receipt is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruct the constituent tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying dependency-like instructions. In the current implementation, simply various different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results of these mirrored generation with the observed utterance. The parser mostly does not have to wait until an utterance is finished, but can already start predicting while the utterance is still ongoing. This aspect of YAST seems to be a very fruitful approach for modelling language processing. 
-
-![Basic workflow of YAST](figures/basis){#fig:basis}
+The complete process that leads to the utterance (i.e. the results of the evaluated instructions) can be recorded, and this ~~receipt~~ looks like a constituent tree. Crucially, the creation of such constituent trees are not necessary for the production of the utterance. The constituent tree is just the combined effect of all instructions. So, the constituent tree is really a receipt and not a recipe. In short, the syntactic approach of YAST can be summarised as a ~~recipe-rule-result-receipt~~ (R4) model. The (dependency-like) instructions are the recipe. The recipe is fed into the the rules to produce a resulting utterance. Additionally, a (constituent-like) receipt is a summary of all the procedures leading to the result.
 
 ## The recipe
 
@@ -34,7 +30,7 @@ Parts of an instruction in YAST
 - ~~specification~~: language-specific grammatical marking (can be empty for unmarked morphosyntax)
 :::
 
-As an example, consider the German sentence in [@next] as an appetiser. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this will has to be worked out in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic categories, so their semantic interpretation will have to be language-specific as well. Any cross-linguistic generalisation over language-specific elements is a highly important, though separate, endeavour.
+As an example, consider the German sentence in [@next] as an appetiser. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this will has to be worked out in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic categories, so their semantic interpretation will have to be language-specific as well. Any cross-linguistic generalisation over language-specific elements is a separate, though highly important, endeavour.
 
 ::: ex
 - Die Männer, deren kleinen Kinder schlecht schlafen, habe ich gestern in deinem schönen Garten gesehen.
@@ -63,27 +59,61 @@ The rules transform the instructions into an actual utterance.
 
 How to put everything in its proper place and give it its proper form. 
 
-Most rules are context-free. It might be only diatheses that are mildly-context-sensitive, in that multiple different (named) elements are transformed.
+
 
 Basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instruction.
 
 Template insertion, morpheme insertion and agreement/government resolution.
 
-Two kinds of syntactic templates: ~~clause~~ template and ~~phrase~~ template.
+Two kinds of syntactic constituents: ~~clause~~ template and ~~phrase~~ template.
 
 ## The result
 
-In the current implementation, the result of applying the rules to a recipe are an utterance in orthographic form. Any part of the utterance is prepared as soon as possible, i.e. the first words of an utterance are often already available long before all instructions for a complete sentence are even finished. This intuitively seems similar to actual language production in that it is often possible to start a sentence without even knowing what to say in the rest of the sentence.
+In the current implementation, the result of applying the rules to a recipe is an utterance in orthographic form. Each part of the utterance is prepared as soon as possible, i.e. the first words of an utterance can mostly already be uttered long before all instructions for a complete sentence are even finished. This is illustrated in [@tbl:example] for the recipe from [@last]. This intuitively seems similar to actual language production in that it is often possible to start speaking without even knowing what to say in the rest of the sentence.
+
+There are a few syntactic restrictions that result in a slight delay in the result. Basically, finite verbs have to wait for the subject to be planned, so the verb agreement can be added. Also nouns have to be in the waiting queue to be sure that there are no further pre-nominal attributes that have to placed before the noun is uttered. Still, the production of the resulting utterance stays really close to the generation of the instructions.
+
+Instructions                                    | Results
+:--------------                                 | :------
+`sehen (Perfekt)`                               |
+` Gesehene: Mann (Plural + Definit)`            | *Die*
+`  schlafen`                                    | *Männer*
+`   Schlafende: Kind (Plural + Besitzer: Mann)` | *deren*
+`    klein`                                     | *kleinen*
+`   schlecht`                                   | *Kinder schlecht*
+` Sehende: 1`                                   | *schlafen*
+` gestern`                                      | *habe ich gestern*
+` in: Garten (Definit + Besitzer: 2)`           | *in deinem*
+`  schön`                                       | *schönen Garten gesehen*
+
+Table: Production of the utterance (right), shown parallel to the instructions (left). There is only a minimal delay between the generation of an instruction and the production of the utterance. {#tbl:example}
 
 ## The receipt
 
-![Simplified constituent structure in YAST](figures/example){#fig:example}
+The details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is shown in the receipt. That is to say, most details of how the receipt currently looks like are easily changed to other preferences. For example, in the current implementation, I have even added a "cleanup" stage, in which various details are removed to present a simpler receipt. 
 
-The details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is left in the receipt. That is to say, most details of how the receipt currently looks like are easily changed to other preferences. For example, in the current implementation, I have even added a 'cleanup' stage, in which various details are removed to present a simpler receipt. 
+![Constituent structure in YAST](figures/example){#fig:example}
 
-Still, I have left in various 'traces' of the process leading to the end result, which very much look like transformational movements from early proposals in transformational grammar. This happens because some elements of the instructions have to be temporarily kept 'in memory' because they cannot immediately be cleared for pronunciation. This happens, for example, with verbs that are waiting for their subject specification to get subject agreement. Such ingredients 'in waiting' are stored internally somewhere in the constituent structure and are only uttered at the requisite moment/position. At the point when such ingredients are being processed for pronunciation, they are taken from their internal storage and 'moved' to their eventual position in the constituent structure. Crucially though, the location of the internal storage in the constituent structure is really arbitrary, so the 'movement' is actually more like a process of 'preparing for pronunciation'.
+Still, I have retained various "traces" of the process leading to the end result, which might look somewhat like transformational movements from early proposals in transformational grammar. This happens because some elements of the instructions have to be temporarily kept "in memory" as they cannot immediately be cleared for pronunciation. This happens, for example, with verbs that are waiting for their subject specification to get subject agreement. Such ingredients "in waiting" are stored internally somewhere in the constituent structure and are only uttered at the requisite moment/position. At the moment when such ingredients are being processed for pronunciation, they are taken from their internal storage and "moved" to their eventual position in the constituent structure. Crucially though, the location of the internal storage in the constituent structure is really arbitrary, so the movement is actually more like a process of "preparing for pronunciation".
 
-# Generating the recipe
+## The parser
+
+The ephemeral role of the constituent-like receipt is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruct the constituent tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying dependency-like instructions. In the current implementation, simply various different instructions are attempted within the range of possibilities as constrained by the utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation in parallel and checking the results of these mirrored generation with the observed utterance. The parser mostly does not have to wait until an utterance is finished, but can already start predicting while the utterance is still ongoing. This aspect of YAST seems to be a very fruitful approach for modelling language processing. 
+
+![Basic workflow of YAST](figures/basis){#fig:basis}
+
+## Formal complexity
+
+Before delving into the details, a few words on the algorithmic complexity of this model are in order. This topic needs more in-depth investigation, but my initial impressions are as follows:
+
+- Each instruction in the recipe can be generated with a simple regular language, i.e. a type-3 grammar.
+- The recipe consists of a set of hierarchically ordered instructions, which can be modelled with a context-free language, i.e. a type-2 grammar.
+- The rules differ in their complexity. Most operators are simple insertions, which are regular, i.e. captured by a type-3 grammar.
+- Each insertion of a constituent structures, with possibly multiple slots to be filled, are context-free, i.e. they form a type-2 grammar.
+- Finally, the rules that are defined as "diathesis" in Cysouw (2023) are exactly the rules that need multiple joint insertions, so these are mildly-context-sensitive, i.e. they fall in between a type-2 and a type-1 grammar. It seems to be the case that it is this part, and only this part, of the morphosyntax that is more complex than context-free.
+- The parsing needs more work, but it consist reconstructing a dependency-like structure from an utterance.
+
+# Generating a recipe
 
 ## Generation: creating a recipe
 
