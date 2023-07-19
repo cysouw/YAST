@@ -10,8 +10,9 @@ Satzpartizipien = ['angenommen', 'ausgenommen', 'gegeben', 'gesetzt', 'ungeachte
 # the following can be combined with adverbials, even adverbs
 # bis morgen, seit gestern, ab heute, von gestern
 # nach links, von hier, nach oben, für gleich  
-# bis in den frühen Morgen, seit unser letztes Treffen
-Grenzpräpositionen = ['von', 'seit', 'ab', 'bis', 'nach']
+# bis in den frühen Morgen, seit unserem letzten Treffen
+# bis weit über die Knie, seit kurz vor/nach dem Essen
+Grenzpräpositionen = ['von', 'seit', 'ab', 'bis', 'nach', 'weit', 'kurz']
 
 # note 'werden' in both classes!
 Modalverben = ['dürfen', 'können', 'mögen', 'möchten', 'müssen', 'sollen', 'werden', 'brauchen']
