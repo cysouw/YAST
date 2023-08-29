@@ -1285,18 +1285,19 @@ def isAdjectival(lexeme):
   return lexeme[:1].islower() and \
     ( lexeme in Adjektive \
       or lexeme[-2:] in ['ig'] \
-      or lexeme[-3:] in ['bar', 'sam'] \
-      or lexeme[-4:] in ['lich', 'haft', 'isch'] \
-      or lexeme[-5:] in ['gemäß'] \
+      or lexeme[-3:] in ['bar', 'end', 'los', 'sam'] \
+      or lexeme[-4:] in ['fach', 'lich', 'haft', 'isch'] \
+      or lexeme[-5:] in ['gemäß', 'mäßig'] \
     )
 
 def isAdverbial(lexeme):
   return lexeme[:1].islower() and \
     ( lexeme in Adverbien \
       or lexeme in Frageadverbien + Konjunktionaladverbien \
-      or lexeme in Modalpartikel + Negationen \
+      or lexeme in Abtönungspartikel + Negationen \
       or lexeme[-3:] in ['mal'] \
-      or lexeme[-5:] in ['lings'] \
+      or lexeme[-4:] in ['mals'] \
+      or lexeme[-5:] in ['lings', 'wärts', 'weise'] \
     )
 
 def isVerbal(lexeme):

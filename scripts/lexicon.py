@@ -1,18 +1,36 @@
 # TODO: double conjuncts: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
 # TODO: difference between nominal and clausal conjunction
-Konjunktionen = ['und', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt', 'jedoch', 'sowie', 'noch']
+Konjunktionen = ['und', 'und zwar', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt', 'jedoch', 'sowie', 'noch']
 # NOTE: 'wie/wo' here in the meaning of 'als'
 Subjunktionen = ['als', 'als ob', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls', 'indem', 'insofern', 'insoweit', 'nachdem', 'obgleich', 'obschon', 'obwohl', 'obzwar', 'seit', 'seitdem', 'sobald', 'sofern', 'solange', 'sooft', 'sosehr', 'soviel', 'soweit', 'sowie', 'trotzdem', 'während', 'weil', 'wenn', 'wenngleich', 'wie', 'wo']
+# Temporale Subjunktionen mit modifikation: bis ganz kurz nachdem, kurz bevor, genau als, genau seit, ungefähr bis, ungefähr seitdem, 
+
 # Begründung (um), Alternative (statt, anstatt, anstelle), Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
 # NOTE: there is an old-fashioned usage of 'bis dass' not included here
 Satzpräpositionen = ['um', 'ohne', 'außer', 'ausser', 'statt', 'anstatt', 'anstelle', 'im Falle', 'für den Fall']
 Satzpartizipien = ['angenommen', 'ausgenommen', 'gegeben', 'gesetzt', 'ungeachtet', 'unterstellt', 'vorausgesetzt']
+
 # the following can be combined with adverbials, even adverbs
 # bis morgen, seit gestern, ab heute, von gestern
-# nach links, von hier, nach oben, für gleich  
-# bis in den frühen Morgen, seit unserem letzten Treffen
-# bis weit über die Knie, seit kurz vor/nach dem Essen
-Grenzpräpositionen = ['von', 'seit', 'ab', 'bis', 'nach', 'weit', 'kurz']
+# nach links, von hier, nach oben  
+# von ... an
+Grenzpartikel = ['von', 'nach', 'seit', 'ab', 'bis']
+
+# bis in den frühen Morgen, bis zu den Ferien, bis zum See
+# bis fast bei der Ladentür
+# bis an die Gartentür, bis unter das Dach, bis auf die Grundmauern, bis hinter den Wald, bis neben der Tür
+# bis weit über die Knie, bis gegen Mitternacht, bis vor kurzem, bis auf weiteres
+# seit/bis kurz vor/nach dem Essen
+# von hinter der Torlinie, bis zwischen die Schulterblätter
+# bis um Mitternacht, bis um das Zehnfache: this seems to be a different construction with 'um' meaning 'circa' (but still governing accusative!)
+# nach nahe der Stadt: 'nahe' mostly in constructions in which it is almost still adjectival
+# Ein Foul an Lászlo Kleinheisler verlegte Schiedsrichter Christian Dingert zu unrecht nach (weit) außerhalb des Strafraums
+Basispräpositionen = ['an', 'auf', 'bei', 'hinter', 'in', 'neben', 'unter', 'über', 'vor', 'zwischen', 'zu', 'nach', 'außerhalb']
+# = Wechselpräpositionen including 'bei, zu, nach, außerhalb'
+
+# adverbiale adjektive nicht trennbar von präposition (nicht vorfeldfähig):
+# kurz vor, seitlich vor, direkt vor, unmittelbar vor, dicht vor, knapp vor, schräg vor, weit vor, leicht hinter, östlich hinter, gerade über, hoch über, tief unter, gleich gegenüber
+Präpositionsspezifikation = ['dicht', 'direkt', 'eng', 'genau', 'gerade', 'gleich', 'hoch', 'knapp', 'kurz', 'lang', 'leicht', 'nah', 'schräg', 'tief', 'weit', 'östlich', 'seitlich', 'ungefähr', 'unmittelbar']
 
 # note 'werden' in both classes!
 Modalverben = ['dürfen', 'können', 'mögen', 'möchten', 'müssen', 'sollen', 'werden', 'brauchen']
@@ -21,17 +39,41 @@ Kopulas = ['sein', 'werden', 'bleiben', 'geben', 'haben']
 # NOTE: it looks like adjectives cannot be used productively!
 # new ones are mainly added through derivation or complete new innovation
 # can we list all basic adjectives in German?
-Adjektive = ['albern', 'alt', 'arg', 'arm', 'barsch', 'bieder', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bös', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'doof', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'eigen', 'einzig', 'eitel', 'elend', 'eng', 'ernst', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hoch', 'hohl', 'hübsch', 'irr', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'krank', 'krass', 'kraus', 'krud', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'licht', 'lieb', 'lila', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rauch', 'recht', 'rege', 'reich', 'reif', 'rein', 'roh', 'rosa', 'rot', 'rüd', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöd', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'sonstig', 'spät', 'spitz', 'spröd', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'träg', 'treu', 'trocken', 'trüb', 'übel', 'vag', 'viel', 'voll', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zähe', 'zahm', 'zart']
+Adjektive = ['absolut', 'albern', 'alt', 'arg', 'arm', 'äußer', 'barsch', 'bieder', 'billig', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bloß', 'böse', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'direkt', 'doof', 'doppelt', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'egal', 'eigen', 'einzig', 'eitel', 'eklatant', 'elend', 'eng', 'enorm', 'ernst', 'erst', 'extrem', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'ganz', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'gewiss', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hinter', 'hohe', 'hohl', 'hübsch', 'inner', 'irre', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'komplett', 'krank', 'krass', 'kraus', 'krude', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'letzt', 'licht', 'lieb', 'lila', 'linke', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nächste', 'nackt', 'nah', 'nass', 'nett', 'neu', 'nieder', 'ober', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau',  'rechte', 'rege', 'reich', 'reif', 'rein', 'relativ', 'roh', 'rosa', 'rot', 'rüde', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöde', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröde', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'total', 'träge', 'treu', 'trocken', 'trüb', 'ungefähr', 'ungemein', 'unter', 'übel', 'vage', 'viel', 'voll', 'vollkommen', 'vorder', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zahm', 'zart']
+# no predication: letzte, niedere
+# Note regular adjectival suffixes: ig/bar/end/los/sam/fach/lich/haft/isch/gemäß/mäßig, though sometimes root does not exist (anymore): 'häufig', 'sonstig', 'wichtig', 'abwesend', 'anwesend', 'gewöhnlich', 'natürlich', 'wahrscheinlich', 'zusätzlich'
+# note exceptions: folglich/freilich/nämlich/schließlich only adverbial
 
-Adverbien = ['abends', 'anfangs', 'bald', 'bisher', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'ebenfalls', 'endlich', 'fast', 'früh', 'ganz', 'geradewegs', 'gerne', 'gestern', 'gewiss', 'halbwegs', 'heute', 'hier', 'hinten', 'hoch', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'mittags', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'neulich', 'noch', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'sofort', 'unten', 'unterwegs', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vorn', 'wieder']
+# hochpeinlich, schwerkrank, fieftraurig, bitterkalt, hypernervös, erzfaul, megaschnell, superfein, ultramodern, uralt
+Steigerungspräfixe = ['bitter', 'erz', 'hoch', 'hyper', 'mega', 'schwer', 'super', 'tief', 'ultra', 'un', 'ur']
+# many composita, e.g handgroß, schwarzgrün, kerngesund, usw.
 
-Konjunktionaladverbien = ['abermals', 'allein', 'allemal', 'allenfalls', 'allerdings', 'alsbald', 'alsdann', 'also', 'anderenfalls', 'andererseits', 'andernteils', 'anschließend', 'ansonsten', 'anstatt dessen', 'auch', 'aufgrund dessen', 'ausschließlich', 'außerdem', 'beispielsweise', 'beziehungsweise', 'bestenfalls', 'bloß', 'da', 'dabei', 'dadurch', 'dafür', 'daher', 'dahingegen', 'damit', 'danach', 'daneben', 'dann', 'darauf', 'darauhfin', 'darüber hinaus', 'darum', 'davor', 'dazu', 'dazwischen', 'dementgegen', 'dementsprechend', 'demgegenüber', 'demgemäß', 'demnach', 'demzufolge', 'dennoch', 'derweilen', 'desgleichen', 'deshalb', 'deswegen', 'ferner', 'folglich', 'freilich', 'gegebenenfalls', 'genauso', 'gleichwohl', 'gleichfalls', 'gleichzeitig', 'hernach', 'hierbei', 'hierdurch', 'hiermit', 'hingegen', 'hinterher', 'hinwiederum', 'immerhin', 'im Übrigen', 'indes', 'indessen', 'infolgedessen', 'insbesondere', 'insofern', 'insoweit', 'inzwischen', 'jedoch', 'kaum', 'mal', 'mithin', 'meinerseits', 'mittlerweile', 'nachher', 'nämlich', 'nebenbei', 'nebenher', 'nichtsdestominder', 'nichtsdestoweniger', 'nichtsdestotrotz', 'nunmehr', 'nur', 'obendrein', 'ohnedies', 'ohnehin', 'schließlich', 'schon', 'seitdem', 'seither', 'selbst', 'so', 'sodann', 'somit', 'sonst', 'soviel', 'soweit', 'sowieso', 'stattdessen', 'trotzdem', 'überdies', 'überhaupt', 'unterdessen', 'vielmehr', 'vor allem', 'vorher', 'währenddessen', 'weiter', 'weiterhin', 'weiters', 'wieder', 'wiederum', 'wohlgemerkt', 'zudem', 'zuguterletzt', 'zumal', 'zusätzlich', 'zuvor', 'zwar', 'zwischendurch', 'zwischenzeitlich']
+
+# Ursprung teilweise adjektival, teilweise adverbial, aber das scheint keine Rolle zu spielen in der Benutzung
+Gradadjektiv = ['absolut', 'annähernd', 'arg', 'ausgesprochen', 'außergewöhnlich', 'außerordentlich', 'äußerst', 'echt', 'eklatant', 'enorm', 'entsetzlich', 'erbärmlich', 'extrem', 'furchtbar', 'ganz', 'gar', 'hochgradig', 'höchst', 'irre', 'komplett', 'recht', 'regelrecht', 'relativ', 'restlos', 'richtig', 'schrecklich', 'schön', 'tierisch', 'total', 'traumhaft', 'ungemein', 'ungeheuerlich', 'ungewöhnlich', 'unglaublich', 'unheimlich', 'unwahrscheinlich', 'übermäßig', 'verhältnismäßig', 'vollkommen', 'völlig', 'weit', 'weitgehend', 'wahnsinnig', 'ziemlich']
+Gradadverb = ['beinahe', 'besonders', 'dermaßen', 'derart', 'durchaus', 'eher', 'einigermaßen', 'etwas', 'fast', 'kaum', 'nur', 'so', 'vergleichsweise', 'zumindest']
+Gradpartikel = ['nahezu', 'schier', 'sehr', 'sogar', 'spätestens', 'überaus', 'weitaus', 'zu']
+
+# mit NP
+# mit all/kein/jed: gar, fast, nahezu, beinahe, keineswegs
+Fokuspartikel = ['allein', 'allenfalls', 'auch', 'ausgerechnet', 'bereits', 'besonders', 'bestenfalls', 'bloß', 'einzig', 'erst', 'gerade', 'mindestens', 'lediglich', 'nur', 'schon', 'selbst', 'sogar', 'spätestens', 'vor allem', 'wenigstens', 'zumindestens']
+
+# also Post-NP: selbst, allein
+
+# nur [fast alle] [maximal drei] Kinder
+# die erste/nächste/letzte/gleiche drei freie Tage : reguläre adjektive mit Kongruenz!
+# mit den erwähnten drei Schichten
+Numeralpartikel = ['maximal', 'minimal', 'mindestens', 'ungefähr', 'zumindestens']
+
+Adverbien = ['abends', 'anders', 'anfangs', 'bald', 'besonders', 'bisher', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'ebenfalls', 'eingangs', 'einmal', 'endlich', 'fast', 'geradewegs', 'gerne', 'gestern', 'gewiss', 'gleich', 'halbwegs', 'heute', 'hier', 'hinten', 'hoch', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'mittags', 'mittendrin', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'nebenan', 'neulich', 'nie', 'nirgends', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'so', 'sofort', 'umsonst', 'unten', 'unterwegs', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vormittags', 'vorn', 'vorne', 'wieder', 'zunächst']
+
+Konjunktionaladverbien = ['abermals', 'allein', 'allemal', 'allenfalls', 'allerdings', 'alsbald', 'alsdann', 'also', 'anderenfalls', 'andererseits', 'andernteils', 'anschließend', 'ansonsten', 'auch', 'ausschließlich', 'außerdem', 'beispielsweise', 'beziehungsweise', 'bestenfalls', 'bloß', 'dabei', 'dadurch', 'dafür', 'daher', 'dahingegen', 'damit', 'danach', 'daneben', 'dann', 'darauf', 'darauhfin', 'darüber hinaus', 'darum', 'davor', 'dazu', 'dazwischen', 'dementgegen', 'demgegenüber', 'demgemäß', 'demnach', 'demzufolge', 'dennoch', 'derweilen', 'desgleichen', 'deshalb', 'deswegen', 'ebenfalls', 'ferner', 'folglich', 'freilich', 'gegebenenfalls', 'genauso', 'gleichwohl', 'gleichfalls', 'gleichzeitig', 'hernach', 'hierbei', 'hierdurch', 'hiermit', 'hingegen', 'hinterher', 'hinwiederum', 'immerhin', 'im Übrigen', 'indes', 'indessen', 'infolgedessen', 'insbesondere', 'insofern', 'insoweit', 'inzwischen', 'jedoch', 'kaum', 'mal', 'mithin', 'meinerseits', 'mittlerweile', 'nachher', 'nämlich', 'nebenbei', 'nebenher', 'nichtsdestoweniger', 'nichtsdestotrotz', 'nunmehr', 'nur', 'obendrein', 'ohnedies', 'ohnehin', 'schließlich', 'schon', 'seitdem', 'seither', 'sodann', 'somit', 'sonst', 'soviel', 'soweit', 'sowieso', 'stattdessen', 'trotzdem', 'überdies', 'überhaupt', 'unterdessen', 'vielmehr', 'vor allem', 'vorher', 'währenddessen', 'weiterhin', 'weiters', 'wieder', 'wiederum', 'wohlgemerkt', 'zudem', 'zuguterletzt', 'zumal', 'zumindest', 'zuvor', 'zwar', 'zwischendurch', 'zwischenzeitlich']
 
 Frageadverbien = ['warum', 'weshalb', 'weswegen', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
 
-Negationen = ['nicht', 'nie', 'niemals', 'nicht mehr']
+Negationen = ['nicht', 'nie', 'niemals', 'nirgends', 'nichts', 'nie mehr', 'nicht mehr']
 
-Modalpartikel = ['aber', 'auch', 'bloß', 'denn', 'doch', 'eben', 'eh', 'etwa', 'gar', 'halt', 'ja', 'nur', 'rein', 'ruhig', 'schon', 'wohl']
+Abtönungspartikel = ['aber', 'auch', 'bloß', 'denn', 'doch', 'eben', 'eh', 'etwa', 'gar', 'halt', 'ja', 'mal', 'nämlich', 'noch', 'nur', 'rein', 'ruhig', 'schon', 'wohl']
 
 Genera = {
   'm': 'Maskulin',
@@ -105,9 +147,11 @@ Präpositionen = {
   'kraft': 'Genitiv',
   'längs': 'Genitiv',
   'laut': 'Genitiv',
+  'links': 'Genitiv',
   'mittels': 'Genitiv',
   'ob': 'Genitiv',
   'oberhalb': 'Genitiv',
+  'rechts': 'Genitiv',
   'seitens': 'Genitiv',
   'statt': 'Genitiv',
   'trotz': 'Genitiv',
@@ -276,14 +320,6 @@ Quantoren = {
     'Flexion': 'dies',
     'Deklination': 'schwach',
   },
-  'all':{
-    'Flexion': 'all',
-    'Deklination': 'schwach',
-  },
-  'jed':{
-    'Flexion': 'all',
-    'Deklination': 'schwach',
-  },
   'beid':{
     'Flexion': 'all',
     'Deklination': 'schwach',
@@ -293,6 +329,14 @@ Quantoren = {
     'Deklination': 'schwach',
   },
   'manch':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'all':{
+    'Flexion': 'all',
+    'Deklination': 'schwach',
+  },
+  'jed':{
     'Flexion': 'all',
     'Deklination': 'schwach',
   },
