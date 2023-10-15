@@ -1,8 +1,6 @@
 # class 1: Vorfeld, modifyable with preposition/particle, and predicable
 # real adverbs? time + location!
 
-# an, auf, bei
-
 morgens # der Morgen, morgendlich
 vormittags # der Vormittag, vormittaglich
 mittags # der Mittag, mittaglich
@@ -18,30 +16,45 @@ morgen # morgig
 übermorgen # übermorgig
 
 außen # äußere (außerhalb)
-draußen # äußere (außerhalb)
 innen # innere (in)
-drinnen # innere (in)
 oben # obere (über)
 unten # untere (unter)
 vorne # vordere (vor)
 hinten # hintere (hinter)
 
-mittendrin # mittig (zwischen)
-nebenan # benachbart (neben)
-unterwegs # ??? (zu)
-vorbei # vergangen (nach)
+mittendrin # die Mitte, mittig
+nebenan
+unterwegs
+vorbei
+überall
+zuhause
+neulich
+genauso
 
 hoch # hohe
 links # linke
 rechts # rechte
+anders # andere
+besonders # besondere
 
 hier # hiesig
-da # dasig
+da # dasig (?)
 dort # dortig
 drüben # drübig (?)
 
 allein # alleinig
-überall # überallig (?)
+bald # baldig
+
+# maybe possible as predicates with special meaning?
+draußen # äußere (außerhalb)
+drinnen # innere (in)
+dabei # ich bin dabei
+dafür # ich bin dafür
+dagegen # ich bin dagegen
+daneben # Sein Benehmen war daneben
+daran # dran: etwas Wahres ist daran
+darin # drin: Der Ball war drin
+darunter # Viele Jugendliche sind darunter
 
 # class 2: Vorfeld + modifyable
 # nur/spätestens/auch/gerade dann
@@ -64,7 +77,6 @@ allein # alleinig
 # ganz besonders/gern/umsonst
 # nur/erst/etwa halbwegs
 # ziemlich/ganz/häufig vergebens
-# bis/seit neulich
 # ab/fast/beinahe sofort
 # zu oft
 # auf einmal
@@ -75,54 +87,84 @@ allein # alleinig
 # auch/gerade/sogar/eben hierdurch
 # viel/schon eher
 
+# modifying adverbs:
+# auch, bald, beinahe, dann, eben, etwas, fast, gerade, immer, mal, nur, schon, spätestens, wohl
+
+# modifying adjectives:
+# direkt, genau, ganz, gleich, häufig, kurz, lang, unmittelbar, viel, völlig, weit, ziemlich
+
 # also:
 # - numerals with suffix -mal (einmal, zweimal)
-# - Präposition+wärts (rückwärts)
+# - mostly note not with -mals (except: mehrmals, damals: seit damals, gleich/oft/schon/bereits mehrmals
+# - Präposition+wärts (rückwärts), genau rückwärts
 # - da/hier+Preposition (davor, hiervor)
 
-abwärts
-anders
-anfangs
-aufwärts
-auswärts
-bald
-besonders
+anfangs # der Anfang, anfangen
 bisher
-dabei
-dadurch
-dafür
-dagegen
-daher
-dahinter
-damit
-danach
-daneben
+damals # damalig 
 dann
-daran
-darauf
-daraus
-darin
-darüber
-darum
-darunter
-davon
-davor
-dazu
-dazwischen
 demnächst
 deshalb
 deswegen
 dorthin
 eher
-eingangs
-einmal
-einwärts
-genauso
+eingangs # der Eingang
+einmal # einmalig
 gern
 gerne
 gleich
 halbwegs
 hernach
+hinterher
+insofern
+insoweit
+immer
+manchmal
+mehrmals # mehrmalig
+nachher
+nebenbei
+nebenher
+oft
+seitdem
+seither
+so
+sofort 
+soviel
+soweit
+umsonst
+vergebens
+von vornherein
+vorher
+weiterhin
+wieder
+zuerst
+zuletzt
+zunächst
+zuvor
+zwischendurch
+
+abwärts
+aufwärts
+auswärts
+einwärts
+rückwärts
+seitwärts
+vorwärts
+
+dadurch
+daher
+dahinter
+damit
+danach
+darauf
+daraus
+darüber
+darum
+davon
+davor
+dazu
+dazwischen
+
 hieran
 hierauf
 hieraus
@@ -141,36 +183,6 @@ hierunter
 hiervon
 hiervor
 hierzu
-hinterher
-insofern
-insoweit
-immer
-manchmal
-nachher
-nebenbei
-nebenher
-neulich
-oft
-rückwärts
-seitdem
-seither
-seitwärts
-so
-sofort 
-soviel
-soweit
-umsonst
-vergebens
-von vornherein
-vorher
-vorwärts
-weiterhin
-wieder
-zuerst
-zuletzt
-zunächst
-zuvor
-zwischendurch
 
 # class 3: Vorfeld, but non-modifyable
 # also with Suffix -weise/wärts/lings: beispielsweise, beziehungsweise, heimwärts, seitlings, rücklings
@@ -210,7 +222,9 @@ derweilen
 desgleichen
 durchaus
 ebenfalls
+ehemals # ehemalig
 einigermaßen
+einstweilen
 fast
 ferner
 folglich
@@ -241,10 +255,12 @@ mithin
 mittlerweile
 nichtsdestotrotz
 nichtsdestoweniger
+nochmals # nochmalig
 nun
 nunmehr
 obendrein
-oftmals
+oftmals # oftmalig
+vormals # vormalig
 ohnedies
 ohnehin
 schon
@@ -258,7 +274,7 @@ trotzdem
 überhaupt
 unterdessen
 vielleicht
-vielmals
+vielmals # vielmalig
 vielmehr
 vor allem
 währenddessen
@@ -272,29 +288,38 @@ zumal
 zumindest
 zwar
 
-# post-first fokus? allerdings, also, andererseits, andernteils, auch, beispielsweise, freilich, hingegen, hinwiederum, immerhin, indes, indessen, insbesondere, jedoch, mittlerweile, nämlich, nur, schließlich, schon, sonst, stattdessen, überhaupt, unterdessen, währenddessen, wiederum, zumindest, zwar
-
 # non-adjectives! folglich, freilich, nämlich (only those?!)
-# nämlich old-fashioned as adjective, very frequent as adverb, but never in Vorfeld 
-# endlich, letztlich, schließlich are adjectives
-# speziell: nämlich: not in Vorfeld ?!
+# endlich, letztlich, schließlich are adjectives, but with different meaning as adverbs
 
 endlich
 folglich
 freilich
 letztlich
-nämlich
 schließlich
 
-# Adjektive?
-# gleich/unmittelber/direkt anschließend
-# fast ausschließlich
-# nur/genau demenstsprechend
-# fast/ganz gleichzeitig
-# zumindest/auch zwischenzeitlich
+# nämlich old-fashioned as adjective, very frequent as adverb, but never in Vorfeld: Modalpartikel?
+nämlich
 
-anschließend
-ausschließlich
-demenstsprechend
-gleichzeitig
-zwischenzeitlich
+# class 4: nicht vorfeldfähig, alike to traditional class of Abtönungspartikel
+aber
+auch
+bloß
+denn
+doch
+eben
+noch
+nur
+schon
+wohl
+
+einfach
+ruhig
+
+eh
+etwa
+halt
+ja
+mal
+
+gar # nur mit negation/zu ?
+rein # nur als 'rein gar nicht' ?
