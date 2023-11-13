@@ -1,12 +1,26 @@
 # class 1: Vorfeld, modifyable with preposition/particle, and predicable
 # real adverbs? time + location!
 
+- *Adverb* type 1 (+ predicative head, + attributive admodifier): \
+  Local: *hier, da, dort, drüben, dahin, dorthin, außen, draußen, innen, drinnen, oben, unten, vorne, hinten, nebenan, unterwegs, links, rechts* \
+  Temporal: *vorgestern, gestern, heute, jetzt, morgen, übermorgen, morgens, vormittags, mittags, nachmittags, abends, nachts, damals, neulich* \
+  Modal: *allein*
+
 morgens # der Morgen, morgendlich
 vormittags # der Vormittag, vormittaglich
 mittags # der Mittag, mittaglich
 nachmittags # der Nachmittag, nachmittaglich
 abends # der Abend, abendlich
 nachts # die Nacht, nachtlich
+
+montags
+dienstags
+mittwochs
+donnerstags
+freitags
+samstags
+sonntags
+vortags
 
 vorgestern # vorgestrig
 gestern # gestrig
@@ -22,70 +36,149 @@ unten # untere (unter)
 vorne # vordere (vor)
 hinten # hintere (hinter)
 
-mittendrin # die Mitte, mittig
-nebenan
-unterwegs
-vorbei
-überall
-zuhause
-neulich
-genauso
-
-hoch # hohe
-links # linke
-rechts # rechte
-anders # andere
-besonders # besondere
-
 hier # hiesig
 da # dasig (?)
 dort # dortig
+dahin
+dorthin
 drüben # drübig (?)
-
-allein # alleinig
-bald # baldig
-
-# maybe possible as predicates with special meaning?
 draußen # äußere (außerhalb)
-drinnen # innere (in)
-dabei # ich bin dabei
-dafür # ich bin dafür
-dagegen # ich bin dagegen
-daneben # Sein Benehmen war daneben
-daran # dran: etwas Wahres ist daran
-darin # drin: Der Ball war drin
-darunter # Viele Jugendliche sind darunter
+drinnen # drin (?)
 
-# class 2: Vorfeld + modifyable
+links # linke
+rechts # rechte
+nebenan
+unterwegs
+damals # damalig 
+neulich
+allein # alleinig
+
+# maybe possible as predicates with special meaning? "da" mostly referential
+# Sein Benehmen war daneben
+# etwas Wahres ist dran
+# Der Ball war drin
+
+Die Zeit, 19.05.2005, Nr. 21 
+Die Rückfahrt abends lässt nicht wirklich Ruhe aufkommen.
+
+Die Zeit, 31.10.2017 (online) 
+Vor Kurzem habe ich bis abends einem Kumpel geholfen.
+
+Die Feier ist abends.
+
+Die Zeit, 10.08.2017, Nr. 33 
+Die Menschen hier erinnern sich an die spektakuläre Ermordung 
+
+Die Zeit, 02.10.2015 (online) 
+Der Mann da spielt zwar Rembrandt, aber er ist es nicht.
+
+Die Zeit, 31.12.2017, Nr. 01 
+Die Bürger dort nutzen schon lange andere Staatswährungen wie den Dollar.
+
+Regine Sylvester: Die berlinern da so komisch. Berliner Zeitung, 02.10.1997 
+Die Freunde drüben erzählen von den guten Zeiten in der DDR.
+
+Die Zeit, 02.12.2010, Nr. 49 
+Der Kollege nebenan schließt frühzeitig ab.	
+
+Die Zeit, 23.07.2003, Nr. 30 
+Die Aussicht unterwegs bezahlt uns für die Strapaze.
+
+Das Treffen neulich war langweilig
+
+Die Zeit, 24.04.2017, Nr. 17 
+Der Aufschrei damals reichte von rechts bis links.
+	
+Alexander H. Mäder: Unter dem Sand liegt die See. Berliner Zeitung, 23.02.2005 
+Das Bild links zeigt einen etwa 40 Kilometer breiten Ausschnitt.
+
+Anne Brüning: Malaria ist häufiger als gedacht. Berliner Zeitung, 10.03.2005 
+Die Karte rechts zeigt die Häufigkeit in den Regionen.
+
+Die Zeit, 25.07.2017 (online) 
+Die Spermienzahl allein sagt wenig aus
+
+- *Adverb* type 2 (+ predicative head, – attributive admodifier): \
+  Local: *dabei, halbwegs, hoch, mittendrin, überall, zuhause* \
+  Temporal: *bald, gleich, immer, nachher, vorher, zuerst* \
+  Modal: *anders, besonders, dafür, dagegen, genauso, umsonst, so, vergebens*
+
+# ich bin dabei
+# ich bin dafür
+# ich bin dagegen
+
+# fast/ganz genauso
+# bald/unmittelbar/gleich/lange nachher
+# kurz/lange/schon/unmittelbar vorher
+# nur/genau so
+# kaum/ganz/etwas/völlig anders
+# ganz besonders/umsonst
+# nur/erst/etwa halbwegs
+# ziemlich/ganz/häufig vergebens
+
+- *Adverb* type 3 (– predicative head, + attributive admodifier): \
+  Temporal: *bisher, hernach, hinterher, seitdem, seither, zuvor, zwischendurch* \
+  Modal: *nebenbei, nebenher*
+
+# bald/kurz/lange/unmittelbar hernach
+# weit/gleich/etwas/bald hinterher
+# ganz/fast/eher/nur nebenbei, nebenher
+# spätestens/erst seitdem, seither
+# kurz/lange/schon/unmittelbar zuvor
+# auch/für/nur zwischendurch
+
+Die Zeit, 06.03.2008, Nr. 11 
+Die Antwort bisher lautet: nein.
+
+Die Zeit, 27.05.2017 (online) 
+Der Weg dorthin verlief allerdings alles andere als gerade.
+
+Die Zeit, 30.12.1966, Nr. 53 
+Der Schwanengesang hernach wiederholte nur oft schon Gesagtes
+	
+Michael Jahn: Rekdals Leid ist Neuendorfs Chance. Berliner Zeitung, 22.02.1999 
+Die Diagnose hinterher fiel niederschmetternd für den Norweger aus
+
+Die Zeit, 14.12.2014, Nr. 51 
+Die Entwicklung seitdem gab Schockenhoff allerdings weitgehend recht.
+	
+Der Tagesspiegel, 05.11.1996 
+Die Wahlergebnisse seither zeichnen einen Zickzackkurs:
+
+Die Zeit, 29.04.2010, Nr. 17 
+Den Abend zuvor verbrachten wir mit indischen Mitarbeitern
+
+Karin Bühler: Wende um 180 Grad. Berliner Zeitung, 11.10.2005 
+Die Minute zwischendurch gehört beim Fechten meistens dem Trainer.
+
+- *Adverb* type 4 (– predicative head, – attributive admodifier):
+  Temporal: *anfangs, demnächst, dann, eher, eingangs, jüngst, längst, manchmal, oft, sofort, von vornherein, weiterhin, wieder, zuletzt, zunächst* \
+  Modal: *darum, deshalb, deswegen, gern(e), insofern, insoweit, soviel, soweit*
+
 # nur/spätestens/auch/gerade dann
 # auch/gerade/genau/nur darum, deshalb, deswegen
 # genau/eben/schon/wohl daher
-# fast/ganz genauso
-# bald/kurz/lange/unmittelbar hernach
-# weit/gleich/etwas/bald hinterher
+# nur/gleich anfangs
+# schon/gleich eingangs
 # auch/nur insofern, insoweit
-# bald/unmittelbar/gleich/lange nachher
-# ganz/fast/eher/nur nebenbei, nebenher
-# spätestens/erst seitdem, seither
 # nur/mindestens soviel, soweit
-# kurz/lange/schon/unmittelbar vorher, zuvor
 # auch/etwas weiterhin
 # immer/schon/dann/mal wieder
-# auch/für/nur zwischendurch
-# nur/genau so
-# kaum/ganz/etwas/völlig anders
-# ganz besonders/gern/umsonst
-# nur/erst/etwa halbwegs
-# ziemlich/ganz/häufig vergebens
+# ganz gern
 # ab/fast/beinahe sofort
 # zu oft
+# viel/schon eher
+# erst jüngst
+# schon längst
+
 # auf einmal
 # bis gleich, bis bald, bis nachher
 # kurz davor/danach/darauf
 # direkt/links daneben
 # auch/gerade hierbei
 # auch/gerade/sogar/eben hierdurch
-# viel/schon eher
+
+# nur/gleich/lediglich/zumindestens phasenweise, zeitweise, stellenweise, gebietsweise, etc.
 
 # modifying adverbs:
 # auch, bald, beinahe, dann, eben, etwas, fast, gerade, immer, mal, nur, schon, spätestens, wohl
@@ -93,15 +186,12 @@ darunter # Viele Jugendliche sind darunter
 # modifying adjectives:
 # direkt, genau, ganz, gleich, häufig, kurz, lang, unmittelbar, viel, völlig, weit, ziemlich
 
-# also:
-# - numerals with suffix -mal (einmal, zweimal)
-# - mostly note not with -mals (except: mehrmals, damals: seit damals, gleich/oft/schon/bereits mehrmals
-# - Präposition+wärts (rückwärts), genau rückwärts
-# - da/hier+Preposition (davor, hiervor)
+dabei 
+dafür 
+dagegen
 
 anfangs # der Anfang, anfangen
 bisher
-damals # damalig 
 dann
 demnächst
 deshalb
@@ -109,39 +199,42 @@ deswegen
 dorthin
 eher
 eingangs # der Eingang
-einmal # einmalig
 gern
 gerne
-gleich
 halbwegs
 hernach
 hinterher
 insofern
 insoweit
-immer
+jüngst
+längst
 manchmal
-mehrmals # mehrmalig
-nachher
 nebenbei
 nebenher
 oft
 seitdem
 seither
-so
 sofort 
 soviel
 soweit
-umsonst
-vergebens
 von vornherein
-vorher
 weiterhin
 wieder
-zuerst
 zuletzt
 zunächst
 zuvor
 zwischendurch
+
+# also:
+# - numerals with suffix -mal (einmal, zweimal)
+# - mostly note not with -mals (except: mehrmals, damals: seit damals, gleich/oft/schon/bereits mehrmals
+# - Präposition+wärts (rückwärts), genau rückwärts
+# - da/hier+Preposition (davor, hiervor)
+
+einmal # einmalig
+zweimal
+dreimal
+mehrmals # mehrmalig
 
 abwärts
 aufwärts
@@ -156,8 +249,10 @@ daher
 dahinter
 damit
 danach
+daneben
 darauf
 daraus
+darunter
 darüber
 darum
 davon

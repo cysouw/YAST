@@ -14,7 +14,8 @@ Satzpartizipien = ['angenommen', 'ausgenommen', 'gegeben', 'gesetzt', 'ungeachte
 # bis morgen, seit gestern, ab heute, von gestern
 # nach links, von hier, nach oben  
 # von ... an
-Grenzpartikel = ['von', 'nach', 'seit', 'ab', 'bis']
+# für unterwegs/immer/umsonst/zwischendurch
+Grenzpartikel = ['von', 'nach', 'seit', 'ab', 'bis', 'für']
 
 # bis in den frühen Morgen, bis zu den Ferien, bis zum See
 # bis fast bei der Ladentür
@@ -23,10 +24,12 @@ Grenzpartikel = ['von', 'nach', 'seit', 'ab', 'bis']
 # seit/bis kurz vor/nach dem Essen
 # von hinter der Torlinie, bis zwischen die Schulterblätter
 # bis um Mitternacht, bis um das Zehnfache: this seems to be a different construction with 'um' meaning 'circa' (but still governing accusative!)
+# rund um den Kehlkopf, weit um den Bahnhof
+# schräg gegenüber
 # nach nahe der Stadt: 'nahe' mostly in constructions in which it is almost still adjectival
 # Ein Foul an Lászlo Kleinheisler verlegte Schiedsrichter Christian Dingert zu unrecht nach (weit) außerhalb des Strafraums
-Basispräpositionen = ['an', 'auf', 'bei', 'hinter', 'in', 'neben', 'unter', 'über', 'vor', 'zwischen', 'zu', 'nach', 'außerhalb']
-# = Wechselpräpositionen including 'bei, zu, nach, außerhalb'
+Lokalpräpositionen = ['an', 'auf', 'bei', 'gegenüber', 'hinter', 'in', 'neben', 'unter', 'um', 'über', 'vor', 'zwischen', 'zu', 'nach', 'außerhalb']
+# = Wechselpräpositionen including 'bei, zu, nach, außerhalb, um, gegenüber'
 
 # almost the same as predicative prepositions. But note:
 # für, gegen, aus also predicative
@@ -43,7 +46,7 @@ Kopulas = ['sein', 'werden', 'bleiben', 'geben', 'haben']
 # NOTE: it looks like adjectives cannot be used productively!
 # new ones are mainly added through derivation or complete new innovation
 # can we list all basic adjectives in German?
-Adjektive = ['absolut', 'albern', 'alt', 'andere', 'arg', 'arm', 'äußer', 'barsch', 'besonder', 'bieder', 'billig', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bloß', 'böse', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'direkt', 'doof', 'doppelt', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'egal', 'eigen', 'einzig', 'eitel', 'eklatant', 'elend', 'eng', 'enorm', 'ernst', 'erst', 'extrem', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'ganz', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'gewiss', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hinter', 'hohe', 'hohl', 'hübsch', 'inner', 'irre', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'komplett', 'krank', 'krass', 'kraus', 'krude', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'letzt', 'licht', 'lieb', 'lila', 'linke', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nächste', 'nackt', 'nah', 'nass', 'nett', 'neu', 'niedere', 'obere', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rechte', 'rege', 'reich', 'reif', 'rein', 'relativ', 'roh', 'rosa', 'rot', 'rüde', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöde', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröde', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'total', 'träge', 'treu', 'trocken', 'trüb', 'ungefähr', 'ungemein', 'unter', 'übel', 'vage', 'viel', 'voll', 'vollkommen', 'vorder', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zahm', 'zart']
+Adjektive = ['absolut', 'albern', 'alt', 'andere', 'arg', 'arm', 'äußer', 'barsch', 'besonder', 'bieder', 'billig', 'bitter', 'blank', 'blass', 'blau', 'bleich', 'blind', 'blöd', 'blond', 'bloß', 'böse', 'braun', 'brav', 'breit', 'brüsk', 'bunt', 'derb', 'deutsch', 'dicht', 'dick', 'direkt', 'doof', 'doppelt', 'dreist', 'dumm', 'dumpf', 'dunkel', 'dünn', 'dürr', 'düster', 'echt', 'edel', 'egal', 'eigen', 'einzig', 'eitel', 'eklatant', 'elend', 'eng', 'enorm', 'ernst', 'erst', 'extrem', 'fad', 'falsch', 'faul', 'feig', 'fein', 'feist', 'fern', 'fesch', 'fest', 'fett', 'feucht', 'fies', 'finster', 'firn', 'flach', 'flau', 'flink', 'flott', 'forsch', 'frech', 'frei', 'fremd', 'froh', 'fromm', 'früh', 'ganz', 'gar', 'geil', 'gelb', 'gemein', 'genau', 'gerade', 'gering', 'geschwind', 'gesund', 'gewiss', 'glatt', 'gleich', 'grau', 'greis', 'grell', 'grob', 'groß', 'grün', 'gut', 'hager', 'harsch', 'hart', 'heikel', 'heil', 'heiser', 'heiß', 'heiter', 'hell', 'herb', 'hinter', 'hohe', 'hohl', 'hübsch', 'inner', 'irre', 'jäh', 'jung', 'kahl', 'kalt', 'kaputt', 'karg', 'keck', 'kess', 'keusch', 'kirre', 'klamm', 'klar', 'klein', 'klug', 'knapp', 'komplett', 'krank', 'krass', 'kraus', 'krude', 'krumm', 'kühl', 'kühn', 'kurz', 'lahm', 'lang', 'lasch', 'lau', 'laut', 'lauter', 'lecker', 'leer', 'leicht', 'leise', 'letzt', 'licht', 'lieb', 'lila', 'linke', 'locker', 'los', 'mager', 'matt', 'mies', 'mild', 'morsch', 'müde', 'munter', 'mürb', 'nächste', 'nackt', 'nah', 'nass', 'nett', 'neu', 'niedere', 'obere', 'öd', 'offen', 'orange', 'platt', 'plump', 'prall', 'prüde', 'rank', 'rar', 'rasch', 'rau', 'rechte', 'rege', 'reich', 'reif', 'rein', 'relativ', 'roh', 'rosa', 'rot', 'rüde', 'rund', 'sacht', 'sanft', 'satt', 'sauber', 'sauer', 'schal', 'scharf', 'scheu', 'schick', 'schief', 'schlaff', 'schlank', 'schlapp', 'schlau', 'schlecht', 'schlicht', 'schlimm', 'schmal', 'schmuck', 'schnell', 'schnöde', 'schön', 'schräg', 'schrill', 'schroff', 'schwach', 'schwarz', 'schwer', 'schwul', 'schwül', 'seicht', 'selten', 'sicher', 'spät', 'spitz', 'spröde', 'stark', 'starr', 'steif', 'steil', 'stier', 'still', 'stolz', 'straff', 'stramm', 'streng', 'stumm', 'stumpf', 'stur', 'süß', 'tapfer', 'taub', 'teuer', 'tief', 'toll', 'tot', 'total', 'träge', 'treu', 'trocken', 'trüb', 'ungefähr', 'unter', 'übel', 'vage', 'viel', 'voll', 'vollkommen', 'vorder', 'wach', 'wacker', 'wahr', 'warm', 'weh', 'weich', 'weise', 'weiß', 'weit', 'wild', 'wirr', 'wirsch', 'wund', 'wüst', 'zäh', 'zahm', 'zart']
 # special adverbs n/r: außen, innen, oben, unten, vorne, hinten
 # special adverbs s: linke, rechte, andere, besondere
 # special adverbs: hoch/hoh, nieder/niedrig
@@ -52,8 +55,8 @@ Adjektive = ['absolut', 'albern', 'alt', 'andere', 'arg', 'arm', 'äußer', 'bar
 # Note regular adjectival suffixes: ig/bar/end/los/sam/fach/lich/haft/isch/gemäß/mäßig/artig 
 # sometimes root does not exist (anymore): häufig, ständig, wichtig, abwesend, anwesend, fortwährend, gewöhnlich, natürlich, wahrscheinlich, unmittelbar, demenstsprechend, gleichzeitig, anschließend, ausschließlich
 # der dem Festessen anschließender Tanz
-# note exceptions: folglich/freilich/nämlich/schließlich only adverbial!
-# Adjektive? Often listed as adverbs: anschließend, ausschließlich, demenstsprechend, neulich, gleichzeitig, zwischenzeitlich
+# note exceptions: folglich/freilich/nämlich/schließlich/lediglich only adverbial!
+# Adjektive? Often listed as adverbs, because different meaning: anschließend, ausgerechnet, ausschließlich, demenstsprechend, neulich, gleichzeitig, zwischenzeitlich
 
 # no predication: ziemlich, sonstig, zusätzlich, ehemalig, zwischenzeitlich, hochgradig, sogenannt, regelrecht, völlig, nämlich
 # no referent: zwischenzeitlich, völlig
@@ -67,6 +70,8 @@ Steigerungspräfixe = ['bitter', 'erz', 'hoch', 'hyper', 'mega', 'schwer', 'supe
 Gradadjektiv = ['absolut', 'annähernd', 'arg', 'ausgesprochen', 'außergewöhnlich', 'außerordentlich', 'äußerst', 'echt', 'eklatant', 'enorm', 'entsetzlich', 'erbärmlich', 'extrem', 'furchtbar', 'ganz', 'hochgradig', 'höchst', 'irre', 'komplett', 'recht', 'regelrecht', 'relativ', 'restlos', 'richtig', 'schrecklich', 'schön', 'tierisch', 'total', 'traumhaft', 'ungemein', 'ungeheuerlich', 'ungewöhnlich', 'unglaublich', 'unheimlich', 'unwahrscheinlich', 'übermäßig', 'verhältnismäßig', 'verschwindend', 'vollkommen', 'völlig', 'weit', 'weitgehend', 'wahnsinnig', 'ziemlich']
 Gradadverb = ['beinahe', 'besonders', 'dermaßen', 'derart', 'durchaus', 'eher', 'einigermaßen', 'etwas', 'fast', 'kaum', 'nur', 'so', 'vergleichsweise', 'zumindest']
 Gradpartikel = ['nahezu', 'schier', 'sehr', 'sogar', 'spätestens', 'überaus', 'weitaus', 'zu']
+
+# Abkürzung??? er hat sehr geschwitzt
 
 # mit NP
 Fokuspartikel = ['allein', 'allenfalls', 'auch', 'ausgerechnet', 'bereits', 'besonders', 'bestenfalls', 'bloß', 'einzig', 'erst', 'gerade', 'mindestens', 'lediglich', 'nur', 'schon', 'selbst', 'sogar', 'spätestens', 'vor allem', 'wenigstens', 'zumindestens']
@@ -102,6 +107,11 @@ Genera = {
 }
 
 Kasus = ['Nominativ', 'Akkusativ', 'Dativ', 'Genitiv']
+
+# Postpositionen:
+# Akkusativ: hoch, entlang, über, durch (den Berg hoch, den Fluss entland, den Tag über, die Nacht durch)
+# Dativ: nach, zufolge, gegenüber (meiner Meinung nach, dem Regen zufolge, mir gegenüber)
+# Genitiv: halber, wegen (der Einfachheit halber, des Geldes wegen)
 
 Präpositionen = {
   # temporary solution for comparison: treat them as prepositions

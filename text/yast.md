@@ -115,9 +115,9 @@ Before delving into the details of this syntactic model, a few words on the algo
 
 ## Generating a recipe: ingredients
 
-In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ followed by the ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. The generation of a recipe is followed by the automatic rules that turn the instructions in the recipe into a concrete utterance. Now, the generative process for the recipe also has some rules, i.e. restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German, and other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's intention in accordance to the structure of the language.
+In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ is created, followed by the application of ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. This generative process also has some "rules", i.e. restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German. Other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's intention in accordance to the structure of the language.
 
-The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalised combinations of morphemes, like non-compositional idioms, and multi-part grammatical structures, like auxiliary constructions. Semantically, ingredients induce a state-of-mind at the addressee, consisting of the multitude of situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of uttering an ingredient aims to conjure up some of those possible situations in the mind of the addressee.
+The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalised combinations of morphemes, like non-compositional idioms, and multi-part grammatical structures, like auxiliary constructions. Semantically, ingredients induce a state-of-mind at the addressee, consisting of a multitude of situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of uttering an ingredient intends to conjure up some of those possible situations in the mind of the addressee.
 
 Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific positions in the generation. To fully describe these limits it will eventually be necessary to specify individual possibilities for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the full distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for specifying more detail subsequently. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
 
@@ -190,35 +190,142 @@ Heads can be modified by multiple other heads, each with their own complex inter
 
 ## Ingredient classes: parts of speech
 
-Ingredients can be classified into classes based on their syntactic possibilities. When considering all linguistic evidence, I expect each ingredient to have its own special distributional characteristics, so in effect each ingredient belongs to its own class. However, a few large classes can still be profitably formulated, although these classes should not be expected to be perfectly homogeneous. When scrutinizing the details, these classes will dissolve into an ever expanding set of subclasses.
+Ingredients can be categorized into classes on the basis of their syntactic possibilities. When considering all linguistic evidence, I expect that – in the end – each ingredient will have its own special distributional characteristics, so ultimately each ingredient will be its own class. Yet, a few large classes can profitably be formulated, although these classes should not be expected to be perfectly homogeneous. When scrutinizing the details, these classes will dissolve into an ever expanding pile of subclasses.
 
-To classify bases (i.e. ingredients that can be modified) the following principles are used. First, only occurrences without junktors are considered. So, the definition of base classes is determined only by their use as "unmarked" modifier. Second, only completely regular wordformation is considered. Then, the classification itself is performed by investigation how ingredients are being used as the main syntactic functions, namely as (i) predicative head, (ii) referential head, (iii) attributive admodifier, or as (iv) adverbial admodifier.
+Ingredients will be classified on the basis how they are used in the the four syntactic functions, namely in (i) referential phrases, (ii) predicative clauses, (iii) phrasal attributes, and (iv) clausal adverbials. The classification of bases will be first discussed. This will be followed by a discussion of the classification of operators. Recall that bases are ingredients that can be modified, while operators are ingredients that cannot be modified.
 
-As a first approximation, three main base classes can be defined by the distribution shown in [@tbl:mainclasses].
+Base-classes are established by the possibility of a base being the head any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive admodifier, or as (iv) adverbial admodifier. Five German base classes can then be defined by the distribution as shown in [@tbl:baseclasses]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the class of adverbs actually consists of four different subclasses and the class of numerals of two subclasses.
 
-Syntactic function     | *Nomen* | *Adjektiv* | *Verb*
-:-------               | :-: | :-: | :-: 
-referential head       | ∅ | *KNG* | *Infinitiv*
-attributive admodifier | –/∅ | *KNG* | *Partizip*
-adverbial admodifier   | – | ∅ | –
-predicative head       | *Kopula* | *Kopula* | *PNT*
+Syntactic function     | *Nomen* | *Verb* | *Adjektiv* | *Adverb* | *Numerale*
+:---------             | :-: | :-: | :-: | :-: | :-:
+Referential head       |  ✓  |  ✓  |  ✓  |  –  |  ✓  
+Predicative head       |  ✓  |  ✓  |  ✓  |  ±  |  ±  
+Attributive admodifier |  –  |  ✓  |  ✓  |  ±  |  ✓  
+Adverbial admodifier   |  –  |  –  |  ✓  |  ✓  |  –  
 
-Table: Distribution defining the three main German word classes {#tbl:mainclasses}
+Table: Syntactic possibilities of German base-classes. {#tbl:baseclasses}
 
-Nouns in German can be defined as those bases that inherently have a gender, i.e. when used as a referential head there is no choice as to the form of the article [@next a]. This is interpreted here as nouns being default referential heads. Nouns can also be used in other syntactic function, but then 
+### *Nomen*
+
+The class of *Nomen* corresponds to the traditional concept as it is used in German grammar, and it is arguably the largest of the base clases. Nouns in German have an inherent gender when used as a referential head [@next a] and they can all be used as predicative head with the help of a copula, either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain' [@next b]. Note that such a "real" predicative use of a noun does not have an article. With an article the predicative use of a noun turns into an identificational construction [@next c]. Many nouns can only be used as "real" predicative head (i.e. without article) in the plural [@next d]. 
 
 ::: ex
-- der Tisch, die Tür, das Haus
-- Angela Merkels Mann, Quantenchemiker, arbeitete weiter als Professor.^[~~DWDS~~: Die Zeit, 01.09.2017, Nr. 36.]
-- Doch mit Beginn des Holozäns, der Jetztzeit, wurde das Überleben schwieriger.^[~~DWDS~~: Die Zeit, 09.01.2018, Nr. 02.]
+Syntactic uses of a *Nomen* in German
+
+- Referential head: *Der **Vater** ist noch jung.*
+- Predicative head: *Er wird bald **Vater**.*
+- Identificational construction: *Er ist der **Vater**.*
+- Plural as Predicative head: *Dryaden und Hamadryaden sind **Bäume**.*^[~~DWDS~~: Spengler, Oswald: Der Untergang des Abendlandes, München: Beck 1929 [1918], S. 516.]
 :::
 
-Syntactic function     | noun | noun | adjective | adverb | adverb | verb
-:-------               | :-: | :-: | :-: | :-: | :-: | :-: 
-referential head       | ø | ø | ø | – | – | +
-attributive admodifier | – | ø | ø | ø | – | +
-adverbial admodifier   | – | – | ø | ø | ø | –
-predicative head       | + | + | + | + | – | ø
+German nouns can only be used as an attributive admodifier and as an adverbial admodifier using lexically-specific morphological derivations with suffixes like *‑haft, ‑ig, ‑isch, ‑lich, ‑gemäß, ‑mäßig* or *‑artig*. The availability of these derivations are strongly lexically dependent. Many nouns allow for multiple such derivations (e.g. *kindhaft, kindisch, kindlich, kindgemäß*), while others do not seem to allow any of these derivational suffixes (e.g. *Stuhl* or *Schuh*).
+
+### *Verb*
+
+The class of *Verb* also corresponds to the traditional concept as used in German grammar, illustrated here with the verb *lesen* 'to read' in [@next]. When used as a predicative head a German verb has person-number-tense inflection [@next a]. All German verbs can be used as a referential head in the *Infinitiv*, a form ending in *-en* and written with a capital in German orthography when used as a referential head [@next b]. As a referential head, the gender of a verb is always *Neutrum*.
+
+All German verbs can also be used as an attributive admodifier in the form of a so-called *Partizip Präsens* (also called *Partizip I* the German grammatical tradition) ending in *-end* and taking adjectival agreement [@next c]. Other non-fintite verbal forms (like the *Partizip Perfekt*) are also possible in this function, but not for all verbs. The same non-finite forms can also be used as a "fake" adverbial admodifier [@next d]. Although this construction looks syntactically like an adverbial, the participle *lesend* in this sentence modifies the object *mich* of the sentence. In general, participles used syntactically like adverbials in German always modify an argument of the main verb (sometimes called "depictive secondary predication"). The main verb of the sentence is only modified indirectly by such depictively used non-finite verbforms, because the main verb is modified by the argument, which in turn is modified by the non-finite verbform.
+
+::: ex
+Syntactic uses of a *Verb* in German
+
+- Predicative head: *Ich **lese** keine Romane mehr.*^[~~DWDS~~: Die Zeit, 06.11.2017, Nr. 45.]
+- Referential head: *Meine Urgroßmutter machte das **Lesen** dieser Briefe sehr müde.*^[~~DWDS~~: Hermann, Judith: Sommerhaus, später, Frankfurt a. M.: Fischer-Taschenbuch-Verl. 2000 [1998], S. 13.]
+- Attributive admodifier: *Überall traf man nun **lesende** Landarbeiter und Bauern an.*^[~~DWDS~~: Enzensberger, Hans Magnus: Der kurze Sommer der Anarchie, Frankfurt a. M.: Suhrkamp 1972, S. 31.]
+- "Fake" adverbial admodifier (depictive): *Man hat mich in Apfelbäumen **lesend** erwischt.*^[~~DWDS~~: Zeit Magazin, 15.11.2012, Nr. 47.]
+:::
+
+### *Adjektiv*
+
+The class of *Adjektiv* consists of ingredients that can be used in all four syntactic functions from [@tbl:baseclasses], as illustrated with the adjective *groß* 'large' in [@next]. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head [@next a] the gender can be freely assigned. Second, both as a referential head [@next a] and as an attributive admodifier [@next c], adjectives in German have case-number-gender agreement suffixes, called *KNG-Kongruenz* in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head [@next b], either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain'. When used as an adverbial admodifier it is used without any further morphological change [@next d]. Note that it is also possible to use adjectives as "fake" adverbials, i.e. to use them depictively [@next e], similar to the use of participles in [@last d]. This is treated as an attributive admodifier, though with a different syntactic appearance in the sentence.
+
+::: ex
+Syntactic uses of an *Adjektiv* in German
+
+- Referential head: *Die **Große** zuckte mit keiner Wimper.*^[~~DWDS~~: Brussig, Thomas: Wasserfarben, Berlin: Aufbau-Taschenbuch-Verl. 2001 [1991], S. 93.]
+- Predicative head: *Die Aufregung über diesen Fall war **groß**.*^[~~DWDS~~: Hars, Wolfgang: Nichts ist unmöglich! Lexikon der Werbesprüche, München: Piper 2001 [1999], S. 378.]
+- Attributive admodifier: *Das **große** und mächtige Schiff hob und senkte sich noch einmal.*^[~~DWDS~~: Lebert, Benjamin: Crazy, Köln: Kiepenheuer & Witsch 1999 [1999], S. 150.]
+- Adverbial admodifier: *»Kaffeekultur« wird in Österreich überall ganz **groß** geschrieben.*^[~~DWDS~~: Die grosse Welt der Getränke, Hamburg: Tschibo Frisch-Röst-Kaffee Max Herz 1977, S. 274.]
+- "Fake" adverbial admodifier: *Ich habe meine Hose zu **groß** gekauft.*
+:::
+
+The following ingredient belong to this class of adjectives:
+
+- There are about 300 monomorphemic adjectives as summarised in [@next]. Additionally, there are many German adjectives are clearly Latinate/Greek loans, like *ambivalent, ambulant, binär, brachial*, etc.
+- Some non-adjectival ingredients can be turned into adjectives by using one of the following suffixes: *‑artig , ‑bar, ‑end, ‑fach, ‑gemäß, ‑haft, ‑ig, ‑isch, ‑lich, ‑los, ‑mäßig, ‑sam*. Note that various lexemes with one of these suffixes cannot be transparantly related to a root, so they are actually lexicalised adjectives, like *häufig, ständig, wichtig, gleichzeitig, abwesend, anwesend, fortwährend, demenstsprechend, anschließend, gewöhnlich, natürlich, wahrscheinlich, ausschließlich, unmittelbar*, etc.
+- Intensifying prefixes that can be added to many of these adjectives to form new adjectives: *bitter‑, erz‑, hoch‑, hyper‑, mega‑, schwer‑, super‑, tief‑, ultra‑, un‑, ur‑*. In general, new adjectives can be productively produced from all of the above by composition.
+
+There are a few exceptions to this list of adjectives, in the sense that some ingredients that correspond to the above criteria do not allow for all functions as illustrated in [@last]. These ingredients, as listed below, thus form separate syntactic classes.
+
+- A small group of ingredients from [@next] end in *‑n* instead of *‑r* wenn used as a predicative head or adverbial admodifier, namely *äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorne* and *hintere/hinten*. Also *hohe/hoch, niedere/niedrig, andere/anders, besondere/besonders* have a different form depending on the syntactic function in which they are used.
+- Some apparent adjectives cannot be used as predicative head, for example *ehemalig, hochgradig, regelrecht, sogenannt, sonstig, völlig, ziemlich, zusätzlich* and *zwischenzeitlich*.
+- Some apparent adjectives cannot be used as referential head, for example *absolut, relativ, sonstig, völlig, ziemlich* and *zwischenzeitlich*
+- Some apparent adjectives can only be used as adverbial admodifier, for example *folglich, freilich, lediglich, nämlich* and *schließlich*.
+
+::: ex
+German monomorphic adjectives 
+
+*albern, alt, andere, arg, arm, äußere, barsch, besondere, bieder, billig, bitter, blank, blass, blau, bleich, blind, blöd, blond, bloß, böse, braun, brav, breit, brüsk, bunt, derb, deutsch, dicht, dick, direkt, doof, doppelt, dreist, dumm, dumpf, dunkel, dünn, dürr, düster, echt, edel, egal, eigen, einzig, eitel, eklatant, elend, eng, enorm, ernst, erst, extrem, fad, falsch, faul, feig, fein, feist, fern, fesch, fest, fett, feucht, fies, finster, firn, flach, flau, flink, flott, forsch, frech, frei, fremd, froh, fromm, früh, ganz, gar, geil, gelb, gemein, genau, gerade, gering, geschwind, gesund, gewiss, glatt, gleich, grau, greis, grell, grob, groß, grün, gut, hager, harsch, hart, heikel, heil, heiser, heiß, heiter, hell, herb, hintere, hohe, hohl, hübsch, innere, irre, jäh, jung, kahl, kalt, kaputt, karg, keck, kess, keusch, kirre, klamm, klar, klein, klug, knapp, komplett, krank, krass, kraus, krude, krumm, kühl, kühn, kurz, lahm, lang, lasch, lau, laut, lauter, lecker, leer, leicht, leise, letzt, licht, lieb, lila, linke, locker, los, mager, matt, mies, mild, morsch, müde, munter, mürb, nächste, nackt, nah, nass, nett, neu, niedere, obere, öd, offen, orange, platt, plump, prall, prüde, rank, rar, rasch, rau, rechte, rege, reich, reif, rein, roh, rosa, rot, rüde, rund, sacht, sanft, satt, sauber, sauer, schal, scharf, scheu, schick, schief, schlaff, schlank, schlapp, schlau, schlecht, schlicht, schlimm, schmal, schmuck, schnell, schnöde, schön, schräg, schrill, schroff, schwach, schwarz, schwer, schwul, schwül, seicht, selten, sicher, spät, spitz, spröde, stark, starr, steif, steil, stier, still, stolz, straff, stramm, streng, stumm, stumpf, stur, süß, tapfer, taub, teuer, tief, toll, tot, total, träge, treu, trocken, trüb, ungefähr, untere, übel, vage, viel, voll, vollkommen, vordere, wach, wacker, wahr, warm, weh, weich, weise, weiß, weit, wild, wirr, wirsch, wund, wüst, zäh, zahm, zart*
+:::
+
+### *Adverb*
+
+The class of *Adverb* is somewhat similar to the eponymous class from traditional grammar, but it will be much more strictly defined here. Once properly delimited, the resulting class of "real" adverbs will actually turn out to be a rather disparate group of elements from a syntactic point of view, and will consequently be further subdivided in at least five different syntactic subclasses. 
+
+To define the class of "real" adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial admodifier. Most prominently, adjectives are commonly used as adverbial modifier, cf. [@llast d] above, but that does not make them adverbs (even though they are often called as such). Adjectives are also often used as "preverbials" (cf. Cysouw 2023: #sec9.2.4), constructing new compound verbs, like *leer* and *voll* in verbs like *leerfischen* or *volltanken*. These are also not included here as adverbs. There is even a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like *weg* and *hoch* in compound verbs like *wegfahren* and *hochspringen*. In such compound usage these are also not included here as adverbs. 
+
+The ingredients to be included here as "real" adverbs can be positively characterised as adverbial admodifiers that cannot be used as a referential head, cf. the first line of [@tbl:baseclasses]. Investigating these adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. They can all be used adverbially [@next a], but they differ in whether they can be used as predicative head and/or as attributive admodifier. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. 
+
+Adverbs of type 1, for example *gestern* 'yesterday', can be used both as a predicative head [@next b] and as an attributive admodifier [@next c]. Adverbs of type 2, for example *immer* 'always', can be used as predicative head [@next d], but not as attributive admodifier. Reversely, adverbs of type 3, for example *bisher* 'up to now', can be used as attributive admodifier [@next e], but not as predicative head. Finally, adverbs of type 4, for example *anfangs* 'initially', do not allow for either those syntactic functions.
+
+::: ex
+Syntactic uses of an Adverb in German
+
+- Adverbial admodifier: ***Gestern** hatte ich eine Lesung in Neubrandenburg.*^[~~DWDS~~: Die Zeit, 11.12.2017, Nr. 51.]
+- Predicative head: *Holzkiste und Kinderwagenräder waren **gestern**.*^[~~DWDS~~: Die Zeit, 18.08.2016 (online).]
+- Attributive admodifier: *Das Feuer **gestern** entstand beim Überfahren von Weichen.*^[~~DWDS~~: Der Tagesspiegel, 12.07.2001.]
+- Predicative head: *Irgendein Wetter ist **immer**.*^[~~DWDS~~: Ulrich Seidler: Frei Luft Theater Fest. Berliner Zeitung, 22.06.2000.]
+- Attributive admodifier: *Die Leistung **bisher** stimmt, das Ergebnis noch nicht.*^[~~DWDS~~: Die Zeit, 28.08.2015 (online).]
+:::
+
+Further, there is a large group of ingredients that can be used adverbially, but these ingredients themselves cannot be further modified at all. The previously discussed adverbs (type 1 through 4) can be modified, for example *seit gestern* 'since yesterday', *fast immer* 'almost always' or *schon bisher* 'already up to now'. However, other adverbs do not allow such modification, for example *abermals, bislang* or *folglich*, meaning respectively 'once again', 'to date', and 'accordingly'. There is a strong correspondence between these non-modifyable operators and the class of adverbs traditionally called *Konjunkionaladverb*. Consequently, I will call them as such. However, note that the definition of this class is not based on the semantic notion of conjunction at all. It is based on the syntactic phenomenon that they are not modifyable. Finally, also note that by the current definitions ingredients that cannot be modified are called operators and not bases. so, strictly speaking this class of ingredients belongs to the operators to be discussed later in this chapter.
+
+In summary, the following ingredient belong to the class of adverbs:
+
+- About 170 ingredients listed in [@next] are adverbs, subdivided into the five different syntactic classes.
+- Additionally, ingredients derived with the suffix *‑s* when attached to nouns for days or part of days are adverbs of type 1, e.g. *morgens, vormittags, mittags, nachmittags, abends, nachts, montags, dienstags, mittwochs, donnerstags, freitags, samstags, sonntags, vortags*. Other nouns with the suffix *‑s* result in adverbs of type 4, e.g. *anfangs, ausgangs, eingangs*.
+- Ingredients derived with the prefixes *da‑* and *hier‑* when attached to prepositions are adverbs of type 3, e.g. *davor, darunter, dahinter, hierfür, hiergegen, hiermit*. A few of these adverbs allow for a predicative constructions with a very specific interpretation, e.g. *ich bin dabei/dafür/dagegen*. In this interpretation these adverbs are of type 2.
+- Ingredients derived with the suffix *‑wärts* are adverbs of type 3, e.g. *abwärts, aufwärts, auswärts, einwärts, heimwärts, rückwärts, seitwärts, vorwärts*.
+- Ingredients derived with the suffix *‑mal* when attached to numerals are adverbs of type 4, e.g. *einmal, zweimal, dreimal*, etc.
+- Ingredients derived with the suffix *‑weise* are almost all adverbs of type 4, e.g. *abschnitssweise, ausnahmsweise, monatsweise, schrittweise, tröpfchenweise*. Exceptions are *beispielsweise* and *beziehungsweise* (type 5).
+- Ingredients derived with the suffixes *‑dessen*, *‑falls*, *‑mals*, *‑lings* and *‑seits* are almost all adverbs of type 5, e.g. *indessen, infolgedessen, stattdessen, unterdessen, währenddessen, allenfalls, anderenfalls, bestenfalls, ebenfalls, gegebenenfalls, gleichfalls, keinesfalls, abermals, ehemals, nochmals, oftmals, vormals, vielmals, seitlings, rücklings, andererseits, einerseits, meinerseits, deinerseits*. Exceptions are *damals* (type 1) and *mehrmals* (type 4).
+
+::: ex
+Syntactic types of German adverbs \
+(regularly derived adverbs are not listed, see text)
+
+- *Adverb* type 1 (+ predicative head, + attributive admodifier): \
+  Local: *hier, da, dort, drüben, dahin, dorthin, außen, draußen, innen, drinnen, oben, unten, vorn(e), hinten, nebenan, unterwegs, links, rechts, zurück* \
+  Temporal: *vorgestern, gestern, heute, jetzt, morgen, übermorgen, damals, neulich, vorher, nachher*\
+  Modal: *allein, zusammen* \
+- *Adverb* type 2 (+ predicative head, – attributive admodifier): \
+  Local: *dabei, halbwegs, hoch, mittendrin, überall, zuhause* \
+  Temporal: *bald, gleich, immer, vorbei, vorüber* \
+  Modal: *anders, besonders, dafür, dagegen, genauso, umsonst, so, vergebens*
+- *Adverb* type 3 (– predicative head, + attributive admodifier): \
+  Local: *voran, voraus* \
+  Temporal: *bisher, hernach, hinterher, seitdem, seither, zuvor, zwischendurch* \
+  Modal: *nebenbei, nebenher*
+- *Adverb* type 4 (– predicative head, – attributive admodifier): \
+  Temporal: *anfangs, demnächst, dann, eher, eingangs, jüngst, längst, manchmal, oft, sofort, von vornherein, vorab, weiterhin, wieder, zuerst, zuletzt, zunächst* \
+  Modal: *darum, deshalb, deswegen, gern(e), insofern, insoweit, mehrmals, soviel, soweit*
+- *Konjunktionaladverb* type 5 (not modifyable): \
+  *allemal, allerdings, alsbald, alsdann, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bislang, bloß, dahingegen, darauhfin, darüber hinaus, dauernd, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, derweilen, desgleichen, durchaus, einigermaßen, einstweilen, fast, ferner, folglich, freilich, gerade, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, inzwischen, jedoch, kaum, keineswegs, maximal, mindestens, minimal, mithin, mittlerweile, nichtsdestotrotz, nichtsdestoweniger, nun, nunmehr, obendrein, ohnedies, ohnehin, schon, sodann, somit, sonst, sowieso, trotzdem, überdies, überhaupt, vielleicht, vielmehr, vor allem, weiters, wenigstens, wiederum, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar*
+:::
+
+### Numerale
+
+Operators: Junktors, Limiters, Quantors, Abtönungspartikel, Konjunktionaladverben, Epithesis/Diathesis, etc.
 
 ## Expressing the syntactic model
 
