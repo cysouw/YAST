@@ -93,7 +93,7 @@ Konjunktionaladverbien = ['abermals', 'allein', 'allemal', 'allenfalls', 'allerd
 
 Frageadverbien = ['warum', 'weshalb', 'weswegen', 'wieso', 'wofür', 'wo', 'wohin', 'woher', 'wann', 'wie']
 
-Negationen = ['nicht', 'nie', 'niemals', 'nirgends', 'nichts', 'nie mehr', 'nicht mehr']
+Negationen = ['nicht', 'nie', 'niemals', 'nirgends', 'nirgendwo', 'nichts', 'nie mehr', 'nicht mehr']
 
 Abtönungspartikel = ['aber', 'auch', 'bloß', 'denn', 'doch', 'eben', 'eh', 'etwa', 'gar', 'halt', 'ja', 'mal', 'nämlich', 'noch', 'nur', 'rein', 'ruhig', 'schon', 'wohl']
 
@@ -109,8 +109,8 @@ Genera = {
 Kasus = ['Nominativ', 'Akkusativ', 'Dativ', 'Genitiv']
 
 # Postpositionen:
-# Akkusativ: hoch, entlang, über, durch (den Berg hoch, den Fluss entland, den Tag über, die Nacht durch)
-# Dativ: nach, zufolge, gegenüber (meiner Meinung nach, dem Regen zufolge, mir gegenüber)
+# Akkusativ: hoch, entlang, über, durch (den Berg hoch, den Fluss entlang, den Tag über, die Nacht durch)
+# Dativ: nach, zufolge, gegenüber, voran. hinterher (?) (dem Buch voran, meiner Meinung nach, dem Regen zufolge, mir gegenüber, dem Hund hinterher)
 # Genitiv: halber, wegen (der Einfachheit halber, des Geldes wegen)
 
 Präpositionen = {
@@ -165,6 +165,7 @@ Präpositionen = {
   'bezüglich': 'Genitiv',
   'dank': 'Genitiv',
   'diesseits': 'Genitiv',
+  'eingangs': 'Genitiv', # eingangs des zweiten Drittel
   'einschließlich': 'Genitiv',
   'entlang': 'Genitiv',
   'infolge': 'Genitiv',
@@ -173,6 +174,7 @@ Präpositionen = {
   'jenseits': 'Genitiv',
   'kraft': 'Genitiv',
   'längs': 'Genitiv',
+  'längst': 'Genitiv', # Die Titel längst vergessener Vorlesungen
   'laut': 'Genitiv',
   'links': 'Genitiv',
   'mittels': 'Genitiv',
