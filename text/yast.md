@@ -207,7 +207,7 @@ Syntactic function     | *Nomen* | *Verb* | *Adjektiv* | *Adverb* | *Numerale*
 Referential head       |  ✓  |  ✓  |  ✓  |  ±  |  ✓  
 Predicative head       |  ✓  |  ✓  |  ✓  |  ±  |  ±  
 Attributive admodifier |  –  |  ✓  |  ✓  |  ±  |  ✓  
-Adverbial admodifier   |  –  |  –  |  ✓  |  ✓  |  –  
+Adverbial admodifier   |  –  |  –  |  ✓  |  ✓  |  ±  
 
 Table: Syntactic possibilities of German base-classes. {#tbl:baseclasses}
 
@@ -297,9 +297,9 @@ Second, the double prepositions *voran, voraus, vorbei, vorüber* are often list
 
 Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can all be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive admodifier. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to have more syntactic uses, and adverbs with a modal meaning to have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.
 
-Also, there appears to be quite some dynamism in the syntactic possibilities of adverbs. Some options that are excluded by my categorizations below might be considered to be perfectly possible to some more adventurous speakers of German. This is most obvious with the use of adverbs as referential head (i.e. as "noun"). There are many occurrences of such uses in the philosophical literature (e.g. *das Seither, das Niemals*) that I consider borderline acceptable.
+Also, there appears to be quite some dynamism in the syntactic possibilities of adverbs. Some options that are excluded by the categorizations below will be considered to be perfectly possible to more adventurous speakers of German. This flexibility is most obvious with the use of adverbs as a referential head (i.e. as "noun"). There are many occurrences of such uses in the philosophical literature (e.g. *das Seither, das Niemals*) that I consider borderline acceptable.
 
-Adverbs of type 1, for example *gestern* 'yesterday', can be used in all four syntactic functions [@next]. In the function of an attributive admodifier (i.e. as an "adjective") it is placed after the modified noun without any agreement [@next b]. In the function of a predicative head (i.e. as a "verb") the copula *sein* 'to be' is necessary. No other copulas are possible. In the function of a referential head (i.e. as a "noun") an adverb always has the neuter gender [@next d]. All ± 40 adverbs like *gestern* that allow for all these four syntactic functions are listed in [@nnext].
+Adverbs of type 1, for example *gestern* 'yesterday' [@next a], can be used in all four syntactic functions. In the function of an attributive admodifier (i.e. as an "adjective") it is placed after the modified noun without any agreement [@next b]. In the function of a predicative head (i.e. as a "verb") the copula *sein* 'to be' is necessary [@next c]. No other copulas are possible. In the function of a referential head (i.e. as a "noun") adverbs always have the neuter gender [@next d]. All ± 40 adverbs that allow for all these four syntactic functions are listed in [@adverbstype1] below.
 
 ::: ex
 Syntactic uses of Adverbs type 1
@@ -310,16 +310,7 @@ Syntactic uses of Adverbs type 1
 - Referential head: *Aber das **Gestern** kann das Heute nicht gänzlich erklären.*^[~~DWDS~~: Die Zeit, 01.07.2017, Nr. 27.]
 :::
 
-::: ex
-Adverbs type 1: **referential, predicative, attributive & adverbial** uses
-
-- Local meaning: *hier, da, dort, drüben, außen, draußen, innen, drinnen, oben, unten, hinten, vorn(e), links, rechts, mittendrin, nebenan, unterwegs, zuhause, zurück*
-- Temporal meaning: *vorgestern, gestern, heute, morgen, übermorgen, damals, jetzt, vorher, nachher*
-- Modal meaning: *allein(e), zusammen*
-- Prepositions with the prefix *da‑*, e.g. *davor, darunter, dahinter*, etc.
-:::
-
-Adverbs of type 2, for example *immer* 'always' [@next a], can also be used as predicative head [@next b], but not as attributive admodifier. The ± 20 adverbs of this type are listed in [@nnext]. They can mostly not be used as a referential head, but there are a few examples that seem quite normal in this function, so they might be a special subgroup, namely *das Hoch* [@next c], *das Nichts* [@next d] and *im Nirgendwo* [@next e]. Other referential heads are attested, but only very rarely.
+Adverbs of type 2, for example *immer* 'always' [@next a], can also be used as predicative head [@next b], but not as attributive admodifier. The ± 20 adverbs of this type are listed in [@adverbstype2] below. They can mostly not be used as a referential head. However, there are a few adverbs that seem to be quite naturally used in this function, so they might form a special subgroup, specifically *das Hoch* [@next c], *das Nichts* [@next d] and *im Nirgendwo* [@next e]. Other adverbs from this class are also attested as referential heads, but only very rarely.^[A few additional examples of adverbs type 2 used as referential head are the following: *Nach Spielschluss gab Lehmann ein Interview, das seinen Weg vom Hier und Jetzt **ins Immer** eindrücklich belegte.* (~~DWDS~~: Die Zeit, 06.07.2006, Nr. 28) *Sie kommen aus der Leere, der Abwesenheit, sie langen an **im Nirgends**.* (~~DWDS~~: Die Zeit, 02.10.1997, Nr. 41) *Die Grundbestimmungen Dauer, Einheit, Endzweck geben so dem prozessualen Leitbild nur seinen Gegensatz zum Flüchtigen, zur Vielheit des Chaos, **zum Umsonst** oder Nihilismus, aber sie geben noch keinerlei Entschiedenheit des positiven Inhalts.* (~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 433) *Bei Gerhard Schröder bezieht sich **das Überall** nicht auf den geographischen Globus.* (~~DWDS~~: Der Tagesspiegel, 22.12.2002) *Als ginge es nicht nur ums Lebenswerk und seine Vollendetheit, sondern um seine Vollendung, anders gesagt: **das Vorbei**.* (~~DWDS~~: Der Tagesspiegel, 03.05.2000).]
 
 ::: ex
 Syntactic uses of Adverbs type 2
@@ -331,15 +322,7 @@ Syntactic uses of Adverbs type 2
 - Referential head: *Berlin im Frühjahr, ein Sportplatz **im Nirgendwo** zwischen Berlin und Spandau.*^[~~DWDS~~: Die Zeit, 26.04.2017 (online).]
 :::
 
-::: ex
-Adverbs type 2: **predicative & adverbial** uses
-
-- Local meaning: *hoch, nirgends, nirgendwo, überall*
-- Temporal meaning: *bald, demnächst, immer, nie*
-- Modal meaning: *anders, besonders, genauso, nichts, so, soweit, umsonst, vergebens*
-:::
-
-Adverbs of type 3, for example *bisher* 'up to now' [@next a], can also be used as attributive admodifier [@next b], but not as predicative head ("verbs"). There are about 10 monomorphemic adverbs of this type and various affixes lead to this type of adverbs, as summarized in [@nnext]. Some of these adverbs are attested as referential heads ("nouns"), but only in highly philosophical contexts [@next c].
+Adverbs of type 3, for example *bisher* 'up to now' [@next a], can also be used as attributive admodifier [@next b], but not as predicative head ("verbs"). There are about 10 monomorphemic adverbs of this type and some affixes can be used to construct more examples this type of adverbs, as summarized in [@adverbstype3] below. Some of these adverbs are attested as referential heads ("nouns"), but only in rather philosophical contexts [@next c].^[A few additional examples of adverbs type 3 used as referential head are the following: *Im Danach ist auch immer schon **das Demnächst** zu entdecken.* (~~DWDS~~: Die Zeit, 04.10.2007, Nr. 41) *Während er mechanisch nach rechts steuerte, […] sah er in sich das ganze Buch, die Vertiefungen, die Ausblicke, **das Zuvor** und **das Hernach**.* (~~DWDS~~: Feuchtwanger, Lion: Erfolg. Gesammelte Werke in Einzelbänden, Bd. 6, Berlin: Aufbau-Verl. 1930, S. 749) *Überhaupt lernt man hier alles wie **im Nebenbei**.* (~~DWDS~~: Die Zeit, 14.03.2013, Nr. 12) *Ganz **im Nebenher** regelten sich die technischen Dinge.* (~~DWDS~~: Die Zeit, 31.05.1956, Nr. 22) *Ihre Lebensgeschichte hat einen tiefen Einschnitt, der das Vorher **vom Seither** scheidet.* (~~DWDS~~: Die Zeit, 08.08.1997, Nr. 33) *Aber auch **das Zwischendurch** spielt natürlich eine Rolle.* (~~DWDS~~: Blinden-Ensemble probt Konzert im Grünen. Berliner Zeitung, 21.09.1996) *Derzeit führt die stark schwankende Finanzierungskurve für diesen Bereich **ins Abwärts**, während sich die Herzen der Bewilliger bei Anträgen von Ingenieur- und Naturwissenschaftlern weit öffnen.* (~~DWDS~~: Die Zeit, 17.05.1985, Nr. 21) *Peter-Klaus Schuster sucht das Neue gern im Alten, **das Vorwärts im Rückwärts**.* (~~DWDS~~: Die Zeit, 05.10.2000, Nr. 41).]
 
 ::: ex
 Syntactic uses of Adverbs type 3
@@ -349,7 +332,39 @@ Syntactic uses of Adverbs type 3
 - Referential head: *Die meisten reizt schon der leere Unterschied **zum Bisher**, die Frische, gleichviel zunächst, was ihr Inhalt ist.*^[~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 1, Berlin: Aufbau-Verlag 1954, S. 52.]
 :::
 
+Adverbs of type 4, for example *anfangs* 'initially', can only be used adverbially [@next a]. The about 30 monomorphemic adverbs of this type are listed in [@adverbstype4] below. A referential use seems to be possible for *darum* [@next b], *warum* [@next c] and *wie* [@next d].^[A few additional examples of adverbs type 4 used as referential head are the following: *Es ist das Ungenossene, das diese große Kolportage von Musik füllt; das Noch-Nicht, ja selbst **das Niemals** hat ebenso sein eigentümlichstes Dasein aus den Luftwurzeln des Klangs.* (~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 152) ***Das Wobei** es die Bewandtnis hat, ist **das Wozu** der Dienlichkeit, **das Wofür** der Verwendbarkeit.* (~~DWDS~~: Heidegger, Martin: Sein und Zeit, Tübingen: Niemeyer 1927, S. 84) ***Das Nirgendwo** ist als postulativ gedacht für **das Wo**, in dem sich die Menschen wirklich befinden.* (~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 2, Berlin: Aufbau-Verl. 1955, S. 78) *In der ewigen Wiederkehr des Gleichen fällt **das Wohin** mit **dem Woher** zusammen.* (~~DWDS~~: Taubes, Jacob: Abendländische Eschatologie, München: Matthes und Seitz, 1947, S. 11) *Die Urfrage der Apokalyptik ist **das Wann**.* (Taubes, Jacob: Abendländische Eschatologie, München: Matthes und Seitz, 1947, S. 32) *Für Heidegger und Wittgenstein bildet der Normalfall, **das Zunächst und Zumeist**, kurzum, das Konventionelle den Ausgangspunkt ihrer Überlegungen.* (~~DWDS~~: Die Zeit, 31.01.2002, Nr. 06).]
+
 ::: ex
+Syntactic uses of Adverbs type 4
+
+- Adverbial admodifier: ***Anfangs** haben wir uns gestritten.*^[~~DWDS~~: Die Zeit, 15.12.2017, Nr. 52.]
+- Referential head: *Die Antwort, **das Darum**, fällt ziemlich trocken aus.*^[~~DWDS~~: Ulrich Seidler: Pamphlete gegen Tatsachen. Berliner Zeitung, 06.09.2001.]
+- Referential head: *[…], wobei er sich allerdings um **das Warum** keine Gedanken macht.*^[~~DWDS~~: Schmidt-Rogge, Carl H.: Dein Kind &#x96; Dein Partner, München: List 1973 [1969], S. 339.]
+- Referential head: *Nicht das Ob, sondern **das Wie** ist hier das Entscheidende.*^[~~DWDS~~: Kurz, Robert: Schwarzbuch Kapitalismus, Frankfurt a. M.: Eichborn 1999, S. 270.]
+:::
+
+Finally, there is a large group of ingredients that can be used adverbially, but these ingredients themselves cannot be further modified at all. The previously discussed adverbs (type 1 through 4) can be modified, for example *seit gestern* 'since yesterday', *fast immer* 'almost always' or *schon bisher* 'already up to now'. However, the adverbs listed below in [@adverbstype5] do not allow for such modification. There is a strong correspondence between these non-modifiable adverbs and the class of adverbs traditionally called *Konjunktionaladverb*. Consequently, I will call them as such. However, note that the definition of this class is not based on the semantic notion of conjunction at all. It is based on the syntactic phenomenon that they are not modifiable. 
+
+By the current definitions, ingredients that cannot be modified are called operators and not bases. so, strictly speaking this class of ingredients belongs to the operators to be discussed later in this chapter. However, atypically for operators, the adverbs in [@next] are positionally flexible in that they a speaker can position them in various places in a sentence, including at the start. In this syntactic aspect they are similar to the previously discussed adverbs and different from adverbial operators like *nicht, nämlich* and modal particles like *bloß, doch, gar* that cannot occur at the start of a sentence.
+
+::: {.ex #adverbstype1}
+Adverbs type 1: **referential, predicative, attributive & adverbial** uses
+
+- Local meaning: *hier, da, dort, drüben, außen, draußen, innen, drinnen, oben, unten, hinten, vorn(e), links, rechts, mittendrin, nebenan, unterwegs, zuhause, zurück*
+- Temporal meaning: *vorgestern, gestern, heute, morgen, übermorgen, damals, jetzt, vorher, nachher*
+- Modal meaning: *allein(e), zusammen*
+- Prepositions with the prefix *da‑*, e.g. *davor, darunter, dahinter*, etc.
+:::
+
+::: {.ex #adverbstype2}
+Adverbs type 2: **predicative & adverbial** uses
+
+- Local meaning: *hoch, nirgends, nirgendwo, überall*
+- Temporal meaning: *bald, demnächst, immer, nie*
+- Modal meaning: *anders, besonders, genauso, nichts, so, soweit, umsonst, vergebens*
+:::
+
+::: {.ex #adverbstype3}
 Adverbs type 3: **attributive & adverbial** uses
 
 - Local meaning: *dahin, dorthin*
@@ -359,26 +374,18 @@ Adverbs type 3: **attributive & adverbial** uses
 - Temporal nouns with the suffix *‑s* (except *anfangs, eingangs*), e.g. *morgens, vormittags, mittags, nachmittags, abends, nachts, montags, dienstags, mittwochs, donnerstags, freitags, samstags, sonntags, vortags*, etc.
 :::
 
-Adverbs of type 4, for example *anfangs* 'initially', do not allow for either those syntactic functions.
-
-referential: *darum, warum, wie*
-
-::: ex
+::: {.ex #adverbstype4}
 Adverbs type 4: **only adverbial** uses
 
-- Local meaning: *halbwegs*
-- Temporal meaning: *anfangs, dann, eingangs, gleich, längst, manchmal, nie mehr, niemals, oft, von vornherein, vorab, weiterhin, wieder, zuerst, zuletzt*
-- Modal meaning: *darum, deshalb, deswegen, eher, gern(e), insofern, insoweit, mehrmals, sofort, soviel, warum, wie, zumeist, zunächst*
+- Local meaning: *halbwegs, nirgendwo, wo, woher, wohin*
+- Temporal meaning: *anfangs, dann, eingangs, gleich, längst, manchmal, nie mehr, niemals, oft, von vornherein, vorab, wann, weiterhin, wieder, zuerst, zuletzt*
+- Modal meaning: *darum, deshalb, deswegen, eher, gern(e), insofern, insoweit, mehrmals, sofort, soviel, warum, wie, wobei, wofür, wozu, zumeist, zunächst*
 - Nouns with the modal suffix *‑weise* (except *beispielsweise, beziehungsweise*), e.g. *abschnittsweise, ausnahmsweise, monatsweise, schrittweise, tröpfchenweise*, etc.
 - Numerals with the modal suffix *‑mal*, e.g. *einmal, zweimal, dreimal*, etc.
 :::
 
-Finally, there is a large group of ingredients that can be used adverbially, but these ingredients themselves cannot be further modified at all. The previously discussed adverbs (type 1 through 4) can be modified, for example *seit gestern* 'since yesterday', *fast immer* 'almost always' or *schon bisher* 'already up to now'. However, the adverbs listed in [@next] do not allow for such modification. There is a strong correspondence between these non-modifiable adverbs and the class of adverbs traditionally called *Konjunktionaladverb*. Consequently, I will call them as such. However, note that the definition of this class is not based on the semantic notion of conjunction at all. It is based on the syntactic phenomenon that they are not modifiable. 
-
-By the current definitions, ingredients that cannot be modified are called operators and not bases. so, strictly speaking this class of ingredients belongs to the operators to be discussed later in this chapter. However, atypically for operators, the adverbs in [@next] are positionally flexible in that they a speaker can position them in various places in a sentence, including at the start. In this syntactic aspect they are similar to the previously discussed adverbs and different from adverbial operators like *nicht, nämlich* and modal particles like *bloß, doch, gar* that cannot occur at the start of a sentence.
-
-::: ex
-Adverbs with **only adverbial** uses that are **not modifiable** (*Konjunktionaladverb*)
+::: {.ex #adverbstype5}
+**Non-modifiable** adverbs with **only adverbial** uses (*Konjunktionaladverb*)
 
 - Temporal meaning: *alsbald, alsdann, bislang, daraufhin, dauernd, derweilen, einstweilen, fast, gerade, inzwischen, mittlerweile, nun, schließlich, schon*
 - Modal meaning: *allemal, allerdings, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bloß, dahingegen, darüber hinaus, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, desgleichen, durchaus, einigermaßen, ferner, folglich, freilich, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, jedoch, kaum, keineswegs, lediglich, maximal, mindestens, minimal, mithin, nichtsdestotrotz, nichtsdestoweniger, nunmehr, obendrein, ohnedies, ohnehin, sodann, somit, sonst, sowieso, trotzdem, überdies, überhaupt, vielleicht, vielmehr, vor allem, weiters, wenigstens, wiederum, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar*
@@ -394,45 +401,52 @@ Adverbs with **only adverbial** uses that are **not modifiable** (*Konjunktional
 The class of *Numerale* (numerals) is arguably a subclass of adjectives, but it has various different syntactic characteristics that warrant a separate class. First note that numerals are actually bases (and not operators), because they can be modified [@next a]. Also note that numerals are typically ordered at the start of a chain of attributive modifiers, but it is also possible for them to occur after other attributes [@next b].
 
 ::: ex
-- Modifyable: *Aber der Nobelpreis lässt eben nur **maximal drei** Preisträger zu.*^[~~DWDS~~: Die Zeit, 03.10.2017 (online).]
+- Modifiable: *Aber der Nobelpreis lässt eben nur **maximal drei** Preisträger zu.*^[~~DWDS~~: Die Zeit, 03.10.2017 (online).]
 - Variable ordering: *Die **anderen drei Topstars** dagegen enttäuschten bislang.*^[~~DWDS~~: Die Zeit, 28.10.2016 (online).]
 :::
 
-*-mal* and *-fach*
+Numerals can be used as attributive admodifier [@next a] and as referential head [@next b]. In both uses the numeral does not have any inflection. A numeral can be used as an adverbial admodifier with the suffix *-mal* [@next c]. Numerals can only be used as a predicative head (with a copula) in very specific contexts, namely to express a mathematical result [@next c], to express age [@next d] or in fixed expressions [@next e].
 
 ::: ex
 Syntactic uses of a *Numerale* in German
 
 - Attributive admodifier: *Die **drei** Kandidaten traten gegeneinander an.*^[~~DWDS~~: Die Zeit, 22.11.2017 (online).]
-- Adverbial admodifier: *Ich klopfe **dreimal**.*^[~~DWDS~~: Die Zeit, 08.01.2018, Nr. 02.]
 - Referential head: *Die **drei** grummelten vor sich hin.*^[~~DWDS~~: Jentzsch, Kerstin: Seit die Götter ratlos sind, München: Heyne 1999 [1994], S. 257.]
+- Adverbial admodifier: *Ich klopfe **dreimal**.*^[~~DWDS~~: Die Zeit, 08.01.2018, Nr. 02.]
 - Mathematic result: *Eins plus eins ist **drei**.*^[~~DWDS~~: Der Tagesspiegel, 11.03.2004.]
 - Age indication: *Maxi, die Jüngste, ist **drei**.*^[~~DWDS~~: Die Zeit, 07.11.2007, Nr. 46.]
 - Proverb: *Aller guten Dinge sind **drei**.*
 :::
 
-same for fractions in *-tel*, e.g. *drittel*
+Derived from numerals are *Ordinalzahlen* (ordinals) with the suffix *‑te* and *Bruchzahlen* (fractions) with the suffix *-tel*. Ordinals [@next] have a different syntax from numerals [@last]. Ordinals in attributive function have agreement [@next a] and ordinals in predicative function are only used for results of a competition [@next c]. Ordinals are not possible in adverbial function.
 
 ::: ex
-Syntactic uses of *Ordinalia* in German
+Syntactic uses of *Ordinalzahlen* in German
 
 - Attributive admodifier: *Wir müssen uns mit dem **dritten** Geschlecht befassen.*^[~~DWDS~~: Die Zeit, 24.11.2017, Nr. 48.]
 - Referential head: *Die **dritte** erzählt von Flucht und Immigration.*^[~~DWDS~~: Die Zeit, 27.04.2017 (online).]
-- Identification: *Der Raffinierte ist der **dritte**.*^[~~DWDS~~: Die Zeit, 10.11.2009 (online).]
+- Rank in sports: *Die deutschen Fußballdamen wurden **dritte**.*^[~~DWDS~~: Die Zeit, 23.06.1995, Nr. 26.]
 :::
 
-There exist more names for larger numerals, e.g. *Billion, Trillion*, that are backformations based on a folk etymology of *Million* having a suffix *‑llion* (the real etymology is from Italian *mille-on* 'thousand-large').
+In contrast, *Bruchzahlen* (fractions) have completely different syntactic possibilities. They are neuter nouns in referential use [@next a] and can be used as verbs without copula [@next b]. Fractions cannot be used attributively nor adverbially.
+
+::: ex
+Syntactic uses of *Bruchzahlen* in German
+
+- Referential head: *Ein **Drittel** aller verbliebenen Clubs kommen von der Insel.*^[~~DWDS~~: Die Zeit, 04.01.2018, Nr. 52.]
+- Predicative head: *Seit Juli hat sich der Wert der Aktie fast **gedrittelt**.*^[~~DWDS~~: Berliner Zeitung, 07.09.2001.]
+:::
 
 ::: ex
 German monomorphic numerals
 
-- Numerals: *null, eins, zwei, drei, vier, fünf, sechs, sieb(en), acht, neun, zehn, hundert, tausend, Million*
+- Numerals: *null, eins, zwei, drei, vier, fünf, sechs, sieb(en), acht, neun, zehn, hundert, tausend, Million*^[There exist more names for larger numerals, e.g. *Billion, Trillion*, that are backformations based on a folk etymology of *Million* having a suffix *‑llion* (the real etymology is from Italian *mille-on* 'thousand-large').]
 - Suppletive numerals: *elf ("eins‑zehn"), zwölf ("zwei‑zehn"), zwanzig ("zwei‑zig")*
 - Suppletive ordinals: *erste ("eins‑te")* 
 - Suppletive fractions: *halb ("zwei‑tel"), drittel ("drei‑tel")*
 :::
 
-There is a strange quirk in German orthography to never write numerals with a capital, not even when they are used as a referential head, e.g. *diese drei flüchteten* 'those three fled', while writing *Million* (and other *‑llion* numerals) always with a capital, even when they are used as an attributive admodifier, e.g. *die Million Doller* 'the million dollar'. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10-to-1 preference for lower case with small numerals, e.g. "die \@drei $p=VVFIN" (991 hits) vs. "die \@Drei $p=VVFIN" (92 hits). The same search with *tausend/Tausend* got 6 against 11 hits, while *million/Million resulted in 0 against 28 hits.
+There is a strange quirk in German orthography to write numerals with a lowercase initial even when they are used as a referential head, e.g. *diese drei flüchteten* 'those three fled', while writing *Million* (and other *‑llion* numerals) always with a capital, even when they are used as an attributive admodifier, e.g. *die Million Doller* 'the million dollar'. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10‑to‑1 preference for lower case with small numerals, e.g. "die \@drei $p=VVFIN" (991 hits) vs. "die \@Drei $p=VVFIN" (92 hits). The same search with *tausend/Tausend* shows a reverse trend with 6 against 11 hits. With ordinals the tendency to use lowercase in referential use is about 7‑to‑1 (e.g. "die \@dritte $p=VVFIN" has 1490 hits while "die \@Dritte $p=VVFIN" has 225 hits).
 
 ### Stems used in multiple bases
 
