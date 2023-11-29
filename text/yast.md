@@ -281,9 +281,9 @@ German monomorphic adjectives
 
 ### *Adverb*
 
-The class of *Adverb* turns out to be a rather disparate group of elements from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just slightly less than 200 monomorphemic adverbs in German (listed below).
+The class of *Adverb* turns out to be a rather disparate group of elements from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just about 200 monomorphemic adverbs in German (as listed below).
 
-To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial admodifier. Most prominently, adjectives are also commonly used as adverbial modifier, cf. [@llast d] above, but that does not make them adverbs (even though they are often called as such). The ingredients to be included here as adverbs can be positively characterized as adverbial admodifiers [@next a] that are either placed post-nominally without agreement when they are used as attributive admodifiers, like *gestern* 'yesterday' in [@next b], or that cannot be used as attributive admodifiers at all, like *bald* 'soon' in [@next c].
+To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial admodifier. Most prominently, adjectives are also commonly used as adverbial modifier, cf. [@llast d] above, but that does not make them adverbs (even though they are often called as such). The ingredients to be included here as adverbs can be positively characterized as those adverbial admodifiers, i.e. monomorphemic ingredients in adverbial function that can be modified [@next a], that either, when used attributively, are placed post-nominally without agreement, like *gestern* 'yesterday' in [@next b], or that cannot be used attributively at all, like *bald* 'soon' in [@next c].
 
 ::: ex
 - Adverbial admodifier: ***Seit gestern** suchen Polizei, Feuerwehr und weitere Helfer nach dem Jungen.*^[~~DWDS~~: Die Zeit, 08.11.2016 (online).]
@@ -291,9 +291,11 @@ To define the class of adverbs, this lexical class has to be strictly separated 
 - ^* *Die Befragung **bald** wird mit einem Schweigen beginnen*.
 :::
 
-Two additional phenomena are excluded here from the class of adverbs. First, the ingredients used in the syntactic function of "preverbial modifier" should also be considered separately (cf. Cysouw 2023: #sec9.2.4). Preverbial modifiers construct new compound verbs, like the adjectives *leer‑* and *voll‑* in verbs like *leerfischen* or *volltanken*. These are not included here as adverbs. There is also a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like *weg‑* and *hoch‑* in compound verbs like *wegfahren* and *hochspringen*. In such compound usage these are also not included here as adverbs. 
+free, vorfeld
 
-Second, the double prepositions *voran, voraus, vorbei, vorüber* are often listed as adverbs, but they cannot be used as adverbial admodifiers and will not be classified as adverbs here. They can be used as preverbials in compound verbs, like in *voranlaufen, vorauslaufen, vorbeilaufen, vorüberlaufen*. Except for *voran*, they can be used as predicative heads, like in *es ist vorbei/vorüber* and *er ist den anderen voraus*. Finally, *voran* can be used as a postposition governing a dative case, like *dem Festzug voran*. However, the four ingredients *voran, voraus, vorbei, vorüber* cannot be used as an adverbial modifier and are consequently not adverbs (differently from *vorab*, which is an adverb).
+often semi-transparent
+
+Two additional phenomena are excluded here from the class of adverbs. First, the ingredients used in the syntactic function of "preverbial modifier" should also be considered separately (cf. Cysouw 2023: #sec9.2.4). Preverbial modifiers construct new compound verbs, like the adjectives *leer‑* and *voll‑* in verbs like *leerfischen* or *volltanken*. These are not included here as adverbs. There is also a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like *weg‑* and *hoch‑* in compound verbs like *wegfahren* and *hochspringen*. In such compound usage these are also not included here as adverbs. 
 
 Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can all be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive admodifier. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to have more syntactic uses, and adverbs with a modal meaning to have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.
 
@@ -388,13 +390,41 @@ Adverbs type 4: **only adverbial** uses
 **Non-modifiable** adverbs with **only adverbial** uses (*Konjunktionaladverb*)
 
 - Temporal meaning: *alsbald, alsdann, bislang, daraufhin, dauernd, derweilen, einstweilen, fast, gerade, inzwischen, mittlerweile, nun, schließlich, schon*
-- Modal meaning: *allemal, allerdings, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bloß, dahingegen, darüber hinaus, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, desgleichen, durchaus, einigermaßen, ferner, folglich, freilich, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, jedoch, kaum, keineswegs, lediglich, maximal, mindestens, minimal, mithin, nichtsdestotrotz, nichtsdestoweniger, nunmehr, obendrein, ohnedies, ohnehin, sodann, somit, sonst, sowieso, trotzdem, überdies, überhaupt, vielleicht, vielmehr, vor allem, weiters, wenigstens, wiederum, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar*
+- Modal meaning: *allemal, allerdings, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bloß, dahingegen, darüber hinaus, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, desgleichen, durchaus, einigermaßen, ferner, folglich, freilich, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, jedoch, kaum, keineswegs, lediglich, maximal, minimal, mithin, nahezu, nichtsdestotrotz, nichtsdestoweniger, nunmehr, obendrein, ohnedies, ohnehin, schier, sehr, sodann, somit, sonst, sowieso, trotzdem, überaus, überdies, überhaupt, vielleicht, vielmehr, vor allem, wiederum, weitaus, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar*
 - Prepositions with the suffix *‑dessen*, e.g. *indessen, infolgedessen, stattdessen, unterdessen, währenddessen*, etc.
+- Superlatives and ordinals with the suffix *‑ns*, e.g. *bestens, frühestens, genauestens, höchstens, meistens, mindestens, schnellstens, spätestens, strengstens, wenigstens, erstens, zweitens, drittens*, etc.
 - Stems with the suffix *‑falls*, e.g. *allenfalls, anderenfalls, bestenfalls, ebenfalls, gegebenenfalls, gleichfalls, keinesfalls*, etc.
 - Stems with the suffix *‑mals* (except *damals, mehrmals*), e.g. *abermals, ehemals, nochmals, oftmals, vormals, vielmals*, etc.
 - Stems with the suffix *‑lings*, e.g. *blindlings, seitlings, rücklings*, etc.
 - Stems with the suffix *‑erseits*, e.g. *andererseits, deinerseits, einerseits, meinerseits, väterlicherseits, staatlicherseits*, etc.
 :::
+
+Even after all these considerations there are still a few ingredients that need special attention. First, the double prepositions *voran, voraus, vorbei, vorüber* are often listed as adverbs, but they cannot be used as adverbial admodifiers at all and will thus not be classified as adverbs here. They can be used as preverbials in compound verbs, like in *voranlaufen, vorauslaufen, vorbeilaufen, vorüberlaufen*. Also, except for *voran*, they can be used as predicative heads, like in *es ist vorbei/vorüber* and *er ist den anderen voraus*. Finally, *voran* can be used (although somewhat old-fashioned) as a postposition governing a dative case, like *dem Festzug voran*. Yet, these four ingredients *voran, voraus, vorbei, vorüber* cannot be used as an adverbial modifier and are consequently not adverbs. This is notably differently from *vorab*, which is an adverb type 4 as listed in [@adverbstype4].
+
+Second, the ingredients *nämlich* and *sogar* are similar to the non-modifiable adverbs as listed in [@adverbstype5]. When used adverbially, they can be placed rather freely in the sentence, depending on the intended meaning [@next a,b]. However, different from all adverbs discussed in this section, *nämlich* and *sogar* cannot occur as first element of the sentence, i.e. as *Vorfeld* [@next c,d]. This makes them somewhat similar to ingredients that are commonly called *Modalpartikel* in the German grammatical tradition. For this reason, the ingredients *nämlich* and *sogar* are not classified here as adverbs, but as "non-initial sentence operators" (see ???).
+
+::: ex
+- *Auf persönlicher Ebene ist **(nämlich)** in Deutschland **(nämlich)** von German Angst **nämlich** wenig zu spüren.*^[~~DWDS~~: Die Zeit, 31.12.2017 (online).]
+- *Dänemark plant **(sogar)** feste Kontrollposten **sogar** im nächsten Haushalt ein.*^[~~DWDS~~: Die Zeit, 01.01.2018 (online).]
+- ^* ***Nämlich** ist auf persönlicher Ebene in Deutschland von German Angst wenig zu spüren.*
+- ^* ***Sogar** plant Dänemark feste Kontrollposten im nächsten Haushalt ein.*
+:::
+
+Finally, the adverbs *nahezu, schier, sehr, überaus* and *weitaus* are categorized here as non-modifiable adverbs, listed in [@adverbstype5]. They can indeed be used as such, but they are extremely restricted and not very common in their sentential adverbial usage. As will be discussed in (???), they have other uses in which they occur frequently. However, as sentence adverbials they only occur with a very small set of main verbs. In the following discussion, I will not attempt to propose English translations for these adverbs, because a faithful translation is extremely context-dependent.
+
+The adverbs *nahezu* and *schier* are mainly used with a gloomy connotation: *schier* is typically used in combination with verbs like *ersticken, verhungern, verzweifeln* or *erschlagen* [@next a], while *nahezu* typically is attested in collocations with verbs like *ausbremsen, erblinden, vernichten* or *ausschließen* [@next b]. In contrast, the adverbs *sehr, überaus* and *weitaus* are typically used with a much more positive connotation.
+
+
+nahezu vernichten, erblinden, schaffen, ausschließen, ausrotten, ausschöpfen, positiv: verdoppeln
+schier ersticken, verhungern, verzweifeln, positiv: 
+sehr lieben, freuen, schätzen
+überaus genießen, schätzen, verehren, lieben
+weitaus übertreffen, überwiegen, überragen
+
+::: ex
+- *Und dass Florenz so viel zu bieten hat, dass einen die Masse **schier** erschlägt.*^[~~DWDS~~: Die Zeit, 21.11.2013 (online).]
+- *"Über 50 Meter kann immer alles passieren", sagte Steffen, die ein zweites WM-Gold sogar nahezu ausschloss.^[~~DWDS~~: Die Zeit, 15.12.2012 (online).]
+
 
 ### *Numerale*
 
@@ -468,13 +498,41 @@ Junctors, Limiters
 
 Quantors, Abtönungspartikel, Konjunktionaladverben, Epithesis/Diathesis, etc.
 
-### Referential operators
+### Junctors
 
-### Predicative operators
+### Specifier particles 
 
-### Attributive operators
+Attributspezifikation ("Gradpartikel")
 
-### Adverbial operators
+Gradadjektiv: absolut, annähernd, arg, ausgesprochen, außergewöhnlich, außerordentlich, äußerst, echt, eklatant, enorm, entsetzlich, erbärmlich, extrem, furchtbar, ganz, hochgradig, höchst, irre, komplett, recht, regelrecht, relativ, restlos, richtig, schrecklich, schön, tierisch, total, traumhaft, ungemein, ungeheuerlich, ungewöhnlich, unglaublich, unheimlich, unwahrscheinlich, übermäßig, verhältnismäßig, verschwindend, vollkommen, völlig, weit, weitgehend, wahnsinnig, ziemlich, maximal, minimal, mindestens, ungefähr
+Gradadverb: beinahe, besonders, dermaßen, derart, durchaus, eher, einigermaßen, etwas, fast, kaum, so, spätestens, vergleichsweise, zumindest
+Gradpartikel: nahezu, nur, schier, sehr, sogar, überaus, weitaus, zu, nicht
+
+Referenzspezifikation ("Fokuspartikel")
+
+FokusAdjektiv: ausgerechnet, einzig, erst
+FokusAdverb: allein, allenfalls, bereits, besonders, bestenfalls, bloß, gerade, mindestens, lediglich, schon, spätestens, vor allem, wenigstens
+Fokuspartikel: auch, sogar, nur, selbst, nicht
+
+Adverbialspezifikation ("Grenzpartikel", "Adverbialpartikel")
+
+Grenzpräposition = von, nach, seit, ab, bis, für
+
+Präpositionsspezifikation = dicht, direkt, eng, genau, gerade, gleich, hoch, knapp, kurz, lang, leicht, nah, schräg, tief, weit, östlich, seitlich, ungefähr, unmittelbar, spätestens
+
+AusmaßAdjektiv = direkt, genau, ganz, gleich, häufig, kurz, lange, unmittelbar, viel, völlig, weit, ziemlich
+AusmaßAdverb = bald, beinahe, etwas, fast, gerade, immer, schon, spätestens
+AusmaßPartikel: auch, eben, mal, nur, wohl, nicht, sogar
+
+Ausmaß: allein, auch, ausgerechnet, bald, beinahe, bereits, besonders, bisher, bloß, da, deutlich, dort, eben, ebenfalls, eigens, einzig, erst, etwa, etwas, fast, ganz, gar, genau, gerade, gestern, gleich, heute, hier, hinten, immer, irgendwann, irgendwo, kaum, knapp, lange, lediglich, links, nahezu, nie, noch, nur, oben, rechts, schon, sehr, selbst, so, spätestens, überhaupt, ungefähr, unten, vorn, vorne, weiter, wenigstens, wieder, wohl, zeimlich, zumindest, zumindestens
+
+Prädikationspezifikation ("Post-vorfeldpartikel", "Non-vorfeldpartikel")
+
+Post-vorfeldAdverb = allerdings, also, andererseits, andernteils, beispielsweise, freilich, hingegen, hinwiederum, immerhin, indes, indessen, insbesondere, jedoch, mittlerweile, schließlich, schon, sonst, stattdessen, überhaupt, unterdessen, währenddessen, wiederum, wenigstens, zumindest, zwar
+Post-vorfeldPartikel: auch, nur, nämlich
+
+Non-vorfeld = aber, auch, bloß, denn, doch, eben, eh, etwa, gar, halt, ja, mal, nicht, noch, nur, rein, schon, wohl, nämlich, sogar
+(Abtönungspartikel, Modalpartikel)
 
 # Old text
 
