@@ -190,17 +190,19 @@ Heads can be modified by multiple other heads, each with their own complex inter
 
 # Ingredient classes
 
-## parts of speech
+## Parts of speech
 
 Ingredients can be categorized into classes on the basis of their syntactic possibilities. When considering all linguistic evidence, I expect that – in the end – each ingredient will have its own special distributional characteristics, so ultimately each ingredient will be its own class. Yet, a few large classes can profitably be formulated, although these classes should not be expected to be perfectly homogeneous. When scrutinizing the details, these classes will dissolve into an ever expanding pile of subclasses.
 
 Ingredients will be classified on the basis how they are used in the the four syntactic functions, namely in (i) referential phrases, (ii) predicative clauses, (iii) phrasal attributes, and (iv) clausal adverbials. The classification of bases will be first discussed. This will be followed by a discussion of the classification of operators. Recall that bases are ingredients that can be modified, while operators are ingredients that cannot be modified.
 
-Note: classes in German are mostly necessary for the generation of a recipe. There are only very few phenomena in the rules that need to know additional classes (e.g. postpositions).
+Note: classes in German are mostly necessary for the generation of a recipe. There are only very few phenomena in the rules that need to know additional classes (e.g. postpositions). Also: attribute genitives: pre-nominal with proper names, otherwise postnominal. Also: order of adjectives
+
+Note: compounding is extremely frequent to make new bases
 
 ## Base classes
 
-Base-classes are established by the possibility of a base being the head any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive admodifier, or as (iv) adverbial admodifier. Five German base classes can then be defined by the distribution as shown in [@tbl:baseclasses]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the class of adverbs actually consists of four different subclasses and the class of numerals of two subclasses.
+Base-classes are established by the possibility of a base being the center of any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive admodifier, or as (iv) adverbial admodifier. Five German base classes can then be defined by the distribution as shown in [@tbl:baseclasses]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the classes of adverbs and numerals actually consist of various syntactic subclasses.
 
 Syntactic function     | *Nomen* | *Verb* | *Adjektiv* | *Adverb* | *Numerale*
 :---------             | :-: | :-: | :-: | :-: | :-:
@@ -213,7 +215,7 @@ Table: Syntactic possibilities of German base-classes. {#tbl:baseclasses}
 
 ### *Nomen*
 
-The class of *Nomen* corresponds to the traditional concept as it is used in German grammar, and it is arguably the largest of the base classes. Nouns in German have an inherent gender when used as a referential head [@next a] and they can all be used as predicative head with the help of a copula, either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain' [@next b]. Note that such a "real" predicative use of a noun does not have an article. Many nouns can only be used as "real" predicative head (i.e. without article) in the plural to indicate the generic meaning [@next c]. With an article the predicative use of a noun turns into an identificational construction [@next d].
+The class of *Nomen* corresponds to the traditional concept of nouns as it is used in German grammar, and it is arguably the largest of the base classes. Nouns in German have a lexically determined inherent gender when used as a referential head [@next a] and they can all be used as predicative head with the help of a copula, either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain' [@next b]. Note that such a "real" predicative use of a noun does not have an article. Many nouns can only be used as "real" predicative head (i.e. without article) in the plural to indicate the generic meaning [@next c]. With an article the predicative use of a noun turns into an identificational construction to be discussed later (see ???).
 
 ::: ex
 Syntactic uses of a *Nomen* in German
@@ -228,7 +230,7 @@ German nouns can only be used as an attributive admodifier and as an adverbial a
 
 ### *Verb*
 
-The class of *Verb* also corresponds to the traditional concept as used in German grammar, illustrated here with the verb *lesen* 'to read' in [@next]. When used as a predicative head a German verb has person-number-tense inflection [@next a]. All German verbs can be used as a referential head in the *Infinitiv*, a form ending in *-en* and written with a capital in German orthography when used as a referential head [@next b]. As a referential head, the gender of a verb is always *Neutrum*.
+The class of *Verb* also corresponds to the traditional concept as used in German grammar, illustrated here with the verb *lesen* 'to read' in [@next]. When used as a predicative head a German verb has person-number-tense inflection [@next a]. All German verbs can be used as a referential head in the *Infinitiv*, a form ending in *-en* and written with a capital in German orthography when used as a referential head [@next b]. As a referential head, the gender of a verb is always neuter.
 
 All German verbs can also be used as an attributive admodifier in the form of a so-called *Partizip Präsens* (also called *Partizip I* the German grammatical tradition) ending in *-end* and taking adjectival agreement [@next c]. Other non-finite verbal forms (like the *Partizip Perfekt*) are also possible in this function, but not for all verbs, so they are not included here as a general syntactic option. 
 
@@ -245,7 +247,7 @@ Syntactic uses of a *Verb* in German
 
 ### *Adjektiv*
 
-The class of *Adjektiv* consists of ingredients that can be used in all four syntactic functions from [@tbl:baseclasses], as illustrated with the adjective *groß* 'large' in [@next]. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head [@next a] the gender can be freely assigned. Second, both as a referential head [@next a] and as an attributive admodifier [@next c], adjectives in German have case-number-gender agreement suffixes, called *KNG-Kongruenz* in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head [@next b], either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain'. When used as an adverbial admodifier it is used without any further morphological change [@next d]. Note that it is also possible to use adjectives as "fake" adverbials, i.e. to use them depictively [@next e], similar to the use of participles in [@last d]. This is treated as an attributive admodifier, though with a different syntactic appearance in the sentence.
+The class of *Adjektiv* consists of ingredients that can be used in all four syntactic functions from [@tbl:baseclasses], as illustrated with the adjective *groß* 'large' in [@next]. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head [@next a] the gender can be freely assigned. Second, both as a referential head [@next a] and as an attributive admodifier [@next c], adjectives in German have case-number-gender agreement suffixes, so-called *KNG-Kongruenz* in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head [@next b], either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain'. When used as an adverbial admodifier it is used without any further morphological change [@next d]. Note that it is also possible to use adjectives as "fake" adverbials, i.e. to use them depictively [@next e], similar to the use of participles in [@last d]. This is treated as an attributive admodifier, though with a different syntactic appearance in the sentence.
 
 ::: ex
 Syntactic uses of an *Adjektiv* in German
@@ -260,18 +262,18 @@ Syntactic uses of an *Adjektiv* in German
 The following ingredient belong to this class of adjectives:
 
 - There are about 300 monomorphemic adjectives as summarized in [@next].
-- Additionally, there are many German adjectives, which are clearly Latinate/Greek loans, like *ambivalent, ambulant, binär, brachial, eklatant*, etc.
-- Some non-adjectival ingredients can be turned into adjectives by using one of the following suffixes: *‑artig , ‑bar, ‑end, ‑fach, ‑gemäß, ‑haft, ‑ig, ‑isch, ‑lich, ‑los, ‑mäßig, ‑sam*. Note that various lexemes with one of these suffixes cannot be transparently related to a root, so they are actually lexicalised adjectives, like *häufig, ständig, wichtig, gleichzeitig, abwesend, anwesend, fortwährend, dementsprechend, anschließend, gewöhnlich, natürlich, wahrscheinlich, ausschließlich, unmittelbar*, etc.
-- Intensifying prefixes that can be added to many of these adjectives to form new adjectives: *bitter‑, erz‑, hoch‑, hyper‑, mega‑, schwer‑, super‑, tief‑, ultra‑, un‑, ur‑*. In general, new adjectives can be productively produced from all of the above by composition.
+- Additionally, there are many additional German adjectives that are clearly Latinate/Greek loans, like *ambivalent, ambulant, binär, brachial, eklatant*, etc. I have not yet attempted to list them all.
+- Some non-adjectival ingredients can be turned into adjectives by using one of the following suffixes: *‑artig , ‑bar, ‑end, ‑fach, ‑gemäß, ‑haft, ‑ig, ‑isch, ‑lich, ‑los, ‑mäßig* and *‑sam*. Note that various lexemes with one of these suffixes cannot be transparently related to a root, so those are actually lexicalised adjectives, like *häufig, ständig, wichtig, gleichzeitig, abwesend, anwesend, fortwährend, dementsprechend, anschließend, gewöhnlich, natürlich, wahrscheinlich, ausschließlich, unmittelbar*, etc.
+- Intensifying prefixes can be added to many of these adjectives to form new adjectives: *bitter‑, erz‑, hoch‑, hyper‑, mega‑, schwer‑, super‑, tief‑, ultra‑, un‑, ur‑*.
 
-There are a few exceptions to this list of adjectives, in the sense that some ingredients that correspond to the above criteria do not allow for all functions as illustrated in [@last]. These ingredients, as listed below, thus form separate syntactic classes.
+There are a few exceptions to this list of adjectives, in the sense that some ingredients that correspond to the above criteria do not allow for all functions as illustrated in [@last]. These ingredients, as listed below, thus form separate syntactic subclasses.
 
-- A small group of ingredients from [@next] end in *‑n* instead of *‑r* wenn used as a predicative head or adverbial admodifier, namely *äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorn(e)* and *hintere/hinten*.
-- Similarly, a few have an extra *‑s* when used as adverbial admodifier, namely *andere/anders, besondere/besonders, linke/links, rechte/rechts*.
+- A small group of ingredients from [@next] end in *‑n* instead of *‑r* wenn used as a predicative head or adverbial admodifier, namely exactly the following ingredients: *äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorn(e)* and *hintere/hinten*.
+- Similarly, a few adjectives have an extra *‑s* when used as adverbial admodifier, namely exactly the following ingredients: *andere/anders, besondere/besonders, linke/links, rechte/rechts*.
 - Also *hohe/hoch* and *niedere/niedrig* have a different form depending on the syntactic function in which they are used.
-- Some apparent adjectives cannot be used as a predicative head, for example *ehemalig, hochgradig, regelrecht, sogenannt, sonstig, völlig, ziemlich, zusätzlich* and *zwischenzeitlich*.
-- Some apparent adjectives cannot be used as a referential head, for example *absolut, neulich, relativ, sonstig, völlig, ziemlich* and *zwischenzeitlich*
-- Some apparent adjectives can only be used as an adverbial admodifier, for example *folglich, freilich, lediglich, nämlich* and *schließlich*.
+- Some adjectives cannot be used as a predicative head, for example *ehemalig, hochgradig, regelrecht, schließlich, sogenannt, sonstig, völlig, ziemlich, zusätzlich, zwischenzeitlich*, etc.
+- Some adjectives cannot be used as a referential head, for example *absolut, neulich, relativ, schließlich, sonstig, völlig, ziemlich, zwischenzeitlich*, etc.
+- Some apparent adjectives can only be used as an adverbial admodifier, namely exactly the following ingredients: *folglich, freilich, lediglich* and *nämlich*. They are not classified as adjectives anymore, but categorized as adverbs below. The ingredient *nämlich* is completely idiosyncratic in its syntactic possibilities and will be discussed in Section ???. 
 
 ::: ex
 German monomorphic adjectives 
@@ -281,25 +283,25 @@ German monomorphic adjectives
 
 ### *Adverb*
 
-The class of *Adverb* turns out to be a rather disparate group of elements from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just about 200 monomorphemic adverbs in German (as listed below).
+The class of *Adverb* is a rather disparate group of ingredients from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just short of 200 monomorphemic adverbs in German (as listed at the end of this section). These monomorphemic adverbs are often semi-transparent to German speakers but completely grammaticalized in their adverbial use, e.g. *nebenbei* 'lit. besides+by' or *deswegen* 'lit. of the+because of'.
 
-To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial admodifier. Most prominently, adjectives are also commonly used as adverbial modifier, cf. [@llast d] above, but that does not make them adverbs (even though they are often called as such). The ingredients to be included here as adverbs can be positively characterized as those adverbial admodifiers, i.e. monomorphemic ingredients in adverbial function that can be modified [@next a], that either, when used attributively, are placed post-nominally without agreement, like *gestern* 'yesterday' in [@next b], or that cannot be used attributively at all, like *bald* 'soon' in [@next c].
+To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial admodifier. Most prominently, adjectives are also commonly used as adverbial modifier, cf. [@llast d] above, but that does not make them adverbs (even though they are often called as such).
+
+Adjectives used in the syntactic function of "preverbial modifier" are also excluded from the class of adverbs (cf. Cysouw 2023: #sec9.2.4). Preverbial modifiers construct new compound verbs, like the adjectives *leer‑* and *voll‑* in verbs like *leerfischen* or *volltanken*. These are not included here as adverbs. There is also a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like *weg‑* and *hoch‑* in compound verbs like *wegfahren* and *hochspringen*. In such compound usage these are also not included here as adverbs. 
+
+The ingredients to be included here as adverbs can be positively characterized by three criteria. First, they all can function as adverbial admodifiers, i.e. they are ingredients in adverbial function that themselves can be modified, like *seit gestern* in [@next a]. Second, they either cannot be used attributively at all, like *bald* 'soon' in [@next c], or, when they can be used attributively, then they are placed post-nominally without agreement, like *gestern* 'yesterday' in [@next b]. Finally, all adverbs can occur rather freely in the sentence, including crucially in first position, i.e. as the complete content of the *Vorfeld* [@next d,e].
 
 ::: ex
 - Adverbial admodifier: ***Seit gestern** suchen Polizei, Feuerwehr und weitere Helfer nach dem Jungen.*^[~~DWDS~~: Die Zeit, 08.11.2016 (online).]
 - Attributive admodifier: *Die Befragung **gestern** begann mit einem großen Schweigen.*^[~~DWDS~~: Der Tagesspiegel, 20.11.2000.]
 - ^* *Die Befragung **bald** wird mit einem Schweigen beginnen*.
+- ***Gestern** suchte die Polizei nach dem Jungen.*
+- ***Bald** wird die Befragung beginnen.*
 :::
 
-free, vorfeld
+Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive admodifier. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to allow for more different syntactic uses, while adverbs with a modal meaning have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.
 
-often semi-transparent
-
-Two additional phenomena are excluded here from the class of adverbs. First, the ingredients used in the syntactic function of "preverbial modifier" should also be considered separately (cf. Cysouw 2023: #sec9.2.4). Preverbial modifiers construct new compound verbs, like the adjectives *leer‑* and *voll‑* in verbs like *leerfischen* or *volltanken*. These are not included here as adverbs. There is also a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like *weg‑* and *hoch‑* in compound verbs like *wegfahren* and *hochspringen*. In such compound usage these are also not included here as adverbs. 
-
-Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can all be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive admodifier. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to have more syntactic uses, and adverbs with a modal meaning to have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.
-
-Also, there appears to be quite some dynamism in the syntactic possibilities of adverbs. Some options that are excluded by the categorizations below will be considered to be perfectly possible to more adventurous speakers of German. This flexibility is most obvious with the use of adverbs as a referential head (i.e. as "noun"). There are many occurrences of such uses in the philosophical literature (e.g. *das Seither, das Niemals*) that I consider borderline acceptable.
+Also, there appears to be quite some dynamism in the syntactic possibilities of adverbs. Some options that are excluded by the categorizations below will be considered to be perfectly possible to more adventurous speakers of German. This flexibility is most obvious with the use of adverbs as a referential head (i.e. as "noun"). There are many occurrences of such uses in the philosophical literature (e.g. *^?^das Seither* 'the since' and *^?^das Niemals* 'the never') that I consider only borderline acceptable.
 
 Adverbs of type 1, for example *gestern* 'yesterday' [@next a], can be used in all four syntactic functions. In the function of an attributive admodifier (i.e. as an "adjective") it is placed after the modified noun without any agreement [@next b]. In the function of a predicative head (i.e. as a "verb") the copula *sein* 'to be' is necessary [@next c]. No other copulas are possible. In the function of a referential head (i.e. as a "noun") adverbs always have the neuter gender [@next d]. All ± 40 adverbs that allow for all these four syntactic functions are listed in [@adverbstype1] below.
 
@@ -312,7 +314,7 @@ Syntactic uses of Adverbs type 1
 - Referential head: *Aber das **Gestern** kann das Heute nicht gänzlich erklären.*^[~~DWDS~~: Die Zeit, 01.07.2017, Nr. 27.]
 :::
 
-Adverbs of type 2, for example *immer* 'always' [@next a], can also be used as predicative head [@next b], but not as attributive admodifier. The ± 20 adverbs of this type are listed in [@adverbstype2] below. They can mostly not be used as a referential head. However, there are a few adverbs that seem to be quite naturally used in this function, so they might form a special subgroup, specifically *das Hoch* [@next c], *das Nichts* [@next d] and *im Nirgendwo* [@next e]. Other adverbs from this class are also attested as referential heads, but only very rarely.^[A few additional examples of adverbs type 2 used as referential head are the following: *Nach Spielschluss gab Lehmann ein Interview, das seinen Weg vom Hier und Jetzt **ins Immer** eindrücklich belegte.* (~~DWDS~~: Die Zeit, 06.07.2006, Nr. 28) *Sie kommen aus der Leere, der Abwesenheit, sie langen an **im Nirgends**.* (~~DWDS~~: Die Zeit, 02.10.1997, Nr. 41) *Die Grundbestimmungen Dauer, Einheit, Endzweck geben so dem prozessualen Leitbild nur seinen Gegensatz zum Flüchtigen, zur Vielheit des Chaos, **zum Umsonst** oder Nihilismus, aber sie geben noch keinerlei Entschiedenheit des positiven Inhalts.* (~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 433) *Bei Gerhard Schröder bezieht sich **das Überall** nicht auf den geographischen Globus.* (~~DWDS~~: Der Tagesspiegel, 22.12.2002) *Als ginge es nicht nur ums Lebenswerk und seine Vollendetheit, sondern um seine Vollendung, anders gesagt: **das Vorbei**.* (~~DWDS~~: Der Tagesspiegel, 03.05.2000).]
+Adverbs of type 2, for example *immer* 'always' [@next a], can also be used as predicative head [@next b], but not as attributive admodifier. The ± 20 adverbs of this type are listed in [@adverbstype2] below. They can mostly not be used as a referential head. However, there are a few adverbs that seem to be quite naturally used in this function, so they might form a special subgroup, specifically *das Hoch* [@next c], *das Nichts* [@next d] and *im Nirgendwo* [@next e]. Other adverbs from this class are also attested as referential heads, but only attested very rarely in rather creative contexts.^[A few additional examples of adverbs type 2 used as referential head are the following: *Nach Spielschluss gab Lehmann ein Interview, das seinen Weg vom Hier und Jetzt **ins Immer** eindrücklich belegte.* (~~DWDS~~: Die Zeit, 06.07.2006, Nr. 28) *Sie kommen aus der Leere, der Abwesenheit, sie langen an **im Nirgends**.* (~~DWDS~~: Die Zeit, 02.10.1997, Nr. 41) *Die Grundbestimmungen Dauer, Einheit, Endzweck geben so dem prozessualen Leitbild nur seinen Gegensatz zum Flüchtigen, zur Vielheit des Chaos, **zum Umsonst** oder Nihilismus, aber sie geben noch keinerlei Entschiedenheit des positiven Inhalts.* (~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 433) *Bei Gerhard Schröder bezieht sich **das Überall** nicht auf den geographischen Globus.* (~~DWDS~~: Der Tagesspiegel, 22.12.2002) *Als ginge es nicht nur ums Lebenswerk und seine Vollendetheit, sondern um seine Vollendung, anders gesagt: **das Vorbei**.* (~~DWDS~~: Der Tagesspiegel, 03.05.2000).]
 
 ::: ex
 Syntactic uses of Adverbs type 2
@@ -345,9 +347,13 @@ Syntactic uses of Adverbs type 4
 - Referential head: *Nicht das Ob, sondern **das Wie** ist hier das Entscheidende.*^[~~DWDS~~: Kurz, Robert: Schwarzbuch Kapitalismus, Frankfurt a. M.: Eichborn 1999, S. 270.]
 :::
 
-Finally, there is a large group of ingredients that can be used adverbially, but these ingredients themselves cannot be further modified at all. The previously discussed adverbs (type 1 through 4) can be modified, for example *seit gestern* 'since yesterday', *fast immer* 'almost always' or *schon bisher* 'already up to now'. However, the adverbs listed below in [@adverbstype5] do not allow for such modification. There is a strong correspondence between these non-modifiable adverbs and the class of adverbs traditionally called *Konjunktionaladverb*. Consequently, I will call them as such. However, note that the definition of this class is not based on the semantic notion of conjunction at all. It is based on the syntactic phenomenon that they are not modifiable. 
+Finally, there is a large group of ingredients that can be used adverbially, but these ingredients themselves cannot be further modified at all. All the previously discussed adverbs (type 1 through 4) can themselves be further modified, for example *seit gestern* 'since yesterday', *fast immer* 'almost always', *schon bisher* 'already up to now' or *gleich anfangs* 'immediately at the start'. 
 
-By the current definitions, ingredients that cannot be modified are called operators and not bases. so, strictly speaking this class of ingredients belongs to the operators to be discussed later in this chapter. However, atypically for operators, the adverbs in [@next] are positionally flexible in that they a speaker can position them in various places in a sentence, including at the start. In this syntactic aspect they are similar to the previously discussed adverbs and different from adverbial operators like *nicht, nämlich* and modal particles like *bloß, doch, gar* that cannot occur at the start of a sentence.
+In contrast, adverbs like *außerdem* 'besides', *durchaus* 'quite' or *dauernd* 'constantly' and all others listed below in [@adverbstype5] do not allow for such modification. There is a strong correspondence between these non-modifiable adverbs and the class of adverbs traditionally called *Konjunktionaladverb*. Consequently, I will use this name for this class of adverbs. However, it is important to realize that the definition of this class is not based on the semantic notion of conjunction at all. It is based on the syntactic phenomenon that they are not modifiable. 
+
+By the current definitions, ingredients that cannot be modified are called operators and not bases. So, strictly speaking this class of ingredients belongs to the operators that will be discussed later in this chapter. However, atypically for operators, the adverbs as listed in [@adverbstype5] are positionally flexible in that a speaker can position them in various places in a sentence, including at the start (i.e. in the *Vorfeld*). In this syntactic aspect they are similar to the previously discussed adverbs and different from adverbial operators like *nämlich* or *sehr* and modal particles like *bloß* or *doch* that cannot occur as the *Vorfeld* of a sentence (see ???).
+
+Concluding, the five different classes of adverbs are summarized in [@adverbstype1] through [@adverbstype5].
 
 ::: {.ex #adverbstype1}
 Adverbs type 1: **referential, predicative, attributive & adverbial** uses
@@ -389,8 +395,8 @@ Adverbs type 4: **only adverbial** uses
 ::: {.ex #adverbstype5}
 **Non-modifiable** adverbs with **only adverbial** uses (*Konjunktionaladverb*)
 
-- Temporal meaning: *alsbald, alsdann, bislang, daraufhin, dauernd, derweilen, einstweilen, fast, gerade, inzwischen, mittlerweile, nun, schließlich, schon*
-- Modal meaning: *allemal, allerdings, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bloß, dahingegen, darüber hinaus, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, desgleichen, durchaus, einigermaßen, ferner, folglich, freilich, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, jedoch, kaum, keineswegs, lediglich, maximal, minimal, mithin, nahezu, nichtsdestotrotz, nichtsdestoweniger, nunmehr, obendrein, ohnedies, ohnehin, schier, sehr, sodann, somit, sonst, sowieso, trotzdem, überaus, überdies, überhaupt, vielleicht, vielmehr, vor allem, wiederum, weitaus, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar*
+- Temporal meaning: *alsbald, alsdann, bislang, daraufhin, dauernd, derweilen, eben, einstweilen, fast, gerade, inzwischen, mittlerweile, nun, schließlich, schon*
+- Modal meaning: *allemal, allerdings, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bloß, dahingegen, darüber hinaus, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, desgleichen, durchaus, einigermaßen, ferner, folglich, freilich, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, jedoch, kaum, keineswegs, lediglich, maximal, minimal, mithin, nichtsdestotrotz, nichtsdestoweniger, nunmehr, obendrein, ohnedies, ohnehin, sodann, somit, sonst, sowieso, trotzdem, überdies, überhaupt, vielleicht, vielmehr, vor allem, wiederum, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar*
 - Prepositions with the suffix *‑dessen*, e.g. *indessen, infolgedessen, stattdessen, unterdessen, währenddessen*, etc.
 - Superlatives and ordinals with the suffix *‑ns*, e.g. *bestens, frühestens, genauestens, höchstens, meistens, mindestens, schnellstens, spätestens, strengstens, wenigstens, erstens, zweitens, drittens*, etc.
 - Stems with the suffix *‑falls*, e.g. *allenfalls, anderenfalls, bestenfalls, ebenfalls, gegebenenfalls, gleichfalls, keinesfalls*, etc.
@@ -399,43 +405,20 @@ Adverbs type 4: **only adverbial** uses
 - Stems with the suffix *‑erseits*, e.g. *andererseits, deinerseits, einerseits, meinerseits, väterlicherseits, staatlicherseits*, etc.
 :::
 
-Even after all these considerations there are still a few ingredients that need special attention. First, the double prepositions *voran, voraus, vorbei, vorüber* are often listed as adverbs, but they cannot be used as adverbial admodifiers at all and will thus not be classified as adverbs here. They can be used as preverbials in compound verbs, like in *voranlaufen, vorauslaufen, vorbeilaufen, vorüberlaufen*. Also, except for *voran*, they can be used as predicative heads, like in *es ist vorbei/vorüber* and *er ist den anderen voraus*. Finally, *voran* can be used (although somewhat old-fashioned) as a postposition governing a dative case, like *dem Festzug voran*. Yet, these four ingredients *voran, voraus, vorbei, vorüber* cannot be used as an adverbial modifier and are consequently not adverbs. This is notably differently from *vorab*, which is an adverb type 4 as listed in [@adverbstype4].
+There are still a few ingredients that need special attention. First, the double prepositions *voran, voraus, vorbei, vorüber* are often listed as adverbs, but they cannot be used as adverbial admodifiers at all and will thus not be classified as adverbs here. They can be used as preverbials in compound verbs, like in *voranlaufen, vorauslaufen, vorbeilaufen* and *vorüberlaufen*. Also, except for *voran*, they can be used as predicative heads, like in *es ist vorbei/vorüber* and *er ist den anderen voraus*. Finally, *voran* can be used (although somewhat old-fashioned) as a postposition governing a dative case, like *dem Festzug voran*. Yet, these four ingredients *voran, voraus, vorbei, vorüber* cannot be used as an adverbial modifier and are consequently not adverbs. This is notably different from *vorab*, which is an adverb type 4 as listed in [@adverbstype4].
 
-Second, the ingredients *nämlich* and *sogar* are similar to the non-modifiable adverbs as listed in [@adverbstype5]. When used adverbially, they can be placed rather freely in the sentence, depending on the intended meaning [@next a,b]. However, different from all adverbs discussed in this section, *nämlich* and *sogar* cannot occur as first element of the sentence, i.e. as *Vorfeld* [@next c,d]. This makes them somewhat similar to ingredients that are commonly called *Modalpartikel* in the German grammatical tradition. For this reason, the ingredients *nämlich* and *sogar* are not classified here as adverbs, but as "non-initial sentence operators" (see ???).
-
-::: ex
-- *Auf persönlicher Ebene ist **(nämlich)** in Deutschland **(nämlich)** von German Angst **nämlich** wenig zu spüren.*^[~~DWDS~~: Die Zeit, 31.12.2017 (online).]
-- *Dänemark plant **(sogar)** feste Kontrollposten **sogar** im nächsten Haushalt ein.*^[~~DWDS~~: Die Zeit, 01.01.2018 (online).]
-- ^* ***Nämlich** ist auf persönlicher Ebene in Deutschland von German Angst wenig zu spüren.*
-- ^* ***Sogar** plant Dänemark feste Kontrollposten im nächsten Haushalt ein.*
-:::
-
-Finally, the adverbs *nahezu, schier, sehr, überaus* and *weitaus* are categorized here as non-modifiable adverbs, listed in [@adverbstype5]. They can indeed be used as such, but they are extremely restricted and not very common in their sentential adverbial usage. As will be discussed in (???), they have other uses in which they occur frequently. However, as sentence adverbials they only occur with a very small set of main verbs. In the following discussion, I will not attempt to propose English translations for these adverbs, because a faithful translation is extremely context-dependent.
-
-The adverbs *nahezu* and *schier* are mainly used with a gloomy connotation: *schier* is typically used in combination with verbs like *ersticken, verhungern, verzweifeln* or *erschlagen* [@next a], while *nahezu* typically is attested in collocations with verbs like *ausbremsen, erblinden, vernichten* or *ausschließen* [@next b]. In contrast, the adverbs *sehr, überaus* and *weitaus* are typically used with a much more positive connotation.
-
-
-nahezu vernichten, erblinden, schaffen, ausschließen, ausrotten, ausschöpfen, positiv: verdoppeln
-schier ersticken, verhungern, verzweifeln, positiv: 
-sehr lieben, freuen, schätzen
-überaus genießen, schätzen, verehren, lieben
-weitaus übertreffen, überwiegen, überragen
-
-::: ex
-- *Und dass Florenz so viel zu bieten hat, dass einen die Masse **schier** erschlägt.*^[~~DWDS~~: Die Zeit, 21.11.2013 (online).]
-- *"Über 50 Meter kann immer alles passieren", sagte Steffen, die ein zweites WM-Gold sogar nahezu ausschloss.^[~~DWDS~~: Die Zeit, 15.12.2012 (online).]
-
+Second, most dictionaries of German categorize the ingredients *nahezu, nämlich, schier, sehr, sogar, überaus* and *weitaus* as adverbs.^[No attempt is made to propose English translations for these ingredients, because a faithful translation for them is extremely context-dependent.] They can indeed be used adverbially without being modifiable themselves, like the adverbs listed in [@adverbstype4]. However, they are not very frequent in this adverbial usage. They occur much more frequently in narrow-scope modification, like *schier unmöglich* 'practically impossible' or *weitaus größer* 'much larger'. Crucially, they are syntactically special in that they cannot be used as the sole content of the first position of the sentence, i.e. as the *Vorfeld*. This makes them different from all adverbs discussed in this section. They are not classified as adverbs here, but as non-initial particles (see ???).
 
 ### *Numerale*
 
-The class of *Numerale* (numerals) is arguably a subclass of adjectives, but it has various different syntactic characteristics that warrant a separate class. First note that numerals are actually bases (and not operators), because they can be modified [@next a]. Also note that numerals are typically ordered at the start of a chain of attributive modifiers, but it is also possible for them to occur after other attributes [@next b].
+The class of *Numerale* (numerals) is arguably a subclass of adjectives, but it has various different syntactic characteristics that warrant a separate class. First note that numerals are actually bases (and not operators), because they can be modified [@next a]. Also note that numerals are typically ordered at the start of a chain of attributive modifiers, but it is also possible for them to occur after other attributes in the noun phrase [@next b].
 
 ::: ex
 - Modifiable: *Aber der Nobelpreis lässt eben nur **maximal drei** Preisträger zu.*^[~~DWDS~~: Die Zeit, 03.10.2017 (online).]
 - Variable ordering: *Die **anderen drei Topstars** dagegen enttäuschten bislang.*^[~~DWDS~~: Die Zeit, 28.10.2016 (online).]
 :::
 
-Numerals can be used as attributive admodifier [@next a] and as referential head [@next b]. In both uses the numeral does not have any inflection. A numeral can be used as an adverbial admodifier with the suffix *-mal* [@next c]. Numerals can only be used as a predicative head (with a copula) in very specific contexts, namely to express a mathematical result [@next c], to express age [@next d] or in fixed expressions [@next e].
+Numerals can be used as attributive admodifier [@next a] and as referential head [@next b]. In both uses the numeral does not have any inflection. A numeral can be used as an adverbial admodifier with the suffix *-mal* [@next c]. Numerals can only be used as a predicative head with a copula in very specific contexts, namely to express a mathematical result [@next c], to express age [@next d] or in some proverbs [@next e].
 
 ::: ex
 Syntactic uses of a *Numerale* in German
@@ -448,7 +431,7 @@ Syntactic uses of a *Numerale* in German
 - Proverb: *Aller guten Dinge sind **drei**.*
 :::
 
-Derived from numerals are *Ordinalzahlen* (ordinals) with the suffix *‑te* and *Bruchzahlen* (fractions) with the suffix *-tel*. Ordinals [@next] have a different syntax from numerals [@last]. Ordinals in attributive function have agreement [@next a] and ordinals in predicative function are only used for results of a competition [@next c]. Ordinals are not possible in adverbial function.
+Derived from numerals are *Ordinalzahlen* (ordinals) with the suffix *‑te* and *Bruchzahlen* (fractions) with the suffix *-tel*. Ordinals [@next] have a different syntax from numerals [@last]. Ordinals in attributive function have agreement [@next a] and ordinals in predicative function are only used for results of a competition [@next c]. Ordinals are not possible in adverbial function. To express such meanings a complete noun phrase has to be used, like *zum dritten Mal*.
 
 ::: ex
 Syntactic uses of *Ordinalzahlen* in German
@@ -458,7 +441,7 @@ Syntactic uses of *Ordinalzahlen* in German
 - Rank in sports: *Die deutschen Fußballdamen wurden **dritte**.*^[~~DWDS~~: Die Zeit, 23.06.1995, Nr. 26.]
 :::
 
-In contrast, *Bruchzahlen* (fractions) have completely different syntactic possibilities. They are neuter nouns in referential use [@next a] and can be used as verbs without copula [@next b]. Fractions cannot be used attributively nor adverbially.
+In contrast, *Bruchzahlen* (fractions) have yet again different syntactic possibilities. They are neuter nouns in referential use [@next a] and can be used as verbs without copula [@next b]. Fractions cannot be used attributively nor adverbially and are consequently considered to be nouns in German, written with an initial capital.
 
 ::: ex
 Syntactic uses of *Bruchzahlen* in German
@@ -466,6 +449,8 @@ Syntactic uses of *Bruchzahlen* in German
 - Referential head: *Ein **Drittel** aller verbliebenen Clubs kommen von der Insel.*^[~~DWDS~~: Die Zeit, 04.01.2018, Nr. 52.]
 - Predicative head: *Seit Juli hat sich der Wert der Aktie fast **gedrittelt**.*^[~~DWDS~~: Berliner Zeitung, 07.09.2001.]
 :::
+
+There is a strange quirk in German orthography to write numerals with an initial lowercase even when they are used as a referential head, e.g. *diese drei flüchteten* 'those three fled', while writing *Million* (and other *‑llion* numerals) always with a capital, even when they are used as an attributive admodifier, e.g. *die Millionen Menschen* 'the million dollar'. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10‑to‑1 preference for lower case with small numerals like *drei* or ordinals like *dritte* when used as a referential head ("noun").^[The search "die \@drei $p=VVFIN" gave 991 hits, while the Search "die \@Drei $p=VVFIN" gave 92 hits. Similarly, "die \@dritte $p=VVFIN" resulted in 1490 hits while "die \@Dritte $p=VVFIN" gave 228 hits. All searches were performed on <https://www.dwds.de/r/> on 1st December 2023 using the *Referenz- und Zeitungskorpora*.]
 
 ::: ex
 German monomorphic numerals
@@ -476,13 +461,11 @@ German monomorphic numerals
 - Suppletive fractions: *halb ("zwei‑tel"), drittel ("drei‑tel")*
 :::
 
-There is a strange quirk in German orthography to write numerals with a lowercase initial even when they are used as a referential head, e.g. *diese drei flüchteten* 'those three fled', while writing *Million* (and other *‑llion* numerals) always with a capital, even when they are used as an attributive admodifier, e.g. *die Million Doller* 'the million dollar'. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10‑to‑1 preference for lower case with small numerals, e.g. "die \@drei $p=VVFIN" (991 hits) vs. "die \@Drei $p=VVFIN" (92 hits). The same search with *tausend/Tausend* shows a reverse trend with 6 against 11 hits. With ordinals the tendency to use lowercase in referential use is about 7‑to‑1 (e.g. "die \@dritte $p=VVFIN" has 1490 hits while "die \@Dritte $p=VVFIN" has 225 hits).
-
-### Stems used in multiple bases
+### Stems used in multiple base classes
 
 - Nomen/Verb
 - Nomen/Adjektiv
-- Verb/Adjektiv
+- Verb/Adjektiv: *albern*
 - Numerale/Adjektiv: *hundert, tausend, Million* ('very many')
 - Numeral/Nomen: *Million* ('one million in monetary value')
 - Adverb/Nomen: *morgen/Morgen* ('tomorrow/morning')
@@ -500,7 +483,38 @@ Quantors, Abtönungspartikel, Konjunktionaladverben, Epithesis/Diathesis, etc.
 
 ### Junctors
 
-### Specifier particles 
+::: ex
+Phrasal junctors 
+
+- Prepositions governing dative: *ab, aus, außer, bei, entgegen, entsprechend, gegenüber, gemäß, mit, nach, nahe, seit, von, zu*
+- Prepositions governing accusative: *bis, durch, entlang, für, gegen, ohne, um*
+- Prepositions governing dative or accusative: *an, auf, hinter, in, neben, über, unter, vor, zwischen*
+- Prepositions governing genitive: *abseits, abzüglich, angesichts, anfangs, anhand, anstatt, außerhalb, aufgrund, bar, bezüglich, dank, diesseits, eingangs, einschließlich, entlang, infolge, innerhalb, inmitten, jenseits, kraft, längs, laut, links, mittels, ob, oberhalb, rechts, seitens, statt, trotz, ungeachtet, unterhalb, unweit, während, wegen, zugunsten*
+- Postpositions governing dative: *gegenüber, nach, voran, zufolge*
+- Postpositions governing accusative: *durch, entlang, hoch, über*
+- Postpositions governing genitive: *halber, wegen* 
+:::
+
+:::
+Clausal junctors
+
+- Temporal: *als, bevor, bis, ehe, nachdem, seit, seitdem, sobald, solange, während, wenn*
+- Modal: *als ob, da, damit, falls, indem, insofern, insoweit, obgleich, obschon, obwohl, obzwar, sofern, sooft, sosehr, soviel, soweit, sowie, weil, wenngleich, wie, wo*
+- Prepositional: *anstatt, außer, ohne, statt, um*
+- Participial: *angenommen, ausgenommen, gegeben, gesetzt, ungeachtet, unterstellt, vorausgesetzt*
+:::
+
+some both conjunction and subjunction: doch, weil, vorausgesetzt
+double: mal-mal, entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
+
+::: ex
+Conjunctions
+
+*aber, denn, doch, noch, oder, sondern, sowie, und, und zwar*
+:::
+
+
+### Specifiers 
 
 Attributspezifikation ("Gradpartikel")
 
@@ -531,8 +545,42 @@ Prädikationspezifikation ("Post-vorfeldpartikel", "Non-vorfeldpartikel")
 Post-vorfeldAdverb = allerdings, also, andererseits, andernteils, beispielsweise, freilich, hingegen, hinwiederum, immerhin, indes, indessen, insbesondere, jedoch, mittlerweile, schließlich, schon, sonst, stattdessen, überhaupt, unterdessen, währenddessen, wiederum, wenigstens, zumindest, zwar
 Post-vorfeldPartikel: auch, nur, nämlich
 
-Non-vorfeld = aber, auch, bloß, denn, doch, eben, eh, etwa, gar, halt, ja, mal, nicht, noch, nur, rein, schon, wohl, nämlich, sogar
+Adjektiv: bloß, eben, gar, rein
+Adverb: auch, bloß, eben
+Konjunktion: aber, denn, doch, noch
 (Abtönungspartikel, Modalpartikel)
+
+Non-Vorfeldpartikel: *aber, auch, bloß, denn, doch, eben, eh, etwa, gar, halt, ja, mal, nicht, noch, nur, rein, schon, wohl*
+
+*eben, eh (~ehe!), etwa, gar, halt, ja, mal, nicht*
+
+*nahezu, nämlich, schier, sehr, sogar, überaus, weitaus*
+
+Second, the ingredients *nämlich* and *sogar* are similar to the non-modifiable adverbs as listed in [@adverbstype5]. When used adverbially, they can be placed rather freely in the sentence, depending on the intended meaning [@next a,b]. However, different from all adverbs discussed in this section, *nämlich* and *sogar* cannot occur as first element of the sentence, i.e. as *Vorfeld* [@next c,d]. This makes them somewhat similar to ingredients that are commonly called *Modalpartikel* in the German grammatical tradition. For this reason, the ingredients *nämlich* and *sogar* are not classified here as adverbs, but as "non-initial sentence operators" (see ???).
+
+::: ex
+- *Auf persönlicher Ebene ist **(nämlich)** in Deutschland **(nämlich)** von German Angst **nämlich** wenig zu spüren.*^[~~DWDS~~: Die Zeit, 31.12.2017 (online).]
+- *Dänemark plant **(sogar)** feste Kontrollposten **sogar** im nächsten Haushalt ein.*^[~~DWDS~~: Die Zeit, 01.01.2018 (online).]
+- ^* ***Nämlich** ist auf persönlicher Ebene in Deutschland von German Angst wenig zu spüren.*
+- ^* ***Sogar** plant Dänemark feste Kontrollposten im nächsten Haushalt ein.*
+:::
+
+A few of these non-modifiable adverbs need special attention, namely *nahezu, schier, sehr, überaus* and *weitaus*.^[No attempt is made to propose English translations for these ingredients, because a faithful translation for them is extremely context-dependent.] They can indeed be used adverbially, but they are extremely restricted and not very common in adverbial usage. As will be discussed in (???), they have other uses in which they occur much more frequently. As sentence adverbials they only occur with a very small set of main verbs.
+
+The adverbs *nahezu* and *schier* are mainly used with a gloomy connotation: *schier* is typically used in combination with verbs like *ersticken, verhungern, verzweifeln* or *erschlagen* [@next a], while *nahezu* typically is attested in collocations with verbs like *ausbremsen, erblinden, vernichten* or *ausschließen* [@next b]. In contrast, the adverbs *sehr, überaus* and *weitaus* are typically used with a much more positive connotation.
+
+nahezu vernichten, erblinden, schaffen, ausschließen, ausrotten, ausschöpfen, positiv: verdoppeln
+schier ersticken, verhungern, verzweifeln, positiv: 
+sehr lieben, freuen, schätzen
+überaus genießen, schätzen, verehren, lieben
+weitaus übertreffen, überwiegen, überragen
+
+::: ex
+- *Und dass Florenz so viel zu bieten hat, dass einen die Masse **schier** erschlägt.*^[~~DWDS~~: Die Zeit, 21.11.2013 (online).]
+- *"Über 50 Meter kann immer alles passieren", sagte Steffen, die ein zweites WM-Gold sogar **nahezu** ausschloss.^[~~DWDS~~: Die Zeit, 15.12.2012 (online).]
+:::
+
+*schier* also attributively: schiere Masse, schiere Überlastung, etc.
 
 # Old text
 
@@ -702,3 +750,16 @@ Connecting tissue in YAST:
 
 
 The order of instructions in a recipe is to a large extend "free". The speaker is allowed to specify the instructions in any order in accordance with the intended message (within certain language-specific limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to mould the result in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.
+
+
+### Komplemente? Implizite Adverbialsätze ???
+
+*wir haben viel zu besprechen*
+*wir haben so viel zu besprechen, dass (???) wir noch länger bleiben müssen*
+*wir haben so viel zu besprechen (und die Folge ist), dass wir ...*
+
+reverse? *wir müssen länger bleiben, weil wir so viel zu besprechen haben*
+
+*wir besprechen die neue Situation*
+*wir besprechen, dass es schneller gehen muss*
+*wir besprechen so viel, dass es mir schwindelt* => mir schwindelt weil wir so viel besprechen.

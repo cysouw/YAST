@@ -1,4 +1,4 @@
-# TODO: double conjuncts: entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
+# TODO: double conjuncts: mal/mal, entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch
 # TODO: difference between nominal and clausal conjunction
 Konjunktionen = ['und', 'und zwar', 'oder', 'aber', 'doch', 'sondern', 'denn', 'vorausgesetzt', 'jedoch', 'sowie', 'noch']
 # NOTE: 'wie/wo' here in the meaning of 'als'
@@ -174,7 +174,6 @@ Präpositionen = {
   'jenseits': 'Genitiv',
   'kraft': 'Genitiv',
   'längs': 'Genitiv',
-  'längst': 'Genitiv', # Die Titel längst vergessener Vorlesungen
   'laut': 'Genitiv',
   'links': 'Genitiv',
   'mittels': 'Genitiv',
