@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Michael Cysouw" />
-  <meta name="dcterms.date" content="2023-11-27" />
+  <meta name="dcterms.date" content="2023-12-12" />
   <title>YAST for German</title>
   <style>
 html {
@@ -168,7 +168,27 @@ margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-</style>
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+} </style>
   <!-- CSS added specifically for this document -->
   <style>
 .author {
@@ -379,7 +399,7 @@ vertical-align: top;
 <header id="title-block-header">
 <h1 class="title">YAST for German</h1>
 <p class="author">Michael Cysouw</p>
-<p class="date">November 27, 2023</p>
+<p class="date">December 12, 2023</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Contents</h2>
@@ -399,14 +419,14 @@ vertical-align: top;
 <ul>
 <li><a href="#sec2.1" id="toc-sec2.1"><span class="toc-section-number">2.1</span> Generating a recipe: ingredients</a></li>
 <li><a href="#sec2.2" id="toc-sec2.2"><span class="toc-section-number">2.2</span> Combining ingredients: base &amp; modifier</a></li>
-<li><a href="#sec2.3" id="toc-sec2.3"><span class="toc-section-number">2.3</span> Syntactic elements: operator, admodifier &amp; head</a></li>
+<li><a href="#sec2.3" id="toc-sec2.3"><span class="toc-section-number">2.3</span> Syntactic elements: operator, adjustor &amp; head</a></li>
 <li><a href="#sec2.4" id="toc-sec2.4"><span class="toc-section-number">2.4</span> Hierarchical structure: stacking, layering &amp; embedding</a></li>
 <li><a href="#sec2.5" id="toc-sec2.5"><span class="toc-section-number">2.5</span> Kinds of heads: referent &amp; predicate</a></li>
 <li><a href="#sec2.6" id="toc-sec2.6"><span class="toc-section-number">2.6</span> Head-modification: attribute, adverbial &amp; argument</a></li>
 </ul></li>
 <li><a href="#sec3" id="toc-sec3"><span class="toc-section-number">3</span> Ingredient classes</a>
 <ul>
-<li><a href="#sec3.1" id="toc-sec3.1"><span class="toc-section-number">3.1</span> parts of speech</a></li>
+<li><a href="#sec3.1" id="toc-sec3.1"><span class="toc-section-number">3.1</span> Parts of speech</a></li>
 <li><a href="#sec3.2" id="toc-sec3.2"><span class="toc-section-number">3.2</span> Base classes</a>
 <ul>
 <li><a href="#sec3.2.1" id="toc-sec3.2.1"><span class="toc-section-number">3.2.1</span> <em>Nomen</em></a></li>
@@ -414,14 +434,12 @@ vertical-align: top;
 <li><a href="#sec3.2.3" id="toc-sec3.2.3"><span class="toc-section-number">3.2.3</span> <em>Adjektiv</em></a></li>
 <li><a href="#sec3.2.4" id="toc-sec3.2.4"><span class="toc-section-number">3.2.4</span> <em>Adverb</em></a></li>
 <li><a href="#sec3.2.5" id="toc-sec3.2.5"><span class="toc-section-number">3.2.5</span> <em>Numerale</em></a></li>
-<li><a href="#sec3.2.6" id="toc-sec3.2.6"><span class="toc-section-number">3.2.6</span> Stems used in multiple bases</a></li>
+<li><a href="#sec3.2.6" id="toc-sec3.2.6"><span class="toc-section-number">3.2.6</span> Stems used in multiple base classes</a></li>
 </ul></li>
 <li><a href="#sec3.3" id="toc-sec3.3"><span class="toc-section-number">3.3</span> Operator classes</a>
 <ul>
-<li><a href="#sec3.3.1" id="toc-sec3.3.1"><span class="toc-section-number">3.3.1</span> Referential operators</a></li>
-<li><a href="#sec3.3.2" id="toc-sec3.3.2"><span class="toc-section-number">3.3.2</span> Predicative operators</a></li>
-<li><a href="#sec3.3.3" id="toc-sec3.3.3"><span class="toc-section-number">3.3.3</span> Attributive operators</a></li>
-<li><a href="#sec3.3.4" id="toc-sec3.3.4"><span class="toc-section-number">3.3.4</span> Adverbial operators</a></li>
+<li><a href="#sec3.3.1" id="toc-sec3.3.1"><span class="toc-section-number">3.3.1</span> Junctors</a></li>
+<li><a href="#sec3.3.2" id="toc-sec3.3.2"><span class="toc-section-number">3.3.2</span> Specifiers</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#sec4" id="toc-sec4"><span class="toc-section-number">4</span> Old text</a>
@@ -431,7 +449,10 @@ vertical-align: top;
 <li><a href="#sec4.3" id="toc-sec4.3"><span class="toc-section-number">4.3</span> Restrictions</a></li>
 <li><a href="#sec4.4" id="toc-sec4.4"><span class="toc-section-number">4.4</span> YAST in a nutshell</a></li>
 <li><a href="#sec4.5" id="toc-sec4.5"><span class="toc-section-number">4.5</span> Infinity and recursion</a></li>
-<li><a href="#sec4.6" id="toc-sec4.6"><span class="toc-section-number">4.6</span> Elements of YAST</a></li>
+<li><a href="#sec4.6" id="toc-sec4.6"><span class="toc-section-number">4.6</span> Elements of YAST</a>
+<ul>
+<li><a href="#sec4.6.1" id="toc-sec4.6.1"><span class="toc-section-number">4.6.1</span> Komplemente? Implizite Adverbialsätze ???</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -829,11 +850,11 @@ vertical-align: top;
 <p>The basic building blocks of a recipe will be called <span class="smallcaps">ingredients</span> (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalized combinations of morphemes, like non-compositional idioms, and multi-part grammatical structures, like auxiliary constructions. Semantically, ingredients induce a state-of-mind at the addressee, consisting of a multitude of situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient’s “meaning”). The act of uttering an ingredient intends to conjure up some of those possible situations in the mind of the addressee.</p>
 <p>Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific positions in the generation. To fully describe these limits it will eventually be necessary to specify individual possibilities for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the full distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for specifying more detail subsequently. Ultimately, there is clearly a need for some kind of “grammatical lexicon” that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).</p>
 <h2 data-number="2.2" label="2.2" id="sec2.2"><span class="header-section-number">2.2</span> Combining ingredients: base &amp; modifier</h2>
-<p>Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of a combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance to the presented combination of ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of “understanding” on the part of the addressee.</p>
-<p>Additionally, a central tenet of human language is that combinations of linguistic elements is asymmetrical. ingredients are not simply combined as equals, but there is always a <span class="smallcaps">base</span> that is modified by another linguistic element, the <span class="smallcaps">modifier</span>. Symmetrical connections with European-style coordination seem to be a relatively late addition to the grammatical spectrum. For the recipe, I will assume that alle combinations of ingredients in human language is asymmetrical.</p>
-<p>Bases can have multiple modifiers and each modifier can be base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, than the ordering of these modifiers is often meaningful, so it will be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in German. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the more marked variants.</p>
-<h2 data-number="2.3" label="2.3" id="sec2.3"><span class="header-section-number">2.3</span> Syntactic elements: operator, admodifier &amp; head</h2>
-<p>The raw intricacy of pure modification is organized by distinguishing three different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, it is called an <span class="smallcaps">operator</span>. Second, when a base can only be modified by such unmodifiable operators, it is called an <span class="smallcaps">admodifier</span>. Finally, when a base can freely be modified by operators, admodifiers and other bases, it will be called a <span class="smallcaps">head</span>. It is important to note that these terms describe syntactic functions and not necessarily specific ingredients. Often one and the same ingredient will be able to occur in different functions depending on the context.</p>
+<p>Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of the combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance with both ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of “understanding” on the part of the addressee.</p>
+<p>Additionally, a central tenet of human language is that combinations of linguistic elements is in general asymmetrical. Ingredients are not simply combined as equals, but there is always a <span class="smallcaps">base</span> that is modified by another linguistic element, the <span class="smallcaps">modifier</span>. Symmetrical connections with European-style <em>and</em>-coordination seem to be a relatively late addition to the grammatical spectrum. For the recipe, I will assume that all combinations of ingredients in human language are asymmetrical.</p>
+<p>Bases can have multiple modifiers and each modifier can itself be a base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, then the ordering of these modifiers is often meaningful, so the ordering will have to be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in German. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the unusual variants.</p>
+<h2 data-number="2.3" label="2.3" id="sec2.3"><span class="header-section-number">2.3</span> Syntactic elements: operator, adjustor &amp; head</h2>
+<p>The raw intricacy of pure modification can be further streamlined by distinguishing three different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, it is called an <span class="smallcaps">operator</span>. Second, when a base can only be modified by unmodifiable operators, it is called an <span class="smallcaps">adjustor</span>. Finally, when a base can freely be modified by operators, adjustors and other bases, it will be called a <span class="smallcaps">head</span>. It is important to note that these terms describe syntactic functions and not specific ingredients. One and the same ingredient will often be able to occur in different functions depending on the context in which it is used.</p>
 
 <div id="ex4">
 <table class="linguistic-example">
@@ -850,18 +871,18 @@ vertical-align: top;
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">admodifier</span>: an ingredient that can only be modified by operators.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">adjustor</span>: an ingredient that can only be modified by operators or other adjustors.</td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">head</span>: an ingredient that can be modified by operators, admodifiers, or other heads.</td>
+<td class="linguistic-example-content" style="text-align: left;"><span class="smallcaps">head</span>: an ingredient that can be modified by operators, adjustors or other heads.</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The current definitions of these terms might not always coincide with what one might otherwise conceive of as an operator, admodifier or head. However, the effect of these definitions seems close enough to most other applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion.</p>
-<p>Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, that they cannot themselves be modified), for example intensifiers, quantifiers, adpositions or subjunctions. Typical admodifiers are adverbs and attributive adjectives that allow for limited modification like gradation and intensification. Finally, heads typically comprise verbs and nouns, but they also includes most adjectives, some adverbs and even some prepositions.</p>
+<p>The current definitions of the terms “operator” and “head” might not always coincide with what one might otherwise conceive of as an operator or head. However, the effect of these definitions seems close enough to most other applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion. The term “adjustor” is newly conceived here to be reminiscent of the traditional terms “adjective” and “adverb”, while indicating that its function is to “adjust” or “alter” another ingredient.</p>
+<p>Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, that they cannot themselves be modified), for example intensifiers, quantifiers, adpositions or subjunctions. Typical adjustors are adverbs and attributive adjectives that only allow for limited modification like gradation and intensification. Finally, heads typically comprise verbs and nouns, but they also includes most adjectives, some adverbs and even some prepositions.</p>
 <h2 data-number="2.4" label="2.4" id="sec2.4"><span class="header-section-number">2.4</span> Hierarchical structure: stacking, layering &amp; embedding</h2>
 <p>The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modeled in syntactic theories by using the mechanism of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.</p>
 <p>Roughly coinciding with the three kinds of syntactic elements introduced above, I propose to break down the hierarchical structure of a recipe into three different levels of modification, which I will refer to as <span class="smallcaps">stacking</span>, <span class="smallcaps">layering</span> and <span class="smallcaps">embedding</span>. These three levels of hierarchical structure are conceptually constructed as variations of each other, all three being different kinds of modification. Specifically, layering is a special case of stacking, and embedding is a special case of layering. In practice, however, I will use the term “stacking” only for modification that is not layering nor embedding. Likewise, “embedding” is only used for layers that that themselves display further layers.</p>
@@ -923,12 +944,13 @@ vertical-align: top;
 <p>Heads can be modified by multiple other heads, each with their own complex internal structure and each with their own relation to their superordinate head. These relations between heads and modifier-heads are often explicitly marked in the linguistic structure by operators that are called <span class="smallcaps">junctors</span> here. In German, phrasal junctors are prepositions or case marking (“flagging”), while clausal junctors are subjunctions, conjunctions and a few preposition-like operators. Default “unmarked” relations between heads only occur in the form of appositive phrases and relative clauses.</p>
 <h2 data-number="2.6" label="2.6" id="sec2.6"><span class="header-section-number">2.6</span> Head-modification: attribute, adverbial &amp; argument</h2>
 <h1 data-number="3" label="3" id="sec3"><span class="header-section-number">3</span> Ingredient classes</h1>
-<h2 data-number="3.1" label="3.1" id="sec3.1"><span class="header-section-number">3.1</span> parts of speech</h2>
+<h2 data-number="3.1" label="3.1" id="sec3.1"><span class="header-section-number">3.1</span> Parts of speech</h2>
 <p>Ingredients can be categorized into classes on the basis of their syntactic possibilities. When considering all linguistic evidence, I expect that – in the end – each ingredient will have its own special distributional characteristics, so ultimately each ingredient will be its own class. Yet, a few large classes can profitably be formulated, although these classes should not be expected to be perfectly homogeneous. When scrutinizing the details, these classes will dissolve into an ever expanding pile of subclasses.</p>
 <p>Ingredients will be classified on the basis how they are used in the the four syntactic functions, namely in (i) referential phrases, (ii) predicative clauses, (iii) phrasal attributes, and (iv) clausal adverbials. The classification of bases will be first discussed. This will be followed by a discussion of the classification of operators. Recall that bases are ingredients that can be modified, while operators are ingredients that cannot be modified.</p>
-<p>Note: classes in German are mostly necessary for the generation of a recipe. There are only very few phenomena in the rules that need to know additional classes (e.g. postpositions).</p>
+<p>Note: classes in German are mostly necessary for the generation of a recipe. There are only very few phenomena in the rules that need to know additional classes (e.g. postpositions). Also: attribute genitives: pre-nominal with proper names, otherwise postnominal. Also: order of adjectives</p>
+<p>Note: compounding is extremely frequent to make new bases</p>
 <h2 data-number="3.2" label="3.2" id="sec3.2"><span class="header-section-number">3.2</span> Base classes</h2>
-<p>Base-classes are established by the possibility of a base being the head any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive admodifier, or as (iv) adverbial admodifier. Five German base classes can then be defined by the distribution as shown in Table <a href="#tbl3.1">3.1</a>. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (<em>Nomen, Verb, Adjektiv</em>) are very large, while the latter two (<em>Adverb, Numerale</em>) are strongly restricted in size. Additionally, as indicated by the “plus-minus” symbol, the class of adverbs actually consists of four different subclasses and the class of numerals of two subclasses.</p>
+<p>Base-classes are established by the possibility of a base being the center of any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive adjustor, or as (iv) adverbial adjustor. Five German base classes can then be defined by the distribution as shown in Table <a href="#tbl3.1">3.1</a>. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (<em>Nomen, Verb, Adjektiv</em>) are very large, while the latter two (<em>Adverb, Numerale</em>) are strongly restricted in size. Additionally, as indicated by the “plus-minus” symbol, the classes of adverbs and numerals actually consist of various syntactic subclasses.</p>
 <div id="tbl3.1" label="3.1">
 <table>
 <caption>Table 3.1: Syntactic possibilities of German base-classes.</caption>
@@ -968,7 +990,7 @@ vertical-align: top;
 <td style="text-align: center;">±</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Attributive admodifier</td>
+<td style="text-align: left;">Attributive adjustor</td>
 <td style="text-align: center;">–</td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;">✓</td>
@@ -976,7 +998,7 @@ vertical-align: top;
 <td style="text-align: center;">✓</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Adverbial admodifier</td>
+<td style="text-align: left;">Adverbial adjustor</td>
 <td style="text-align: center;">–</td>
 <td style="text-align: center;">–</td>
 <td style="text-align: center;">✓</td>
@@ -987,7 +1009,7 @@ vertical-align: top;
 </table>
 </div>
 <h3 data-number="3.2.1" label="3.2.1" id="sec3.2.1"><span class="header-section-number">3.2.1</span> <em>Nomen</em></h3>
-<p>The class of <em>Nomen</em> corresponds to the traditional concept as it is used in German grammar, and it is arguably the largest of the base classes. Nouns in German have an inherent gender when used as a referential head <a href="#ex7">(7 a)</a> and they can all be used as predicative head with the help of a copula, either <em>werden</em> ‘to become’, <em>sein</em> ‘to be’, or <em>bleiben</em> ‘to remain’ <a href="#ex7">(7 b)</a>. Note that such a “real” predicative use of a noun does not have an article. Many nouns can only be used as “real” predicative head (i.e. without article) in the plural to indicate the generic meaning <a href="#ex7">(7 c)</a>. With an article the predicative use of a noun turns into an identificational construction <a href="#ex7">(7 d)</a>.</p>
+<p>The class of <em>Nomen</em> corresponds to the traditional concept of nouns as it is used in German grammar, and it is arguably the largest of the base classes. Nouns in German have a lexically determined inherent gender when used as a referential head <a href="#ex7">(7 a)</a> and they can all be used as predicative head with the help of a copula, either <em>werden</em> ‘to become’, <em>sein</em> ‘to be’, or <em>bleiben</em> ‘to remain’ <a href="#ex7">(7 b)</a>. Note that such a “real” predicative use of a noun does not have an article. Many nouns can only be used as “real” predicative head (i.e. without article) in the plural to indicate the generic meaning <a href="#ex7">(7 c)</a>. With an article the predicative use of a noun turns into an identificational construction to be discussed later (see ???).</p>
 
 <div id="ex7">
 <table class="linguistic-example">
@@ -1019,11 +1041,11 @@ vertical-align: top;
 </tbody>
 </table>
 </div>
-<p>German nouns can only be used as an attributive admodifier and as an adverbial admodifier using lexically-specific morphological derivations with suffixes like <em>‑haft, ‑ig, ‑isch, ‑lich, ‑gemäß, ‑mäßig</em> or <em>‑artig</em>. The availability of these derivations are strongly lexically dependent. Many nouns allow for multiple such derivations (e.g. <em>kindhaft, kindisch, kindlich, kindgemäß</em>), while others do not seem to allow any of these derivational suffixes (e.g. <em>Stuhl</em> or <em>Schuh</em>). Such uses of nouns as admodifiers are not included here as syntactic possibilities because these suffixes are not productively available to all nouns.</p>
+<p>German nouns can only be used as an attributive adjustor and as an adverbial adjustor using lexically-specific morphological derivations with suffixes like <em>‑haft, ‑ig, ‑isch, ‑lich, ‑gemäß, ‑mäßig</em> or <em>‑artig</em>. The availability of these derivations are strongly lexically dependent. Many nouns allow for multiple such derivations (e.g. <em>kindhaft, kindisch, kindlich, kindgemäß</em>), while others do not seem to allow any of these derivational suffixes (e.g. <em>Stuhl</em> or <em>Schuh</em>). Such uses of nouns as adjustors are not included here as syntactic possibilities because these suffixes are not productively available to all nouns.</p>
 <h3 data-number="3.2.2" label="3.2.2" id="sec3.2.2"><span class="header-section-number">3.2.2</span> <em>Verb</em></h3>
-<p>The class of <em>Verb</em> also corresponds to the traditional concept as used in German grammar, illustrated here with the verb <em>lesen</em> ‘to read’ in <a href="#ex8">(8)</a>. When used as a predicative head a German verb has person-number-tense inflection <a href="#ex8">(8 a)</a>. All German verbs can be used as a referential head in the <em>Infinitiv</em>, a form ending in <em>-en</em> and written with a capital in German orthography when used as a referential head <a href="#ex8">(8 b)</a>. As a referential head, the gender of a verb is always <em>Neutrum</em>.</p>
-<p>All German verbs can also be used as an attributive admodifier in the form of a so-called <em>Partizip Präsens</em> (also called <em>Partizip I</em> the German grammatical tradition) ending in <em>-end</em> and taking adjectival agreement <a href="#ex8">(8 c)</a>. Other non-finite verbal forms (like the <em>Partizip Perfekt</em>) are also possible in this function, but not for all verbs, so they are not included here as a general syntactic option.</p>
-<p>The same non-finite participle can also be used as a “fake” adverbial admodifier <a href="#ex8">(8 d)</a>. Although this construction looks syntactically like an adverbial, the participle <em>lesend</em> in this sentence modifies the object <em>mich</em> of the sentence. In general, participles used syntactically like adverbials in German always modify an argument of the main verb (sometimes called “depictive secondary predication”). The main verb of the sentence is only modified indirectly by such depictively used non-finite verbforms, because the main verb is modified by the argument, which in turn is modified by the non-finite verbform.</p>
+<p>The class of <em>Verb</em> also corresponds to the traditional concept as used in German grammar, illustrated here with the verb <em>lesen</em> ‘to read’ in <a href="#ex8">(8)</a>. When used as a predicative head a German verb has person-number-tense inflection <a href="#ex8">(8 a)</a>. All German verbs can be used as a referential head in the <em>Infinitiv</em>, a form ending in <em>-en</em> and written with a capital in German orthography when used as a referential head <a href="#ex8">(8 b)</a>. As a referential head, the gender of a verb is always neuter.</p>
+<p>All German verbs can also be used as an attributive adjustor in the form of a so-called <em>Partizip Präsens</em> (also called <em>Partizip I</em> the German grammatical tradition) ending in <em>-end</em> and taking adjectival agreement <a href="#ex8">(8 c)</a>. Other non-finite verbal forms (like the <em>Partizip Perfekt</em>) are also possible in this function, but not for all verbs, so they are not included here as a general syntactic option.</p>
+<p>The same non-finite participle can also be used as a “fake” adverbial adjustor <a href="#ex8">(8 d)</a>. Although this construction looks syntactically like an adverbial, the participle <em>lesend</em> in this sentence modifies the object <em>mich</em> of the sentence. In general, participles used syntactically like adverbials in German always modify an argument of the main verb (sometimes called “depictive secondary predication”). The main verb of the sentence is only modified indirectly by such depictively used non-finite verbforms, because the main verb is modified by the argument, which in turn is modified by the non-finite verbform.</p>
 
 <div id="ex8">
 <table class="linguistic-example">
@@ -1045,18 +1067,18 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Attributive admodifier: <em>Überall traf man nun <strong>lesende</strong> Landarbeiter und Bauern an.</em><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Attributive adjustor: <em>Überall traf man nun <strong>lesende</strong> Landarbeiter und Bauern an.</em><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">d.</td>
-<td class="linguistic-example-content" style="text-align: left;">“Fake” adverbial admodifier (depictive): <em>Man hat mich in Apfelbäumen <strong>lesend</strong> erwischt.</em><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">“Fake” adverbial adjustor (depictive): <em>Man hat mich in Apfelbäumen <strong>lesend</strong> erwischt.</em><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
 <h3 data-number="3.2.3" label="3.2.3" id="sec3.2.3"><span class="header-section-number">3.2.3</span> <em>Adjektiv</em></h3>
-<p>The class of <em>Adjektiv</em> consists of ingredients that can be used in all four syntactic functions from Table <a href="#tbl3.1">3.1</a>, as illustrated with the adjective <em>groß</em> ‘large’ in <a href="#ex9">(9)</a>. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head <a href="#ex9">(9 a)</a> the gender can be freely assigned. Second, both as a referential head <a href="#ex9">(9 a)</a> and as an attributive admodifier <a href="#ex9">(9 c)</a>, adjectives in German have case-number-gender agreement suffixes, called <em>KNG-Kongruenz</em> in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head <a href="#ex9">(9 b)</a>, either <em>werden</em> ‘to become’, <em>sein</em> ‘to be’, or <em>bleiben</em> ‘to remain’. When used as an adverbial admodifier it is used without any further morphological change <a href="#ex9">(9 d)</a>. Note that it is also possible to use adjectives as “fake” adverbials, i.e. to use them depictively <a href="#ex9">(9 e)</a>, similar to the use of participles in <a href="#ex8">(8 d)</a>. This is treated as an attributive admodifier, though with a different syntactic appearance in the sentence.</p>
+<p>The class of <em>Adjektiv</em> consists of ingredients that can be used in all four syntactic functions from Table <a href="#tbl3.1">3.1</a>, as illustrated with the adjective <em>groß</em> ‘large’ in <a href="#ex9">(9)</a>. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head <a href="#ex9">(9 a)</a> the gender can be freely assigned. Second, both as a referential head <a href="#ex9">(9 a)</a> and as an attributive adjustor <a href="#ex9">(9 c)</a>, adjectives in German have case-number-gender agreement suffixes, so-called <em>KNG-Kongruenz</em> in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head <a href="#ex9">(9 b)</a>, either <em>werden</em> ‘to become’, <em>sein</em> ‘to be’, or <em>bleiben</em> ‘to remain’. When used as an adverbial adjustor it is used without any further morphological change <a href="#ex9">(9 d)</a>. Note that it is also possible to use adjectives as “fake” adverbials, i.e. to use them depictively <a href="#ex9">(9 e)</a>, similar to the use of participles in <a href="#ex8">(8 d)</a>. This is treated as an attributive adjustor, though with a different syntactic appearance in the sentence.</p>
 
 <div id="ex9">
 <table class="linguistic-example">
@@ -1078,17 +1100,17 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Attributive admodifier: <em>Das <strong>große</strong> und mächtige Schiff hob und senkte sich noch einmal.</em><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Attributive adjustor: <em>Das <strong>große</strong> und mächtige Schiff hob und senkte sich noch einmal.</em><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">d.</td>
-<td class="linguistic-example-content" style="text-align: left;">Adverbial admodifier: <em>»Kaffeekultur« wird in Österreich überall ganz <strong>groß</strong> geschrieben.</em><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Adverbial adjustor: <em>»Kaffeekultur« wird in Österreich überall ganz <strong>groß</strong> geschrieben.</em><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">e.</td>
-<td class="linguistic-example-content" style="text-align: left;">“Fake” adverbial admodifier: <em>Ich habe meine Hose zu <strong>groß</strong> gekauft.</em></td>
+<td class="linguistic-example-content" style="text-align: left;">“Fake” adverbial adjustor: <em>Ich habe meine Hose zu <strong>groß</strong> gekauft.</em></td>
 </tr>
 </tbody>
 </table>
@@ -1096,18 +1118,17 @@ vertical-align: top;
 <p>The following ingredient belong to this class of adjectives:</p>
 <ul>
 <li>There are about 300 monomorphemic adjectives as summarized in <a href="#ex10">(10)</a>.</li>
-<li>Additionally, there are many German adjectives, which are clearly Latinate/Greek loans, like <em>ambivalent, ambulant, binär, brachial, eklatant</em>, etc.</li>
-<li>Some non-adjectival ingredients can be turned into adjectives by using one of the following suffixes: <em>‑artig , ‑bar, ‑end, ‑fach, ‑gemäß, ‑haft, ‑ig, ‑isch, ‑lich, ‑los, ‑mäßig, ‑sam</em>. Note that various lexemes with one of these suffixes cannot be transparently related to a root, so they are actually lexicalised adjectives, like <em>häufig, ständig, wichtig, gleichzeitig, abwesend, anwesend, fortwährend, dementsprechend, anschließend, gewöhnlich, natürlich, wahrscheinlich, ausschließlich, unmittelbar</em>, etc.</li>
-<li>Intensifying prefixes that can be added to many of these adjectives to form new adjectives: <em>bitter‑, erz‑, hoch‑, hyper‑, mega‑, schwer‑, super‑, tief‑, ultra‑, un‑, ur‑</em>. In general, new adjectives can be productively produced from all of the above by composition.</li>
+<li>Additionally, there are many additional German adjectives that are clearly Latinate/Greek loans, like <em>ambivalent, ambulant, binär, brachial, eklatant</em>, etc. I have not yet attempted to list them all.</li>
+<li>Some non-adjectival ingredients can be turned into adjectives by using one of the following suffixes: <em>‑artig , ‑bar, ‑end, ‑fach, ‑gemäß, ‑haft, ‑ig, ‑isch, ‑lich, ‑los, ‑mäßig</em> and <em>‑sam</em>. Note that various lexemes with one of these suffixes cannot be transparently related to a root, so those are actually lexicalised adjectives, like <em>häufig, ständig, wichtig, gleichzeitig, abwesend, anwesend, fortwährend, dementsprechend, anschließend, gewöhnlich, natürlich, wahrscheinlich, ausschließlich, unmittelbar</em>, etc.</li>
+<li>Intensifying prefixes can be added to many of these adjectives to form new adjectives: <em>bitter‑, erz‑, hoch‑, hyper‑, mega‑, schwer‑, super‑, tief‑, ultra‑, un‑, ur‑</em>.</li>
 </ul>
-<p>There are a few exceptions to this list of adjectives, in the sense that some ingredients that correspond to the above criteria do not allow for all functions as illustrated in <a href="#ex9">(9)</a>. These ingredients, as listed below, thus form separate syntactic classes.</p>
+<p>There are a few exceptions to this list of adjectives, in the sense that some ingredients that correspond to the above criteria do not allow for all functions as illustrated in <a href="#ex9">(9)</a>. These ingredients, as listed below, thus form separate syntactic subclasses.</p>
 <ul>
-<li>A small group of ingredients from <a href="#ex10">(10)</a> end in <em>‑n</em> instead of <em>‑r</em> wenn used as a predicative head or adverbial admodifier, namely <em>äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorn(e)</em> and <em>hintere/hinten</em>.</li>
-<li>Similarly, a few have an extra <em>‑s</em> when used as adverbial admodifier, namely <em>andere/anders, besondere/besonders, linke/links, rechte/rechts</em>.</li>
+<li>A small group of ingredients from <a href="#ex10">(10)</a> end in <em>‑n</em> instead of <em>‑r</em> wenn used as a predicative head or adverbial adjustor, namely exactly the following ingredients: <em>äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorn(e)</em> and <em>hintere/hinten</em>.</li>
+<li>Similarly, a few adjectives have an extra <em>‑s</em> when used as adverbial adjustor, namely exactly the following ingredients: <em>andere/anders, besondere/besonders, linke/links, rechte/rechts</em>.</li>
 <li>Also <em>hohe/hoch</em> and <em>niedere/niedrig</em> have a different form depending on the syntactic function in which they are used.</li>
-<li>Some apparent adjectives cannot be used as a predicative head, for example <em>ehemalig, hochgradig, regelrecht, sogenannt, sonstig, völlig, ziemlich, zusätzlich</em> and <em>zwischenzeitlich</em>.</li>
-<li>Some apparent adjectives cannot be used as a referential head, for example <em>absolut, neulich, relativ, sonstig, völlig, ziemlich</em> and <em>zwischenzeitlich</em></li>
-<li>Some apparent adjectives can only be used as an adverbial admodifier, for example <em>folglich, freilich, lediglich, nämlich</em> and <em>schließlich</em>.</li>
+<li>Some derived adjectives cannot be used as a predicative head (e.g. <em>ehemalig, hochgradig, regelrecht, sogenannt, zusätzlich</em>), some cannot be used as a referential head (e.g. <em>absolut, neulich, relativ</em>) and some cannot be used in both those functions (e.g. <em>schließlich, sonstig, völlig, ziemlich, zwischenzeitlich</em>).<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
+<li>Some apparent adjectives can only be used as an adverbial adjustor (and not attributively), namely exactly the following ingredients: <em>folglich, freilich, lediglich</em> and <em>nämlich</em>. They are not classified as adjectives anymore, but categorized as adverbs below. The ingredient <em>nämlich</em> is completely idiosyncratic in its syntactic possibilities and will be discussed in Section ???.</li>
 </ul>
 
 <div id="ex10">
@@ -1125,8 +1146,10 @@ vertical-align: top;
 </table>
 </div>
 <h3 data-number="3.2.4" label="3.2.4" id="sec3.2.4"><span class="header-section-number">3.2.4</span> <em>Adverb</em></h3>
-<p>The class of <em>Adverb</em> turns out to be a rather disparate group of elements from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just slightly less than 200 monomorphemic adverbs in German (listed below).</p>
-<p>To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial admodifier. Most prominently, adjectives are also commonly used as adverbial modifier, cf. <a href="#ex9">(9 d)</a> above, but that does not make them adverbs (even though they are often called as such). The ingredients to be included here as adverbs can be positively characterized as adverbial admodifiers <a href="#ex11">(11 a)</a> that are either placed post-nominally without agreement when they are used as attributive admodifiers, like <em>gestern</em> ‘yesterday’ in <a href="#ex11">(11 b)</a>, or that cannot be used as attributive admodifiers at all, like <em>bald</em> ‘soon’ in <a href="#ex11">(11 c)</a>.</p>
+<p>The class of <em>Adverb</em> is a rather disparate group of ingredients from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just short of 200 monomorphemic adverbs in German (as listed at the end of this section). These monomorphemic adverbs are often semi-transparent to German speakers but completely grammaticalized in their adverbial use, e.g. <em>nebenbei</em> ‘lit. besides+by’ or <em>deswegen</em> ‘lit. of the+because of’.</p>
+<p>To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial adjustor. Most prominently, adjectives are also commonly used as adverbial modifier, cf. <a href="#ex9">(9 d)</a> above, but that does not make them adverbs (even though they are often called as such).</p>
+<p>Adjectives used in the syntactic function of “preverbial modifier” are also excluded from the class of adverbs (cf. Cysouw 2023: #sec9.2.4). Preverbial modifiers construct new compound verbs, like the adjectives <em>leer‑</em> and <em>voll‑</em> in verbs like <em>leerfischen</em> or <em>volltanken</em>. These are not included here as adverbs. There is also a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like <em>weg‑</em> and <em>hoch‑</em> in compound verbs like <em>wegfahren</em> and <em>hochspringen</em>. In such compound usage these are also not included here as adverbs.</p>
+<p>The ingredients to be included here as adverbs can be positively characterized by three criteria. First, they all can function as adverbial adjustors, i.e. they are ingredients in adverbial function that themselves can be modified, like <em>seit gestern</em> in <a href="#ex11">(11 a)</a>. Second, they either cannot be used attributively at all, like <em>bald</em> ‘soon’ in <a href="#ex11">(11 c)</a>, or, when they can be used attributively, then they are placed post-nominally without agreement, like <em>gestern</em> ‘yesterday’ in <a href="#ex11">(11 b)</a>. Finally, all adverbs can occur rather freely in the sentence, including crucially in first position, i.e. as the complete content of the <em>Vorfeld</em> <a href="#ex11">(11 d,e)</a>.</p>
 
 <div id="ex11">
 <table class="linguistic-example">
@@ -1135,13 +1158,13 @@ vertical-align: top;
 <td class="linguistic-example-number" style="vertical-align: top;">(11)</td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
 <td class="linguistic-example-judgement" style="text-align: right;"></td>
-<td class="linguistic-example-content" style="text-align: left;">Adverbial admodifier: <em><strong>Seit gestern</strong> suchen Polizei, Feuerwehr und weitere Helfer nach dem Jungen.</em><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Adverbial adjustor: <em><strong>Seit gestern</strong> suchen Polizei, Feuerwehr und weitere Helfer nach dem Jungen.</em><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
 <td class="linguistic-example-judgement" style="text-align: right;"></td>
-<td class="linguistic-example-content" style="text-align: left;">Attributive admodifier: <em>Die Befragung <strong>gestern</strong> begann mit einem großen Schweigen.</em><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Attributive adjustor: <em>Die Befragung <strong>gestern</strong> begann mit einem großen Schweigen.</em><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -1149,14 +1172,24 @@ vertical-align: top;
 <td class="linguistic-example-judgement" style="text-align: right;">*</td>
 <td class="linguistic-example-content" style="text-align: left;"><em>Die Befragung <strong>bald</strong> wird mit einem Schweigen beginnen</em>.</td>
 </tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">d.</td>
+<td class="linguistic-example-judgement" style="text-align: right;"></td>
+<td class="linguistic-example-content" style="text-align: left;"><em><strong>Gestern</strong> suchte die Polizei nach dem Jungen.</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">e.</td>
+<td class="linguistic-example-judgement" style="text-align: right;"></td>
+<td class="linguistic-example-content" style="text-align: left;"><em><strong>Bald</strong> wird die Befragung beginnen.</em></td>
+</tr>
 </tbody>
 </table>
 </div>
-<p>Two additional phenomena are excluded here from the class of adverbs. First, the ingredients used in the syntactic function of “preverbial modifier” should also be considered separately (cf. Cysouw 2023: #sec9.2.4). Preverbial modifiers construct new compound verbs, like the adjectives <em>leer‑</em> and <em>voll‑</em> in verbs like <em>leerfischen</em> or <em>volltanken</em>. These are not included here as adverbs. There is also a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like <em>weg‑</em> and <em>hoch‑</em> in compound verbs like <em>wegfahren</em> and <em>hochspringen</em>. In such compound usage these are also not included here as adverbs.</p>
-<p>Second, the double prepositions <em>voran, voraus, vorbei, vorüber</em> are often listed as adverbs, but they cannot be used as adverbial admodifiers and will not be classified as adverbs here. They can be used as preverbials in compound verbs, like in <em>voranlaufen, vorauslaufen, vorbeilaufen, vorüberlaufen</em>. Except for <em>voran</em>, they can be used as predicative heads, like in <em>es ist vorbei/vorüber</em> and <em>er ist den anderen voraus</em>. Finally, <em>voran</em> can be used as a postposition governing a dative case, like <em>dem Festzug voran</em>. However, the four ingredients <em>voran, voraus, vorbei, vorüber</em> cannot be used as an adverbial modifier and are consequently not adverbs (differently from <em>vorab</em>, which is an adverb).</p>
-<p>Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can all be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive admodifier. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to have more syntactic uses, and adverbs with a modal meaning to have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.</p>
-<p>Also, there appears to be quite some dynamism in the syntactic possibilities of adverbs. Some options that are excluded by the categorizations below will be considered to be perfectly possible to more adventurous speakers of German. This flexibility is most obvious with the use of adverbs as a referential head (i.e. as “noun”). There are many occurrences of such uses in the philosophical literature (e.g. <em>das Seither, das Niemals</em>) that I consider borderline acceptable.</p>
-<p>Adverbs of type 1, for example <em>gestern</em> ‘yesterday’ <a href="#ex12">(12 a)</a>, can be used in all four syntactic functions. In the function of an attributive admodifier (i.e. as an “adjective”) it is placed after the modified noun without any agreement <a href="#ex12">(12 b)</a>. In the function of a predicative head (i.e. as a “verb”) the copula <em>sein</em> ‘to be’ is necessary <a href="#ex12">(12 c)</a>. No other copulas are possible. In the function of a referential head (i.e. as a “noun”) adverbs always have the neuter gender <a href="#ex12">(12 d)</a>. All ± 40 adverbs that allow for all these four syntactic functions are listed in <a href="#adverbstype1">(16)</a> below.</p>
+<p>Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive adjustor. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to allow for more different syntactic uses, while adverbs with a modal meaning have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.</p>
+<p>Also, there appears to be quite some dynamism in the syntactic possibilities of adverbs. Some options that are excluded by the categorizations below will be considered to be perfectly possible to more adventurous speakers of German. This flexibility is most obvious with the use of adverbs as a referential head (i.e. as “noun”). There are many occurrences of such uses in the philosophical literature (e.g. <em><sup>?</sup>das Seither</em> ‘the since’ and <em><sup>?</sup>das Niemals</em> ‘the never’) that I consider only borderline acceptable.</p>
+<p>Adverbs of type 1, for example <em>gestern</em> ‘yesterday’ <a href="#ex12">(12 a)</a>, can be used in all four syntactic functions. In the function of an attributive adjustor (i.e. as an “adjective”) it is placed after the modified noun without any agreement <a href="#ex12">(12 b)</a>. In the function of a predicative head (i.e. as a “verb”) the copula <em>sein</em> ‘to be’ is necessary <a href="#ex12">(12 c)</a>. No other copulas are possible. In the function of a referential head (i.e. as a “noun”) adverbs always have the neuter gender <a href="#ex12">(12 d)</a>. All ± 40 adverbs that allow for all these four syntactic functions are listed in <a href="#adverbstype1">(16)</a> below.</p>
 
 <div id="ex12">
 <table class="linguistic-example">
@@ -1168,27 +1201,27 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Adverbial admodifier: <em><strong>Gestern</strong> hatte ich eine Lesung in Neubrandenburg.</em><a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Adverbial adjustor: <em><strong>Gestern</strong> hatte ich eine Lesung in Neubrandenburg.</em><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Attributive admodifier: <em>Das Feuer <strong>gestern</strong> entstand beim Überfahren von Weichen.</em><a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Attributive adjustor: <em>Das Feuer <strong>gestern</strong> entstand beim Überfahren von Weichen.</em><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Predicative head: <em>Holzkiste und Kinderwagenräder waren <strong>gestern</strong>.</em><a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Predicative head: <em>Holzkiste und Kinderwagenräder waren <strong>gestern</strong>.</em><a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">d.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Aber das <strong>Gestern</strong> kann das Heute nicht gänzlich erklären.</em><a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Aber das <strong>Gestern</strong> kann das Heute nicht gänzlich erklären.</em><a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Adverbs of type 2, for example <em>immer</em> ‘always’ <a href="#ex13">(13 a)</a>, can also be used as predicative head <a href="#ex13">(13 b)</a>, but not as attributive admodifier. The ± 20 adverbs of this type are listed in <a href="#adverbstype2">(17)</a> below. They can mostly not be used as a referential head. However, there are a few adverbs that seem to be quite naturally used in this function, so they might form a special subgroup, specifically <em>das Hoch</em> <a href="#ex13">(13 c)</a>, <em>das Nichts</em> <a href="#ex13">(13 d)</a> and <em>im Nirgendwo</em> <a href="#ex13">(13 e)</a>. Other adverbs from this class are also attested as referential heads, but only very rarely.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
+<p>Adverbs of type 2, for example <em>immer</em> ‘always’ <a href="#ex13">(13 a)</a>, can also be used as predicative head <a href="#ex13">(13 b)</a>, but not as attributive adjustor. The ± 20 adverbs of this type are listed in <a href="#adverbstype2">(17)</a> below. They can mostly not be used as a referential head. However, there are a few adverbs that seem to be quite naturally used in this function, so they might form a special subgroup, specifically <em>das Hoch</em> <a href="#ex13">(13 c)</a>, <em>das Nichts</em> <a href="#ex13">(13 d)</a> and <em>im Nirgendwo</em> <a href="#ex13">(13 e)</a>. Other adverbs from this class are also attested as referential heads, but only attested very rarely in rather creative contexts.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></p>
 
 <div id="ex13">
 <table class="linguistic-example">
@@ -1200,32 +1233,32 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Adverbial admodifier: <em>Es kann <strong>immer</strong> schnell vorbei sein.</em><a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Adverbial adjustor: <em>Es kann <strong>immer</strong> schnell vorbei sein.</em><a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Predicative head: <em>Irgendein Wetter ist <strong>immer</strong>.</em><a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Predicative head: <em>Irgendein Wetter ist <strong>immer</strong>.</em><a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Weil <strong>das Hoch</strong> der SPD schon irgendwann einbrechen werde.</em><a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Weil <strong>das Hoch</strong> der SPD schon irgendwann einbrechen werde.</em><a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">d.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em><strong>Das Nichts</strong> kennt kein Unglück.</em><a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em><strong>Das Nichts</strong> kennt kein Unglück.</em><a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">e.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Berlin im Frühjahr, ein Sportplatz <strong>im Nirgendwo</strong> zwischen Berlin und Spandau.</em><a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Berlin im Frühjahr, ein Sportplatz <strong>im Nirgendwo</strong> zwischen Berlin und Spandau.</em><a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Adverbs of type 3, for example <em>bisher</em> ‘up to now’ <a href="#ex14">(14 a)</a>, can also be used as attributive admodifier <a href="#ex14">(14 b)</a>, but not as predicative head (“verbs”). There are about 10 monomorphemic adverbs of this type and some affixes can be used to construct more examples this type of adverbs, as summarized in <a href="#adverbstype3">(18)</a> below. Some of these adverbs are attested as referential heads (“nouns”), but only in rather philosophical contexts <a href="#ex14">(14 c)</a>.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a></p>
+<p>Adverbs of type 3, for example <em>bisher</em> ‘up to now’ <a href="#ex14">(14 a)</a>, can also be used as attributive adjustor <a href="#ex14">(14 b)</a>, but not as predicative head (“verbs”). There are about 10 monomorphemic adverbs of this type and some affixes can be used to construct more examples this type of adverbs, as summarized in <a href="#adverbstype3">(18)</a> below. Some of these adverbs are attested as referential heads (“nouns”), but only in rather philosophical contexts <a href="#ex14">(14 c)</a>.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></p>
 
 <div id="ex14">
 <table class="linguistic-example">
@@ -1237,22 +1270,22 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Adverbial admodifier: <em><strong>Bisher</strong> hatte er nicht den Eindruck, abgehängt zu sein.</em><a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Adverbial adjustor: <em><strong>Bisher</strong> hatte er nicht den Eindruck, abgehängt zu sein.</em><a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Attributive admodifier: <em>Die Leistung <strong>bisher</strong> stimmt, das Ergebnis noch nicht.</em><a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Attributive adjustor: <em>Die Leistung <strong>bisher</strong> stimmt, das Ergebnis noch nicht.</em><a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die meisten reizt schon der leere Unterschied <strong>zum Bisher</strong>, die Frische, gleichviel zunächst, was ihr Inhalt ist.</em><a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die meisten reizt schon der leere Unterschied <strong>zum Bisher</strong>, die Frische, gleichviel zunächst, was ihr Inhalt ist.</em><a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Adverbs of type 4, for example <em>anfangs</em> ‘initially’, can only be used adverbially <a href="#ex15">(15 a)</a>. The about 30 monomorphemic adverbs of this type are listed in <a href="#adverbstype4">(19)</a> below. A referential use seems to be possible for <em>darum</em> <a href="#ex15">(15 b)</a>, <em>warum</em> <a href="#ex15">(15 c)</a> and <em>wie</em> <a href="#ex15">(15 d)</a>.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a></p>
+<p>Adverbs of type 4, for example <em>anfangs</em> ‘initially’, can only be used adverbially <a href="#ex15">(15 a)</a>. The about 30 monomorphemic adverbs of this type are listed in <a href="#adverbstype4">(19)</a> below. A referential use seems to be possible for <em>darum</em> <a href="#ex15">(15 b)</a>, <em>warum</em> <a href="#ex15">(15 c)</a> and <em>wie</em> <a href="#ex15">(15 d)</a>.<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a></p>
 
 <div id="ex15">
 <table class="linguistic-example">
@@ -1264,28 +1297,30 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Adverbial admodifier: <em><strong>Anfangs</strong> haben wir uns gestritten.</em><a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Adverbial adjustor: <em><strong>Anfangs</strong> haben wir uns gestritten.</em><a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die Antwort, <strong>das Darum</strong>, fällt ziemlich trocken aus.</em><a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die Antwort, <strong>das Darum</strong>, fällt ziemlich trocken aus.</em><a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>[…], wobei er sich allerdings um <strong>das Warum</strong> keine Gedanken macht.</em><a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>[…], wobei er sich allerdings um <strong>das Warum</strong> keine Gedanken macht.</em><a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">d.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Nicht das Ob, sondern <strong>das Wie</strong> ist hier das Entscheidende.</em><a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Nicht das Ob, sondern <strong>das Wie</strong> ist hier das Entscheidende.</em><a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Finally, there is a large group of ingredients that can be used adverbially, but these ingredients themselves cannot be further modified at all. The previously discussed adverbs (type 1 through 4) can be modified, for example <em>seit gestern</em> ‘since yesterday’, <em>fast immer</em> ‘almost always’ or <em>schon bisher</em> ‘already up to now’. However, the adverbs listed below in <a href="#adverbstype5">(20)</a> do not allow for such modification. There is a strong correspondence between these non-modifiable adverbs and the class of adverbs traditionally called <em>Konjunktionaladverb</em>. Consequently, I will call them as such. However, note that the definition of this class is not based on the semantic notion of conjunction at all. It is based on the syntactic phenomenon that they are not modifiable.</p>
-<p>By the current definitions, ingredients that cannot be modified are called operators and not bases. so, strictly speaking this class of ingredients belongs to the operators to be discussed later in this chapter. However, atypically for operators, the adverbs in <a href="#adverbstype1">(16)</a> are positionally flexible in that they a speaker can position them in various places in a sentence, including at the start. In this syntactic aspect they are similar to the previously discussed adverbs and different from adverbial operators like <em>nicht, nämlich</em> and modal particles like <em>bloß, doch, gar</em> that cannot occur at the start of a sentence.</p>
+<p>Finally, there is a large group of ingredients that can be used adverbially, but these ingredients themselves cannot be further modified at all. All the previously discussed adverbs (type 1 through 4) can themselves be further modified, for example <em>seit gestern</em> ‘since yesterday’, <em>fast immer</em> ‘almost always’, <em>schon bisher</em> ‘already up to now’ or <em>gleich anfangs</em> ‘immediately at the start’.</p>
+<p>In contrast, adverbs like <em>außerdem</em> ‘besides’, <em>durchaus</em> ‘quite’ or <em>dauernd</em> ‘constantly’ and all others listed below in <a href="#adverbstype5">(20)</a> do not allow for such modification. There is a strong correspondence between these non-modifiable adverbs and the class of adverbs traditionally called <em>Konjunktionaladverb</em>. Consequently, I will use this name for this class of adverbs. However, it is important to realize that the definition of this class is not based on the semantic notion of conjunction at all. It is based on the syntactic phenomenon that they are not modifiable.</p>
+<p>By the current definitions, ingredients that cannot be modified are called operators and not bases. So, strictly speaking this class of ingredients belongs to the operators that will be discussed later in this chapter. However, atypically for operators, the adverbs as listed in <a href="#adverbstype5">(20)</a> are positionally flexible in that a speaker can position them in various places in a sentence, including at the start (i.e. in the <em>Vorfeld</em>). In this syntactic aspect they are similar to the previously discussed adverbs and different from adverbial operators like <em>nämlich</em> or <em>sehr</em> and modal particles like <em>bloß</em> or <em>doch</em> that cannot occur as the <em>Vorfeld</em> of a sentence (see ???).</p>
+<p>Concluding, the five different classes of adverbs are summarized in <a href="#adverbstype1">(16)</a> through <a href="#adverbstype5">(20)</a>.</p>
 
 <div id="ex16">
 <table class="linguistic-example">
@@ -1426,12 +1461,12 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Temporal meaning: <em>alsbald, alsdann, bislang, daraufhin, dauernd, derweilen, einstweilen, fast, gerade, inzwischen, mittlerweile, nun, schließlich, schon</em></td>
+<td class="linguistic-example-content" style="text-align: left;">Temporal meaning: <em>alsbald, alsdann, bislang, daraufhin, dauernd, derweilen, eben, einstweilen, fast, gerade, inzwischen, mittlerweile, nun, schließlich, schon</em></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Modal meaning: <em>allemal, allerdings, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bloß, dahingegen, darüber hinaus, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, desgleichen, durchaus, einigermaßen, ferner, folglich, freilich, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, jedoch, kaum, keineswegs, lediglich, maximal, mindestens, minimal, mithin, nichtsdestotrotz, nichtsdestoweniger, nunmehr, obendrein, ohnedies, ohnehin, sodann, somit, sonst, sowieso, trotzdem, überdies, überhaupt, vielleicht, vielmehr, vor allem, weiters, wenigstens, wiederum, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar</em></td>
+<td class="linguistic-example-content" style="text-align: left;">Modal meaning: <em>allemal, allerdings, also, andernteils, ansonsten, auch, außerdem, beinahe, beispielsweise, bereits, beziehungsweise, bloß, dahingegen, darüber hinaus, dementgegen, demgegenüber, demgemäß, demnach, demzufolge, dennoch, derart, dermaßen, desgleichen, durchaus, einigermaßen, ferner, folglich, freilich, geradewegs, gleichwohl, hingegen, hinwiederum, im Übrigen, immerhin, indes, insbesondere, jedoch, kaum, keineswegs, lediglich, maximal, minimal, mithin, nichtsdestotrotz, nichtsdestoweniger, nunmehr, obendrein, ohnedies, ohnehin, sodann, somit, sonst, sowieso, trotzdem, überdies, überhaupt, vielleicht, vielmehr, vor allem, wiederum, wohlgemerkt, zudem, zuguterletzt, zumal, zumindest, zwar</em></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -1441,28 +1476,35 @@ vertical-align: top;
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">d.</td>
-<td class="linguistic-example-content" style="text-align: left;">Stems with the suffix <em>‑falls</em>, e.g. <em>allenfalls, anderenfalls, bestenfalls, ebenfalls, gegebenenfalls, gleichfalls, keinesfalls</em>, etc.</td>
+<td class="linguistic-example-content" style="text-align: left;">Superlatives and ordinals with the suffix <em>‑ns</em>, e.g. <em>bestens, frühestens, genauestens, höchstens, meistens, mindestens, schnellstens, spätestens, strengstens, wenigstens, erstens, zweitens, drittens</em>, etc.</td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">e.</td>
-<td class="linguistic-example-content" style="text-align: left;">Stems with the suffix <em>‑mals</em> (except <em>damals, mehrmals</em>), e.g. <em>abermals, ehemals, nochmals, oftmals, vormals, vielmals</em>, etc.</td>
+<td class="linguistic-example-content" style="text-align: left;">Stems with the suffix <em>‑falls</em>, e.g. <em>allenfalls, anderenfalls, bestenfalls, ebenfalls, gegebenenfalls, gleichfalls, keinesfalls</em>, etc.</td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">f.</td>
-<td class="linguistic-example-content" style="text-align: left;">Stems with the suffix <em>‑lings</em>, e.g. <em>blindlings, seitlings, rücklings</em>, etc.</td>
+<td class="linguistic-example-content" style="text-align: left;">Stems with the suffix <em>‑mals</em> (except <em>damals, mehrmals</em>), e.g. <em>abermals, ehemals, nochmals, oftmals, vormals, vielmals</em>, etc.</td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">g.</td>
+<td class="linguistic-example-content" style="text-align: left;">Stems with the suffix <em>‑lings</em>, e.g. <em>blindlings, seitlings, rücklings</em>, etc.</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">h.</td>
 <td class="linguistic-example-content" style="text-align: left;">Stems with the suffix <em>‑erseits</em>, e.g. <em>andererseits, deinerseits, einerseits, meinerseits, väterlicherseits, staatlicherseits</em>, etc.</td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>There are still a few ingredients that need special attention. First, the double prepositions <em>voran, voraus, vorbei, vorüber</em> are often listed as adverbs, but they cannot be used as adverbial adjustors at all and will thus not be classified as adverbs here. They can be used as preverbials in compound verbs, like in <em>voranlaufen, vorauslaufen, vorbeilaufen</em> and <em>vorüberlaufen</em>. Also, except for <em>voran</em>, they can be used as predicative heads, like in <em>es ist vorbei/vorüber</em> and <em>er ist den anderen voraus</em>. Finally, <em>voran</em> can be used (although somewhat old-fashioned) as a postposition governing a dative case, like <em>dem Festzug voran</em>. Yet, these four ingredients <em>voran, voraus, vorbei, vorüber</em> cannot be used as an adverbial modifier and are consequently not adverbs. This is notably different from <em>vorab</em>, which is an adverb type 4 as listed in <a href="#adverbstype4">(19)</a>.</p>
+<p>Second, most dictionaries of German categorize the ingredients <em>nahezu, nämlich, schier, sehr, sogar, überaus</em> and <em>weitaus</em> as adverbs.<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a> They can indeed be used adverbially without being modifiable themselves, like the adverbs listed in <a href="#adverbstype4">(19)</a>. However, they are not very frequent in this adverbial usage. They occur much more frequently in narrow-scope modification, like <em>schier unmöglich</em> ‘practically impossible’ or <em>weitaus größer</em> ‘much larger’. Crucially, they are syntactically special in that they cannot be used as the sole content of the first position of the sentence, i.e. as the <em>Vorfeld</em>. This makes them different from all adverbs discussed in this section. They are not classified as adverbs here, but as non-initial particles (see ???).</p>
 <h3 data-number="3.2.5" label="3.2.5" id="sec3.2.5"><span class="header-section-number">3.2.5</span> <em>Numerale</em></h3>
-<p>The class of <em>Numerale</em> (numerals) is arguably a subclass of adjectives, but it has various different syntactic characteristics that warrant a separate class. First note that numerals are actually bases (and not operators), because they can be modified <a href="#ex21">(21 a)</a>. Also note that numerals are typically ordered at the start of a chain of attributive modifiers, but it is also possible for them to occur after other attributes <a href="#ex21">(21 b)</a>.</p>
+<p>The class of <em>Numerale</em> (numerals) is arguably a subclass of adjectives, but it has various different syntactic characteristics that warrant a separate class. First note that numerals are actually bases (and not operators), because they can be modified <a href="#ex21">(21 a)</a>. Also note that numerals are typically ordered at the start of a chain of attributive modifiers, but it is also possible for them to occur after other attributes in the noun phrase <a href="#ex21">(21 b)</a>.</p>
 
 <div id="ex21">
 <table class="linguistic-example">
@@ -1470,17 +1512,17 @@ vertical-align: top;
 <tr class="odd">
 <td class="linguistic-example-number" style="vertical-align: top;">(21)</td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Modifiable: <em>Aber der Nobelpreis lässt eben nur <strong>maximal drei</strong> Preisträger zu.</em><a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Modifiable: <em>Aber der Nobelpreis lässt eben nur <strong>maximal drei</strong> Preisträger zu.</em><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Variable ordering: <em>Die <strong>anderen drei Topstars</strong> dagegen enttäuschten bislang.</em><a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Variable ordering: <em>Die <strong>anderen drei Topstars</strong> dagegen enttäuschten bislang.</em><a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Numerals can be used as attributive admodifier <a href="#ex22">(22 a)</a> and as referential head <a href="#ex22">(22 b)</a>. In both uses the numeral does not have any inflection. A numeral can be used as an adverbial admodifier with the suffix <em>-mal</em> <a href="#ex22">(22 c)</a>. Numerals can only be used as a predicative head (with a copula) in very specific contexts, namely to express a mathematical result <a href="#ex22">(22 c)</a>, to express age <a href="#ex22">(22 d)</a> or in fixed expressions <a href="#ex22">(22 e)</a>.</p>
+<p>Numerals can be used as attributive adjustor <a href="#ex22">(22 a)</a> and as referential head <a href="#ex22">(22 b)</a>. In both uses the numeral does not have any inflection. A numeral can be used as an adverbial adjustor with the suffix <em>-mal</em> <a href="#ex22">(22 c)</a>. Numerals can only be used as a predicative head with a copula in very specific contexts, namely to express a mathematical result <a href="#ex22">(22 c)</a>, to express age <a href="#ex22">(22 d)</a> or in some proverbs <a href="#ex22">(22 e)</a>.</p>
 
 <div id="ex22">
 <table class="linguistic-example">
@@ -1492,27 +1534,27 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Attributive admodifier: <em>Die <strong>drei</strong> Kandidaten traten gegeneinander an.</em><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Attributive adjustor: <em>Die <strong>drei</strong> Kandidaten traten gegeneinander an.</em><a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die <strong>drei</strong> grummelten vor sich hin.</em><a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die <strong>drei</strong> grummelten vor sich hin.</em><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Adverbial admodifier: <em>Ich klopfe <strong>dreimal</strong>.</em><a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Adverbial adjustor: <em>Ich klopfe <strong>dreimal</strong>.</em><a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">d.</td>
-<td class="linguistic-example-content" style="text-align: left;">Mathematic result: <em>Eins plus eins ist <strong>drei</strong>.</em><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Mathematic result: <em>Eins plus eins ist <strong>drei</strong>.</em><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">e.</td>
-<td class="linguistic-example-content" style="text-align: left;">Age indication: <em>Maxi, die Jüngste, ist <strong>drei</strong>.</em><a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Age indication: <em>Maxi, die Jüngste, ist <strong>drei</strong>.</em><a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -1522,7 +1564,7 @@ vertical-align: top;
 </tbody>
 </table>
 </div>
-<p>Derived from numerals are <em>Ordinalzahlen</em> (ordinals) with the suffix <em>‑te</em> and <em>Bruchzahlen</em> (fractions) with the suffix <em>-tel</em>. Ordinals <a href="#ex23">(23)</a> have a different syntax from numerals <a href="#ex22">(22)</a>. Ordinals in attributive function have agreement <a href="#ex23">(23 a)</a> and ordinals in predicative function are only used for results of a competition <a href="#ex23">(23 c)</a>. Ordinals are not possible in adverbial function.</p>
+<p>Derived from numerals are <em>Ordinalzahlen</em> (ordinals) with the suffix <em>‑te</em> and <em>Bruchzahlen</em> (fractions) with the suffix <em>-tel</em>. Ordinals <a href="#ex23">(23)</a> have a different syntax from numerals <a href="#ex22">(22)</a>. Ordinals in attributive function have agreement <a href="#ex23">(23 a)</a> and ordinals in predicative function are only used for results of a competition <a href="#ex23">(23 c)</a>. Ordinals are not possible in adverbial function. To express such meanings a complete noun phrase has to be used, like <em>zum dritten Mal</em>.</p>
 
 <div id="ex23">
 <table class="linguistic-example">
@@ -1534,22 +1576,22 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Attributive admodifier: <em>Wir müssen uns mit dem <strong>dritten</strong> Geschlecht befassen.</em><a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Attributive adjustor: <em>Wir müssen uns mit dem <strong>dritten</strong> Geschlecht befassen.</em><a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die <strong>dritte</strong> erzählt von Flucht und Immigration.</em><a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Die <strong>dritte</strong> erzählt von Flucht und Immigration.</em><a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a></td>
 </tr>
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">c.</td>
-<td class="linguistic-example-content" style="text-align: left;">Rank in sports: <em>Die deutschen Fußballdamen wurden <strong>dritte</strong>.</em><a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Rank in sports: <em>Die deutschen Fußballdamen wurden <strong>dritte</strong>.</em><a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>In contrast, <em>Bruchzahlen</em> (fractions) have completely different syntactic possibilities. They are neuter nouns in referential use <a href="#ex24">(24 a)</a> and can be used as verbs without copula <a href="#ex24">(24 b)</a>. Fractions cannot be used attributively nor adverbially.</p>
+<p>In contrast, <em>Bruchzahlen</em> (fractions) have yet again different syntactic possibilities. They are neuter nouns in referential use <a href="#ex24">(24 a)</a> and can be used as verbs without copula <a href="#ex24">(24 b)</a>. Fractions cannot be used attributively nor adverbially and are consequently considered to be nouns in German, written with an initial capital.</p>
 
 <div id="ex24">
 <table class="linguistic-example">
@@ -1561,16 +1603,17 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Ein <strong>Drittel</strong> aller verbliebenen Clubs kommen von der Insel.</em><a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Referential head: <em>Ein <strong>Drittel</strong> aller verbliebenen Clubs kommen von der Insel.</em><a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">b.</td>
-<td class="linguistic-example-content" style="text-align: left;">Predicative head: <em>Seit Juli hat sich der Wert der Aktie fast <strong>gedrittelt</strong>.</em><a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Predicative head: <em>Seit Juli hat sich der Wert der Aktie fast <strong>gedrittelt</strong>.</em><a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>There is a strange quirk in German orthography to write numerals with an initial lowercase even when they are used as a referential head, e.g. <em>diese drei flüchteten</em> ‘those three fled’, while writing <em>Million</em> (and other <em>‑llion</em> numerals) always with a capital, even when they are used as an attributive adjustor, e.g. <em>die Millionen Menschen</em> ‘the million dollar’. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10‑to‑1 preference for lower case with small numerals like <em>drei</em> or ordinals like <em>dritte</em> when used as a referential head (“noun”).<a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a></p>
 
 <div id="ex25">
 <table class="linguistic-example">
@@ -1582,7 +1625,7 @@ vertical-align: top;
 <tr class="even">
 <td></td>
 <td class="linguistic-example-label" style="text-align: left;">a.</td>
-<td class="linguistic-example-content" style="text-align: left;">Numerals: <em>null, eins, zwei, drei, vier, fünf, sechs, sieb(en), acht, neun, zehn, hundert, tausend, Million</em><a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a></td>
+<td class="linguistic-example-content" style="text-align: left;">Numerals: <em>null, eins, zwei, drei, vier, fünf, sechs, sieb(en), acht, neun, zehn, hundert, tausend, Million</em><a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -1602,12 +1645,11 @@ vertical-align: top;
 </tbody>
 </table>
 </div>
-<p>There is a strange quirk in German orthography to write numerals with a lowercase initial even when they are used as a referential head, e.g. <em>diese drei flüchteten</em> ‘those three fled’, while writing <em>Million</em> (and other <em>‑llion</em> numerals) always with a capital, even when they are used as an attributive admodifier, e.g. <em>die Million Doller</em> ‘the million dollar’. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10‑to‑1 preference for lower case with small numerals, e.g. “die @drei $p=VVFIN” (991 hits) vs. “die @Drei $p=VVFIN” (92 hits). The same search with <em>tausend/Tausend</em> shows a reverse trend with 6 against 11 hits. With ordinals the tendency to use lowercase in referential use is about 7‑to‑1 (e.g. “die @dritte $p=VVFIN” has 1490 hits while “die @Dritte $p=VVFIN” has 225 hits).</p>
-<h3 data-number="3.2.6" label="3.2.6" id="sec3.2.6"><span class="header-section-number">3.2.6</span> Stems used in multiple bases</h3>
+<h3 data-number="3.2.6" label="3.2.6" id="sec3.2.6"><span class="header-section-number">3.2.6</span> Stems used in multiple base classes</h3>
 <ul>
 <li>Nomen/Verb</li>
 <li>Nomen/Adjektiv</li>
-<li>Verb/Adjektiv</li>
+<li>Verb/Adjektiv: <em>albern</em></li>
 <li>Numerale/Adjektiv: <em>hundert, tausend, Million</em> (‘very many’)</li>
 <li>Numeral/Nomen: <em>Million</em> (‘one million in monetary value’)</li>
 <li>Adverb/Nomen: <em>morgen/Morgen</em> (‘tomorrow/morning’)</li>
@@ -1619,19 +1661,176 @@ Die Million kommt von diversen Sponsoren.</p>
 <h2 data-number="3.3" label="3.3" id="sec3.3"><span class="header-section-number">3.3</span> Operator classes</h2>
 <p>Junctors, Limiters</p>
 <p>Quantors, Abtönungspartikel, Konjunktionaladverben, Epithesis/Diathesis, etc.</p>
-<h3 data-number="3.3.1" label="3.3.1" id="sec3.3.1"><span class="header-section-number">3.3.1</span> Referential operators</h3>
-<h3 data-number="3.3.2" label="3.3.2" id="sec3.3.2"><span class="header-section-number">3.3.2</span> Predicative operators</h3>
-<h3 data-number="3.3.3" label="3.3.3" id="sec3.3.3"><span class="header-section-number">3.3.3</span> Attributive operators</h3>
-<h3 data-number="3.3.4" label="3.3.4" id="sec3.3.4"><span class="header-section-number">3.3.4</span> Adverbial operators</h3>
-<h1 data-number="4" label="4" id="sec4"><span class="header-section-number">4</span> Old text</h1>
-<h2 data-number="4.1" label="4.1" id="sec4.1"><span class="header-section-number">4.1</span> Expressing the syntactic model</h2>
-<p>The syntactic model is turned into YAST-instructions as follows. Each base is a content lexeme that makes up a single instruction (i.e. a single line in the YAST-format as in the earlier example, repeated below). layering and embedding are specified by indenting of the instructions. The difference between redoubling and embedding is not explicitly specified. However, embedding typically can have further modifications and their relation to the superordinate base can be specified with a linkage (before the colon). Syntactically, each linkage is an operator. All other operators are added in brackets after the base lexeme.</p>
+<h3 data-number="3.3.1" label="3.3.1" id="sec3.3.1"><span class="header-section-number">3.3.1</span> Junctors</h3>
+<p>phrasal: both attributive and adverbial (and argument!)
+clausal: only adverbial. Attributive clauses do not have junctor</p>
 
 <div id="ex26">
 <table class="linguistic-example">
 <tbody>
 <tr class="odd">
-<td class="linguistic-example-number" style="vertical-align: middle;">(26)</td>
+<td class="linguistic-example-number" style="vertical-align: top;">(26)</td>
+<td colspan="2" class="linguistic-example-preamble" style="text-align: left;">Phrasal junctors</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-content" style="text-align: left;">Prepositions governing dative: <em>ab, aus, außer, bei, entgegen, entsprechend, gegenüber, gemäß, mit, nach, nahe, seit, von, zu</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-content" style="text-align: left;">Prepositions governing accusative: <em>bis, durch, entlang, für, gegen, ohne, um</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">c.</td>
+<td class="linguistic-example-content" style="text-align: left;">Prepositions governing dative or accusative: <em>an, auf, hinter, in, neben, über, unter, vor, zwischen</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">d.</td>
+<td class="linguistic-example-content" style="text-align: left;">Prepositions governing genitive: <em>abseits, abzüglich, angesichts, anfangs, anhand, anstatt, außerhalb, aufgrund, bar, bezüglich, dank, diesseits, eingangs, einschließlich, entlang, infolge, innerhalb, inmitten, jenseits, kraft, längs, laut, links, mittels, ob, oberhalb, rechts, seitens, statt, trotz, ungeachtet, unterhalb, unweit, während, wegen, zugunsten</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">e.</td>
+<td class="linguistic-example-content" style="text-align: left;">Postpositions governing dative: <em>gegenüber, nach, voran, zufolge</em></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">f.</td>
+<td class="linguistic-example-content" style="text-align: left;">Postpositions governing accusative: <em>durch, entlang, hoch, über</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">g.</td>
+<td class="linguistic-example-content" style="text-align: left;">Postpositions governing genitive: <em>halber, wegen</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>:::
+Clausal junctors</p>
+<ul>
+<li>Temporal: <em>als, bevor, bis, ehe, nachdem, seit, seitdem, sobald, solange, während, wenn</em></li>
+<li>Modal: <em>als ob, da, damit, falls, indem, insofern, insoweit, obgleich, obschon, obwohl, obzwar, sofern, sooft, sosehr, soviel, soweit, sowie, weil, wenngleich, wie, wo</em></li>
+<li>Prepositional: <em>anstatt, außer, ohne, statt, um</em></li>
+<li>Participial: <em>angenommen, ausgenommen, gegeben, gesetzt, ungeachtet, unterstellt, vorausgesetzt</em>
+:::</li>
+</ul>
+<p>some both conjunction and subjunction: doch, weil, vorausgesetzt
+double: mal-mal, entweder/oder, sowohl/als-wie-auch, wenn/dann, weder/noch, nichtnur/sondernauch</p>
+
+<div id="ex27">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(27)</td>
+<td class="linguistic-example-preamble" style="text-align: left;">Conjunctions</td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-content" style="text-align: left;"><em>aber, denn, doch, noch, oder, sondern, sowie, und, und zwar</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 data-number="3.3.2" label="3.3.2" id="sec3.3.2"><span class="header-section-number">3.3.2</span> Specifiers</h3>
+<p>multiple specifiers
+Rede von Wolfgang Clement, 14.01.2003
+Manch einer sagt, es wehe ganz schön viel energiepolitischer Wind aus Brüssel,</p>
+<p>Attributspezifikation (“Gradpartikel”)</p>
+<p>Gradadjektiv: absolut, annähernd, arg, ausgesprochen, außergewöhnlich, außerordentlich, äußerst, echt, eklatant, enorm, entsetzlich, erbärmlich, extrem, furchtbar, ganz, hochgradig, höchst, irre, komplett, recht, regelrecht, relativ, restlos, richtig, schrecklich, schön, tierisch, total, traumhaft, ungemein, ungeheuerlich, ungewöhnlich, unglaublich, unheimlich, unwahrscheinlich, übermäßig, verhältnismäßig, verschwindend, vollkommen, völlig, weit, weitgehend, wahnsinnig, ziemlich, maximal, minimal, mindestens, ungefähr
+Gradadverb: beinahe, besonders, dermaßen, derart, durchaus, eher, einigermaßen, etwas, fast, kaum, so, spätestens, vergleichsweise, zumindest
+Gradpartikel: nahezu, nur, schier, sehr, sogar, überaus, weitaus, zu, nicht</p>
+<p>Referenzspezifikation (“Fokuspartikel”)</p>
+<p>FokusAdjektiv: ausgerechnet, einzig, erst
+FokusAdverb: allein, allenfalls, bereits, besonders, bestenfalls, bloß, gerade, mindestens, lediglich, schon, spätestens, vor allem, wenigstens
+Fokuspartikel: auch, sogar, nur, selbst, nicht</p>
+<p>Adverbialspezifikation (“Grenzpartikel”, “Adverbialpartikel”)</p>
+<p>Grenzpräposition = von, nach, seit, ab, bis, für</p>
+<p>Präpositionsspezifikation = dicht, direkt, eng, genau, gerade, gleich, hoch, knapp, kurz, lang, leicht, nah, schräg, tief, weit, östlich, seitlich, ungefähr, unmittelbar, spätestens</p>
+<p>AusmaßAdjektiv = direkt, genau, ganz, gleich, häufig, kurz, lange, unmittelbar, viel, völlig, weit, ziemlich
+AusmaßAdverb = bald, beinahe, etwas, fast, gerade, immer, schon, spätestens
+AusmaßPartikel: auch, eben, mal, nur, wohl, nicht, sogar</p>
+<p>Ausmaß: allein, auch, ausgerechnet, bald, beinahe, bereits, besonders, bisher, bloß, da, deutlich, dort, eben, ebenfalls, eigens, einzig, erst, etwa, etwas, fast, ganz, gar, genau, gerade, gestern, gleich, heute, hier, hinten, immer, irgendwann, irgendwo, kaum, knapp, lange, lediglich, links, nahezu, nie, noch, nur, oben, rechts, schon, sehr, selbst, so, spätestens, überhaupt, ungefähr, unten, vorn, vorne, weiter, wenigstens, wieder, wohl, zeimlich, zumindest, zumindestens</p>
+<p>Prädikationspezifikation (“Post-vorfeldpartikel”, “Non-vorfeldpartikel”)</p>
+<p>Post-vorfeldAdverb = allerdings, also, andererseits, andernteils, beispielsweise, freilich, hingegen, hinwiederum, immerhin, indes, indessen, insbesondere, jedoch, mittlerweile, schließlich, schon, sonst, stattdessen, überhaupt, unterdessen, währenddessen, wiederum, wenigstens, zumindest, zwar
+Post-vorfeldPartikel: auch, nur, nämlich</p>
+<p>Adjektiv: bloß, eben, gar, rein
+Adverb: auch, bloß, eben
+Konjunktion: aber, denn, doch, noch
+(Abtönungspartikel, Modalpartikel)</p>
+<p>Non-Vorfeldpartikel: <em>aber, auch, bloß, denn, doch, eben, eh, etwa, gar, halt, ja, mal, nicht, noch, nur, rein, schon, wohl</em></p>
+<p><em>eben, eh (~ehe!), etwa, gar, halt, ja, mal, nicht</em></p>
+<p><em>nahezu, nämlich, schier, sehr, sogar, überaus, weitaus</em></p>
+<p>Second, the ingredients <em>nämlich</em> and <em>sogar</em> are similar to the non-modifiable adverbs as listed in <a href="#adverbstype5">(20)</a>. When used adverbially, they can be placed rather freely in the sentence, depending on the intended meaning <a href="#ex28">(28 a,b)</a>. However, different from all adverbs discussed in this section, <em>nämlich</em> and <em>sogar</em> cannot occur as first element of the sentence, i.e. as <em>Vorfeld</em> <a href="#ex28">(28 c,d)</a>. This makes them somewhat similar to ingredients that are commonly called <em>Modalpartikel</em> in the German grammatical tradition. For this reason, the ingredients <em>nämlich</em> and <em>sogar</em> are not classified here as adverbs, but as “non-initial sentence operators” (see ???).</p>
+
+<div id="ex28">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(28)</td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-judgement" style="text-align: right;"></td>
+<td class="linguistic-example-content" style="text-align: left;"><em>Auf persönlicher Ebene ist <strong>(nämlich)</strong> in Deutschland <strong>(nämlich)</strong> von German Angst <strong>nämlich</strong> wenig zu spüren.</em><a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-judgement" style="text-align: right;"></td>
+<td class="linguistic-example-content" style="text-align: left;"><em>Dänemark plant <strong>(sogar)</strong> feste Kontrollposten <strong>sogar</strong> im nächsten Haushalt ein.</em><a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">c.</td>
+<td class="linguistic-example-judgement" style="text-align: right;">*</td>
+<td class="linguistic-example-content" style="text-align: left;"><em><strong>Nämlich</strong> ist auf persönlicher Ebene in Deutschland von German Angst wenig zu spüren.</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">d.</td>
+<td class="linguistic-example-judgement" style="text-align: right;">*</td>
+<td class="linguistic-example-content" style="text-align: left;"><em><strong>Sogar</strong> plant Dänemark feste Kontrollposten im nächsten Haushalt ein.</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A few of these non-modifiable adverbs need special attention, namely <em>nahezu, schier, sehr, überaus</em> and <em>weitaus</em>.<a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a> They can indeed be used adverbially, but they are extremely restricted and not very common in adverbial usage. As will be discussed in (???), they have other uses in which they occur much more frequently. As sentence adverbials they only occur with a very small set of main verbs.</p>
+<p>The adverbs <em>nahezu</em> and <em>schier</em> are mainly used with a gloomy connotation: <em>schier</em> is typically used in combination with verbs like <em>ersticken, verhungern, verzweifeln</em> or <em>erschlagen</em> <a href="#ex29">(29 a)</a>, while <em>nahezu</em> typically is attested in collocations with verbs like <em>ausbremsen, erblinden, vernichten</em> or <em>ausschließen</em> <a href="#ex29">(29 b)</a>. In contrast, the adverbs <em>sehr, überaus</em> and <em>weitaus</em> are typically used with a much more positive connotation.</p>
+<p>nahezu vernichten, erblinden, schaffen, ausschließen, ausrotten, ausschöpfen, positiv: verdoppeln
+schier ersticken, verhungern, verzweifeln, positiv:
+sehr lieben, freuen, schätzen
+überaus genießen, schätzen, verehren, lieben
+weitaus übertreffen, überwiegen, überragen</p>
+
+<div id="ex29">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: top;">(29)</td>
+<td class="linguistic-example-label" style="text-align: left;">a.</td>
+<td class="linguistic-example-content" style="text-align: left;"><em>Und dass Florenz so viel zu bieten hat, dass einen die Masse <strong>schier</strong> erschlägt.</em><a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td class="linguistic-example-label" style="text-align: left;">b.</td>
+<td class="linguistic-example-content" style="text-align: left;">*“Über 50 Meter kann immer alles passieren”, sagte Steffen, die ein zweites WM-Gold sogar <strong>nahezu</strong> ausschloss.<a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>schier</em> also attributively: schiere Masse, schiere Überlastung, etc.</p>
+<h1 data-number="4" label="4" id="sec4"><span class="header-section-number">4</span> Old text</h1>
+<h2 data-number="4.1" label="4.1" id="sec4.1"><span class="header-section-number">4.1</span> Expressing the syntactic model</h2>
+<p>The syntactic model is turned into YAST-instructions as follows. Each base is a content lexeme that makes up a single instruction (i.e. a single line in the YAST-format as in the earlier example, repeated below). layering and embedding are specified by indenting of the instructions. The difference between redoubling and embedding is not explicitly specified. However, embedding typically can have further modifications and their relation to the superordinate base can be specified with a linkage (before the colon). Syntactically, each linkage is an operator. All other operators are added in brackets after the base lexeme.</p>
+
+<div id="ex30">
+<table class="linguistic-example">
+<tbody>
+<tr class="odd">
+<td class="linguistic-example-number" style="vertical-align: middle;">(30)</td>
 <td class="linguistic-example-content" style="text-align: left;"><div class="ex" data-noFormat="true">
 <pre><code>sehen (Perfekt)
   Gesehene: Mann (Plural + Definit)
@@ -1766,6 +1965,14 @@ Das Gestern harrt / auf ein Morgen / auf ein Morgen, das endlos weiterrückt.</p
 <li><span class="smallcaps">linkage</span> (<em>Verbindung</em>) is made with relators (<em>Relator</em>) inside clauses ‘link upwards’. In German relative pronouns (‘d’-<em>Relativpronomen</em>) and question words (‘w’-<em>Fragewort</em>), with the default entries <em>dass</em> and <em>was</em>. Additionally the particle <em>ob</em> is used as relator. Relators always occur in the first position of a clause and there is a strong connection to the <em>Vorfeld</em> position in the German main clause (which can be interpreted as the linkage to the preceding context with a default entry <em>es</em>).</li>
 </ul>
 <p>The order of instructions in a recipe is to a large extend “free”. The speaker is allowed to specify the instructions in any order in accordance with the intended message (within certain language-specific limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to mould the result in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.</p>
+<h3 data-number="4.6.1" label="4.6.1" id="sec4.6.1"><span class="header-section-number">4.6.1</span> Komplemente? Implizite Adverbialsätze ???</h3>
+<p><em>wir haben viel zu besprechen</em>
+<em>wir haben so viel zu besprechen, dass (???) wir noch länger bleiben müssen</em>
+<em>wir haben so viel zu besprechen (und die Folge ist), dass wir …</em></p>
+<p>reverse? <em>wir müssen länger bleiben, weil wir so viel zu besprechen haben</em></p>
+<p><em>wir besprechen die neue Situation</em>
+<em>wir besprechen, dass es schneller gehen muss</em>
+<em>wir besprechen so viel, dass es mir schwindelt</em> =&gt; mir schwindelt weil wir so viel besprechen.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
@@ -1842,6 +2049,11 @@ Das Gestern harrt / auf ein Morgen / auf ein Morgen, das endlos weiterrückt.</p
 
 </script>
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-zifonun2011" class="csl-entry" role="listitem">
+Zifonun, Gisela. 2011. Relationale <span>Adjektive</span>: Ein &quot;klassisches&quot; <span>Muster</span> im europäischen <span>Vergleich</span>. <em>Deutsche Sprache</em> 9(2). 98–112. <a href="http://www.dsdigital.de/DS.02.2011.098">http://www.dsdigital.de/DS.02.2011.098</a>.
+</div>
+</div>
 <aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
@@ -1854,40 +2066,48 @@ Das Gestern harrt / auf ein Morgen / auf ein Morgen, das endlos weiterrückt.</p
 <li id="fn7"><p><span class="smallcaps">dwds</span>: Hars, Wolfgang: Nichts ist unmöglich! Lexikon der Werbesprüche, München: Piper 2001 [1999], S. 378.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p><span class="smallcaps">dwds</span>: Lebert, Benjamin: Crazy, Köln: Kiepenheuer &amp; Witsch 1999 [1999], S. 150.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p><span class="smallcaps">dwds</span>: Die grosse Welt der Getränke, Hamburg: Tschibo Frisch-Röst-Kaffee Max Herz 1977, S. 274.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p><span class="smallcaps">dwds</span>: Die Zeit, 08.11.2016 (online).<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p><span class="smallcaps">dwds</span>: Der Tagesspiegel, 20.11.2000.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p><span class="smallcaps">dwds</span>: Die Zeit, 11.12.2017, Nr. 51.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13"><p><span class="smallcaps">dwds</span>: Der Tagesspiegel, 12.07.2001.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p><span class="smallcaps">dwds</span>: Die Zeit, 18.08.2016 (online).<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p><span class="smallcaps">dwds</span>: Die Zeit, 01.07.2017, Nr. 27.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>A few additional examples of adverbs type 2 used as referential head are the following: <em>Nach Spielschluss gab Lehmann ein Interview, das seinen Weg vom Hier und Jetzt <strong>ins Immer</strong> eindrücklich belegte.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 06.07.2006, Nr. 28) <em>Sie kommen aus der Leere, der Abwesenheit, sie langen an <strong>im Nirgends</strong>.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 02.10.1997, Nr. 41) <em>Die Grundbestimmungen Dauer, Einheit, Endzweck geben so dem prozessualen Leitbild nur seinen Gegensatz zum Flüchtigen, zur Vielheit des Chaos, <strong>zum Umsonst</strong> oder Nihilismus, aber sie geben noch keinerlei Entschiedenheit des positiven Inhalts.</em> (<span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 433) <em>Bei Gerhard Schröder bezieht sich <strong>das Überall</strong> nicht auf den geographischen Globus.</em> (<span class="smallcaps">dwds</span>: Der Tagesspiegel, 22.12.2002) <em>Als ginge es nicht nur ums Lebenswerk und seine Vollendetheit, sondern um seine Vollendung, anders gesagt: <strong>das Vorbei</strong>.</em> (<span class="smallcaps">dwds</span>: Der Tagesspiegel, 03.05.2000).<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17"><p><span class="smallcaps">dwds</span>: Die Zeit, 18.01.2018, Nr. 01.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p><span class="smallcaps">dwds</span>: Ulrich Seidler: Frei Luft Theater Fest. Berliner Zeitung, 22.06.2000.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn19"><p><span class="smallcaps">dwds</span>: Die Zeit, 16.03.2017, Nr. 10.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn20"><p><span class="smallcaps">dwds</span>: Busch, Werner: Das sentimentalische Bild, München: Beck 1993, S. 480.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn21"><p><span class="smallcaps">dwds</span>: Die Zeit, 26.04.2017 (online).<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn22"><p>A few additional examples of adverbs type 3 used as referential head are the following: <em>Im Danach ist auch immer schon <strong>das Demnächst</strong> zu entdecken.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 04.10.2007, Nr. 41) <em>Während er mechanisch nach rechts steuerte, […] sah er in sich das ganze Buch, die Vertiefungen, die Ausblicke, <strong>das Zuvor</strong> und <strong>das Hernach</strong>.</em> (<span class="smallcaps">dwds</span>: Feuchtwanger, Lion: Erfolg. Gesammelte Werke in Einzelbänden, Bd. 6, Berlin: Aufbau-Verl. 1930, S. 749) <em>Überhaupt lernt man hier alles wie <strong>im Nebenbei</strong>.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 14.03.2013, Nr. 12) <em>Ganz <strong>im Nebenher</strong> regelten sich die technischen Dinge.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 31.05.1956, Nr. 22) <em>Ihre Lebensgeschichte hat einen tiefen Einschnitt, der das Vorher <strong>vom Seither</strong> scheidet.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 08.08.1997, Nr. 33) <em>Aber auch <strong>das Zwischendurch</strong> spielt natürlich eine Rolle.</em> (<span class="smallcaps">dwds</span>: Blinden-Ensemble probt Konzert im Grünen. Berliner Zeitung, 21.09.1996) <em>Derzeit führt die stark schwankende Finanzierungskurve für diesen Bereich <strong>ins Abwärts</strong>, während sich die Herzen der Bewilliger bei Anträgen von Ingenieur- und Naturwissenschaftlern weit öffnen.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 17.05.1985, Nr. 21) <em>Peter-Klaus Schuster sucht das Neue gern im Alten, <strong>das Vorwärts im Rückwärts</strong>.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 05.10.2000, Nr. 41).<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn23"><p><span class="smallcaps">dwds</span>: Die Zeit, 04.01.2018, Nr. 52.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn24"><p><span class="smallcaps">dwds</span>: Die Zeit, 28.08.2015 (online).<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn25"><p><span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 1, Berlin: Aufbau-Verlag 1954, S. 52.<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn26"><p>A few additional examples of adverbs type 4 used as referential head are the following: <em>Es ist das Ungenossene, das diese große Kolportage von Musik füllt; das Noch-Nicht, ja selbst <strong>das Niemals</strong> hat ebenso sein eigentümlichstes Dasein aus den Luftwurzeln des Klangs.</em> (<span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 152) <em><strong>Das Wobei</strong> es die Bewandtnis hat, ist <strong>das Wozu</strong> der Dienlichkeit, <strong>das Wofür</strong> der Verwendbarkeit.</em> (<span class="smallcaps">dwds</span>: Heidegger, Martin: Sein und Zeit, Tübingen: Niemeyer 1927, S. 84) <em><strong>Das Nirgendwo</strong> ist als postulativ gedacht für <strong>das Wo</strong>, in dem sich die Menschen wirklich befinden.</em> (<span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 2, Berlin: Aufbau-Verl. 1955, S. 78) <em>In der ewigen Wiederkehr des Gleichen fällt <strong>das Wohin</strong> mit <strong>dem Woher</strong> zusammen.</em> (<span class="smallcaps">dwds</span>: Taubes, Jacob: Abendländische Eschatologie, München: Matthes und Seitz, 1947, S. 11) <em>Die Urfrage der Apokalyptik ist <strong>das Wann</strong>.</em> (Taubes, Jacob: Abendländische Eschatologie, München: Matthes und Seitz, 1947, S. 32) <em>Für Heidegger und Wittgenstein bildet der Normalfall, <strong>das Zunächst und Zumeist</strong>, kurzum, das Konventionelle den Ausgangspunkt ihrer Überlegungen.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 31.01.2002, Nr. 06).<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn27"><p><span class="smallcaps">dwds</span>: Die Zeit, 15.12.2017, Nr. 52.<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn28"><p><span class="smallcaps">dwds</span>: Ulrich Seidler: Pamphlete gegen Tatsachen. Berliner Zeitung, 06.09.2001.<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn29"><p><span class="smallcaps">dwds</span>: Schmidt-Rogge, Carl H.: Dein Kind  Dein Partner, München: List 1973 [1969], S. 339.<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn30"><p><span class="smallcaps">dwds</span>: Kurz, Robert: Schwarzbuch Kapitalismus, Frankfurt a. M.: Eichborn 1999, S. 270.<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn31"><p><span class="smallcaps">dwds</span>: Die Zeit, 03.10.2017 (online).<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn32"><p><span class="smallcaps">dwds</span>: Die Zeit, 28.10.2016 (online).<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn33"><p><span class="smallcaps">dwds</span>: Die Zeit, 22.11.2017 (online).<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn34"><p><span class="smallcaps">dwds</span>: Jentzsch, Kerstin: Seit die Götter ratlos sind, München: Heyne 1999 [1994], S. 257.<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn35"><p><span class="smallcaps">dwds</span>: Die Zeit, 08.01.2018, Nr. 02.<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn36"><p><span class="smallcaps">dwds</span>: Der Tagesspiegel, 11.03.2004.<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn37"><p><span class="smallcaps">dwds</span>: Die Zeit, 07.11.2007, Nr. 46.<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn38"><p><span class="smallcaps">dwds</span>: Die Zeit, 24.11.2017, Nr. 48.<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn39"><p><span class="smallcaps">dwds</span>: Die Zeit, 27.04.2017 (online).<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn40"><p><span class="smallcaps">dwds</span>: Die Zeit, 23.06.1995, Nr. 26.<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn41"><p><span class="smallcaps">dwds</span>: Die Zeit, 04.01.2018, Nr. 52.<a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn42"><p><span class="smallcaps">dwds</span>: Berliner Zeitung, 07.09.2001.<a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn43"><p>There exist more names for larger numerals, e.g. <em>Billion, Trillion</em>, that are backformations based on a folk etymology of <em>Million</em> having a suffix <em>‑llion</em> (the real etymology is from Italian <em>mille-on</em> ‘thousand-large’).<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Adjectives with such restrictions are sometimes discussed under the heading of ‘relational adjectives’ <span class="citation" data-cites="zifonun2011">(<a href="#ref-zifonun2011" role="doc-biblioref">Zifonun 2011</a>: 105)</span>, but it remains to be seen whether the syntactic restrictions can be explained by morphology and/or semantics.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><span class="smallcaps">dwds</span>: Die Zeit, 08.11.2016 (online).<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><span class="smallcaps">dwds</span>: Der Tagesspiegel, 20.11.2000.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><span class="smallcaps">dwds</span>: Die Zeit, 11.12.2017, Nr. 51.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><span class="smallcaps">dwds</span>: Der Tagesspiegel, 12.07.2001.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p><span class="smallcaps">dwds</span>: Die Zeit, 18.08.2016 (online).<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p><span class="smallcaps">dwds</span>: Die Zeit, 01.07.2017, Nr. 27.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p>A few additional examples of adverbs type 2 used as referential head are the following: <em>Nach Spielschluss gab Lehmann ein Interview, das seinen Weg vom Hier und Jetzt <strong>ins Immer</strong> eindrücklich belegte.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 06.07.2006, Nr. 28) <em>Sie kommen aus der Leere, der Abwesenheit, sie langen an <strong>im Nirgends</strong>.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 02.10.1997, Nr. 41) <em>Die Grundbestimmungen Dauer, Einheit, Endzweck geben so dem prozessualen Leitbild nur seinen Gegensatz zum Flüchtigen, zur Vielheit des Chaos, <strong>zum Umsonst</strong> oder Nihilismus, aber sie geben noch keinerlei Entschiedenheit des positiven Inhalts.</em> (<span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 433) <em>Bei Gerhard Schröder bezieht sich <strong>das Überall</strong> nicht auf den geographischen Globus.</em> (<span class="smallcaps">dwds</span>: Der Tagesspiegel, 22.12.2002) <em>Als ginge es nicht nur ums Lebenswerk und seine Vollendetheit, sondern um seine Vollendung, anders gesagt: <strong>das Vorbei</strong>.</em> (<span class="smallcaps">dwds</span>: Der Tagesspiegel, 03.05.2000).<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><span class="smallcaps">dwds</span>: Die Zeit, 18.01.2018, Nr. 01.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p><span class="smallcaps">dwds</span>: Ulrich Seidler: Frei Luft Theater Fest. Berliner Zeitung, 22.06.2000.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p><span class="smallcaps">dwds</span>: Die Zeit, 16.03.2017, Nr. 10.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p><span class="smallcaps">dwds</span>: Busch, Werner: Das sentimentalische Bild, München: Beck 1993, S. 480.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22"><p><span class="smallcaps">dwds</span>: Die Zeit, 26.04.2017 (online).<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23"><p>A few additional examples of adverbs type 3 used as referential head are the following: <em>Im Danach ist auch immer schon <strong>das Demnächst</strong> zu entdecken.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 04.10.2007, Nr. 41) <em>Während er mechanisch nach rechts steuerte, […] sah er in sich das ganze Buch, die Vertiefungen, die Ausblicke, <strong>das Zuvor</strong> und <strong>das Hernach</strong>.</em> (<span class="smallcaps">dwds</span>: Feuchtwanger, Lion: Erfolg. Gesammelte Werke in Einzelbänden, Bd. 6, Berlin: Aufbau-Verl. 1930, S. 749) <em>Überhaupt lernt man hier alles wie <strong>im Nebenbei</strong>.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 14.03.2013, Nr. 12) <em>Ganz <strong>im Nebenher</strong> regelten sich die technischen Dinge.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 31.05.1956, Nr. 22) <em>Ihre Lebensgeschichte hat einen tiefen Einschnitt, der das Vorher <strong>vom Seither</strong> scheidet.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 08.08.1997, Nr. 33) <em>Aber auch <strong>das Zwischendurch</strong> spielt natürlich eine Rolle.</em> (<span class="smallcaps">dwds</span>: Blinden-Ensemble probt Konzert im Grünen. Berliner Zeitung, 21.09.1996) <em>Derzeit führt die stark schwankende Finanzierungskurve für diesen Bereich <strong>ins Abwärts</strong>, während sich die Herzen der Bewilliger bei Anträgen von Ingenieur- und Naturwissenschaftlern weit öffnen.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 17.05.1985, Nr. 21) <em>Peter-Klaus Schuster sucht das Neue gern im Alten, <strong>das Vorwärts im Rückwärts</strong>.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 05.10.2000, Nr. 41).<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24"><p><span class="smallcaps">dwds</span>: Die Zeit, 04.01.2018, Nr. 52.<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25"><p><span class="smallcaps">dwds</span>: Die Zeit, 28.08.2015 (online).<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26"><p><span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 1, Berlin: Aufbau-Verlag 1954, S. 52.<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27"><p>A few additional examples of adverbs type 4 used as referential head are the following: <em>Es ist das Ungenossene, das diese große Kolportage von Musik füllt; das Noch-Nicht, ja selbst <strong>das Niemals</strong> hat ebenso sein eigentümlichstes Dasein aus den Luftwurzeln des Klangs.</em> (<span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 152) <em><strong>Das Wobei</strong> es die Bewandtnis hat, ist <strong>das Wozu</strong> der Dienlichkeit, <strong>das Wofür</strong> der Verwendbarkeit.</em> (<span class="smallcaps">dwds</span>: Heidegger, Martin: Sein und Zeit, Tübingen: Niemeyer 1927, S. 84) <em><strong>Das Nirgendwo</strong> ist als postulativ gedacht für <strong>das Wo</strong>, in dem sich die Menschen wirklich befinden.</em> (<span class="smallcaps">dwds</span>: Bloch, Ernst: Das Prinzip Hoffnung Bd. 2, Berlin: Aufbau-Verl. 1955, S. 78) <em>In der ewigen Wiederkehr des Gleichen fällt <strong>das Wohin</strong> mit <strong>dem Woher</strong> zusammen.</em> (<span class="smallcaps">dwds</span>: Taubes, Jacob: Abendländische Eschatologie, München: Matthes und Seitz, 1947, S. 11) <em>Die Urfrage der Apokalyptik ist <strong>das Wann</strong>.</em> (Taubes, Jacob: Abendländische Eschatologie, München: Matthes und Seitz, 1947, S. 32) <em>Für Heidegger und Wittgenstein bildet der Normalfall, <strong>das Zunächst und Zumeist</strong>, kurzum, das Konventionelle den Ausgangspunkt ihrer Überlegungen.</em> (<span class="smallcaps">dwds</span>: Die Zeit, 31.01.2002, Nr. 06).<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28"><p><span class="smallcaps">dwds</span>: Die Zeit, 15.12.2017, Nr. 52.<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29"><p><span class="smallcaps">dwds</span>: Ulrich Seidler: Pamphlete gegen Tatsachen. Berliner Zeitung, 06.09.2001.<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30"><p><span class="smallcaps">dwds</span>: Schmidt-Rogge, Carl H.: Dein Kind  Dein Partner, München: List 1973 [1969], S. 339.<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn31"><p><span class="smallcaps">dwds</span>: Kurz, Robert: Schwarzbuch Kapitalismus, Frankfurt a. M.: Eichborn 1999, S. 270.<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32"><p>No attempt is made to propose English translations for these ingredients, because a faithful translation for them is extremely context-dependent.<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn33"><p><span class="smallcaps">dwds</span>: Die Zeit, 03.10.2017 (online).<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn34"><p><span class="smallcaps">dwds</span>: Die Zeit, 28.10.2016 (online).<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn35"><p><span class="smallcaps">dwds</span>: Die Zeit, 22.11.2017 (online).<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn36"><p><span class="smallcaps">dwds</span>: Jentzsch, Kerstin: Seit die Götter ratlos sind, München: Heyne 1999 [1994], S. 257.<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn37"><p><span class="smallcaps">dwds</span>: Die Zeit, 08.01.2018, Nr. 02.<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn38"><p><span class="smallcaps">dwds</span>: Der Tagesspiegel, 11.03.2004.<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn39"><p><span class="smallcaps">dwds</span>: Die Zeit, 07.11.2007, Nr. 46.<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn40"><p><span class="smallcaps">dwds</span>: Die Zeit, 24.11.2017, Nr. 48.<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn41"><p><span class="smallcaps">dwds</span>: Die Zeit, 27.04.2017 (online).<a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn42"><p><span class="smallcaps">dwds</span>: Die Zeit, 23.06.1995, Nr. 26.<a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn43"><p><span class="smallcaps">dwds</span>: Die Zeit, 04.01.2018, Nr. 52.<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn44"><p><span class="smallcaps">dwds</span>: Berliner Zeitung, 07.09.2001.<a href="#fnref44" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn45"><p>The search “die @drei $p=VVFIN” gave 991 hits, while the Search “die @Drei $p=VVFIN” gave 92 hits. Similarly, “die @dritte $p=VVFIN” resulted in 1490 hits while “die @Dritte $p=VVFIN” gave 228 hits. All searches were performed on <a href="https://www.dwds.de/r/" class="uri">https://www.dwds.de/r/</a> on 1st December 2023 using the <em>Referenz- und Zeitungskorpora</em>.<a href="#fnref45" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn46"><p>There exist more names for larger numerals, e.g. <em>Billion, Trillion</em>, that are backformations based on a folk etymology of <em>Million</em> having a suffix <em>‑llion</em> (the real etymology is from Italian <em>mille-on</em> ‘thousand-large’).<a href="#fnref46" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn47"><p><span class="smallcaps">dwds</span>: Die Zeit, 31.12.2017 (online).<a href="#fnref47" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn48"><p><span class="smallcaps">dwds</span>: Die Zeit, 01.01.2018 (online).<a href="#fnref48" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn49"><p>No attempt is made to propose English translations for these ingredients, because a faithful translation for them is extremely context-dependent.<a href="#fnref49" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn50"><p><span class="smallcaps">dwds</span>: Die Zeit, 21.11.2013 (online).<a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn51"><p><span class="smallcaps">dwds</span>: Die Zeit, 15.12.2012 (online).<a href="#fnref51" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside>
 </body>
