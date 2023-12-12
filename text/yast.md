@@ -137,9 +137,11 @@ The raw intricacy of pure modification is organized by distinguishing three diff
 Syntactic elements in YAST
 
 - ~~operator~~: an ingredient that itself cannot be modified.
-- ~~admodifier~~: an ingredient that can only be modified by operators.
-- ~~head~~: an ingredient that can be modified by operators, admodifiers, or other heads.
+- ~~admodifier~~: an ingredient that can only be modified by operators or other admodifiers.
+- ~~head~~: an ingredient that can be modified by operators, admodifiers or other heads.
 :::
+
+adorner, additor, adjustor, adaptor ???
 
 The current definitions of these terms might not always coincide with what one might otherwise conceive of as an operator, admodifier or head. However, the effect of these definitions seems close enough to most other applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion.
 
@@ -271,9 +273,8 @@ There are a few exceptions to this list of adjectives, in the sense that some in
 - A small group of ingredients from [@next] end in *‑n* instead of *‑r* wenn used as a predicative head or adverbial admodifier, namely exactly the following ingredients: *äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorn(e)* and *hintere/hinten*.
 - Similarly, a few adjectives have an extra *‑s* when used as adverbial admodifier, namely exactly the following ingredients: *andere/anders, besondere/besonders, linke/links, rechte/rechts*.
 - Also *hohe/hoch* and *niedere/niedrig* have a different form depending on the syntactic function in which they are used.
-- Some adjectives cannot be used as a predicative head, for example *ehemalig, hochgradig, regelrecht, schließlich, sogenannt, sonstig, völlig, ziemlich, zusätzlich, zwischenzeitlich*, etc.
-- Some adjectives cannot be used as a referential head, for example *absolut, neulich, relativ, schließlich, sonstig, völlig, ziemlich, zwischenzeitlich*, etc.
-- Some apparent adjectives can only be used as an adverbial admodifier, namely exactly the following ingredients: *folglich, freilich, lediglich* and *nämlich*. They are not classified as adjectives anymore, but categorized as adverbs below. The ingredient *nämlich* is completely idiosyncratic in its syntactic possibilities and will be discussed in Section ???. 
+- Some derived adjectives cannot be used as a predicative head (e.g. *ehemalig, hochgradig, regelrecht, sogenannt, zusätzlich*), some cannot be used as a referential head (e.g. *absolut, neulich, relativ*) and some cannot be used in both those functions (e.g. *schließlich, sonstig, völlig, ziemlich, zwischenzeitlich*).^[Adjectives with such restrictions are sometimes discussed under the heading of 'relational adjectives' [@zifonun2011: 105], but it remains to be seen whether the syntactic restrictions can be explained by morphology and/or semantics.]
+- Some apparent adjectives can only be used as an adverbial admodifier (and not attributively), namely exactly the following ingredients: *folglich, freilich, lediglich* and *nämlich*. They are not classified as adjectives anymore, but categorized as adverbs below. The ingredient *nämlich* is completely idiosyncratic in its syntactic possibilities and will be discussed in Section ???. 
 
 ::: ex
 German monomorphic adjectives 
@@ -483,6 +484,9 @@ Quantors, Abtönungspartikel, Konjunktionaladverben, Epithesis/Diathesis, etc.
 
 ### Junctors
 
+phrasal: both attributive and adverbial (and argument!)
+clausal: only adverbial. Attributive clauses do not have junctor
+
 ::: ex
 Phrasal junctors 
 
@@ -515,6 +519,10 @@ Conjunctions
 
 
 ### Specifiers 
+
+multiple specifiers	
+Rede von Wolfgang Clement, 14.01.2003
+Manch einer sagt, es wehe ganz schön viel energiepolitischer Wind aus Brüssel,
 
 Attributspezifikation ("Gradpartikel")
 
