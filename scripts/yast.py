@@ -367,7 +367,7 @@ def Perfekt(clause, auxiliary = None):
     addLightverb(clause, auxiliary, 'Partizip', 'Perfekt')
 
 def ReflexivErlebniskonversiv(clause):
-  # get verb to find junture from lexicon
+  # get verb to find juncture from lexicon
   verb = clause.get('verb')
   juncture = Verben[verb]['Konversiv']
   # change arguments
@@ -393,6 +393,15 @@ def Möglichkeitsdesubjektiv(clause):
       clause.set('number', 'Singular')
       node.addnext(es)
       clause.remove(node)
+
+def ReflexivBewegungsart(clause, preposition = 'durch'):
+  node = ET.SubElement(clause, 'REFLEXIVBEWEGUNGSART', attrib = {'role': 'Richtung', 'case': preposition})
+  moveBeforeHead(clause, node)
+  addReflexive(clause)
+
+def Benefaktivdativ(clause):
+  node = ET.SubElement(clause, 'BENEFAKTIVDATIV', attrib = {'role': 'Benefaktor', 'case': 'Dativ'})
+  moveBeforeHead(clause, node)
 
 # =======
 # Phrasen

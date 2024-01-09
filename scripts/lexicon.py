@@ -62,9 +62,9 @@ Adjektive = ['absolut', 'albern', 'alt', 'andere', 'arg', 'arm', 'äußer', 'bar
 # no referent: zwischenzeitlich, völlig
 # also no Gradparitkel possible with these? but: fast völlig
 
-Steigerungspräfixe = ['bitter', 'erz', 'hoch', 'hyper', 'mega', 'schwer', 'super', 'tief', 'ultra', 'un', 'ur']
+Steigerungspräfixe = ['bitter', 'erz', 'hoch', 'hyper', 'mega', 'quietsch', 'schwer', 'super', 'tief', 'ultra', 'un', 'ur']
 # hochpeinlich, schwerkrank, fieftraurig, bitterkalt, hypernervös, erzfaul, megaschnell, superfein, ultramodern, uralt
-# many composita, e.g handgroß, schwarzgrün, kerngesund, usw.
+# many composita, e.g handgroß, schwarzgrün, kerngesund, quietschbund, usw.
 
 # Ursprung teilweise adjektival, teilweise adverbial, aber das scheint keine Rolle zu spielen in der Benutzung
 Gradadjektiv = ['absolut', 'annähernd', 'arg', 'ausgesprochen', 'außergewöhnlich', 'außerordentlich', 'äußerst', 'echt', 'eklatant', 'enorm', 'entsetzlich', 'erbärmlich', 'extrem', 'furchtbar', 'ganz', 'hochgradig', 'höchst', 'irre', 'komplett', 'recht', 'regelrecht', 'relativ', 'restlos', 'richtig', 'schrecklich', 'schön', 'tierisch', 'total', 'traumhaft', 'ungemein', 'ungeheuerlich', 'ungewöhnlich', 'unglaublich', 'unheimlich', 'unwahrscheinlich', 'übermäßig', 'verhältnismäßig', 'verschwindend', 'vollkommen', 'völlig', 'weit', 'weitgehend', 'wahnsinnig', 'ziemlich']
@@ -87,7 +87,7 @@ Fokuspartikel = ['allein', 'allenfalls', 'auch', 'ausgerechnet', 'bereits', 'bes
 # mit den erwähnten drei Schichten
 Numeralpartikel = ['maximal', 'minimal', 'mindestens', 'ungefähr', 'zumindestens']
 
-Adverbien = ['abends', 'anders', 'anfangs', 'bald', 'besonders', 'bisher', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'ebenfalls', 'eingangs', 'einmal', 'endlich', 'fast', 'geradewegs', 'gerne', 'gestern', 'gewiss', 'gleich', 'halbwegs', 'heute', 'hier', 'hinten', 'hoch', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'mittags', 'mittendrin', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'nebenan', 'neulich', 'nie', 'nirgends', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'so', 'sofort', 'umsonst', 'unten', 'unterwegs', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vormittags', 'vorn', 'vorne', 'wieder', 'zunächst']
+Adverbien = ['abends', 'anders', 'anfangs', 'bald', 'besonders', 'bisher', 'da', 'dauernd', 'dort', 'draußen', 'drinnen', 'drüben', 'ebenfalls', 'eingangs', 'einmal', 'endlich', 'fast', 'geradewegs', 'gerne', 'gestern', 'gewiss', 'gleich', 'halbwegs', 'heute', 'hier', 'hinten', 'hoch', 'immer', 'jetzt', 'keinesfalls', 'keineswegs', 'links', 'manchmal', 'mittags', 'mittendrin', 'morgen', 'morgens', 'nachmittags', 'nachts', 'natürlich', 'nebenan', 'neulich', 'nie', 'nirgends', 'nun', 'oben', 'oft', 'rechts', 'schon', 'selbst', 'so', 'sofort', 'umsonst', 'unten', 'unterwegs', 'überall', 'übermorgen', 'unbedingt', 'von vornherein', 'vorgestern', 'vormittags', 'vorn', 'vorne', 'wieder', 'zunächst', 'knack']
 
 Konjunktionaladverbien = ['abermals', 'allein', 'allemal', 'allenfalls', 'allerdings', 'alsbald', 'alsdann', 'also', 'anderenfalls', 'andererseits', 'andernteils', 'anschließend', 'ansonsten', 'auch', 'ausschließlich', 'außerdem', 'beispielsweise', 'beziehungsweise', 'bestenfalls', 'bloß', 'dabei', 'dadurch', 'dafür', 'daher', 'dahingegen', 'damit', 'danach', 'daneben', 'dann', 'darauf', 'darauhfin', 'darüber hinaus', 'darum', 'davor', 'dazu', 'dazwischen', 'dementgegen', 'demgegenüber', 'demgemäß', 'demnach', 'demzufolge', 'dennoch', 'derweilen', 'desgleichen', 'deshalb', 'deswegen', 'ebenfalls', 'ferner', 'folglich', 'freilich', 'gegebenenfalls', 'genauso', 'gleichwohl', 'gleichfalls', 'gleichzeitig', 'hernach', 'hierbei', 'hierdurch', 'hiermit', 'hingegen', 'hinterher', 'hinwiederum', 'immerhin', 'im Übrigen', 'indes', 'indessen', 'infolgedessen', 'insbesondere', 'insofern', 'insoweit', 'inzwischen', 'jedoch', 'kaum', 'mal', 'mithin', 'meinerseits', 'mittlerweile', 'nachher', 'nämlich', 'nebenbei', 'nebenher', 'nichtsdestoweniger', 'nichtsdestotrotz', 'nunmehr', 'nur', 'obendrein', 'ohnedies', 'ohnehin', 'schließlich', 'schon', 'seitdem', 'seither', 'sodann', 'somit', 'sonst', 'soviel', 'soweit', 'sowieso', 'stattdessen', 'trotzdem', 'überdies', 'überhaupt', 'unterdessen', 'vielmehr', 'vor allem', 'vorher', 'währenddessen', 'weiterhin', 'weiters', 'wieder', 'wiederum', 'wohlgemerkt', 'zudem', 'zuguterletzt', 'zumal', 'zumindest', 'zuvor', 'zwar', 'zwischendurch', 'zwischenzeitlich']
 
@@ -137,6 +137,7 @@ Präpositionen = {
   'mit': 'Dativ',
   'nach': 'Dativ',
   'nahe': 'Dativ',
+  'samt': 'Dativ',
   'seit': 'Dativ',
   'von': 'Dativ',
   'zu': 'Dativ',
@@ -384,6 +385,43 @@ Quantoren = {
 # Architekt, Bär, Bauer, Fotograf, Herr, Held, Katholik, Mensch, Monarch, Philosoph, Satellit, Prinz, Rebell, Soldat, Fürst, Graf, Prinz, Zar, Welf, Schenk, Hirt, Spatz, Fink, Pfau, Greif, Leu, Narr, Tor, Depp, Geck, Mohr, Oberst, Untertan, Vorfahr, Ahn, Typ, Graph, Tyrann, Kamerad
 
 Substantive = {
+  'Woche':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Wochen'
+  },
+  'Montag':{
+    'Geschlecht': 'Maskulin'
+  },
+  'Apfel':{
+    'Geschlecht': 'Maskulin'
+  },
+  'Theke':{
+    'Geschlecht': 'Feminin'
+  },
+  'Weg':{
+    'Geschlecht': 'Maskulin'
+  },
+  'Sonne':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Sonnen'
+  },
+  'Raupe':{
+    'Geschlecht': 'Feminin',
+    'Plural': 'Raupen',
+    'Belebt': True
+  },
+  'Ei':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Eier'
+  },
+  'Blatt':{
+    'Geschlecht': 'Neutrum',
+    'Plural': 'Blätter'
+  },
+  'Mondschein':{
+    'Geschlecht': 'Maskulin',
+    'Plural': None
+  },
   'Straße':{
     'Geschlecht': 'Feminin',
     'Plural': 'Straßen'

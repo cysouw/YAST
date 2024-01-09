@@ -1,38 +1,46 @@
 <SATZ kind="Wurzel" tense="Präsens">
-  <SATZ kind="Hauptsatz" tense="Präsens">
+  <SATZ kind="Hauptsatz" tense="Präteritum">
     <VORFELD>
-      <ARGUMENT role="Sehende" case="Nominativ">
-        <Vorgangspassiv case="von">
-          <JUNKTOR>von</JUNKTOR>
-          <PHRASE case="Dativ">
-            <DETERMINATIV>
-              <QUANTOR>jener</QUANTOR>
-            </DETERMINATIV>
-            <REFERENT>Frau</REFERENT>
-          </PHRASE>
-        </Vorgangspassiv>
-      </ARGUMENT>
+      <ADVERBIALE>
+        <ADVERB>nachts</ADVERB>
+      </ADVERBIALE>
     </VORFELD>
     <VERBZWEIT>
-      <FINITUM verb="werden" tense="Präsens" person="3" number="Singular">wird</FINITUM>
+      <FINITUM verb="liegen" tense="Präteritum" person="3" number="Singular">lag</FINITUM>
     </VERBZWEIT>
-    <ARGUMENT role="Gesehene" case="Akkusativ">
-      <Vorgangspassiv case="Nominativ">
-        <PHRASE case="Nominativ">
-          <DETERMINATIV>
-            <QUANTOR>dieses</QUANTOR>
-          </DETERMINATIV>
-          <REFERENT>Haus</REFERENT>
-        </PHRASE>
-      </Vorgangspassiv>
+    <ADVERBIALE>
+      <JUNKTOR>in</JUNKTOR>
+      <PHRASE case="Dativ">
+        <DETERMINATIV>
+          <ARTIKEL>dem</ARTIKEL>
+        </DETERMINATIV>
+        <REFERENT>Mondschein</REFERENT>
+      </PHRASE>
+    </ADVERBIALE>
+    <ADVERBIALE>
+      <JUNKTOR>auf</JUNKTOR>
+      <PHRASE case="Dativ">
+        <DETERMINATIV>
+          <ARTIKEL>einem</ARTIKEL>
+        </DETERMINATIV>
+        <REFERENT>Blatt</REFERENT>
+      </PHRASE>
+    </ADVERBIALE>
+    <ARGUMENT role="Liegende" case="Nominativ">
+      <PHRASE case="Nominativ">
+        <DETERMINATIV>
+          <ARTIKEL>ein</ARTIKEL>
+        </DETERMINATIV>
+        <ATTRIBUT>
+          <ADJEKTIV>kleines</ADJEKTIV>
+        </ATTRIBUT>
+        <REFERENT>Ei</REFERENT>
+      </PHRASE>
     </ARGUMENT>
     <PRÄDIKAT>
-      <VORGANGSPASSIV verb="werden">
-        <VERB verb="sehen">
-          <PARTIZIP>gesehen</PARTIZIP>
-        </VERB>
+      <VERB verb="liegen">
         <FINITUM move="Verbzweit"/>
-      </VORGANGSPASSIV>
+      </VERB>
     </PRÄDIKAT>
   </SATZ>
 </SATZ>

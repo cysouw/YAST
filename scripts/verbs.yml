@@ -25,6 +25,9 @@ denken:
   Partizip: gedacht
   Rollen:
     Gedachte: Akkusativ
+liegen:
+  Partizip: gelegen
+  Präteritum: lag
 dürfen:
   Partizip: gedurft
   Präsens:
@@ -103,6 +106,20 @@ können:
       1: können
       2: könnt
       3: können
+anfertigen:
+  Stamm: fertigen
+  Rollen:
+    Angefertigte: Akkusativ
+nennen:
+  Partizip: genannt
+  Rollen:
+    Genannte: Akkusativ
+    Namen: Akkusativ
+machen:
+  Reflexiv: true
+fressen:
+  Präteritum: fraß
+  Gefressene: Akkusativ
 lassen:
   Partizip: gelassen
   Präsens:
@@ -140,6 +157,16 @@ müssen:
       1: müssen
       2: müsst
       3: müssen
+suchen:
+  Rollen:
+    Gesuchte: Akkusativ
+herausschlüpfen:
+  Stamm: schlüpfen
+aufgehen:
+  Stamm: gehen
+gehen:
+  Präteritum: ging
+  Partizip: gegangen
 nachholen:
   Stamm: holen
   Rollen:
@@ -200,6 +227,9 @@ sein:
 stellen:
   Rollen:
     Gestellte: Akkusativ
+bauen:
+  Rollen:
+    Gebaute: Akkusativ
 tun:
   Irrealis: tät
   Partizip: getan
