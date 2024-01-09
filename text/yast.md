@@ -117,41 +117,43 @@ Before delving into the details of this syntactic model, a few words on the algo
 
 In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ is created, followed by the application of ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. This generative process also has some "rules", i.e. restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German. Other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's intention in accordance to the structure of the language.
 
-The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalized combinations of morphemes, like non-compositional idioms, and multi-part grammatical structures, like auxiliary constructions. Semantically, ingredients induce a state-of-mind at the addressee, consisting of a multitude of situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of uttering an ingredient intends to conjure up some of those possible situations in the mind of the addressee.
+The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalized combinations of morphemes (like non-compositional idioms) and multi-part grammatical structures (like auxiliary constructions). Semantically, ingredients induce a state-of-mind at the addressee, probably consisting of a multitude of situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of uttering an ingredient intends to conjure up some of those possible situations in the mind of the addressee.
 
-Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific positions in the generation. To fully describe these limits it will eventually be necessary to specify individual possibilities for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the full distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for specifying more detail subsequently. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
+Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific positions in the generation. To fully describe these limits it will eventually be necessary to specify individual possibilities for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the full distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for the subsequent specification of more detail. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
 
 ## Combining ingredients: base & modifier
 
-Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of a combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance to the presented combination of ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of "understanding" on the part of the addressee.
+Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of the combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance with both ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of "understanding" on the part of the addressee.
 
-Additionally, a central tenet of human language is that combinations of linguistic elements is asymmetrical. ingredients are not simply combined as equals, but there is always a ~~base~~ that is modified by another linguistic element, the ~~modifier~~. Symmetrical connections with European-style coordination seem to be a relatively late addition to the grammatical spectrum. For the recipe, I will assume that alle combinations of ingredients in human language is asymmetrical.
+Additionally, a central tenet of human language is that combinations of linguistic elements is in general asymmetrical. Ingredients are not simply combined as equals, but there is always a ~~base~~ that is modified by another linguistic element, the ~~modifier~~. Symmetrical connections with European-style *and*-coordination seem to be a relatively late addition to the grammatical spectrum. For the recipe, I will assume that all combinations of ingredients in human language are asymmetrical.
 
-Bases can have multiple modifiers and each modifier can be base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, than the ordering of these modifiers is often meaningful, so it will be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in German. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the more marked variants. 
+Bases can have multiple modifiers and each modifier can itself be a base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, then the ordering of these modifiers is often meaningful, so the ordering will have to be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in German. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the unusual variants. 
 
-## Syntactic elements: operator, admodifier & head
+## Syntactic elements: operator, adjustor & head
 
-The raw intricacy of pure modification is organized by distinguishing three different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, it is called an ~~operator~~. Second, when a base can only be modified by such unmodifiable operators, it is called an ~~admodifier~~. Finally, when a base can freely be modified by operators, admodifiers and other bases, it will be called a ~~head~~. It is important to note that these terms describe syntactic functions and not necessarily specific ingredients. Often one and the same ingredient will be able to occur in different functions depending on the context.
+The raw intricacy of pure modification can be further streamlined by distinguishing three different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, it will here be called an ~~operator~~. Second, when a base can only be modified by unmodifiable operators, it will be called an ~~adjustor~~. Finally, when a base can freely be modified by operators, adjustors and other bases, it will be called a ~~head~~. It is important to note that these terms describe syntactic functions and not specific ingredients. One and the same ingredient will often be able to occur in different functions depending on the context in which it is used.
+
+all three can modify other ingredients, so all can function as modifier. Only adjustors and heads can be modified, so they can function as base.
 
 ::: ex
 Syntactic elements in YAST
 
 - ~~operator~~: an ingredient that itself cannot be modified.
-- ~~admodifier~~: an ingredient that can only be modified by operators or other admodifiers.
-- ~~head~~: an ingredient that can be modified by operators, admodifiers or other heads.
+- ~~adjustor~~: an ingredient that can only be modified by operators or other adjustors.
+- ~~head~~: an ingredient that can be modified by operators, adjustors or other heads.
 :::
 
-adorner, additor, adjustor, adaptor ???
+[comment]: # (Other terms instead of "adjustor" might be: adorner, additor, admodifier, adaptor)
 
-The current definitions of these terms might not always coincide with what one might otherwise conceive of as an operator, admodifier or head. However, the effect of these definitions seems close enough to most other applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion.
+The current definitions of the terms "operator" and "head" might not always coincide with what one might otherwise conceive of as an operator or head. However, the effect of these definitions seems close enough to most other applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion. The term "adjustor" is newly conceived here to be reminiscent of the traditional terms "adjective" and "adverb", while indicating that its function is to "adjust" or "alter" another ingredient.
 
-Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, that they cannot themselves be modified), for example intensifiers, quantifiers, adpositions or subjunctions. Typical admodifiers are adverbs and attributive adjectives that allow for limited modification like gradation and intensification. Finally, heads typically comprise verbs and nouns, but they also includes most adjectives, some adverbs and even some prepositions. 
+Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, that they cannot themselves be modified), for example intensifiers, quantifiers, adpositions or subjunctions. Typical adjustors are adverbs and attributive adjectives, which only allow for limited modification like gradation and intensification. Finally, heads typically comprise verbs and nouns, but they also includes most adjectives, and even some adverbs. 
 
 ## Hierarchical structure: stacking, layering & embedding
 
 The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modeled in syntactic theories by using the mechanism of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.
 
-Roughly coinciding with the three kinds of syntactic elements introduced above, I propose to break down the hierarchical structure of a recipe into three different levels of modification, which I will refer to as ~~stacking~~, ~~layering~~ and ~~embedding~~. These three levels of hierarchical structure are conceptually constructed as variations of each other, all three being different kinds of modification. Specifically, layering is a special case of stacking, and embedding is a special case of layering. In practice, however, I will use the term "stacking" only for modification that is not layering nor embedding. Likewise, "embedding" is only used for layers that that themselves display further layers.
+Roughly coinciding with the three kinds of syntactic elements introduced above, I propose to break down the hierarchical structure of a recipe into three different levels of modification, which I will refer to as ~~stacking~~, ~~layering~~ and ~~embedding~~. These three levels of hierarchical structure are conceptually constructed as variations of each other, all three being different kinds of modification. Specifically, layering is a special case of stacking, and embedding is a special case of layering. In practice, however, I will use the term "stacking" only for modification that is not layering nor embedding. Likewise, "embedding" is only used for layers that that themselves include further layers.
 
 Crucially, only embedding will be modeled with recursion. Stacking and layering are much simpler and do not need recursion. They can easily be modeled by iteration, i.e. stacked and layered modifiers are simply applied one after the other without intricate branching.
 
@@ -159,35 +161,45 @@ Crucially, only embedding will be modeled with recursion. Stacking and layering 
 Hierarchical structures in YAST
 
 - ~~stacking~~ is modification by operators.
-- ~~layering~~ is modification by a base, possibly showing stacking itself (i.e. having its own operators).
+- ~~layering~~ is modification by an adjustor or head, possibly including stacking itself (i.e. they might have their own operators).
 - ~~embedding~~ is modification by a head that itself exhibits layering (not just stacking).
 :::
 
-The term ~~stack~~ is proposed for a base with all its operators. Multiple operators modify the base iteratively, as the order of the operators is sometimes important. A typical example of a stack is a fully inflected wordform, consisting of a base root with its modifying bound morphemes. However, also non-bound operators are part of the stack, like nominal focus particles. A stack will be written as a single line in the recipe. A typical ~~layer~~ is an attributive adjective, an argument or an adverbial adjunct. Each layer is a new line in the recipe, with indentation showing the dependency. The ordering of the layers in the recipe is often crucial for the ordering in the resulting utterance. Only when such a layer itself again has layers of its own then the point is reached of real recursion in language. Such recursive layers are then called ~~embeddings~~. Note that the term embedding is used here both for nominal and verbal recursive structures.
+The term ~~stack~~ is proposed for a base with all its operators. Multiple operators modify the base iteratively, as the order of the operators is sometimes important. A typical example of a stack is a fully inflected wordform, consisting of a base root with its modifying bound morphemes. However, also non-bound operators are part of the stack, like nominal focus particles. A stack will be written as a single line in the recipe.
+
+A typical ~~layer~~ is an attributive adjective, an argument or an adverbial adjunct. Each layer is a new line in the recipe, with indentation showing the dependency. The ordering of the layers in the recipe is often crucial for the ordering in the resulting utterance. 
+
+Only when such a layer itself again has layers of its own then the point is reached of real recursion in language. Such recursive layers are then called ~~embeddings~~. Note that the term embedding is used here both for nominal and verbal recursive structures.
 
 These three levels of modification suggest an evolutionary development in that human language first developed stacking, then layering and then embedding. However, that is purely speculation because all human languages currently appear to employ all three kinds of hierarchical structure. Also note that contemporaneous language change does not follow the path from stacking to layering to embedding. In contrast, grammaticalization typically develops in the reverse direction, from embedding to layering to stacking.
 
-## Kinds of heads: referent & predicate
+## Heads: referent & predicate
 
-Heads, as defined previously, are ingredients that can be modified freely, and they alone allow for embedding. For German, there only appears to be a necessity for two different kinds of such heads, coinciding with two central functions of human language, namely identification and assertion. 
+Heads, as defined previously, are ingredients that can be modified freely, and they alone allow for embedding. For German (and possibly for all human languages), it only appears to be necessary to distinguish two different kinds of heads, coinciding with two central functions of human language, namely identification and assertion. 
 
-First, speakers attempt to convey which entities they are talking about and these entities then have to be identified by the addressee. The primary ingredient that is used to encode the identity of an entity in an utterance is called a ~~referent~~. This referent is the head of a referential expression that includes all its modifiers (which might themselves again be modified). The whole referential expression is called a ~~phrase~~. A referent is typically a noun.
+First, speakers attempt to convey which entities they are talking about and these entities then have to be identified by the addressee. The primary ingredient that is used to encode the identity of an entity in an utterance is called a ~~referent~~. This referent is the head of a referential expression that includes all its modifiers (which might themselves again be modified). The whole referential expression is called a ~~phrase~~. A referent is typically encoded by a noun, but many other parts of speech can also be used as referent. Note that, differently from most syntactic theories, there is only one kind of phrase in YAST, roughly equivalent to what is called "noun phrase" in other approaches.
 
-Second, in a typical utterance an assertion is made about these entities. The primary ingredient that is used to encode the assertion is called a ~~predicate~~. The predicate is the head of an assertion that also includes all its modifiers (which might themselves again be modified). This whole assertive expression is called a ~~clause~~. A predicate is typically a verb.
+Second, in a typical utterance some kind of assertion is made about these entities. The primary ingredient that is used to encode the assertion is called a ~~predicate~~. The predicate is the head of an assertion that also includes all its modifiers (which might themselves again be modified). This whole assertive expression is called a ~~clause~~. A predicate is typically encoded by a verb, but other parts of speech can also be used predicatively.
 
 ::: ex
 Heads in YAST
 
-- ~~referent~~, the head of a ~~phrase~~, typically a noun, used for ~~identification~~
-- ~~predicate~~, the head of a ~~clause~~, typically a verb, used for ~~assertion~~
+- ~~referent~~, the head of a ~~phrase~~, used for ~~identification~~
+- ~~predicate~~, the head of a ~~clause~~, used for ~~assertion~~
 :::
 
-It is by no means necessary for identification and assertion to be encoded by syntactic heads and their encompassing expressions. Personal pronouns, demonstratives and content interrogatives can be interpreted as identificational expression that are operators (i.e. they cannot be modified). Likewise, interjections and conversational particles can be seen as assertions without much internal structure. Still, it does not seem to be a coincidence that exactly the structurally most elaborate syntactic structures are precisely those structures that are used for two main communicative elements in a linguistic utterance.
+It is by no means necessary for identification and assertion to be encoded by syntactic heads and their encompassing expressions. Personal pronouns, demonstratives and content interrogatives can be interpreted as identificational expression that are operators (i.e. they cannot be modified). Likewise, interjections and conversational particles can be seen as assertions without much internal structure. Still, it does not seem to be a coincidence that exactly the most elaborate syntactic structures are precisely those structures that are used for two main communicative elements in a linguistic utterance.
 
 Heads can be modified by multiple other heads, each with their own complex internal structure and each with their own relation to their superordinate head. These relations between heads and modifier-heads are often explicitly marked in the linguistic structure by operators that are called ~~junctors~~ here. In German, phrasal junctors are prepositions or case marking ("flagging"), while clausal junctors are subjunctions, conjunctions and a few preposition-like operators. Default "unmarked" relations between heads only occur in the form of appositive phrases and relative clauses.
 
-## Head-modification: attribute, adverbial & argument
+## Modification: attribute, adverbial & argument
 
+
+## Building a recipe
+
+very simple utterances can consist of just an assertion (e.g. imperatives) or just an identification (i.e. answers to content questions). Recipes for such utterances would then consist of just a predicate or just a referent.
+
+Sentences consist of an assertion about some referent(s) with various additional modification.
 
 
 # Ingredient classes
@@ -204,14 +216,14 @@ Note: compounding is extremely frequent to make new bases
 
 ## Base classes
 
-Base-classes are established by the possibility of a base being the center of any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive admodifier, or as (iv) adverbial admodifier. Five German base classes can then be defined by the distribution as shown in [@tbl:baseclasses]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the classes of adverbs and numerals actually consist of various syntactic subclasses.
+Base-classes are established by the possibility of a base being the center of any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive adjustor, or as (iv) adverbial adjustor. Five German base classes can then be defined by the distribution as shown in [@tbl:baseclasses]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the classes of adverbs and numerals actually consist of various syntactic subclasses.
 
-Syntactic function     | *Nomen* | *Verb* | *Adjektiv* | *Adverb* | *Numerale*
-:---------             | :-: | :-: | :-: | :-: | :-:
-Referential head       |  ✓  |  ✓  |  ✓  |  ±  |  ✓  
-Predicative head       |  ✓  |  ✓  |  ✓  |  ±  |  ±  
-Attributive admodifier |  –  |  ✓  |  ✓  |  ±  |  ✓  
-Adverbial admodifier   |  –  |  –  |  ✓  |  ✓  |  ±  
+Syntactic function   | *Nomen* | *Verb* | *Adjektiv* | *Adverb* | *Numerale*
+:---------           | :-: | :-: | :-: | :-: | :-:
+Referential head     |  ✓  |  ✓  |  ✓  |  ±  |  ✓  
+Predicative head     |  ✓  |  ✓  |  ✓  |  ±  |  ±  
+Attributive adjustor |  –  |  ✓  |  ✓  |  ±  |  ✓  
+Adverbial adjustor   |  –  |  –  |  ✓  |  ✓  |  ±  
 
 Table: Syntactic possibilities of German base-classes. {#tbl:baseclasses}
 
@@ -228,37 +240,37 @@ Syntactic uses of a *Nomen* in German
 - Identification: *Er ist der **Vater**.*
 :::
 
-German nouns can only be used as an attributive admodifier and as an adverbial admodifier using lexically-specific morphological derivations with suffixes like *‑haft, ‑ig, ‑isch, ‑lich, ‑gemäß, ‑mäßig* or *‑artig*. The availability of these derivations are strongly lexically dependent. Many nouns allow for multiple such derivations (e.g. *kindhaft, kindisch, kindlich, kindgemäß*), while others do not seem to allow any of these derivational suffixes (e.g. *Stuhl* or *Schuh*). Such uses of nouns as admodifiers are not included here as syntactic possibilities because these suffixes are not productively available to all nouns.
+German nouns can only be used as an attributive adjustor and as an adverbial adjustor using lexically-specific morphological derivations with suffixes like *‑haft, ‑ig, ‑isch, ‑lich, ‑gemäß, ‑mäßig* or *‑artig*. The availability of these derivations are strongly lexically dependent. Many nouns allow for multiple such derivations (e.g. *kindhaft, kindisch, kindlich, kindgemäß*), while others do not seem to allow any of these derivational suffixes (e.g. *Stuhl* or *Schuh*). Such uses of nouns as adjustors are not included here as syntactic possibilities because these suffixes are not productively available to all nouns.
 
 ### *Verb*
 
 The class of *Verb* also corresponds to the traditional concept as used in German grammar, illustrated here with the verb *lesen* 'to read' in [@next]. When used as a predicative head a German verb has person-number-tense inflection [@next a]. All German verbs can be used as a referential head in the *Infinitiv*, a form ending in *-en* and written with a capital in German orthography when used as a referential head [@next b]. As a referential head, the gender of a verb is always neuter.
 
-All German verbs can also be used as an attributive admodifier in the form of a so-called *Partizip Präsens* (also called *Partizip I* the German grammatical tradition) ending in *-end* and taking adjectival agreement [@next c]. Other non-finite verbal forms (like the *Partizip Perfekt*) are also possible in this function, but not for all verbs, so they are not included here as a general syntactic option. 
+All German verbs can also be used as an attributive adjustor in the form of a so-called *Partizip Präsens* (also called *Partizip I* the German grammatical tradition) ending in *-end* and taking adjectival agreement [@next c]. Other non-finite verbal forms (like the *Partizip Perfekt*) are also possible in this function, but not for all verbs, so they are not included here as a general syntactic option. 
 
-The same non-finite participle can also be used as a "fake" adverbial admodifier [@next d]. Although this construction looks syntactically like an adverbial, the participle *lesend* in this sentence modifies the object *mich* of the sentence. In general, participles used syntactically like adverbials in German always modify an argument of the main verb (sometimes called "depictive secondary predication"). The main verb of the sentence is only modified indirectly by such depictively used non-finite verbforms, because the main verb is modified by the argument, which in turn is modified by the non-finite verbform.
+The same non-finite participle can also be used as a "fake" adverbial adjustor [@next d]. Although this construction looks syntactically like an adverbial, the participle *lesend* in this sentence modifies the object *mich* of the sentence. In general, participles used syntactically like adverbials in German always modify an argument of the main verb (sometimes called "depictive secondary predication"). The main verb of the sentence is only modified indirectly by such depictively used non-finite verbforms, because the main verb is modified by the argument, which in turn is modified by the non-finite verbform.
 
 ::: ex
 Syntactic uses of a *Verb* in German
 
 - Predicative head: *Ich **lese** keine Romane mehr.*^[~~DWDS~~: Die Zeit, 06.11.2017, Nr. 45.]
 - Referential head: *Meine Urgroßmutter machte das **Lesen** dieser Briefe sehr müde.*^[~~DWDS~~: Hermann, Judith: Sommerhaus, später, Frankfurt a. M.: Fischer-Taschenbuch-Verl. 2000 [1998], S. 13.]
-- Attributive admodifier: *Überall traf man nun **lesende** Landarbeiter und Bauern an.*^[~~DWDS~~: Enzensberger, Hans Magnus: Der kurze Sommer der Anarchie, Frankfurt a. M.: Suhrkamp 1972, S. 31.]
-- "Fake" adverbial admodifier (depictive): *Man hat mich in Apfelbäumen **lesend** erwischt.*^[~~DWDS~~: Zeit Magazin, 15.11.2012, Nr. 47.]
+- Attributive adjustor: *Überall traf man nun **lesende** Landarbeiter und Bauern an.*^[~~DWDS~~: Enzensberger, Hans Magnus: Der kurze Sommer der Anarchie, Frankfurt a. M.: Suhrkamp 1972, S. 31.]
+- "Fake" adverbial adjustor (depictive): *Man hat mich in Apfelbäumen **lesend** erwischt.*^[~~DWDS~~: Zeit Magazin, 15.11.2012, Nr. 47.]
 :::
 
 ### *Adjektiv*
 
-The class of *Adjektiv* consists of ingredients that can be used in all four syntactic functions from [@tbl:baseclasses], as illustrated with the adjective *groß* 'large' in [@next]. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head [@next a] the gender can be freely assigned. Second, both as a referential head [@next a] and as an attributive admodifier [@next c], adjectives in German have case-number-gender agreement suffixes, so-called *KNG-Kongruenz* in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head [@next b], either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain'. When used as an adverbial admodifier it is used without any further morphological change [@next d]. Note that it is also possible to use adjectives as "fake" adverbials, i.e. to use them depictively [@next e], similar to the use of participles in [@last d]. This is treated as an attributive admodifier, though with a different syntactic appearance in the sentence.
+The class of *Adjektiv* consists of ingredients that can be used in all four syntactic functions from [@tbl:baseclasses], as illustrated with the adjective *groß* 'large' in [@next]. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head [@next a] the gender can be freely assigned. Second, both as a referential head [@next a] and as an attributive adjustor [@next c], adjectives in German have case-number-gender agreement suffixes, so-called *KNG-Kongruenz* in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head [@next b], either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain'. When used as an adverbial adjustor it is used without any further morphological change [@next d]. Note that it is also possible to use adjectives as "fake" adverbials, i.e. to use them depictively [@next e], similar to the use of participles in [@last d]. This is treated as an attributive adjustor, though with a different syntactic appearance in the sentence.
 
 ::: ex
 Syntactic uses of an *Adjektiv* in German
 
 - Referential head: *Die **Große** zuckte mit keiner Wimper.*^[~~DWDS~~: Brussig, Thomas: Wasserfarben, Berlin: Aufbau-Taschenbuch-Verl. 2001 [1991], S. 93.]
 - Predicative head: *Die Aufregung über diesen Fall war **groß**.*^[~~DWDS~~: Hars, Wolfgang: Nichts ist unmöglich! Lexikon der Werbesprüche, München: Piper 2001 [1999], S. 378.]
-- Attributive admodifier: *Das **große** und mächtige Schiff hob und senkte sich noch einmal.*^[~~DWDS~~: Lebert, Benjamin: Crazy, Köln: Kiepenheuer & Witsch 1999 [1999], S. 150.]
-- Adverbial admodifier: *»Kaffeekultur« wird in Österreich überall ganz **groß** geschrieben.*^[~~DWDS~~: Die grosse Welt der Getränke, Hamburg: Tschibo Frisch-Röst-Kaffee Max Herz 1977, S. 274.]
-- "Fake" adverbial admodifier: *Ich habe meine Hose zu **groß** gekauft.*
+- Attributive adjustor: *Das **große** und mächtige Schiff hob und senkte sich noch einmal.*^[~~DWDS~~: Lebert, Benjamin: Crazy, Köln: Kiepenheuer & Witsch 1999 [1999], S. 150.]
+- Adverbial adjustor: *»Kaffeekultur« wird in Österreich überall ganz **groß** geschrieben.*^[~~DWDS~~: Die grosse Welt der Getränke, Hamburg: Tschibo Frisch-Röst-Kaffee Max Herz 1977, S. 274.]
+- "Fake" adverbial adjustor: *Ich habe meine Hose zu **groß** gekauft.*
 :::
 
 The following ingredient belong to this class of adjectives:
@@ -270,11 +282,11 @@ The following ingredient belong to this class of adjectives:
 
 There are a few exceptions to this list of adjectives, in the sense that some ingredients that correspond to the above criteria do not allow for all functions as illustrated in [@last]. These ingredients, as listed below, thus form separate syntactic subclasses.
 
-- A small group of ingredients from [@next] end in *‑n* instead of *‑r* wenn used as a predicative head or adverbial admodifier, namely exactly the following ingredients: *äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorn(e)* and *hintere/hinten*.
-- Similarly, a few adjectives have an extra *‑s* when used as adverbial admodifier, namely exactly the following ingredients: *andere/anders, besondere/besonders, linke/links, rechte/rechts*.
+- A small group of ingredients from [@next] end in *‑n* instead of *‑r* wenn used as a predicative head or adverbial adjustor, namely exactly the following ingredients: *äußere/außen, innere/innen, obere/oben, untere/unten, vordere/vorn(e)* and *hintere/hinten*.
+- Similarly, a few adjectives have an extra *‑s* when used as adverbial adjustor, namely exactly the following ingredients: *andere/anders, besondere/besonders, linke/links, rechte/rechts*.
 - Also *hohe/hoch* and *niedere/niedrig* have a different form depending on the syntactic function in which they are used.
 - Some derived adjectives cannot be used as a predicative head (e.g. *ehemalig, hochgradig, regelrecht, sogenannt, zusätzlich*), some cannot be used as a referential head (e.g. *absolut, neulich, relativ*) and some cannot be used in both those functions (e.g. *schließlich, sonstig, völlig, ziemlich, zwischenzeitlich*).^[Adjectives with such restrictions are sometimes discussed under the heading of 'relational adjectives' [@zifonun2011: 105], but it remains to be seen whether the syntactic restrictions can be explained by morphology and/or semantics.]
-- Some apparent adjectives can only be used as an adverbial admodifier (and not attributively), namely exactly the following ingredients: *folglich, freilich, lediglich* and *nämlich*. They are not classified as adjectives anymore, but categorized as adverbs below. The ingredient *nämlich* is completely idiosyncratic in its syntactic possibilities and will be discussed in Section ???. 
+- Some apparent adjectives can only be used as an adverbial adjustor (and not attributively), namely exactly the following ingredients: *folglich, freilich, lediglich* and *nämlich*. They are not classified as adjectives anymore, but categorized as adverbs below. The ingredient *nämlich* is completely idiosyncratic in its syntactic possibilities and will be discussed in Section ???. 
 
 ::: ex
 German monomorphic adjectives 
@@ -286,54 +298,54 @@ German monomorphic adjectives
 
 The class of *Adverb* is a rather disparate group of ingredients from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just short of 200 monomorphemic adverbs in German (as listed at the end of this section). These monomorphemic adverbs are often semi-transparent to German speakers but completely grammaticalized in their adverbial use, e.g. *nebenbei* 'lit. besides+by' or *deswegen* 'lit. of the+because of'.
 
-To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial admodifier. Most prominently, adjectives are also commonly used as adverbial modifier, cf. [@llast d] above, but that does not make them adverbs (even though they are often called as such).
+To define the class of adverbs, this lexical class has to be strictly separated from the syntactic function of being used as an adverbial adjustor. Most prominently, adjectives are also commonly used as adverbial modifier, cf. [@llast d] above, but that does not make them adverbs (even though they are often called as such).
 
 Adjectives used in the syntactic function of "preverbial modifier" are also excluded from the class of adverbs (cf. Cysouw 2023: #sec9.2.4). Preverbial modifiers construct new compound verbs, like the adjectives *leer‑* and *voll‑* in verbs like *leerfischen* or *volltanken*. These are not included here as adverbs. There is also a small set of non-adjectival preverbials (cf. Cysouw 2023: #sec9.2.5), like *weg‑* and *hoch‑* in compound verbs like *wegfahren* and *hochspringen*. In such compound usage these are also not included here as adverbs. 
 
-The ingredients to be included here as adverbs can be positively characterized by three criteria. First, they all can function as adverbial admodifiers, i.e. they are ingredients in adverbial function that themselves can be modified, like *seit gestern* in [@next a]. Second, they either cannot be used attributively at all, like *bald* 'soon' in [@next c], or, when they can be used attributively, then they are placed post-nominally without agreement, like *gestern* 'yesterday' in [@next b]. Finally, all adverbs can occur rather freely in the sentence, including crucially in first position, i.e. as the complete content of the *Vorfeld* [@next d,e].
+The ingredients to be included here as adverbs can be positively characterized by three criteria. First, they all can function as adverbial adjustors, i.e. they are ingredients in adverbial function that themselves can be modified, like *seit gestern* in [@next a]. Second, they either cannot be used attributively at all, like *bald* 'soon' in [@next c], or, when they can be used attributively, then they are placed post-nominally without agreement, like *gestern* 'yesterday' in [@next b]. Finally, all adverbs can occur rather freely in the sentence, including crucially in first position, i.e. as the complete content of the *Vorfeld* [@next d,e].
 
 ::: ex
-- Adverbial admodifier: ***Seit gestern** suchen Polizei, Feuerwehr und weitere Helfer nach dem Jungen.*^[~~DWDS~~: Die Zeit, 08.11.2016 (online).]
-- Attributive admodifier: *Die Befragung **gestern** begann mit einem großen Schweigen.*^[~~DWDS~~: Der Tagesspiegel, 20.11.2000.]
+- Adverbial adjustor: ***Seit gestern** suchen Polizei, Feuerwehr und weitere Helfer nach dem Jungen.*^[~~DWDS~~: Die Zeit, 08.11.2016 (online).]
+- Attributive adjustor: *Die Befragung **gestern** begann mit einem großen Schweigen.*^[~~DWDS~~: Der Tagesspiegel, 20.11.2000.]
 - ^* *Die Befragung **bald** wird mit einem Schweigen beginnen*.
 - ***Gestern** suchte die Polizei nach dem Jungen.*
 - ***Bald** wird die Befragung beginnen.*
 :::
 
-Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive admodifier. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to allow for more different syntactic uses, while adverbs with a modal meaning have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.
+Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive adjustor. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to allow for more different syntactic uses, while adverbs with a modal meaning have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.
 
 Also, there appears to be quite some dynamism in the syntactic possibilities of adverbs. Some options that are excluded by the categorizations below will be considered to be perfectly possible to more adventurous speakers of German. This flexibility is most obvious with the use of adverbs as a referential head (i.e. as "noun"). There are many occurrences of such uses in the philosophical literature (e.g. *^?^das Seither* 'the since' and *^?^das Niemals* 'the never') that I consider only borderline acceptable.
 
-Adverbs of type 1, for example *gestern* 'yesterday' [@next a], can be used in all four syntactic functions. In the function of an attributive admodifier (i.e. as an "adjective") it is placed after the modified noun without any agreement [@next b]. In the function of a predicative head (i.e. as a "verb") the copula *sein* 'to be' is necessary [@next c]. No other copulas are possible. In the function of a referential head (i.e. as a "noun") adverbs always have the neuter gender [@next d]. All ± 40 adverbs that allow for all these four syntactic functions are listed in [@adverbstype1] below.
+Adverbs of type 1, for example *gestern* 'yesterday' [@next a], can be used in all four syntactic functions. In the function of an attributive adjustor (i.e. as an "adjective") it is placed after the modified noun without any agreement [@next b]. In the function of a predicative head (i.e. as a "verb") the copula *sein* 'to be' is necessary [@next c]. No other copulas are possible. In the function of a referential head (i.e. as a "noun") adverbs always have the neuter gender [@next d]. All ± 40 adverbs that allow for all these four syntactic functions are listed in [@adverbstype1] below.
 
 ::: ex
 Syntactic uses of Adverbs type 1
 
-- Adverbial admodifier: ***Gestern** hatte ich eine Lesung in Neubrandenburg.*^[~~DWDS~~: Die Zeit, 11.12.2017, Nr. 51.]
-- Attributive admodifier: *Das Feuer **gestern** entstand beim Überfahren von Weichen.*^[~~DWDS~~: Der Tagesspiegel, 12.07.2001.]
+- Adverbial adjustor: ***Gestern** hatte ich eine Lesung in Neubrandenburg.*^[~~DWDS~~: Die Zeit, 11.12.2017, Nr. 51.]
+- Attributive adjustor: *Das Feuer **gestern** entstand beim Überfahren von Weichen.*^[~~DWDS~~: Der Tagesspiegel, 12.07.2001.]
 - Predicative head: *Holzkiste und Kinderwagenräder waren **gestern**.*^[~~DWDS~~: Die Zeit, 18.08.2016 (online).]
 - Referential head: *Aber das **Gestern** kann das Heute nicht gänzlich erklären.*^[~~DWDS~~: Die Zeit, 01.07.2017, Nr. 27.]
 :::
 
-Adverbs of type 2, for example *immer* 'always' [@next a], can also be used as predicative head [@next b], but not as attributive admodifier. The ± 20 adverbs of this type are listed in [@adverbstype2] below. They can mostly not be used as a referential head. However, there are a few adverbs that seem to be quite naturally used in this function, so they might form a special subgroup, specifically *das Hoch* [@next c], *das Nichts* [@next d] and *im Nirgendwo* [@next e]. Other adverbs from this class are also attested as referential heads, but only attested very rarely in rather creative contexts.^[A few additional examples of adverbs type 2 used as referential head are the following: *Nach Spielschluss gab Lehmann ein Interview, das seinen Weg vom Hier und Jetzt **ins Immer** eindrücklich belegte.* (~~DWDS~~: Die Zeit, 06.07.2006, Nr. 28) *Sie kommen aus der Leere, der Abwesenheit, sie langen an **im Nirgends**.* (~~DWDS~~: Die Zeit, 02.10.1997, Nr. 41) *Die Grundbestimmungen Dauer, Einheit, Endzweck geben so dem prozessualen Leitbild nur seinen Gegensatz zum Flüchtigen, zur Vielheit des Chaos, **zum Umsonst** oder Nihilismus, aber sie geben noch keinerlei Entschiedenheit des positiven Inhalts.* (~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 433) *Bei Gerhard Schröder bezieht sich **das Überall** nicht auf den geographischen Globus.* (~~DWDS~~: Der Tagesspiegel, 22.12.2002) *Als ginge es nicht nur ums Lebenswerk und seine Vollendetheit, sondern um seine Vollendung, anders gesagt: **das Vorbei**.* (~~DWDS~~: Der Tagesspiegel, 03.05.2000).]
+Adverbs of type 2, for example *immer* 'always' [@next a], can also be used as predicative head [@next b], but not as attributive adjustor. The ± 20 adverbs of this type are listed in [@adverbstype2] below. They can mostly not be used as a referential head. However, there are a few adverbs that seem to be quite naturally used in this function, so they might form a special subgroup, specifically *das Hoch* [@next c], *das Nichts* [@next d] and *im Nirgendwo* [@next e]. Other adverbs from this class are also attested as referential heads, but only attested very rarely in rather creative contexts.^[A few additional examples of adverbs type 2 used as referential head are the following: *Nach Spielschluss gab Lehmann ein Interview, das seinen Weg vom Hier und Jetzt **ins Immer** eindrücklich belegte.* (~~DWDS~~: Die Zeit, 06.07.2006, Nr. 28) *Sie kommen aus der Leere, der Abwesenheit, sie langen an **im Nirgends**.* (~~DWDS~~: Die Zeit, 02.10.1997, Nr. 41) *Die Grundbestimmungen Dauer, Einheit, Endzweck geben so dem prozessualen Leitbild nur seinen Gegensatz zum Flüchtigen, zur Vielheit des Chaos, **zum Umsonst** oder Nihilismus, aber sie geben noch keinerlei Entschiedenheit des positiven Inhalts.* (~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 3, Berlin: Aufbau-Verl. 1956, S. 433) *Bei Gerhard Schröder bezieht sich **das Überall** nicht auf den geographischen Globus.* (~~DWDS~~: Der Tagesspiegel, 22.12.2002) *Als ginge es nicht nur ums Lebenswerk und seine Vollendetheit, sondern um seine Vollendung, anders gesagt: **das Vorbei**.* (~~DWDS~~: Der Tagesspiegel, 03.05.2000).]
 
 ::: ex
 Syntactic uses of Adverbs type 2
 
-- Adverbial admodifier: *Es kann **immer** schnell vorbei sein.*^[~~DWDS~~: Die Zeit, 18.01.2018, Nr. 01.]
+- Adverbial adjustor: *Es kann **immer** schnell vorbei sein.*^[~~DWDS~~: Die Zeit, 18.01.2018, Nr. 01.]
 - Predicative head: *Irgendein Wetter ist **immer**.*^[~~DWDS~~: Ulrich Seidler: Frei Luft Theater Fest. Berliner Zeitung, 22.06.2000.]
 - Referential head: *Weil **das Hoch** der SPD schon irgendwann einbrechen werde.*^[~~DWDS~~: Die Zeit, 16.03.2017, Nr. 10.]
 - Referential head: ***Das Nichts** kennt kein Unglück.*^[~~DWDS~~: Busch, Werner: Das sentimentalische Bild, München: Beck 1993, S. 480.]
 - Referential head: *Berlin im Frühjahr, ein Sportplatz **im Nirgendwo** zwischen Berlin und Spandau.*^[~~DWDS~~: Die Zeit, 26.04.2017 (online).]
 :::
 
-Adverbs of type 3, for example *bisher* 'up to now' [@next a], can also be used as attributive admodifier [@next b], but not as predicative head ("verbs"). There are about 10 monomorphemic adverbs of this type and some affixes can be used to construct more examples this type of adverbs, as summarized in [@adverbstype3] below. Some of these adverbs are attested as referential heads ("nouns"), but only in rather philosophical contexts [@next c].^[A few additional examples of adverbs type 3 used as referential head are the following: *Im Danach ist auch immer schon **das Demnächst** zu entdecken.* (~~DWDS~~: Die Zeit, 04.10.2007, Nr. 41) *Während er mechanisch nach rechts steuerte, […] sah er in sich das ganze Buch, die Vertiefungen, die Ausblicke, **das Zuvor** und **das Hernach**.* (~~DWDS~~: Feuchtwanger, Lion: Erfolg. Gesammelte Werke in Einzelbänden, Bd. 6, Berlin: Aufbau-Verl. 1930, S. 749) *Überhaupt lernt man hier alles wie **im Nebenbei**.* (~~DWDS~~: Die Zeit, 14.03.2013, Nr. 12) *Ganz **im Nebenher** regelten sich die technischen Dinge.* (~~DWDS~~: Die Zeit, 31.05.1956, Nr. 22) *Ihre Lebensgeschichte hat einen tiefen Einschnitt, der das Vorher **vom Seither** scheidet.* (~~DWDS~~: Die Zeit, 08.08.1997, Nr. 33) *Aber auch **das Zwischendurch** spielt natürlich eine Rolle.* (~~DWDS~~: Blinden-Ensemble probt Konzert im Grünen. Berliner Zeitung, 21.09.1996) *Derzeit führt die stark schwankende Finanzierungskurve für diesen Bereich **ins Abwärts**, während sich die Herzen der Bewilliger bei Anträgen von Ingenieur- und Naturwissenschaftlern weit öffnen.* (~~DWDS~~: Die Zeit, 17.05.1985, Nr. 21) *Peter-Klaus Schuster sucht das Neue gern im Alten, **das Vorwärts im Rückwärts**.* (~~DWDS~~: Die Zeit, 05.10.2000, Nr. 41).]
+Adverbs of type 3, for example *bisher* 'up to now' [@next a], can also be used as attributive adjustor [@next b], but not as predicative head ("verbs"). There are about 10 monomorphemic adverbs of this type and some affixes can be used to construct more examples this type of adverbs, as summarized in [@adverbstype3] below. Some of these adverbs are attested as referential heads ("nouns"), but only in rather philosophical contexts [@next c].^[A few additional examples of adverbs type 3 used as referential head are the following: *Im Danach ist auch immer schon **das Demnächst** zu entdecken.* (~~DWDS~~: Die Zeit, 04.10.2007, Nr. 41) *Während er mechanisch nach rechts steuerte, […] sah er in sich das ganze Buch, die Vertiefungen, die Ausblicke, **das Zuvor** und **das Hernach**.* (~~DWDS~~: Feuchtwanger, Lion: Erfolg. Gesammelte Werke in Einzelbänden, Bd. 6, Berlin: Aufbau-Verl. 1930, S. 749) *Überhaupt lernt man hier alles wie **im Nebenbei**.* (~~DWDS~~: Die Zeit, 14.03.2013, Nr. 12) *Ganz **im Nebenher** regelten sich die technischen Dinge.* (~~DWDS~~: Die Zeit, 31.05.1956, Nr. 22) *Ihre Lebensgeschichte hat einen tiefen Einschnitt, der das Vorher **vom Seither** scheidet.* (~~DWDS~~: Die Zeit, 08.08.1997, Nr. 33) *Aber auch **das Zwischendurch** spielt natürlich eine Rolle.* (~~DWDS~~: Blinden-Ensemble probt Konzert im Grünen. Berliner Zeitung, 21.09.1996) *Derzeit führt die stark schwankende Finanzierungskurve für diesen Bereich **ins Abwärts**, während sich die Herzen der Bewilliger bei Anträgen von Ingenieur- und Naturwissenschaftlern weit öffnen.* (~~DWDS~~: Die Zeit, 17.05.1985, Nr. 21) *Peter-Klaus Schuster sucht das Neue gern im Alten, **das Vorwärts im Rückwärts**.* (~~DWDS~~: Die Zeit, 05.10.2000, Nr. 41).]
 
 ::: ex
 Syntactic uses of Adverbs type 3
 
-- Adverbial admodifier: ***Bisher** hatte er nicht den Eindruck, abgehängt zu sein.*^[~~DWDS~~: Die Zeit, 04.01.2018, Nr. 52.]
-- Attributive admodifier: *Die Leistung **bisher** stimmt, das Ergebnis noch nicht.*^[~~DWDS~~: Die Zeit, 28.08.2015 (online).]
+- Adverbial adjustor: ***Bisher** hatte er nicht den Eindruck, abgehängt zu sein.*^[~~DWDS~~: Die Zeit, 04.01.2018, Nr. 52.]
+- Attributive adjustor: *Die Leistung **bisher** stimmt, das Ergebnis noch nicht.*^[~~DWDS~~: Die Zeit, 28.08.2015 (online).]
 - Referential head: *Die meisten reizt schon der leere Unterschied **zum Bisher**, die Frische, gleichviel zunächst, was ihr Inhalt ist.*^[~~DWDS~~: Bloch, Ernst: Das Prinzip Hoffnung Bd. 1, Berlin: Aufbau-Verlag 1954, S. 52.]
 :::
 
@@ -342,7 +354,7 @@ Adverbs of type 4, for example *anfangs* 'initially', can only be used adverbial
 ::: ex
 Syntactic uses of Adverbs type 4
 
-- Adverbial admodifier: ***Anfangs** haben wir uns gestritten.*^[~~DWDS~~: Die Zeit, 15.12.2017, Nr. 52.]
+- Adverbial adjustor: ***Anfangs** haben wir uns gestritten.*^[~~DWDS~~: Die Zeit, 15.12.2017, Nr. 52.]
 - Referential head: *Die Antwort, **das Darum**, fällt ziemlich trocken aus.*^[~~DWDS~~: Ulrich Seidler: Pamphlete gegen Tatsachen. Berliner Zeitung, 06.09.2001.]
 - Referential head: *[…], wobei er sich allerdings um **das Warum** keine Gedanken macht.*^[~~DWDS~~: Schmidt-Rogge, Carl H.: Dein Kind &#x96; Dein Partner, München: List 1973 [1969], S. 339.]
 - Referential head: *Nicht das Ob, sondern **das Wie** ist hier das Entscheidende.*^[~~DWDS~~: Kurz, Robert: Schwarzbuch Kapitalismus, Frankfurt a. M.: Eichborn 1999, S. 270.]
@@ -406,7 +418,7 @@ Adverbs type 4: **only adverbial** uses
 - Stems with the suffix *‑erseits*, e.g. *andererseits, deinerseits, einerseits, meinerseits, väterlicherseits, staatlicherseits*, etc.
 :::
 
-There are still a few ingredients that need special attention. First, the double prepositions *voran, voraus, vorbei, vorüber* are often listed as adverbs, but they cannot be used as adverbial admodifiers at all and will thus not be classified as adverbs here. They can be used as preverbials in compound verbs, like in *voranlaufen, vorauslaufen, vorbeilaufen* and *vorüberlaufen*. Also, except for *voran*, they can be used as predicative heads, like in *es ist vorbei/vorüber* and *er ist den anderen voraus*. Finally, *voran* can be used (although somewhat old-fashioned) as a postposition governing a dative case, like *dem Festzug voran*. Yet, these four ingredients *voran, voraus, vorbei, vorüber* cannot be used as an adverbial modifier and are consequently not adverbs. This is notably different from *vorab*, which is an adverb type 4 as listed in [@adverbstype4].
+There are still a few ingredients that need special attention. First, the double prepositions *voran, voraus, vorbei, vorüber* are often listed as adverbs, but they cannot be used as adverbial adjustors at all and will thus not be classified as adverbs here. They can be used as preverbials in compound verbs, like in *voranlaufen, vorauslaufen, vorbeilaufen* and *vorüberlaufen*. Also, except for *voran*, they can be used as predicative heads, like in *es ist vorbei/vorüber* and *er ist den anderen voraus*. Finally, *voran* can be used (although somewhat old-fashioned) as a postposition governing a dative case, like *dem Festzug voran*. Yet, these four ingredients *voran, voraus, vorbei, vorüber* cannot be used as an adverbial modifier and are consequently not adverbs. This is notably different from *vorab*, which is an adverb type 4 as listed in [@adverbstype4].
 
 Second, most dictionaries of German categorize the ingredients *nahezu, nämlich, schier, sehr, sogar, überaus* and *weitaus* as adverbs.^[No attempt is made to propose English translations for these ingredients, because a faithful translation for them is extremely context-dependent.] They can indeed be used adverbially without being modifiable themselves, like the adverbs listed in [@adverbstype4]. However, they are not very frequent in this adverbial usage. They occur much more frequently in narrow-scope modification, like *schier unmöglich* 'practically impossible' or *weitaus größer* 'much larger'. Crucially, they are syntactically special in that they cannot be used as the sole content of the first position of the sentence, i.e. as the *Vorfeld*. This makes them different from all adverbs discussed in this section. They are not classified as adverbs here, but as non-initial particles (see ???).
 
@@ -419,14 +431,14 @@ The class of *Numerale* (numerals) is arguably a subclass of adjectives, but it 
 - Variable ordering: *Die **anderen drei Topstars** dagegen enttäuschten bislang.*^[~~DWDS~~: Die Zeit, 28.10.2016 (online).]
 :::
 
-Numerals can be used as attributive admodifier [@next a] and as referential head [@next b]. In both uses the numeral does not have any inflection. A numeral can be used as an adverbial admodifier with the suffix *-mal* [@next c]. Numerals can only be used as a predicative head with a copula in very specific contexts, namely to express a mathematical result [@next c], to express age [@next d] or in some proverbs [@next e].
+Numerals can be used as attributive adjustor [@next a] and as referential head [@next b]. In both uses the numeral does not have any inflection. A numeral can be used as an adverbial adjustor with the suffix *-mal* [@next c]. Numerals can only be used as a predicative head with a copula in very specific contexts, namely to express a mathematical result [@next c], to express age [@next d] or in some proverbs [@next e].
 
 ::: ex
 Syntactic uses of a *Numerale* in German
 
-- Attributive admodifier: *Die **drei** Kandidaten traten gegeneinander an.*^[~~DWDS~~: Die Zeit, 22.11.2017 (online).]
+- Attributive adjustor: *Die **drei** Kandidaten traten gegeneinander an.*^[~~DWDS~~: Die Zeit, 22.11.2017 (online).]
 - Referential head: *Die **drei** grummelten vor sich hin.*^[~~DWDS~~: Jentzsch, Kerstin: Seit die Götter ratlos sind, München: Heyne 1999 [1994], S. 257.]
-- Adverbial admodifier: *Ich klopfe **dreimal**.*^[~~DWDS~~: Die Zeit, 08.01.2018, Nr. 02.]
+- Adverbial adjustor: *Ich klopfe **dreimal**.*^[~~DWDS~~: Die Zeit, 08.01.2018, Nr. 02.]
 - Mathematic result: *Eins plus eins ist **drei**.*^[~~DWDS~~: Der Tagesspiegel, 11.03.2004.]
 - Age indication: *Maxi, die Jüngste, ist **drei**.*^[~~DWDS~~: Die Zeit, 07.11.2007, Nr. 46.]
 - Proverb: *Aller guten Dinge sind **drei**.*
@@ -437,7 +449,7 @@ Derived from numerals are *Ordinalzahlen* (ordinals) with the suffix *‑te* and
 ::: ex
 Syntactic uses of *Ordinalzahlen* in German
 
-- Attributive admodifier: *Wir müssen uns mit dem **dritten** Geschlecht befassen.*^[~~DWDS~~: Die Zeit, 24.11.2017, Nr. 48.]
+- Attributive adjustor: *Wir müssen uns mit dem **dritten** Geschlecht befassen.*^[~~DWDS~~: Die Zeit, 24.11.2017, Nr. 48.]
 - Referential head: *Die **dritte** erzählt von Flucht und Immigration.*^[~~DWDS~~: Die Zeit, 27.04.2017 (online).]
 - Rank in sports: *Die deutschen Fußballdamen wurden **dritte**.*^[~~DWDS~~: Die Zeit, 23.06.1995, Nr. 26.]
 :::
@@ -451,7 +463,7 @@ Syntactic uses of *Bruchzahlen* in German
 - Predicative head: *Seit Juli hat sich der Wert der Aktie fast **gedrittelt**.*^[~~DWDS~~: Berliner Zeitung, 07.09.2001.]
 :::
 
-There is a strange quirk in German orthography to write numerals with an initial lowercase even when they are used as a referential head, e.g. *diese drei flüchteten* 'those three fled', while writing *Million* (and other *‑llion* numerals) always with a capital, even when they are used as an attributive admodifier, e.g. *die Millionen Menschen* 'the million dollar'. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10‑to‑1 preference for lower case with small numerals like *drei* or ordinals like *dritte* when used as a referential head ("noun").^[The search "die \@drei $p=VVFIN" gave 991 hits, while the Search "die \@Drei $p=VVFIN" gave 92 hits. Similarly, "die \@dritte $p=VVFIN" resulted in 1490 hits while "die \@Dritte $p=VVFIN" gave 228 hits. All searches were performed on <https://www.dwds.de/r/> on 1st December 2023 using the *Referenz- und Zeitungskorpora*.]
+There is a strange quirk in German orthography to write numerals with an initial lowercase even when they are used as a referential head, e.g. *diese drei flüchteten* 'those three fled', while writing *Million* (and other *‑llion* numerals) always with a capital, even when they are used as an attributive adjustor, e.g. *die Millionen Menschen* 'the million dollar'. The actual practice is a bit less stringent than these official prescriptive rules. A quick search in the DWDS corpus suggests a 10‑to‑1 preference for lower case with small numerals like *drei* or ordinals like *dritte* when used as a referential head ("noun").^[The search "die \@drei $p=VVFIN" gave 991 hits, while the Search "die \@Drei $p=VVFIN" gave 92 hits. Similarly, "die \@dritte $p=VVFIN" resulted in 1490 hits while "die \@Dritte $p=VVFIN" gave 228 hits. All searches were performed on <https://www.dwds.de/r/> on 1st December 2023 using the *Referenz- und Zeitungskorpora*.]
 
 ::: ex
 German monomorphic numerals
