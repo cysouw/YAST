@@ -382,7 +382,7 @@ Adverbs type 2: **predicative & adverbial** uses
 
 - Local meaning: *hoch, nirgends, nirgendwo, überall*
 - Temporal meaning: *bald, demnächst, immer, nie*
-- Modal meaning: *anders, besonders, genauso, nichts, so, soweit, umsonst, vergebens*
+- Modal meaning: *anders, barfuß, besonders, genauso, nichts, so, soweit, umsonst, vergebens*
 :::
 
 ::: {.ex #adverbstype3}
