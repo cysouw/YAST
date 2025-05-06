@@ -136,6 +136,7 @@ Präpositionen = {
   'entsprechend': 'Dativ',
   'gegenüber': 'Dativ',
   'gemäß': 'Dativ',
+  'gleich': 'Dativ', # gleich einem Wasserfall
   'mit': 'Dativ',
   'nach': 'Dativ',
   'nahe': 'Dativ',
@@ -144,8 +145,7 @@ Präpositionen = {
   'von': 'Dativ',
   'zu': 'Dativ',
   # Wechselpräpositionen: dative default for stative location, use 'Bewegung' to make accusative
-  # governed roles are variable, but: auf/über/in/vor take accusative when governed
-  # an is variable (denken an Dativ, Dativ alternation with accusative)
+  # governed roles always take accusative? an/auf/über/in/vor
   'an': 'Dativ',
   'auf': 'Dativ',
   'hinter': 'Dativ',
