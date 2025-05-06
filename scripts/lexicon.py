@@ -348,6 +348,8 @@ Definitartikel = {
 
 # etwas? z.B. 'etwas Großes', 'etwas Zucker'
 
+# auch: einige, etliche, mehrere, viele, wenige, ein paar, ein bisschen
+
 Quantoren = {
   'dies':{
     'Flexion': 'dies',
