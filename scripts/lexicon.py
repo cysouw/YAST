@@ -54,6 +54,9 @@ Adjektive = ['absolut', 'albern', 'alt', 'andere', 'arg', 'arm', 'äußer', 'bar
 # special adverbs: hoch/hoh, nieder/niedrig
 # special predication: letzte(r)
 
+# only predicative adjectives:
+PrädikativAdjektive = ['pleite', 'leid', 'schuld', 'wert', 'schade', 'quitt', 'okay', 'schnurzegal', 'fit', 'futsch', 'foul', 'wett', 'patt', 'knockout', 'alleinig', 'tipptopp', 'jammerschade']
+
 # Note regular adjectival suffixes: ig/bar/end/los/sam/fach/lich/haft/isch/gemäß/mäßig/artig 
 # sometimes root does not exist (anymore): häufig, ständig, wichtig, abwesend, anwesend, fortwährend, gewöhnlich, natürlich, wahrscheinlich, unmittelbar, demenstsprechend, gleichzeitig, anschließend, ausschließlich
 # der dem Festessen anschließender Tanz
