@@ -8,6 +8,8 @@ Subjunktionen = ['als', 'als ob', 'bevor', 'bis', 'da', 'damit', 'ehe', 'falls',
 # Begründung (um), Alternative (statt, anstatt, anstelle), Außnahme (ohne: A-aber-nicht-B, außer: nicht-A-aber-B)
 # NOTE: there is an old-fashioned usage of 'bis dass' not included here
 Satzpräpositionen = ['um', 'ohne', 'außer', 'ausser', 'statt', 'anstatt', 'anstelle', 'im Falle', 'für den Fall']
+
+# abgesehen davon, dass
 Satzpartizipien = ['angenommen', 'ausgenommen', 'gegeben', 'gesetzt', 'ungeachtet', 'unterstellt', 'vorausgesetzt']
 
 # the following can be combined with adverbials, even adverbs
@@ -51,6 +53,9 @@ Adjektive = ['absolut', 'albern', 'alt', 'andere', 'arg', 'arm', 'äußer', 'bar
 # special adverbs s: linke, rechte, andere, besondere
 # special adverbs: hoch/hoh, nieder/niedrig
 # special predication: letzte(r)
+
+# only predicative adjectives:
+PrädikativAdjektive = ['pleite', 'leid', 'schuld', 'wert', 'schade', 'quitt', 'okay', 'schnurzegal', 'fit', 'futsch', 'foul', 'wett', 'patt', 'knockout', 'alleinig', 'tipptopp', 'jammerschade']
 
 # Note regular adjectival suffixes: ig/bar/end/los/sam/fach/lich/haft/isch/gemäß/mäßig/artig 
 # sometimes root does not exist (anymore): häufig, ständig, wichtig, abwesend, anwesend, fortwährend, gewöhnlich, natürlich, wahrscheinlich, unmittelbar, demenstsprechend, gleichzeitig, anschließend, ausschließlich
@@ -134,6 +139,7 @@ Präpositionen = {
   'entsprechend': 'Dativ',
   'gegenüber': 'Dativ',
   'gemäß': 'Dativ',
+  'gleich': 'Dativ', # gleich einem Wasserfall
   'mit': 'Dativ',
   'nach': 'Dativ',
   'nahe': 'Dativ',
@@ -142,8 +148,7 @@ Präpositionen = {
   'von': 'Dativ',
   'zu': 'Dativ',
   # Wechselpräpositionen: dative default for stative location, use 'Bewegung' to make accusative
-  # governed roles are variable, but: auf/über/in/vor take accusative when governed
-  # an is variable (denken an Dativ, Dativ alternation with accusative)
+  # governed roles always take accusative? an/auf/über/in/vor
   'an': 'Dativ',
   'auf': 'Dativ',
   'hinter': 'Dativ',
@@ -345,6 +350,8 @@ Definitartikel = {
 # Quantoren als Kopf: Alle, die rennen, werden zu spät kommen
 
 # etwas? z.B. 'etwas Großes', 'etwas Zucker'
+
+# auch: einige, etliche, mehrere, viele, wenige, ein paar, ein bisschen
 
 Quantoren = {
   'dies':{
