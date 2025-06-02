@@ -79,7 +79,8 @@ Gradpartikel = ['nahezu', 'schier', 'sehr', 'sogar', 'spätestens', 'überaus', 
 # Abkürzung??? er hat sehr geschwitzt
 
 # mit NP
-Fokuspartikel = ['allein', 'allenfalls', 'auch', 'ausgerechnet', 'bereits', 'besonders', 'bestenfalls', 'bloß', 'einzig', 'erst', 'gerade', 'mindestens', 'lediglich', 'nur', 'schon', 'selbst', 'sogar', 'spätestens', 'vor allem', 'wenigstens']
+# so/solch eine Aussage
+Fokuspartikel = ['allein', 'allenfalls', 'auch', 'ausgerechnet', 'bereits', 'besonders', 'bestenfalls', 'bloß', 'einzig', 'erst', 'gerade', 'mindestens', 'lediglich', 'nur', 'schon', 'selbst', 'so', 'sogar', 'solch', 'spätestens', 'vor allem', 'wenigstens']
 
 # also Post-NP: selbst, allein
 
