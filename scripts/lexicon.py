@@ -17,6 +17,7 @@ Satzpartizipien = ['angenommen', 'ausgenommen', 'gegeben', 'gesetzt', 'ungeachte
 # nach links, von hier, nach oben  
 # von ... an
 # für unterwegs/immer/umsonst/zwischendurch
+# halten/erachten/bezeichnen/ansehen/befinden für angemessen/verrückt/gescheitert/schlecht
 Grenzpartikel = ['von', 'nach', 'seit', 'ab', 'bis', 'für']
 
 # bis in den frühen Morgen, bis zu den Ferien, bis zum See
@@ -121,6 +122,7 @@ Kasus = ['Nominativ', 'Akkusativ', 'Dativ', 'Genitiv']
 
 Präpositionen = {
   # temporary solution for comparison: treat them as prepositions
+  # note also "als+partizip", als gescheitert, als erledigt, als verstaubt
   'wie': 'Nominativ',
   'als': 'Nominativ',
   # Akkusativ
