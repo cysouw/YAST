@@ -55,7 +55,7 @@ Adjektive = ['absolut', 'albern', 'alt', 'andere', 'arg', 'arm', 'äußer', 'bar
 # special adverbs: hoch/hoh, nieder/niedrig
 # special predication: letzte(r)
 
-# only predicative adjectives:
+# only predicative "adjectives":
 PrädikativAdjektive = ['pleite', 'leid', 'schuld', 'wert', 'schade', 'quitt', 'okay', 'schnurzegal', 'fit', 'futsch', 'foul', 'wett', 'patt', 'knockout', 'alleinig', 'tipptopp', 'jammerschade']
 
 # Note regular adjectival suffixes: ig/bar/end/los/sam/fach/lich/haft/isch/gemäß/mäßig/artig 

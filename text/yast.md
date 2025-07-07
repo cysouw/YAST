@@ -24,9 +24,38 @@ The complete process that leads to the utterance (i.e. the results of the evalua
 
 This multi-step approach to syntactic analysis probably feels eerily similar to the familiar "deep structure being transformed to surface structure" approach developed by Harris and Chomsky starting in the late 1950s, and there are surely parallels to be found. However, in actual practice there is not much similarity in the inner working of the algorithms. The difference is most obvious in the "rules" of YAST, which do not transform the recipe, but start from scratch building a syntactic structure on the basis of the recipe.
 
+## A generative probabilistic constructional model for humans
+
+universal postulates for morphosyntax 
+
+None of these characteristics are necessary universal, because at some point in the evolution of morphosyntax they did not exist. However, they seem to be very widespread among human languages, currently basically universally present:
+
+- morphemic division (-> morpheme)
+- hierarchical modification (-> modifier)
+- markers of modificational relation (-> junctor, flag = phrasal junctor)
+- templatic structure (-> template, head)
+- morphemes with templatic fixed position (-> specifier, stack)
+- reference (-> phrase)
+- predication (-> clause)
+- leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
+
+Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?!
+
+morpheme classes
+
+Morphemes can be classified into classes based on the 'construction' in which they can appear. Such a class should clearly be implemented as a gradual class, e.g. by adding frequencies. Speaker's ingenuity can always add a specific morpheme into a class.
+
+- templates and specifiers define classes
+- morphemes can be (and typically are) multi-functional, i.e. they appear in multiple classes
+- classes cross-sect each other ()
+
+Adverbs are a non-coherent group:
+
+- typically they are operators
+
 ## The recipe
 
-The recipe consists of a collection of one-line instructions that use indentation to indicate modifications. Instructions consist of three different kinds of information, namely ~~junction~~, ~~content~~ and ~~specification~~. All information in an instruction ideally will be of a functional/semantic nature. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The formal syntactic structure of the eventual utterance is produced by the (automatic) rules. 
+The recipe consists of a collection of one-line instructions that use indentation to indicate hierarchical modifications. Instructions consist of three different kinds of information, namely ~~junction~~, ~~content~~ and ~~specification~~. All information in an instruction ideally will be of a functional/semantic nature. The formal linguistic structure is not something that should be of concern in the planning of the instructions. The formal syntactic structure of the eventual utterance is produced by the (automatic) rules. 
 
 The most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. In YAST, a user of a specific language is necessarily juggling with the available language-specific tools to construct an utterance and is not manipulating some abstract non-linguistic concepts.
 
