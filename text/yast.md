@@ -32,14 +32,13 @@ None of these characteristics are necessary universal, because at some point in 
 
 - morphemic division (-> morpheme)
 - hierarchical modification (-> modifier)
-- markers of modificational relation (-> junctor, flag = phrasal junctor)
-- templatic structure (-> template, head)
-- morphemes with templatic fixed position (-> specifier, stack)
+- restrictions on modification (-> head, specifier, stack)
+- modificational relation (-> junctor, flag = phrasal junctor)
+- templatic structure (-> template)
 - reference (-> phrase)
-- predication (-> clause)
-- leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
+- assertion (-> clause)
 
-Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?!
+Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?! leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
 
 morpheme classes
 
