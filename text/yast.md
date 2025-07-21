@@ -24,7 +24,7 @@ The complete process that leads to the utterance (i.e. the results of the evalua
 
 This multi-step approach to syntactic analysis probably feels eerily similar to the familiar "deep structure being transformed to surface structure" approach developed by Harris and Chomsky starting in the late 1950s, and there are surely parallels to be found. However, in actual practice there is not much similarity in the inner working of the algorithms. The difference is most obvious in the "rules" of YAST, which do not transform the recipe, but start from scratch building a syntactic structure on the basis of the recipe.
 
-## A generative probabilistic templatic language model for humans
+## A generative probabilistic templatic model for human language
 
 goals: 
 
@@ -33,21 +33,18 @@ goals:
 - level of abstraction that is helpful for language learning
 - compare structure across languages
 
-universal postulates for morphosyntax 
+universal structural postulates for morphosyntax 
 
-None of these characteristics are necessary universal, because at some point in the evolution of morphosyntax they did not exist. However, they seem to be very widespread among human languages, currently basically universally present:
+A small set of concepts are proposed here as postulates for the structural analysis of morphosyntax. These notions are called "postulates" for three reasons. First, they form a basis for the definition of other morphosyntactic concepts later on. Second, they are "obviously" part of the structure of human language and will simply be assumed to exist without furher argumentation. Third, they are actually not necessarily part of a communicational system and human language could very well exist with any of them. None of these postulates are necessary universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. However, the following notions seem to be very widespread among human languages, currently arguably universally present:
 
-Major principles:
-
-- morphemic division (-> morpheme)
-- hierarchical modification (-> modifier)
-- reference vs. assertion (-> phrase, clause)
-
-Major effects of grammaticalisation:
-
-- combinatorical restrictions (-> head, specifier, stack)
-- explicit relations (-> junctor, flag = phrasal junctor)
-- templatic structures (-> template)
+- **Morphemic division**: utterances can be divided into morphemes.
+- **Hierarchical modification**: morphemes modify other morphemes and such modifiers can in turn be modified by other morphemes.
+- **Reference**: morphemes can be used to identify entities.
+- **Assertion**: morphemes can be used to make statements about referenced entities.
+- **Grammaticalisation**: over time morphemes can become more abstract and specialized, leading to: 
+  - **Restricted modification**: morphemes can develop limits on the extent to which they can be modified.
+  - **Grammatical relation**: different kinds of modification can become structurally differentiated.
+  - **Templatic structure**: groups of morphemes can develop into a fixed linear structure with "slots" that are limited to a restricted set of "fillers".
 
 Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?! leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
 
