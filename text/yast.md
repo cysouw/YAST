@@ -24,23 +24,34 @@ The complete process that leads to the utterance (i.e. the results of the evalua
 
 This multi-step approach to syntactic analysis probably feels eerily similar to the familiar "deep structure being transformed to surface structure" approach developed by Harris and Chomsky starting in the late 1950s, and there are surely parallels to be found. However, in actual practice there is not much similarity in the inner working of the algorithms. The difference is most obvious in the "rules" of YAST, which do not transform the recipe, but start from scratch building a syntactic structure on the basis of the recipe.
 
-## A generative probabilistic constructional model for humans
+## A generative probabilistic templatic language model for humans
+
+goals: 
+
+- allow human analysis of linguistic structure
+- use parameters that can be grasped by human understanding (but can be further fine-tuned towards LLM-like models)
+- level of abstraction that is helpful for language learning
+- compare structure across languages
 
 universal postulates for morphosyntax 
 
 None of these characteristics are necessary universal, because at some point in the evolution of morphosyntax they did not exist. However, they seem to be very widespread among human languages, currently basically universally present:
 
+Major principles:
+
 - morphemic division (-> morpheme)
 - hierarchical modification (-> modifier)
-- restrictions on modification (-> head, specifier, stack)
-- modificational relation (-> junctor, flag = phrasal junctor)
-- templatic structure (-> template)
-- reference (-> phrase)
-- assertion (-> clause)
+- reference vs. assertion (-> phrase, clause)
+
+Major effects of grammaticalisation:
+
+- combinatorical restrictions (-> head, specifier, stack)
+- explicit relations (-> junctor, flag = phrasal junctor)
+- templatic structures (-> template)
 
 Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?! leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
 
-morpheme classes
+morpheme classes are language specific
 
 Morphemes can be classified into classes based on the 'construction' in which they can appear. Such a class should clearly be implemented as a gradual class, e.g. by adding frequencies. Speaker's ingenuity can always add a specific morpheme into a class.
 
