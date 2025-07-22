@@ -35,16 +35,24 @@ goals:
 
 universal structural postulates for morphosyntax 
 
-A small set of concepts are proposed here as postulates for the structural analysis of morphosyntax. These notions are called "postulates" for three reasons. First, they form a basis for the definition of other morphosyntactic concepts later on. Second, they are "obviously" part of the structure of human language and will simply be assumed to exist without furher argumentation. Third, they are actually not necessarily part of a communicational system and human language could very well exist with any of them. None of these postulates are necessary universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. However, the following notions seem to be very widespread among human languages, currently arguably universally present:
+A small set of concepts are proposed here as postulates for the structural analysis of morphosyntax. These notions are called "postulates" because they are (i) axiomatic, (ii) presumed and (iii) cancelable. First, these postulates establish an axiomatic basis for the definition of other morphosyntactic concepts. Second, they are "obviously" part of the structure of human language and will simply be assumed to exist without further argumentation. Third, they are actually not necessarily part of a communicational system and language could very well exist lacking any of these characteristics. None of these postulates are necessary universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. Yet, the following characteristics appear to be very widespread among human languages, arguably universally present in contemporary human languages:
 
 - **Morphemic division**: utterances can be divided into morphemes.
 - **Hierarchical modification**: morphemes modify other morphemes and such modifiers can in turn be modified by other morphemes.
 - **Reference**: morphemes can be used to identify entities.
 - **Assertion**: morphemes can be used to make statements about referenced entities.
-- **Grammaticalisation**: over time morphemes can become more abstract and specialized, leading to: 
-  - **Restricted modification**: morphemes can develop limits on the extent to which they can be modified.
-  - **Grammatical relation**: different kinds of modification can become structurally differentiated.
-  - **Templatic structure**: groups of morphemes can develop into a fixed linear structure with "slots" that are limited to a restricted set of "fillers".
+- **Grammaticalisation**: over time morphemes can become more abstract and specialized.
+
+The process of grammaticalisation has many different semantic and structural consequences. The following three phenomena are proposed to be also universal structural postulates, resulting from grammaticalisation: 
+
+- **Grammatical relations**: morphemes can be used to distinguish between different kinds of modification.
+- **Restricted modification**: morphemes can have limits on the extent to which they can be modified.
+- **Templatic structures**: fixed linear structures with "slots" that only allow for a restricted set of "filler" morphemes.
+
+special kinds of restrictions on modification: 
+
+- **Spawned roles**: morphemes that induce morpheme-specific grammatical relations.
+- **Non-modifiable operators**: morphemes that themselves cannot be modified.
 
 Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?! leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
 
