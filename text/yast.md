@@ -122,27 +122,29 @@ Before delving into the details of this syntactic model, a few words on the algo
 
 # Postulates for morphosyntax 
 
-A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These notions are called "postulates" because they are (i) axiomatic, (ii) presumed and (iii) cancelable. First, they are axiomatic, i.e. these postulates establish a basis for morphosyntax from which other characteristics can be derived. Second, they are presumed, i.e. they are "obviously" part of the structure of human language and will simply be assumed to exist without much further argumentation. Third, they are cancelable, i.e. they are not necessarily part of a communicational system. Language could very well exist lacking any of these characteristics. So, none of these postulates are necessarily universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. Yet, the following characteristics appear to be very widespread among human languages, arguably universally present in contemporary human languages. For convenience of exposition, I distinguish here between structural and functional postulates:
+A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These notions are called "postulates" because they are (i) axiomatic, (ii) presumed and (iii) cancelable. First, they are axiomatic, i.e. these postulates establish a basis for morphosyntax from which other characteristics can be derived. Second, they are presumed, i.e. they are "obviously" part of the structure of human language and will simply be assumed to exist without much further argumentation. Third, they are cancelable, i.e. they are not necessarily part of a communicational system. Language could very well exist lacking any of these characteristics. So, none of these postulates are necessarily universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. Yet, the following characteristics appear to be very widespread among human languages, arguably universally present in contemporary human languages. For convenience of exposition, I distinguish here between general postulates and structure postulates:
 
-- Structural postulates:
+- General postulates:
   - **Morphemic division**: utterances are separable into morphemes.
   - **Hierarchical modification**: morphemes modify other morphemes, and modifiers can in turn be modified.
-  - **Grammatical relations**: different kinds of modification are distinguished.
-  - **Differential modification**: morphemes have limits on the extent to which they can be modified.
-- Functional postulates:
-  - **Reference**: morphemes can be used to identify entities.
+  - **Reference**: morphemes can be used to identify entities ("assertsion that something exists").
   - **Assertion**: morphemes can be used to make statements about referenced entities.
-  - **Semantic space**: the meaning of a morpheme is a distinctive subspace of a universal semantic space.
+- Structure postulates: (different effects in different languages)
+  - **Grammatical relations**: different kinds of modification are distinguished.
+  - **Differential modification**: morphemes have constraints on the extent to which they can be modified.
+  - **Semantic space**: the meaning of a morpheme is a distinctive subspace of a universal continuous multidimensional semantic space.
+  
+- Processes of change:
   - **Grammaticalisation**: over time morphemes can become more functionally abstract and structurally specialized.
+  - **Innovation**: new morphemes can be introduced by grammaticalisation, by borrowing or by pure creative fabrication.
 
-The capricious process of grammaticalisation is the root cause for the accumulation of differences between languages. It leads to different **subdivision of semantic space**, to different **kinds of grammatical relations**, and above all it leads to different **constraints on modification** for each morpheme.
+The capricious process of grammaticalisation is the root cause for the accumulation of differences in structure between languages. It leads to different **subdivision of semantic space**, to different **kinds of grammatical relations**, and above all it leads to different **constraints on modification** for each morpheme.
 
-
-special kinds of restrictions on modification: 
+special kinds of constraints on modification: (besides general probabilistic differences for modifier choice)
 
 - **Spawned roles**: morphemes can induce morpheme-specific grammatical relations.
-- **Non-modifiable operators**: some morphemes cannot be modified.
-- **Templatic structure**: a modifier can have a fixed linear structure with "slots" that only allow for a restricted set of "filler" morphemes.
+- **Non-modifiable operators**: some morphemes cannot be further modified.
+- **Templatic structure**: a fixed linear structure for modification with "slots" that only allow for a restricted set of "filler" morphemes.
 
 Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?! leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
 
@@ -150,7 +152,7 @@ morpheme classes are language specific
 
 Morphemes can be classified into classes based on the 'construction' in which they can appear. Such a class should clearly be implemented as a gradual class, e.g. by adding frequencies. Speaker's ingenuity can always add a specific morpheme into a class.
 
-- templates and specifiers define classes
+- templates and operators define classes
 - morphemes can be (and typically are) multi-functional, i.e. they appear in multiple classes
 - classes cross-sect each other ()
 
