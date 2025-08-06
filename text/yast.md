@@ -12,22 +12,40 @@ The first few chapters lay out YAST in rather abstract terms. This is not how YA
 
 ![The real scientific procedure (© Reid, Geleijnse & van Tol)](figures/fokkesukke.png){#fig:fokkesukke}
 
-# Intro
+# Introducing YAST
 
-A generative probabilistic templatic model for human language
+## 
+
+Given the large number of available structural models for morphosyntax, the way to introduce yet another system will be pursued here by highlighting a few of the special characteristics, that differentiate YAST from other generative models. 
+
+First, the current approach remains relatively close to a "traditional" notion of grammar. Although YAST has a generative implementation (which traditional grammars do not tend to have), the kind of "ingredients" that go into the generation are close to rules/regularities as described in traditional grammars. The traditional grammatical description only has to be tightened a bit to allow for an actual automated implementation. This approach also ensures that the actual implementation of the model is still easily understandable for non-technically minded linguists.
+
+Second, the generative model of YAST has three different kinds of operations, namely (i) predominantly "free" lexical insertion, (ii) grammatical restrictions that result from the inserted lexemes and (iii) grammatical rules that are completely automatic formal regularities of the language structure. This distinction between aspects that (i) can be freely chosen, (ii) are repercussions of those choices and (iii) are mandatory regularities, is useful for a better understanding of linguistic structure. It might even be helpful for language learning.
+
+Third, the generation process uses concrete morphemes from a specific language, not abstract categories.
+
+A generative potentially-probabilistic traditional-like templatic (GP^2^T) model for human language
 
 goals: 
 
 - allow human analysis of linguistic structure
 - use parameters that can be grasped by human understanding (but can be further fine-tuned towards LLM-like models)
-- level of abstraction that is helpful for language learning
-- compare structure across languages
+- level of abstraction that is helpful for language learning, at least much closer to 'traditional' grammar than most other generative models
+- compare structure across languages ?
 
-# Introducing the YAST model
+special characteristics:
 
-## Recipe-rule-result-receipt
+- generative model, but generation uses concrete morphemes from a specific language, not abstract categories
+- in the generation, each inserted morpheme restricts the possibilities of follow-up insertions
+- "free" lexical generation, "grammatical restrictions" because certain restrictions imposed by lexemes, "grammatical rules/lexical characteristics" as completely automatic and non-choosable formal regularities (to be learned by heart)
+- classes of morphemes ("word classes") exist, but only as a secondary phenomenon based on distributional characteristics
+- the generation is dependency-like, while the output is constituency-like
 
-In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, lead to an ~~result~~, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline determining what should appear in the instructions is the notion of predictability: all parts of an actual utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. So, the research that is needed to write morphosyntactic YAST-rules for a specific language is to decide which parts of the utterance are predictable and which are non-predictable. As it turns out for the current case of German, the set of instructions to produce a sentence is very similar to a dependency tree.
+## The grammatical model
+
+### Recipe-rule-result-receipt
+
+In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, lead to an ~~result~~, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline determining what should appear in the instructions is the notion of predictability: all parts of an actual utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. So, the research that is needed to write morphosyntactic YAST-rules for a specific language is to decide which parts of the utterance are predictable and which are non-predictable.
 
 Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might also be a useful model for language processing, though note that the current model is based purely on syntactic analysis, without any actual research into real psychological processing. Still, to produce utterances in YAST there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply lead to linguistic elements that can be uttered immediately.
 
@@ -35,7 +53,7 @@ The complete process that leads to the utterance (i.e. the results of the evalua
 
 This multi-step approach to syntactic analysis probably feels eerily similar to the familiar "deep structure being transformed to surface structure" approach developed by Harris and Chomsky starting in the late 1950s, and there are surely parallels to be found. However, in actual practice there is not much similarity in the inner working of the algorithms. The difference is most obvious in the "rules" of YAST, which do not transform the recipe, but start from scratch building a syntactic structure on the basis of the recipe.
 
-## The recipe
+### The recipe
 
 The recipe consists of a collection of one-line instructions that use indentation to indicate hierarchical modifications. Instructions consist of three different kinds of information, namely ~~junction~~, ~~nucleus~~ and ~~specification~~. All information in an instruction will consist of language-specific forms. The details of the syntactic structure is not something that should be of concern in the planning of the instructions. The syntactic structure of the eventual utterance is produced by the (automatic) rules. The most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. In YAST, a user of a specific language is juggling with the available language-specific elements to construct an utterance and is not manipulating abstract linguistic concepts.
 
@@ -70,11 +88,11 @@ sehen (Perfekt)
 
 Each line in [@last] is a single instruction, possibly consisting of up to three different kinds of elements. Anything before the colon is an explicit ~~junctor~~ that marks the relation to the superordinate instruction. This is either a lexical role, an adposition or a subjunction/conjunction. When there is no colon, then the junction is assumed to be default modification. After the linkage follows the main lexical ~~nucleus~~. This is typically a German lexeme, though there are a few abstract abbreviations used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. After the content lexeme follows a list with explicit grammatical ~~specifications~~ (between brackets). When there are no grammatical specifications the rules will infer a default ("unmarked") grammatical structure. Multiple grammatical specifications are separated with a plus-sign, and their order is relevant in some situations. Specifications are often grammatical terms like 'Plural' because of the highly allomorphic formation of the German plural. However, these specifications are always abbreviations for language-specific forms and not universal grammatical categories.
 
-## The rules
+### The rules
 
-The rules use the instructions to produce an actual utterance. They specify how to put the elements from an instruction in their proper place and give them their proper grammatical form. The basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instructions, followed by various morphosyntactic edits to produce the right inflection, allomorphy, agreement and government. The rules for German will be discussed in details in later chapters.
+The rules produce an actual utterance on the basis of the instructions. The rules specify how to put the elements from an instruction in their proper place and give them their proper grammatical form. The basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instructions, followed by various morphosyntactic edits to produce the right inflection, allomorphy, agreement and government. The rules for German will be discussed in details in later chapters.
 
-## The result
+### The result
 
 In the current implementation, the result of applying the rules to a recipe is an utterance in orthographic form. Each part of the utterance is prepared as soon as possible, i.e. the first words of an utterance can mostly already be uttered long before all instructions for a complete sentence are even finished. This is illustrated in [@tbl:example] for the recipe from [@last]. This intuitively seems similar to actual language production in that it is often possible to start speaking without even knowing what will be said in the rest of the sentence.
 
@@ -95,7 +113,7 @@ Recipe                                          | Result
 
 Table: Resulting production of the utterance (right), shown parallel to the instructions from the recipe (left). There is only a minimal delay between the generation of an instruction and the production of the utterance. {#tbl:example}
 
-## The receipt
+### The receipt
 
 The receipt summarizes the process of building an output from the recipe. I use a constituent-like structure for the receipt, but this is not necessarily the best or ideal approach. In general, the details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is shown in the receipt. That is to say, most details of how the receipt currently looks are easily changed to other preferences. For example, in the current implementation, I have added a "cleanup" stage, in which various details are removed to present a simpler receipt. 
 
@@ -103,13 +121,13 @@ The receipt summarizes the process of building an output from the recipe. I use 
 
 Still, I have retained various "traces" of the process leading to the end result, which might look somewhat like transformational movements from early proposals in transformational grammar. This happens because some elements of the instructions have to be temporarily kept "in memory" as they cannot immediately be cleared for pronunciation. This happens, for example, with verbs that are waiting for their subject specification to get subject agreement. Such ingredients "in waiting" are stored internally somewhere and are only uttered at the requisite moment/position. At the moment when such ingredients are being processed for pronunciation, they are taken from their internal storage and "moved" to their eventual position in the constituent structure. Crucially though, the location of the internal storage in the structure is really arbitrary, so the movement is actually more like a process of "preparing for pronunciation". I tend to temporarily store elements in such a position that it only needs minimal movement, but the internal storage could just as well be a unordered named list.
 
-## The parser
+### The parser
 
 The ephemeral role of the constituent-like receipt is also reflected in the workings of the ~~parser~~. The parser does not attempt to reconstruct the constituent tree, but immediately (after observing each pronounced element) tries to reconstruct the underlying dependency-like instructions of the recipe. In the current implementation, various different instructions are attempted within the range of possibilities as constrained by the actual utterance. Each attempt is fed into the rules until the actually observed utterance is replicated. The YAST-parser is thus actually a predictor that constantly tries to reconstruct the instructions (as intended by the generator) by performing generation of a recipe in parallel and checking the results of these mirrored generation with the observed utterance. The parser mostly does not have to wait until an utterance is finished, but can already start predicting while the utterance is still ongoing. This aspect of YAST seems to be a very fruitful approach for modeling language processing. 
 
 ![Basic workflow of YAST](figures/basis){#fig:basis}
 
-## Formal complexity
+### Formal complexity
 
 Before delving into the details of this syntactic model, a few words on the algorithmic complexity of this model are in order. This topic needs more in-depth investigation, but my initial impressions are as follows:
 
@@ -120,7 +138,7 @@ Before delving into the details of this syntactic model, a few words on the algo
 - Finally, the rules that are defined as "diathesis/valency alternation" in Cysouw (2023) are exactly the rules that need multiple joint insertions, so these are mildly-context-sensitive, i.e. they fall in between a type-2 and a type-1 grammar. It seems to be the case that it is this part, and only this part, of the morphosyntax that is more complex than context-free.
 - The parsing needs more work, but it consist of reconstructing a dependency-like structure from an utterance, which does not appear to be highly complex, possibly just regular, i.e. a type-3 grammar.
 
-# Postulates for morphosyntax 
+## Postulates for morphosyntax 
 
 A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These notions are called "postulates" because they are (i) axiomatic, (ii) presumed and (iii) cancelable. First, they are axiomatic, i.e. these postulates establish a basis for morphosyntax from which other characteristics can be derived. Second, they are presumed, i.e. they are "obviously" part of the structure of human language and will simply be assumed to exist without much further argumentation. Third, they are cancelable, i.e. they are not necessarily part of a communicational system. Language could very well exist lacking any of these characteristics. So, none of these postulates are necessarily universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. Yet, the following characteristics appear to be very widespread among human languages, arguably universally present in contemporary human languages. For convenience of exposition, I distinguish here between general postulates and structure postulates:
 
@@ -169,9 +187,9 @@ Roots that are noun, verb and adjective: fett, harsch, laut (lauten/läuten), le
 - die Glocken lauten
 - die laute Glocken
 
-# The recipe
+## The recipe
 
-## Generating a recipe: ingredients
+### Generating a recipe: ingredients
 
 In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ is created, followed by the application of ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. This generative process also has some "rules", i.e. restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German. Other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's intention in accordance to the structure of the language.
 
@@ -179,7 +197,7 @@ The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping
 
 Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific positions in the generation. To fully describe these limits it will eventually be necessary to specify individual possibilities for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the full distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for the subsequent specification of more detail. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
 
-## Combining ingredients: base & modifier
+### Combining ingredients: base & modifier
 
 Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of the combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance with both ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of "understanding" on the part of the addressee.
 
@@ -187,7 +205,7 @@ Additionally, a central tenet of human language is that combinations of linguist
 
 Bases can have multiple modifiers and each modifier can itself be a base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, then the ordering of these modifiers is often meaningful, so the ordering will have to be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in German. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the unusual variants. 
 
-## Syntactic elements: operator, adjustor & head
+### Syntactic elements: operator, adjustor & head
 
 The raw intricacy of pure modification can be further streamlined by distinguishing three different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, it will here be called an ~~operator~~. Second, when a base can only be modified by unmodifiable operators, it will be called an ~~adjustor~~. Finally, when a base can freely be modified by operators, adjustors and other bases, it will be called a ~~head~~. It is important to note that these terms describe syntactic functions and not specific ingredients. One and the same ingredient will often be able to occur in different functions depending on the context in which it is used.
 
@@ -207,7 +225,7 @@ The current definitions of the terms "operator" and "head" might not always coin
 
 Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, that they cannot themselves be modified), for example intensifiers, quantifiers, adpositions or subjunctions. Typical adjustors are adverbs and attributive adjectives, which only allow for limited modification like gradation and intensification. Finally, heads typically comprise verbs and nouns, but they also includes most adjectives, and even some adverbs. 
 
-## Hierarchical structure: stacking, layering & embedding
+### Hierarchical structure: stacking, layering & embedding
 
 The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modeled in syntactic theories by using the mechanism of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.
 
@@ -233,7 +251,7 @@ Only when such a layer itself again has layers of its own then the point is reac
 
 These three levels of modification suggest an evolutionary development in that human language first developed stacking, then layering and then embedding. However, that is purely speculation because all human languages currently appear to employ all three kinds of hierarchical structure. Also note that contemporaneous language change does not follow the path from stacking to layering to embedding. In contrast, grammaticalization typically develops in the reverse direction, from embedding to layering to stacking.
 
-## Heads: referent & predicate
+### Heads: referent & predicate
 
 Heads, as defined previously, are ingredients that can be modified freely, and they alone allow for embedding. For German (and possibly for all human languages), it only appears to be necessary to distinguish two different kinds of heads, coinciding with two central functions of human language, namely identification and assertion. 
 
@@ -252,19 +270,19 @@ It is by no means necessary for identification and assertion to be encoded by sy
 
 Heads can be modified by multiple other heads, each with their own complex internal structure and each with their own relation to their superordinate head. These relations between heads and modifier-heads are often explicitly marked in the linguistic structure by operators that are called ~~junctors~~ here. In German, phrasal junctors are prepositions or case marking ("flagging"), while clausal junctors are subjunctions, conjunctions and a few preposition-like operators. Default "unmarked" relations between heads only occur in the form of appositive phrases and relative clauses.
 
-## Modification: attribute, adverbial & argument
+### Modification: attribute, adverbial & argument
 
 
-## Building a recipe
+### Building a recipe
 
 very simple utterances can consist of just an assertion (e.g. imperatives) or just an identification (i.e. answers to content questions). Recipes for such utterances would then consist of just a predicate or just a referent.
 
 Sentences consist of an assertion about some referent(s) with various additional modification.
 
 
-# Ingredient classes
+## Ingredient classes
 
-## Parts of speech
+### Parts of speech
 
 Ingredients can be categorized into classes on the basis of their syntactic possibilities. When considering all linguistic evidence, I expect that – in the end – each ingredient will have its own special distributional characteristics, so ultimately each ingredient will be its own class. Yet, a few large classes can profitably be formulated, although these classes should not be expected to be perfectly homogeneous. When scrutinizing the details, these classes will dissolve into an ever expanding pile of subclasses.
 
@@ -274,7 +292,7 @@ Note: classes in German are mostly necessary for the generation of a recipe. The
 
 Note: compounding is extremely frequent to make new bases
 
-## Base classes
+### Base classes
 
 Base-classes are established by the possibility of a base being the center of any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive adjustor, or as (iv) adverbial adjustor. Five German base classes can then be defined by the distribution as shown in [@tbl:baseclasses]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the classes of adverbs and numerals actually consist of various syntactic subclasses.
 
@@ -827,13 +845,10 @@ Connecting tissue in YAST:
 - ~~junction~~ (*Junktion*) sometimes an explicit juncture (*Junktor*) is inserted at recursion, describing the relation between the subordinate and the embedded element ('link downwards'). Although there is some overlap, I will use the name preposition (*Präposition*, also with *da-*) for junctures used with an embedded phrase and subordinator (*Subjunktion*) for junctures used with an embedded clause. also conjunctions (*Konjunktion*).
 - ~~linkage~~ (*Verbindung*) is made with relators (*Relator*) inside clauses 'link upwards'. In German relative pronouns ('d'-*Relativpronomen*) and question words ('w'-*Fragewort*), with the default entries *dass* and *was*. Additionally the particle *ob* is used as relator. Relators always occur in the first position of a clause and there is a strong connection to the *Vorfeld* position in the German main clause (which can be interpreted as the linkage to the preceding context with a default entry *es*).
 
-
-
-
 The order of instructions in a recipe is to a large extend "free". The speaker is allowed to specify the instructions in any order in accordance with the intended message (within certain language-specific limits to be worked out later in detail). As an result, the rules will sometimes have to work around the instructions to mould the result in accordance to the structure of the language. A proficient speaker with much experience can take the expected output into account in building the instructions.
 
 
-### Komplemente? Implizite Adverbialsätze ???
+## Komplemente? Implizite Adverbialsätze ???
 
 *wir haben viel zu besprechen*
 *wir haben so viel zu besprechen, dass (???) wir noch länger bleiben müssen*
