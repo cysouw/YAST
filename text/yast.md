@@ -8,38 +8,30 @@ The result is remarkable: with the hundreds of clause derivations from Cysouw (2
 
 The syntactic rules presented here describe (standard) German. However, the general architecture of YAST seems transferable to other languages. The analysis of sentence structures in YAST is fully compatible with typological insights about the worldwide linguistic diversity as, for example, summarized in Croft (2022). I have tried to adapt my terminology to Croft's to make the parallels even more obvious. Still, linguistic diversity is vast, and I do not dare to predict how much work is necessary to adapt the current framework to other languages.
 
-The first few chapters lay out YAST in rather abstract terms. This is not how YAST originated in my own personal thinking. I started out with some simple lines of code to produce German sentences and found various ways to generalize and simplify this algorithm. Once things worked quite well in practice I started formulating in more detail what kind of theoretical assumptions I was making. In so doing I followed the scientific procedure proposed by the Dutch cartoonists John Reid, Bastiaan Geleijnse and Jean-Marc von Tol: "very impressive, colleague ... but does it also work in theory?"
+The first chapter lays out the principles of YAST in rather abstract terms. This is not how YAST originated in my own personal thinking. I started out with some simple lines of code to produce German sentences and found various ways to generalize and simplify this algorithm. Once things worked quite well in practice I started formulating in more detail what kind of theoretical assumptions I was making. In so doing I followed the real scientific procedure as proposed by the Dutch cartoonists John Reid, Bastiaan Geleijnse and Jean-Marc von Tol: "very impressive, dear colleague ... but does it also work in theory?"
 
-![The real scientific procedure (© Reid, Geleijnse & van Tol)](figures/fokkesukke.png){#fig:fokkesukke}
+![The real scientific procedure: "Fokke & Sukke know how science works: very impressive, dear colleague ... but does it also work in theory?"  
+(© Reid, Geleijnse & van Tol)](figures/fokkesukke.png){#fig:fokkesukke}
 
 # Introducing YAST
 
-## 
+## Key characteristics
 
-Given the large number of available structural models for morphosyntax, the way to introduce yet another system will be pursued here by highlighting a few of the special characteristics, that differentiate YAST from other generative models. 
+Given the abundance of existing structural models for morphosyntax, I introduce YAST here by highlighting several key characteristics that distinguish it from most other generative models of grammatical structure.
 
-First, the current approach remains relatively close to a "traditional" notion of grammar. Although YAST has a generative implementation (which traditional grammars do not tend to have), the kind of "ingredients" that go into the generation are close to rules/regularities as described in traditional grammars. The traditional grammatical description only has to be tightened a bit to allow for an actual automated implementation. This approach also ensures that the actual implementation of the model is still easily understandable for non-technically minded linguists.
+**Proximity to traditional grammar.** The current approach remains relatively close to traditional notions of grammatical description. Although it includes a generative implementation (which traditional grammars typically lack), the "ingredients" that drive generation closely resemble the rules and regularities described in traditional grammars. Traditional grammatical descriptions require only minor adjustments to allow for this kind of computational implementation. This approach also ensures that the formalized model remains easily comprehensible to non-technically minded linguists.
 
-Second, the generative model of YAST has three different kinds of operations, namely (i) predominantly "free" lexical insertion, (ii) grammatical restrictions that result from the inserted lexemes and (iii) grammatical rules that are completely automatic formal regularities of the language structure. This distinction between aspects that (i) can be freely chosen, (ii) are repercussions of those choices and (iii) are mandatory regularities, is useful for a better understanding of linguistic structure. It might even be helpful for language learning.
+**Content-then-structure generation.** The generative process employs concrete morphemes from a specific language rather than abstract categories. This contrasts with the predominant approach of first generating an abstract structure and only later inserting lexical elements. In YAST, generation begins by selecting language-specific morphemes for insertion. Each such choice triggers structural repercussions that collectively establish the abstract morphosyntactic structure. Rather than "structure-then-content," YAST follows a "content-then-structure" generative process.
 
-Third, the generation process uses concrete morphemes from a specific language, not abstract categories.
+**Three-way generative distinction.** The current approach distinguishes three types of generative operations, namely (i) predominantly "free" lexical insertion, (ii) grammatical restrictions resulting from the inserted lexemes, and (iii) completely automatic formal rules of language structure. This tripartite distinction proves useful for linguistic comparison and may benefit didactic approaches to language structure. Aspects (ii) and (iii) typically appear in descriptive grammars, while aspects (i) and some components of (ii) are better handled by probabilistic models like LLMs.
 
-A generative potentially-probabilistic traditional-like templatic (GP^2^T) model for human language
+**Rule-defined morpheme classes.** Morpheme classes ("word classes") exist only as secondary phenomena based on morphosyntactic characteristics. Both lexical repercussions and mandatory regularities (i.e. aspects (ii) and (iii) from above) define morpheme classes. Morphemes that share repercussions or evoke identical mandatory regularities constitute a class. Each grammatical structure thus defines its own class of applicable morphemes. This approach yields two key effects, namely (a) languages exhibit numerous overlapping word classes, with most morphemes belonging simultaneously to multiple classes, and (b) no singular basic classification exists to which each morpheme can be uniquely assigned, that is, no set of mutually exclusive classes can serve as the basis for grammatical rules. Rather than "classes determine rules," YAST asserts that "rules define classes."
 
-goals: 
+**Dual structural representation.** Morpheme choice and their repercussions (i.e. aspects (i) and (ii) from above) generate a dependency-like "underlying" structure. Mandatory rules (i.e. aspect (iii) from above) then transform this morphosyntactic structure into a linear utterance through an intermediate constituency-like representation. In grammatical analysis—when working backwards from actual utterances—the constituency structure thus represents a level closer to surface structure than the dependency structure. The dependency structure constitutes a more abstract analytical representation of utterances.
 
-- allow human analysis of linguistic structure
-- use parameters that can be grasped by human understanding (but can be further fine-tuned towards LLM-like models)
-- level of abstraction that is helpful for language learning, at least much closer to 'traditional' grammar than most other generative models
-- compare structure across languages ?
+**Minimal universal assumptions.** Because most grammatical structures arise from language-specific choices, YAST assumes only a very limited set of universal morphosyntactic principles. Observations of recurrent grammatical properties ("statistical universals") are better modeled through semantic-map approaches that describe cross-linguistic similarities and differences as emic divisions of an underlying continuous semantic space (which itself is probably universal).
 
-special characteristics:
-
-- generative model, but generation uses concrete morphemes from a specific language, not abstract categories
-- in the generation, each inserted morpheme restricts the possibilities of follow-up insertions
-- "free" lexical generation, "grammatical restrictions" because certain restrictions imposed by lexemes, "grammatical rules/lexical characteristics" as completely automatic and non-choosable formal regularities (to be learned by heart)
-- classes of morphemes ("word classes") exist, but only as a secondary phenomenon based on distributional characteristics
-- the generation is dependency-like, while the output is constituency-like
+[comment: A generative potentially-probabilistic traditional-like templatic (GP^2^T^2^) model for human language]::
 
 ## The grammatical model
 
@@ -47,15 +39,15 @@ special characteristics:
 
 In its most basic sense, YAST is a generative model for sentence structures. It starts from a set of ~~instructions~~ that, when fed into the morphosyntactic ~~rules~~, lead to an ~~result~~, i.e. a sequence of pronounceable linguistic elements. The instructions are language-specific, i.e. the instructions to make a German sentence consist of German elements. The basic guideline determining what should appear in the instructions is the notion of predictability: all parts of an actual utterance that can be predicted are added by the rules, only the non-predictable elements remain for the instructions. So, the research that is needed to write morphosyntactic YAST-rules for a specific language is to decide which parts of the utterance are predictable and which are non-predictable.
 
-Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might also be a useful model for language processing, though note that the current model is based purely on syntactic analysis, without any actual research into real psychological processing. Still, to produce utterances in YAST there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply lead to linguistic elements that can be uttered immediately.
+Pronunciation can often already start long before the instructions for even a single sentence are finished. So, YAST might also be a useful model for language processing, though note that the current model is based purely on syntactic analysis without any actual research into real psychological processing. Still, to produce utterances in YAST there is only minimal memory required, in that just very few parts of the instructions cannot be immediately uttered, but have to be retained for later. Most instructions simply lead to linguistic elements that can be uttered immediately.
 
 The complete process that leads to the utterance (i.e. the results of the evaluated instructions) can be recorded, and this ~~receipt~~ looks like a constituent tree. Crucially, the creation of such constituent trees are not necessary for the production of the utterance. The constituent tree is just the combined effect of all instructions. So, the constituent tree is really a receipt and not a recipe. In short, the syntactic approach of YAST can be summarized as a ~~recipe-rules-result-receipt~~ model. The (dependency-like) instructions are the recipe. The recipe is fed into the the rules to produce a resulting utterance. Additionally, a (constituent-like) receipt is a summary of all the procedures leading to the result.
 
-This multi-step approach to syntactic analysis probably feels eerily similar to the familiar "deep structure being transformed to surface structure" approach developed by Harris and Chomsky starting in the late 1950s, and there are surely parallels to be found. However, in actual practice there is not much similarity in the inner working of the algorithms. The difference is most obvious in the "rules" of YAST, which do not transform the recipe, but start from scratch building a syntactic structure on the basis of the recipe.
+This multi-step approach to syntactic analysis probably feels eerily similar to the familiar "deep structure being transformed to surface structure" approach developed by Harris and Chomsky starting in the late 1950s, and there are surely parallels to be found. However, in actual practice there is not much similarity in the inner working of the algorithms. The difference is most obvious in the rules of YAST, which do not transform the recipe, but start from scratch building a syntactic structure on the basis of the recipe.
 
 ### The recipe
 
-The recipe consists of a collection of one-line instructions that use indentation to indicate hierarchical modifications. Instructions consist of three different kinds of information, namely ~~junction~~, ~~nucleus~~ and ~~specification~~. All information in an instruction will consist of language-specific forms. The details of the syntactic structure is not something that should be of concern in the planning of the instructions. The syntactic structure of the eventual utterance is produced by the (automatic) rules. The most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. In YAST, a user of a specific language is juggling with the available language-specific elements to construct an utterance and is not manipulating abstract linguistic concepts.
+The recipe consists of a collection of one-line instructions that use indentation to indicate hierarchical modifications. Instructions consist of three different kinds of information, namely ~~junction~~, ~~nucleus~~ and ~~specification~~. All information in an instruction consists of language-specific forms. The details of the syntactic structure is not something that should be of concern in the planning of the instructions. The syntactic structure of the eventual utterance is produced by the (automatic) rules. The most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. In YAST, a user of a specific language is juggling with the available language-specific elements to construct an utterance and is not manipulating abstract linguistic concepts.
 
 ::: ex
 Parts of an instruction in YAST
@@ -65,7 +57,7 @@ Parts of an instruction in YAST
 - ~~specification~~: language-specific grammatical marking (can be empty for default morphosyntax)
 :::
 
-As an example, consider the German sentence in [@next] as an appetizer. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this side of the model will have to be worked out in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic categories, so their semantic interpretation will have to be language-specific as well. Any comprehensive cross-linguistic generalization over such language-specific elements is a separate – though highly important – endeavor, which will not be pursued here.
+As an example, consider the German sentence in [@next] as an appetizer. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this side of the model will have to be worked out another time in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic terminology, so their semantic interpretation will have to be language-specific as well. Any comprehensive cross-linguistic generalization over such language-specific elements is a separate – though highly important – endeavor, which will not be pursued here.
 
 ::: ex
 - Die Männer, deren kleinen Kinder schlecht schlafen, habe ich gestern in deinem schönen Garten gesehen.
@@ -86,11 +78,11 @@ sehen (Perfekt)
 ```
 :::
 
-Each line in [@last] is a single instruction, possibly consisting of up to three different kinds of elements. Anything before the colon is an explicit ~~junctor~~ that marks the relation to the superordinate instruction. This is either a lexical role, an adposition or a subjunction/conjunction. When there is no colon, then the junction is assumed to be default modification. After the linkage follows the main lexical ~~nucleus~~. This is typically a German lexeme, though there are a few abstract abbreviations used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. After the content lexeme follows a list with explicit grammatical ~~specifications~~ (between brackets). When there are no grammatical specifications the rules will infer a default ("unmarked") grammatical structure. Multiple grammatical specifications are separated with a plus-sign, and their order is relevant in some situations. Specifications are often grammatical terms like 'Plural' because of the highly allomorphic formation of the German plural. However, these specifications are always abbreviations for language-specific forms and not universal grammatical categories.
+Each line in [@last] is a single instruction, possibly consisting of up to three different kinds of elements. Anything before the colon is an explicit ~~junctor~~ that marks the relation to the superordinate instruction. This is either a lexical role, an adposition or a subjunction/conjunction. When there is no colon, then the junction is assumed to be default modification. After the linkage follows the main lexical ~~nucleus~~. This is typically a German lexeme, though there are a few abstract abbreviations used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. After the content lexeme follows a list with explicit grammatical ~~specifications~~ (between brackets). When there are no grammatical specifications the rules will infer a default ("unmarked") grammatical structure. Multiple grammatical specifications are separated with a plus-sign, and their order is relevant in some situations. Specifications are often grammatical terms like 'Plural' because of the highly allomorphic formation of the German plural. However, these specifications are always abbreviations for language-specific forms and do not describe universal grammatical categories.
 
 ### The rules
 
-The rules produce an actual utterance on the basis of the instructions. The rules specify how to put the elements from an instruction in their proper place and give them their proper grammatical form. The basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instructions, followed by various morphosyntactic edits to produce the right inflection, allomorphy, agreement and government. The rules for German will be discussed in details in later chapters.
+The rules produce an actual utterance on the basis of the instructions. The rules specify how to put the elements from an instruction in their proper place and give them their proper grammatical form. The basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instructions, followed by various morphosyntactic edits to produce the right inflection, allomorphy, agreement and government. The rules for German will be discussed in details in later chapters when the concrete implementation of YAST for German will be presented.
 
 ### The result
 
@@ -140,23 +132,28 @@ Before delving into the details of this syntactic model, a few words on the algo
 
 ## Postulates for morphosyntax 
 
-A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These notions are called "postulates" because they are (i) axiomatic, (ii) presumed and (iii) cancelable. First, they are axiomatic, i.e. these postulates establish a basis for morphosyntax from which other characteristics can be derived. Second, they are presumed, i.e. they are "obviously" part of the structure of human language and will simply be assumed to exist without much further argumentation. Third, they are cancelable, i.e. they are not necessarily part of a communicational system. Language could very well exist lacking any of these characteristics. So, none of these postulates are necessarily universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. Yet, the following characteristics appear to be very widespread among human languages, arguably universally present in contemporary human languages. For convenience of exposition, I distinguish here between general postulates and structure postulates:
+A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These notions are called "postulates" because they are (i) axiomatic, (ii) presumed and (iii) cancelable. First, they are axiomatic, i.e. these postulates establish a basis for morphosyntax from which other characteristics can be derived. Second, they are presumed, i.e. they are "obviously" part of the structure of human language and will simply be assumed to exist without much further argumentation. Third, they are cancelable, i.e. they are not necessarily part of a communicational system. Language could very well exist lacking any of these characteristics. So, none of these postulates are necessarily universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. Yet, the following characteristics appear to be very widespread among human languages, arguably universally present in contemporary human languages. 
 
-- General postulates:
+For convenience of exposition, I distinguish here between general, specific and processual postulates:
+
+- General universal postulates:
   - **Morphemic division**: utterances are separable into morphemes.
-  - **Hierarchical modification**: morphemes modify other morphemes, and modifiers can in turn be modified.
-  - **Reference**: morphemes can be used to identify entities ("assertsion that something exists").
+  - **Hierarchical modification**: morphemes modify other morphemes, and modifiers in turn can be modified.
+  - **Reference**: morphemes can be used to identify entities (i.e. to make an assertion that something exists).
   - **Assertion**: morphemes can be used to make statements about referenced entities.
-- Structure postulates: (different effects in different languages)
+
+- Specific universal postulates:
   - **Grammatical relations**: different kinds of modification are distinguished.
   - **Differential modification**: morphemes have constraints on the extent to which they can be modified.
   - **Semantic space**: the meaning of a morpheme is a distinctive subspace of a universal continuous multidimensional semantic space.
   
-- Processes of change:
-  - **Grammaticalisation**: over time morphemes can become more functionally abstract and structurally specialized.
-  - **Innovation**: new morphemes can be introduced by grammaticalisation, by borrowing or by pure creative fabrication.
+- Universal processes of change:
+  - **Grammaticalisation**: over time morphemes can become more structurally specialized (and functionally more abstract).
+  - **Innovation**: new morphemes can be introduced by grammaticalisation, but also by borrowing or by pure creative fabrication.
 
-The capricious process of grammaticalisation is the root cause for the accumulation of differences in structure between languages. It leads to different **subdivision of semantic space**, to different **kinds of grammatical relations**, and above all it leads to different **constraints on modification** for each morpheme.
+The "specific" postulates are singled out because they describe general principles that lead to very different grammatical structures in different languages. So, as principles they appear to be universally present, but the concrete instantiation is widely variable. The capricious process of grammaticalisation is the root cause for the accumulation of most differences in structure between languages. It leads to different
+
+ **subdivision of semantic space**, to different **kinds of grammatical relations**, and above all it leads to different **constraints on modification** for each morpheme.
 
 special kinds of constraints on modification: (besides general probabilistic differences for modifier choice)
 
@@ -187,7 +184,7 @@ Roots that are noun, verb and adjective: fett, harsch, laut (lauten/läuten), le
 - die Glocken lauten
 - die laute Glocken
 
-## The recipe
+## Elements of the recipe
 
 ### Generating a recipe: ingredients
 
@@ -219,7 +216,7 @@ Syntactic elements in YAST
 - ~~head~~: an ingredient that can be modified by operators, adjustors or other heads.
 :::
 
-[comment]: # (Other terms instead of "adjustor" might be: adorner, additor, admodifier, adaptor)
+[comment: Other terms instead of "adjustor" might be: adorner, additor, admodifier, adaptor]::
 
 The current definitions of the terms "operator" and "head" might not always coincide with what one might otherwise conceive of as an operator or head. However, the effect of these definitions seems close enough to most other applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion. The term "adjustor" is newly conceived here to be reminiscent of the traditional terms "adjective" and "adverb", while indicating that its function is to "adjust" or "alter" another ingredient.
 
@@ -247,7 +244,7 @@ A typical ~~layer~~ is an attributive adjective, an argument or an adverbial adj
 
 Only when such a layer itself again has layers of its own then the point is reached of real recursion in language. Such recursive layers are then called ~~embeddings~~. Note that the term embedding is used here both for nominal and verbal recursive structures.
 
-[comment]: # There is an unfortunate inconsistency in the structure of this terminology. First, ideally the phenomenon would be a term ending in *-ing*, while the concrete instantiation would not have this suffix (i.e. *a stack* vs. *stacking* and *a layer* vs. *layering*). However, this regularity breaks down with the term *embedding*, which is used for both meanings (i.e. *an embedding* as instantiation and *embedding* as the phenomenon. Alternatively *an embed* might be used for the instantiation, but that sounds weird). Second, a stack is the complete set of all modifiers added by stacking, while a layer and an embedding are single modifications added by layering or embedding.
+[comment: There is an unfortunate inconsistency in the structure of this terminology. First, ideally the phenomenon would be a term ending in *-ing*, while the concrete instantiation would not have this suffix (i.e. *a stack* vs. *stacking* and *a layer* vs. *layering*). However, this regularity breaks down with the term *embedding*, which is used for both meanings (i.e. *an embedding* as instantiation and *embedding* as the phenomenon. Alternatively *an embed* might be used for the instantiation, but that sounds weird). Second, a stack is the complete set of all modifiers added by stacking, while a layer and an embedding are single modifications added by layering or embedding.]::
 
 These three levels of modification suggest an evolutionary development in that human language first developed stacking, then layering and then embedding. However, that is purely speculation because all human languages currently appear to employ all three kinds of hierarchical structure. Also note that contemporaneous language change does not follow the path from stacking to layering to embedding. In contrast, grammaticalization typically develops in the reverse direction, from embedding to layering to stacking.
 
