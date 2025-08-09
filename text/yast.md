@@ -33,7 +33,7 @@ Given the abundance of existing structural models for morphosyntax, I introduce 
 
 [comment: A generative potentially-probabilistic traditional-like templatic (GP^2^T^2^) model for human language]::
 
-## The grammatical model
+## Synopsis of the model
 
 ### Recipe-rule-result-receipt
 
@@ -132,24 +132,26 @@ Before delving into the details of this syntactic model, a few words on the algo
 
 ## Postulates for morphosyntax 
 
-A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These notions are called "postulates" because they are (i) axiomatic, (ii) presumed and (iii) cancelable. First, they are axiomatic, i.e. these postulates establish a basis for morphosyntax from which other characteristics can be derived. Second, they are presumed, i.e. they are "obviously" part of the structure of human language and will simply be assumed to exist without much further argumentation. Third, they are cancelable, i.e. they are not necessarily part of a communicational system. Language could very well exist lacking any of these characteristics. So, none of these postulates are necessarily universal, be it simply for the fact that at some point in the evolution of human language they will have to have emerged. Yet, the following characteristics appear to be very widespread among human languages, arguably universally present in contemporary human languages. 
+A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These postulates are not required for the morphosyntactic model presented in this work. Rather, they represent an attempt to explicitly articulate the basic assumptions underlying YAST and to propose principles that may prove useful for investigating the nature of human language and its evolution. If these postulates ultimately prove unconvincing, this does not affect the subsequent practical operation of the YAST morphosyntactic model.
 
-For convenience of exposition, I distinguish here between general, specific and processual postulates:
+These notions are termed "postulates" because they exhibit three key properties: they are (i) axiomatic, (ii) presumed, and (iii) cancelable. First, they are axiomatic in that they establish a foundation for morphosyntax from which other characteristics can be derived. Second, they are presumed—that is, they constitute "obvious" components of human language structure and are assumed to exist without extensive argumentation. Third, they are cancelable, meaning they need not necessarily form part of any communicational system. Languages could conceivably exist without any of these characteristics. Thus, none of these postulates claim strict universality, if only because they must have emerged at some point during the evolution of human language. Nevertheless, the following characteristics appear widespread among human languages and are arguably present universally in contemporary human languages.
+
+For expository convenience, I distinguish between general, specific, and processual postulates:
 
 - General universal postulates:
-  - **Morphemic division**: utterances are separable into morphemes.
-  - **Hierarchical modification**: morphemes modify other morphemes, and modifiers in turn can be modified.
-  - **Reference**: morphemes can be used to identify entities (i.e. to make an assertion that something exists).
-  - **Assertion**: morphemes can be used to make statements about referenced entities.
+  - (G1) **Morphemic division**: utterances are separable into morphemes.
+  - (G2) **Hierarchical modification**: morphemes modify other morphemes, and modifiers in turn can be modified.
+  - (G3) **Reference**: morphemes can be used to identify entities (i.e. to make an assertion that something exists).
+  - (G4) **Assertion**: morphemes can be used to make statements about referenced entities.
 
 - Specific universal postulates:
-  - **Grammatical relations**: different kinds of modification are distinguished.
-  - **Differential modification**: morphemes have constraints on the extent to which they can be modified.
-  - **Semantic space**: the meaning of a morpheme is a distinctive subspace of a universal continuous multidimensional semantic space.
+  - (S1) **Differential modification**: morphemes have constraints on the extent to which they can be modified.
+  - (S2) **Grammatical relations**: different kinds of modification are distinguished.
+  - (S3) **Semantic space**: the meaning of a morpheme is a distinctive subspace of a universal continuous multidimensional semantic space.
   
 - Universal processes of change:
-  - **Grammaticalisation**: over time morphemes can become more structurally specialized (and functionally more abstract).
-  - **Innovation**: new morphemes can be introduced by grammaticalisation, but also by borrowing or by pure creative fabrication.
+  - (P1) **Grammaticalisation**: over time morphemes can become more structurally specialized (and functionally more abstract).
+  - (P2) **Innovation**: new morphemes can be introduced by grammaticalisation, but also by borrowing or by pure creative fabrication.
 
 The "specific" postulates are singled out because they describe general principles that lead to very different grammatical structures in different languages. So, as principles they appear to be universally present, but the concrete instantiation is widely variable. The capricious process of grammaticalisation is the root cause for the accumulation of most differences in structure between languages. It leads to different
 
@@ -178,43 +180,53 @@ Adverbs are a non-coherent group:
 Roots that are noun, verb and adjective: fett, harsch, laut (lauten/läuten), leck, schmuck (schmücken)
 
 - dieser Laut wird unterschiedlich geschrieben
-- das Lauten
-- der/die/das Laute
-- Hupen ist auch ein Laut
-- die Glocken lauten
-- die laute Glocken
+- die Glocken lauten seit gestern
+- die seit gestern lautende Glocken sind nervig
+- die Lautenden sind nervig
+- die Glocken sind seit gestern sehr laut
+- die seit gestern sehr laute Glocken sind nervig
+- die Laute ist am nervigsten
 
-## Elements of the recipe
+## Elements of a recipe
 
 ### Generating a recipe: ingredients
 
-In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ is created, followed by the application of ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. This generative process also has some "rules", i.e. restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German. Other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's intention in accordance to the structure of the language.
+(Postulate G1)
 
-The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalized combinations of morphemes (like non-compositional idioms) and multi-part grammatical structures (like auxiliary constructions). Semantically, ingredients induce a state-of-mind at the addressee, probably consisting of a multitude of situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of uttering an ingredient intends to conjure up some of those possible situations in the mind of the addressee.
+In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ is created, followed by the application of ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. This generative process also has some "rules"–that is, restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German. Other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's creative intention in accordance to the structure of the language.
 
-Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific positions in the generation. To fully describe these limits it will eventually be necessary to specify individual possibilities for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the full distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for the subsequent specification of more detail. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
+The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalized combinations of morphemes (like non-compositional idioms) and multi-part grammatical structures (like auxiliary constructions). Semantically, ingredients induce a state-of-mind at the addressee, probably consisting of a multitude of possible situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of using an ingredient intends to conjure up some of those possible situations in the mind of the addressee, narrowing down the interpretative possibilities with each further ingredient used.
+
+Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific points in the generation. There will ultimately be two different kinds of restrictions, namely (i) restrictions on lexical insertion of ~~heads~~, which will be minimal, and (ii) restrictions on adding grammatical ~~operators~~, which are strongly determined by the chosen head. To fully describe these limits it will ultimately be necessary to specify individual possibilities separately for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for the subsequent specification of more detail. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
 
 ### Combining ingredients: base & modifier
+
+(Postulate G2)
 
 Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of the combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance with both ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of "understanding" on the part of the addressee.
 
 Additionally, a central tenet of human language is that combinations of linguistic elements is in general asymmetrical. Ingredients are not simply combined as equals, but there is always a ~~base~~ that is modified by another linguistic element, the ~~modifier~~. Symmetrical connections with European-style *and*-coordination seem to be a relatively late addition to the grammatical spectrum. For the recipe, I will assume that all combinations of ingredients in human language are asymmetrical.
 
-Bases can have multiple modifiers and each modifier can itself be a base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, then the ordering of these modifiers is often meaningful, so the ordering will have to be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in German. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the unusual variants. 
+Bases can have multiple modifiers and each modifier can itself be a base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, then the ordering of these modifiers is often meaningful, so the ordering will have to be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such templatic restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in many languages. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the unusual variants.
 
-### Syntactic elements: operator, adjustor & head
+### Syntactic elements: head & operator
 
-The raw intricacy of pure modification can be further streamlined by distinguishing three different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, it will here be called an ~~operator~~. Second, when a base can only be modified by unmodifiable operators, it will be called an ~~adjustor~~. Finally, when a base can freely be modified by operators, adjustors and other bases, it will be called a ~~head~~. It is important to note that these terms describe syntactic functions and not specific ingredients. One and the same ingredient will often be able to occur in different functions depending on the context in which it is used.
+(Postulate S1)
 
-all three can modify other ingredients, so all can function as modifier. Only adjustors and heads can be modified, so they can function as base.
+To streamline the raw intricacy of pure modification, it is helpful to distinguish two different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, or when it can only have a single modifier from a closed set of possible ingredients, then it will be called an ~~operator~~. Second, when an ingredient potentially allows for more than one modifier in parallel, then it will be called a ~~head~~. It is important to note that these terms describe syntactic functions and not specific ingredients. One and the same ingredient might be able to occur in different functions depending on the context in which it is used. Also note that this distinction between operator and head is largely independent from the distinction between base and modifier from the previous section. Both heads and operators can be both modifiers and bases. However, the modification of operators is quite restricted, so they typically do not function as the base of a modification.
 
 ::: ex
 Syntactic elements in YAST
 
-- ~~operator~~: an ingredient that itself cannot be modified.
-- ~~adjustor~~: an ingredient that can only be modified by operators or other adjustors.
+- ~~operator~~: an ingredient that itself cannot be modified or can only have a single modifier from a closed class of possibilities.
 - ~~head~~: an ingredient that can be modified by operators, adjustors or other heads.
 :::
+
+fixed operators vs. variably order operators
+multiple operators form a stack
+fixed operators => specifiers
+multiple modifiers of a head are layered: order is important
+
 
 [comment: Other terms instead of "adjustor" might be: adorner, additor, admodifier, adaptor]::
 
@@ -222,7 +234,7 @@ The current definitions of the terms "operator" and "head" might not always coin
 
 Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, that they cannot themselves be modified), for example intensifiers, quantifiers, adpositions or subjunctions. Typical adjustors are adverbs and attributive adjectives, which only allow for limited modification like gradation and intensification. Finally, heads typically comprise verbs and nouns, but they also includes most adjectives, and even some adverbs. 
 
-### Hierarchical structure: stacking, layering & embedding
+Hierarchical structure: stacking, layering & embedding
 
 The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modeled in syntactic theories by using the mechanism of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.
 
@@ -248,7 +260,9 @@ Only when such a layer itself again has layers of its own then the point is reac
 
 These three levels of modification suggest an evolutionary development in that human language first developed stacking, then layering and then embedding. However, that is purely speculation because all human languages currently appear to employ all three kinds of hierarchical structure. Also note that contemporaneous language change does not follow the path from stacking to layering to embedding. In contrast, grammaticalization typically develops in the reverse direction, from embedding to layering to stacking.
 
-### Heads: referent & predicate
+### Heads: predicate & referent
+
+(Postulate G3 and G4)
 
 Heads, as defined previously, are ingredients that can be modified freely, and they alone allow for embedding. For German (and possibly for all human languages), it only appears to be necessary to distinguish two different kinds of heads, coinciding with two central functions of human language, namely identification and assertion. 
 
@@ -266,6 +280,10 @@ Heads in YAST
 It is by no means necessary for identification and assertion to be encoded by syntactic heads and their encompassing expressions. Personal pronouns, demonstratives and content interrogatives can be interpreted as identificational expression that are operators (i.e. they cannot be modified). Likewise, interjections and conversational particles can be seen as assertions without much internal structure. Still, it does not seem to be a coincidence that exactly the most elaborate syntactic structures are precisely those structures that are used for two main communicative elements in a linguistic utterance.
 
 Heads can be modified by multiple other heads, each with their own complex internal structure and each with their own relation to their superordinate head. These relations between heads and modifier-heads are often explicitly marked in the linguistic structure by operators that are called ~~junctors~~ here. In German, phrasal junctors are prepositions or case marking ("flagging"), while clausal junctors are subjunctions, conjunctions and a few preposition-like operators. Default "unmarked" relations between heads only occur in the form of appositive phrases and relative clauses.
+
+### Operators: junctors & specifiers
+
+(postulate S2)
 
 ### Modification: attribute, adverbial & argument
 
