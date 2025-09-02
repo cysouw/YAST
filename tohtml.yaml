@@ -29,3 +29,5 @@ standalone: true
 self-contained: true
 default-image-extension: svg
 wrap: preserve
+html-math-method:
+  method: mathml

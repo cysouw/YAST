@@ -1,0 +1,24 @@
+[base+->1
+  [instruction+-1+->2
+    [nucleus+-2+->3
+      [predicate+-3]
+    ]
+    [specifier]
+  ]
+  [base+->4
+    [instruction+-4+->5
+      [nucleus+-5+->6
+        [referendum+-6]
+      ]
+      [junctor]
+      [specifier]
+    ]
+    [base+->7
+      [instruction+-7+->8
+        [nucleus+-8+->9
+          [admodifier+-9]
+        ]
+      ]
+    ]
+  ]
+]

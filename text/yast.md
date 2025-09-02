@@ -1,12 +1,12 @@
 ## Preface {.unnumbered}
 
-The motivation to develop yet another syntactic model for an already well-described language like German grew out of a large research project on German diathesis (Cysouw 2023). That book claims to provide a complete list of all monoclausal syntactic derivations for German. This list is long (currently more than 300 clause derivations, and counting), but clearly finite. The impetus for the current syntactic model was the simple idea to investigate what remains to be done for the syntax once all these monoclausal derivations are put aside. In other words, what does a syntactic model look like when monoclausal derivations are reduced to just checkboxes to be ticked, alike to the treatment of other finite morphosyntactic categories like tense or number in a syntactic theory. The current proposal is the result of following that premise through. In essence, the current approach is an experiment build on a single fundamental question, namely what a syntax would look like when monoclausal derivation (called "stacking" in Cysouw 2023) is strictly separated from subordination.
+The motivation to develop yet another syntactic model for an already well-described language like German grew out of a large research project on German diathesis (Cysouw 2023). That book claims to provide a complete list of all monoclausal syntactic derivations for German. This list is long (currently more than 300 clause derivations, and counting), but clearly limited. The impetus for the current syntactic model was the simple idea to investigate what remains to be done for the syntax once all these monoclausal derivations are put aside. In other words, what does a syntactic model look like when monoclausal derivations are reduced to just checkboxes to be ticked, alike to the treatment of other morphosyntactic categories like tense or number in a syntactic theory. The current proposal is the result of following that premise through. In essence, the current approach is an experiment build on a single fundamental question, namely what a syntax would look like when monoclausal derivation (called "stacking" in Cysouw 2023) is strictly separated from subordination.
 
-Syntactic models need an acronym, so here I present to you YAST. This name started out in jest for 'Yet Another Syntax Theory', but I got enamored by the name, so it stuck. There is a slightly deeper meaning to this name, however. The acronym YAST is an obvious nod to YAML, which started out as meaning "Yet Another Markup Language". But then, as YAML was developed further, it turned out to be much more useful than originally anticipated, which led to a recursive backronym "YAML Ain't Markup Language". In the same vein, the YAST approach turned out to be much more useful than I had anticipated, so I now interpret the acronym YAST as a backronym meaning "YAST Ain't (just) Syntax Theory". But what's in a name? In the end it's just a sequence of letters to identify the approach to morphosyntactic analysis as outlined in this book.
+Syntactic models need an acronym, so here I present to you YAST. This name started out in jest for 'Yet Another Syntax Theory', but I got enamored by the name, so it stuck. There is a slightly deeper meaning to this name, however. The acronym YAST is an obvious nod to YAML, and the astute observer will discern some superficial similarities in notation. The abbreviation YAML started out as meaning "Yet Another Markup Language". But then, as YAML was developed further, it turned out to be much more useful than originally anticipated, which led to the instroduction of a recursive backronym "YAML Ain't Markup Language". In the same vein, the YAST approach turned out to be much more useful than I had anticipated, so I now interpret the acronym YAST as a backronym meaning "YAST Ain't (just) Syntax Theory". But what's in a name? In the end it's just a sequence of letters to identify the approach to morphosyntactic analysis as outlined in this book.
 
 The result is remarkable: with the hundreds of clause derivations from Cysouw (2023) out of the way, a reasonably fragment of a syntax for German can be formulated with just very few rules. I have implemented these rules in Python using XML-tree structures, and this part of the syntax takes just a few hundred lines of code. It can produce complete sentences with ordering, case marking, agreement and syntactic control for a wide range of complex syntactic structures. The remaining hundreds of clausal derivations (as listed in Cysouw 2023) also can be easily implemented in just a dozen or so lines of code each. Currently only a small exemplary subset of those has been implemented. There is also a basic parser, which is not very good yet, but there is ample room for improvement.
 
-The syntactic rules presented here describe (standard) German. However, the general architecture of YAST seems transferable to other languages. The analysis of sentence structures in YAST is fully compatible with typological insights about the worldwide linguistic diversity as, for example, summarized in Croft (2022). I have tried to adapt my terminology to Croft's to make the parallels even more obvious. Still, linguistic diversity is vast, and I do not dare to predict how much work is necessary to adapt the current framework to other languages.
+The syntactic rules presented here describe (standard) German. However, the general architecture of YAST seems transferable to other languages. The analysis of sentence structures in YAST is fully compatible with typological insights about the worldwide linguistic diversity as discussed in the work of Croft, Dixon and Haspelmath, which have strongly influenced my views on morphysyntax. I have tried to adapt my terminology to theirs to make the parallels even more obvious. Still, linguistic diversity is vast, and I currently do not dare to predict how much work is necessary to adapt the current framework to other languages.
 
 The first chapter lays out the principles of YAST in rather abstract terms. This is not how YAST originated in my own personal thinking. I started out with some simple lines of code to produce German sentences and found various ways to generalize and simplify this algorithm. Once things worked quite well in practice I started formulating in more detail what kind of theoretical assumptions I was making. In so doing I followed the real scientific procedure as proposed by the Dutch cartoonists John Reid, Bastiaan Geleijnse and Jean-Marc von Tol: "very impressive, dear colleague ... but does it also work in theory?"
 
@@ -19,19 +19,21 @@ The first chapter lays out the principles of YAST in rather abstract terms. This
 
 Given the abundance of existing structural models for morphosyntax, I introduce YAST here by highlighting several key characteristics that distinguish it from most other generative models of grammatical structure.
 
-**Proximity to traditional grammar.** The current approach remains relatively close to traditional notions of grammatical description. Although it includes a generative implementation (which traditional grammars typically lack), the "ingredients" that drive generation closely resemble the rules and regularities described in traditional grammars. Traditional grammatical descriptions require only minor adjustments to allow for this kind of computational implementation. This approach also ensures that the formalized model remains easily comprehensible to non-technically minded linguists.
+**Proximity to traditional grammar.** The current approach remains relatively close to traditional notions of grammatical description (although in this first chapter that might not look like that at all). Additionally it includes a generative implementation (which traditional grammars typically lack). The "ingredients" that drive generation closely resemble the rules and regularities described in traditional grammars. Traditional grammatical descriptions require only minor adjustments to allow for this kind of computational implementation. This approach also ensures that the formalized model remains easily comprehensible to non-technically minded linguists.
 
 **Content-then-structure generation.** The generative process employs concrete morphemes from a specific language rather than abstract categories. This contrasts with the predominant approach of first generating an abstract structure and only later inserting lexical elements. In YAST, generation begins by selecting language-specific morphemes for insertion. Each such choice triggers structural repercussions that collectively establish the abstract morphosyntactic structure. Rather than "structure-then-content," YAST follows a "content-then-structure" generative process.
 
-**Three-way generative distinction.** The current approach distinguishes three types of generative operations, namely (i) predominantly "free" lexical insertion, (ii) grammatical restrictions resulting from the inserted lexemes, and (iii) completely automatic formal rules of language structure. This tripartite distinction proves useful for linguistic comparison and may benefit didactic approaches to language structure. Aspects (ii) and (iii) typically appear in descriptive grammars, while aspects (i) and some components of (ii) are better handled by probabilistic models like LLMs.
+**Two-way generative distinction.** The current approach distinguishes two types of generative operations, namely (i) predominantly "free" lexical insertion with some grammatical restrictions resulting from the inserted lexemes, and (ii) completely automatic formal rules of language structure. This twofold distinction is useful for linguistic comparison and may benefit didactic approaches to language structure. The grammatical restrictions from (i) and the rules of (ii) typically appear in descriptive grammars, while the lexical inseration from (i) is better handled by probabilistic models like large language models.
 
-**Rule-defined morpheme classes.** Morpheme classes ("word classes") exist only as secondary phenomena based on morphosyntactic characteristics. Both lexical repercussions and mandatory regularities (i.e. aspects (ii) and (iii) from above) define morpheme classes. Morphemes that share repercussions or evoke identical mandatory regularities constitute a class. Each grammatical structure thus defines its own class of applicable morphemes. This approach yields two key effects, namely (a) languages exhibit numerous overlapping word classes, with most morphemes belonging simultaneously to multiple classes, and (b) no singular basic classification exists to which each morpheme can be uniquely assigned, that is, no set of mutually exclusive classes can serve as the basis for grammatical rules. Rather than "classes determine rules," YAST asserts that "rules define classes."
+**Dual structural representation.** Morpheme choice and their repercussions (i.e. generation type (i) from above) generate a dependency-like "underlying" structure. Subsequently, mandatory rules (i.e. generation type (ii) from above) then transform this morphosyntactic structure into a linear utterance through an intermediate constituency-like representation. In grammatical analysis—that is, when working backwards from actual utterances—the constituency structure thus represents a level of abstraction closer to the surface structure than the dependency structure. The dependency structure constitutes an underlyingly more abstract analytical representation of utterances.
 
-**Dual structural representation.** Morpheme choice and their repercussions (i.e. aspects (i) and (ii) from above) generate a dependency-like "underlying" structure. Mandatory rules (i.e. aspect (iii) from above) then transform this morphosyntactic structure into a linear utterance through an intermediate constituency-like representation. In grammatical analysis—when working backwards from actual utterances—the constituency structure thus represents a level closer to surface structure than the dependency structure. The dependency structure constitutes a more abstract analytical representation of utterances.
+**Rule-defined word classes.** Classes of morphemes ("parts of speech") in YAST only exist as secondary phenomena based on their morphosyntactic characteristics. Each grammatical structure defines its own class of applicable morphemes. This approach has two key effects, namely (a) languages exhibit numerous overlapping word classes, with most morphemes belonging simultaneously to multiple classes, and (b) no singular atomic classification exists to which each morpheme can be uniquely assigned, that is, no set of mutually exclusive classes can serve as the basis for grammatical rules. Rather than "word classes determine the application of rules," YAST asserts that "rules define word classes."
 
-**Minimal universal assumptions.** Because most grammatical structures arise from language-specific choices, YAST assumes only a very limited set of universal morphosyntactic principles. Observations of recurrent grammatical properties ("statistical universals") are better modeled through semantic-map approaches that describe cross-linguistic similarities and differences as emic divisions of an underlying continuous semantic space (which itself is probably universal).
+**Minimal universal assumptions.** Because most grammatical structures arise from language-specific choices, YAST assumes only a very limited set of universal morphosyntactic principles. Observations of recurrent grammatical properties ("statistical universals") are better modeled through semantic-map approaches that describe cross-linguistic differences and similarities as language-specific discrete divisions of an underlying continuous semantic space, which itself is probably universal.
 
-[comment: A generative potentially-probabilistic traditional-like templatic (GP^2^T^2^) model for human language]::
+[--
+A generative potentially-probabilistic traditional-like templatic (GP^2^T^2^) model for human language
+--]::
 
 ## Synopsis of the model
 
@@ -47,42 +49,57 @@ This multi-step approach to syntactic analysis probably feels eerily similar to 
 
 ### The recipe
 
-The recipe consists of a collection of one-line instructions that use indentation to indicate hierarchical modifications. Instructions consist of three different kinds of information, namely ~~junction~~, ~~nucleus~~ and ~~specification~~. All information in an instruction consists of language-specific forms. The details of the syntactic structure is not something that should be of concern in the planning of the instructions. The syntactic structure of the eventual utterance is produced by the (automatic) rules. The most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. In YAST, a user of a specific language is juggling with the available language-specific elements to construct an utterance and is not manipulating abstract linguistic concepts.
+The recipe consists of a collection of one-line instructions that use indentation to indicate hierarchical modifications. Instructions consist of five different kinds of information, namely ~~modification~~, ~~type~~, ~~junction~~, ~~nucleus~~ and ~~specification~~. 
 
 ::: ex
 Parts of an instruction in YAST
 
-- ~~junction~~: explicit relation to earlier content (can be empty for default modification)
-- ~~nucleus~~: a single base content lexeme
-- ~~specification~~: language-specific grammatical marking (can be empty for default morphosyntax)
+- **Modification** \
+  When an instruction modifies an earlier instruction this is indicated by indentation.
+- **Type** \
+  There are three different types of instructions distinguished, which will be called ~~phrase~~, ~~clause~~ and ~~admodifier~~. The type of an instruction is mostly inferred by default.
+- **Junction** \
+  Junctions express the relation of the instruction to earlier content. Such explicit relational ingredients are called ~~junctors~~. This part of the instruction can be empty for default ("unmarked") modification.
+- **Nucleus** \
+  The obligatory nucleaus of each instructions is a single base content lexeme. For phrases and clauses the nucleus is called a ~~head~~.
+- **Specification** \
+  Depending on the type of instruction, language-specific grammatical marking can be added. Such ingredients are called ~~specifiers~~. This part of the instruction can be empty for default ("unmarked") morphosyntax. 
 :::
 
-As an example, consider the German sentence in [@next] as an appetizer. This German sentence is generated by the instructions in [@nnext] using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this side of the model will have to be worked out another time in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic terminology, so their semantic interpretation will have to be language-specific as well. Any comprehensive cross-linguistic generalization over such language-specific elements is a separate – though highly important – endeavor, which will not be pursued here.
+The information in an instruction mostly consists of language-specific forms. The idea is that the details of the morphosyntactic form is not something that should be of concern in the planning of the instructions. The morphosyntactic structure of the eventual utterance is produced by the (automatic) rules. The most precise and straightforward method to specify meaning in a recipe is to use language-specific elements. So, in YAST, a user of a specific language is juggling with the available language-specific elements to construct an utterance, instead of manipulating abstract linguistic concepts.
+
+As an example, consider the German sentence in [@next] as an appetizer. This German sentence is generated by the instructions in [@nnext] and using the grammatical rules as will be laid out in the rest of this book. The instructions in [@nnext] can be seen as the intention of the speaker, with indentation marking modification. These instructions seem suitable for a semantic analysis, though this side of the model will have to be worked out another time in more detail. Note that the specifications (in brackets) are intentionally formulated with language-specific morphosyntactic terminology, so their semantic interpretation will have to be language-specific as well. Any comprehensive cross-linguistic generalization over such language-specific elements is a separate–though highly important–endeavor, which will not be pursued here.
 
 ::: ex
-- Die Männer, deren kleinen Kinder schlecht schlafen, habe ich gestern in deinem schönen Garten gesehen.
+Die Männer, deren kleinen Kinder schlecht schlafen, habe ich gestern in deinem schönen Garten gesehen.
 :::
 
 ::: {.ex noFormat=true}
 ```
-sehen (Perfekt)
-  Gesehene: Mann (Plural + Definit)
+sehen (perfekt)
+  Gesehene: Mann (plural + definit)
     schlafen
-      Schlafende: Kind (Plural + Besitzer: Mann)
+      Schlafende: Kind (plural)
+        Behälter: Mann
         klein
       schlecht
   Sehende: 1
   gestern
-  in: Garten (Definit + Besitzer: 2)
+  in: Garten (definit)
+    Behälter: 2
     schön
 ```
 :::
 
-Each line in [@last] is a single instruction, possibly consisting of up to three different kinds of elements. Anything before the colon is an explicit ~~junctor~~ that marks the relation to the superordinate instruction. This is either a lexical role, an adposition or a subjunction/conjunction. When there is no colon, then the junction is assumed to be default modification. After the linkage follows the main lexical ~~nucleus~~. This is typically a German lexeme, though there are a few abstract abbreviations used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. After the content lexeme follows a list with explicit grammatical ~~specifications~~ (between brackets). When there are no grammatical specifications the rules will infer a default ("unmarked") grammatical structure. Multiple grammatical specifications are separated with a plus-sign, and their order is relevant in some situations. Specifications are often grammatical terms like 'Plural' because of the highly allomorphic formation of the German plural. However, these specifications are always abbreviations for language-specific forms and do not describe universal grammatical categories.
+Each line in [@last] is a single instruction with hierarchical indentation, possibly consisting of up to three different kinds of elements. Anything before the colon is an explicit ~~junctor~~ that marks the relation to the superordinate instruction. This is either a lexical role, an adposition or a subjunction/conjunction. When there is no colon, then the junction is assumed to be default modification. After the linkage follows the main lexical ~~nucleus~~. This is typically a German lexeme, though there are a few abstract abbreviations used, like '1' for the speaker. The actual lexemes are included in the instructions because the language-specific lexemes are the best summary of their meaning. 
+
+After the content lexeme follows a list with explicit grammatical ~~specifications~~ (between brackets). When there are no grammatical specifications the rules will infer a default ("unmarked") grammatical structure. Multiple grammatical specifications are separated with a plus-sign, and their order is relevant in some situations. Specifications are often grammatical terms like *plural* because of the highly allomorphic formation of the German plural. However, these specifications are always abbreviations for language-specific forms and do not describe universal grammatical categories.
+
+The ~~type~~ of the instruction is not explicitly shown in the example of a recipe in [@last]. Technically speaking, each line should be marked as being a phrase, clause or admodifier. However, it turns out that for German the type of the large majority of instructions can be inferred from the nucleus. To simplify the recipe I decided to leave out the explicit indication of the type and resort to default inference. Only in very special circumstances an explicit override of this default is necessary.
 
 ### The rules
 
-The rules produce an actual utterance on the basis of the instructions. The rules specify how to put the elements from an instruction in their proper place and give them their proper grammatical form. The basic action induced by an instruction is the insertion of linguistic material into the structure prepared by the superordinate instructions, followed by various morphosyntactic edits to produce the right inflection, allomorphy, agreement and government. The rules for German will be discussed in details in later chapters when the concrete implementation of YAST for German will be presented.
+The rules produce an actual utterance on the basis of the instructions. The rules specify how to put the elements from an instruction in their appropriate linear position and give them their proper grammatical form. The basic action induced by an instruction is the attachment of linguistic material onto the linguistic structure prepared by the preceding instructions. The attachment is typically followed by various automatic morphosyntactic edits to produce the right form, including allomorphy, agreement and government. More complex morphosyntactic structures will be modelled using ~~templates~~, i.e. fixed linear structures with "slots" that only allow for a restricted set of "filler" morphemes. The rules for German will be discussed in details in later chapters when the concrete implementation of YAST for German will be presented.
 
 ### The result
 
@@ -107,11 +124,11 @@ Table: Resulting production of the utterance (right), shown parallel to the inst
 
 ### The receipt
 
-The receipt summarizes the process of building an output from the recipe. I use a constituent-like structure for the receipt, but this is not necessarily the best or ideal approach. In general, the details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is shown in the receipt. That is to say, most details of how the receipt currently looks are easily changed to other preferences. For example, in the current implementation, I have added a "cleanup" stage, in which various details are removed to present a simpler receipt. 
+The receipt summarizes the process of building an output from the recipe. I use a constituent-like structure for the receipt, as shown in [@fig:receipt], but this is not necessarily the best or ideal approach. In general, the details of the receipt are rather ephemeral in that it is mostly a question of taste which aspects of the recipe+rules process is shown in the receipt. That is to say, most details of how the receipt currently looks are easily changed to other preferences. For example, in the current implementation, I have added a "cleanup" stage, in which various details are removed to present a simpler receipt. 
 
-![Constituent structure in YAST](figures/example){#fig:example}
+![Constituent structure in YAST](figures/receipt){#fig:receipt}
 
-Still, I have retained various "traces" of the process leading to the end result, which might look somewhat like transformational movements from early proposals in transformational grammar. This happens because some elements of the instructions have to be temporarily kept "in memory" as they cannot immediately be cleared for pronunciation. This happens, for example, with verbs that are waiting for their subject specification to get subject agreement. Such ingredients "in waiting" are stored internally somewhere and are only uttered at the requisite moment/position. At the moment when such ingredients are being processed for pronunciation, they are taken from their internal storage and "moved" to their eventual position in the constituent structure. Crucially though, the location of the internal storage in the structure is really arbitrary, so the movement is actually more like a process of "preparing for pronunciation". I tend to temporarily store elements in such a position that it only needs minimal movement, but the internal storage could just as well be a unordered named list.
+Still, I have retained various "traces" of the process leading to the end result, which might look somewhat like transformational movements from early proposals in transformational grammar. This happens because some elements of the instructions have to be temporarily kept "in memory" as they cannot immediately be cleared for pronunciation. This happens, for example, with verbs that are waiting for their subject specification to get subject agreement. Such ingredients "in waiting" are stored internally somewhere and are only uttered at the requisite moment/position. At the moment when such ingredients are being processed for pronunciation, they are taken from their internal storage and "moved" to their eventual position in the constituent structure. Crucially though, the location of the internal storage in the structure is really arbitrary, so the movement is actually more like a process of "preparing for pronunciation". I tend to temporarily store elements in such a position that it only needs minimal movement, but the internal storage could just as well be a unordered named list, separate from the receipt.
 
 ### The parser
 
@@ -130,40 +147,224 @@ Before delving into the details of this syntactic model, a few words on the algo
 - Finally, the rules that are defined as "diathesis/valency alternation" in Cysouw (2023) are exactly the rules that need multiple joint insertions, so these are mildly-context-sensitive, i.e. they fall in between a type-2 and a type-1 grammar. It seems to be the case that it is this part, and only this part, of the morphosyntax that is more complex than context-free.
 - The parsing needs more work, but it consist of reconstructing a dependency-like structure from an utterance, which does not appear to be highly complex, possibly just regular, i.e. a type-3 grammar.
 
-## Postulates for morphosyntax 
+## Postulates for morphosyntax {#sec:postulates}
 
-A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These postulates are not required for the morphosyntactic model presented in this work. Rather, they represent an attempt to explicitly articulate the basic assumptions underlying YAST and to propose principles that may prove useful for investigating the nature of human language and its evolution. If these postulates ultimately prove unconvincing, this does not affect the subsequent practical operation of the YAST morphosyntactic model.
+A small set of concepts are proposed here as universal postulates for the structural analysis of morphosyntax. These postulates are no requisite for the morphosyntactic model proposed in this book. Rather, they represent an attempt to explicitly articulate the basic assumptions underlying YAST and to propose principles that may prove useful for investigating the nature of human language and its evolution. Even if these postulates ultimately might prove unconvincing, this does not affect the subsequent practical operations of the YAST morphosyntactic model.
 
 These notions are termed "postulates" because they exhibit three key properties: they are (i) axiomatic, (ii) presumed, and (iii) cancelable. First, they are axiomatic in that they establish a foundation for morphosyntax from which other characteristics can be derived. Second, they are presumed—that is, they constitute "obvious" components of human language structure and are assumed to exist without extensive argumentation. Third, they are cancelable, meaning they need not necessarily form part of any communicational system. Languages could conceivably exist without any of these characteristics. Thus, none of these postulates claim strict universality, if only because they must have emerged at some point during the evolution of human language. Nevertheless, the following characteristics appear widespread among human languages and are arguably present universally in contemporary human languages.
 
-For expository convenience, I distinguish between general, specific, and processual postulates:
+- (P1) **Morphemic division** \
+  Utterances are separable into morphemes.
+- (P2) **Hierarchical modification** \
+  Morphemes modify other morphemes, and modifiers in turn can be modified.
+- (P3) **Differential modification** \
+  Morphemes have constraints on the extent to which they can be modified.
+- (P4) **Grammatical relations** \
+  Different kinds of modification are distinguished.
+- (P5) **Identification** \
+  Morphemes can be used to identify entities (i.e. to make an assertion that something exists).
+- (P6) **Assertion** \
+  Morphemes can be used to make statements about referenced entities.
+- (P7) **Semantic space** \
+  The meaning of a morpheme is a distinctive subspace of a universal continuous multidimensional semantic space.
+- (P8) **Grammaticalisation** \
+  Over time morphemes can become increasingly specialized, structurally and/or functionally.
+- (P9) **Innovation** \
+  New morphemes can be introduced by grammaticalisation, but also by borrowing or by pure creative fabrication.
 
-- General universal postulates:
-  - (G1) **Morphemic division**: utterances are separable into morphemes.
-  - (G2) **Hierarchical modification**: morphemes modify other morphemes, and modifiers in turn can be modified.
-  - (G3) **Reference**: morphemes can be used to identify entities (i.e. to make an assertion that something exists).
-  - (G4) **Assertion**: morphemes can be used to make statements about referenced entities.
+These postulates describe general principles that lead to very different grammatical structures in different languages. So, as general principles they appear to be universally present, but the concrete instantiation is widely variable. The capricious process of grammaticalisation (P8) is the root cause for the accumulation of differences in structure between languages.
 
-- Specific universal postulates:
-  - (S1) **Differential modification**: morphemes have constraints on the extent to which they can be modified.
-  - (S2) **Grammatical relations**: different kinds of modification are distinguished.
-  - (S3) **Semantic space**: the meaning of a morpheme is a distinctive subspace of a universal continuous multidimensional semantic space.
-  
-- Universal processes of change:
-  - (P1) **Grammaticalisation**: over time morphemes can become more structurally specialized (and functionally more abstract).
-  - (P2) **Innovation**: new morphemes can be introduced by grammaticalisation, but also by borrowing or by pure creative fabrication.
+The notion of differential modification (P3) has various immediate ramifications that all appear to be universally attested in human languages. This postulate thus might very well be further subdivided into more specific postulates describing special kinds of constraints on modification, including the following apparently universal phenomena.
 
-The "specific" postulates are singled out because they describe general principles that lead to very different grammatical structures in different languages. So, as principles they appear to be universally present, but the concrete instantiation is widely variable. The capricious process of grammaticalisation is the root cause for the accumulation of most differences in structure between languages. It leads to different
+- (P3a) **Non-modifiable operators** \
+  Some morphemes cannot be further modified.
+- (P3b) **Spawned roles** \
+  Morphemes can induce morpheme-specific grammatical relations.
+- (P3c) **Templatic structure** \
+  Grammaticalisation can lead to a fixed linear structure with multiple "slots" that each only allow for a restricted set of "filler" morphemes.
+- (P3d) **Probabilistic modifier choice** \
+  Each morpheme has different preferences for what kind of modification typically follows. This kind of restrictions seems best modelled by large language models and will not be further pursued here.
 
- **subdivision of semantic space**, to different **kinds of grammatical relations**, and above all it leads to different **constraints on modification** for each morpheme.
+As a basic H~0~ hypothesis, I assume that semantic space (P7) is a high-dimensional and continuous space, but also a compact, flat and simply connected space (borrowing terms from cosmology). However, this is just a wild guess. It basically means that the underlying semantic space has no structure. Each individual language imposes a structure on semantic space by the distribution of its linguistic elements over the space. It could very well be the case that recurrent semantic similarities across languages are the result of some kind of structure in the underlying semantic space, thereby refuting the H~0~ hypothesis. However, other explanations for semantic universals are also possible, like frequency of use and shared historical coincidences. Any argument refuting the hypothesis of an unstructured semantic space will need major cross-linguistic research, far beyond the scope of the current book.
 
-special kinds of constraints on modification: (besides general probabilistic differences for modifier choice)
+## Elements of a recipe
 
-- **Spawned roles**: morphemes can induce morpheme-specific grammatical relations.
-- **Non-modifiable operators**: some morphemes cannot be further modified.
-- **Templatic structure**: a fixed linear structure for modification with "slots" that only allow for a restricted set of "filler" morphemes.
+### Generating a recipe: ingredients
 
-Operators, specifiers and junctors are typically deficient heads (grammaticalisation). However, they might also develop *into* heads ?! leftover non-head (mostly non-modifyable?!) morphemes with variable position (-> operator, only some 'adverbs' left here?)
+In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ is created, followed by the application of ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. This generative process also has some "rules"–that is, restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German. Other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's creative intention in accordance to the structure of the language.
+
+The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). The existance of ingredients follows from postulate P1 from [@sec:postulates]. Basically, ingredients are morphemes, but they also include fixed grammaticalized combinations of morphemes (like non-compositional idioms) and multi-part grammatical structures (like auxiliary constructions). Semantically, ingredients induce a state-of-mind at the addressee, probably consisting of a multitude of possible situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of using an ingredient intends to conjure up some of those possible situations in the mind of the addressee, narrowing down the interpretative possibilities with each further ingredient used.
+
+Restrictions on building a recipe mainly consist of limits on which ingredients can be used in the generation. There will ultimately be two different kinds of restrictions, namely (i) restrictions on lexical insertion of ~~heads~~, which will be minimal, and (ii) restrictions on adding grammatical ~~operators~~, which are strongly determined by the chosen head. To fully describe these limits it will ultimately be necessary to specify individual possibilities separately for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for the subsequent specification of more detail. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
+
+### Combining ingredients: base & modifier
+
+Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of the combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance with both ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of "understanding" on the part of the addressee.
+
+Additionally, a central tenet of human language is that combinations of linguistic elements is in general asymmetrical. Ingredients are not simply combined as equals, but there is always a ~~base~~ that is modified by another linguistic element: the ~~modifier~~. Symmetrical connections with European-style *and*-coordination seem to be a relatively late addition to the grammatical spectrum. For the recipe, I will assume that all combinations of ingredients in human language are asymmetrical, including coordination.
+
+Bases can have multiple modifiers and each modifier can itself be a base that again can be modified. The existence of such hierarchical modification in human language is proposed as postulate P2 in [@sec:postulates]. So, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, then the ordering of these modifiers is often meaningful, so the ordering will have to be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such templatic restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in many languages. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, even when there is only minimal possible variation.
+
+### Syntactic elements: head & operator
+
+To streamline the raw intricacy of pure modification, it is helpful to distinguish two different kinds of elements in the hierarchical structure depending on to which extend they can be modified (cf. postulate P3 from [@sec:postulates]). First, when an ingredient cannot itself be modified again, or when it only can have a single modifier from a small set of possible ingredients, then it will be called an ~~operator~~. Second, when an ingredient potentially allows for more than one modifier in parallel, then it will be called a ~~head~~. It is important to note that these terms describe syntactic functions and not specific ingredients. One and the same ingredient might be both a head and an operator, depending on the context in which it is used. 
+
+Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, they cannot themselves be modified), for example intensifiers, quantifiers, adpositions, subjunctions and some ingredients traditionally called adverbs. Heads typically include nouns, verbs and adjectives, though there are also some heads among the disparate group of adverbs.
+
+::: ex
+Syntactic elements in YAST
+
+- **Operator** \
+  An ingredient that itself cannot be modified, or can only have a single modifier chosen from a small class of possibilities.
+- **Head** \
+  An ingredient that can be modified by multiple other ingredients in parallel.
+:::
+
+The distinction between operator and head is largely independent from the distinction between base and modifier from the previous section. Heads and operators alike can be both modifiers and bases. However, the modification of operators is quite restricted (by definition), so operators are less commonly used as the base of a modification. The special situation in which an operator modifies another operator is called a ~~stack~~. Stacks are typically found in bound morphology, but not all stacks are bound and not all bound morphology forms stacks. When heads modify heads this is called ~~embedding~~. Note that this term is used here referring to both nominal and verbal embedding. The more traditional usage of the term "embedding" for clausal recursion will be explicitly called "clausal embedding".
+
+The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. A central aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance (cf. postulate P2 from [@sec:postulates]). This hierarchical structure is commonly modeled in syntactic theories by using the mechanism of recursion. However, not all hierarchical structures are equally in need of a recursive treatment. Crucially, only embedding will be modeled with recursion. Stacking is much simpler and does not need recursion. It can easily be modeled by iteration, i.e. stacked  modifiers are simply applied one after the other without intricate branching.
+
+### Heads: predicate & referendum {#sec:heads}
+
+Heads, as defined in the previous section, are ingredients that can be modified freely, and they alone allow for embedding. For German (and possibly for all human languages), it only appears to be necessary to distinguish two different kinds of syntactic uses of heads, coinciding with two central functions of human language, namely ~~identification~~ and ~~assertion~~. 
+
+First, speakers attempt to convey which entities they are talking about and these entities (the referents) then have to be identified by the addressee (cf. postulate P5 from [@sec:postulates]). The primary ingredient that is used to encode the identity of a referent in an utterance is called a ~~referendum~~. This referendum is the head of a referential expression that includes all its modifiers (which might themselves again be modified). The whole referential expression is called a ~~phrase~~. A referent is typically encoded by a noun, but many other parts of speech can also be used as referent. Note that, differently from most syntactic theories, there is only one kind of phrase in YAST, roughly equivalent to what is called "noun phrase" in most other approaches. For convenience, any head modifying a phrase is called an ~~attribute~~ (or ~~adnominal~~).
+
+Second, in a typical utterance some kind of assertion is made about these referents (cf. postulate P6 from [@sec:postulates]). The primary ingredient that is used to encode the assertion is called a ~~predicate~~. The predicate is the head of an assertion that also includes all its modifiers (which might themselves again be modified). This whole assertive expression is called a ~~clause~~. A predicate is typically encoded by a verb, but other parts of speech can also be used predicatively. For convenience, any head modifying a clause is called an ~~adverbial~~.
+
+::: ex
+Heads in YAST
+
+- **Referendum** \
+  The head of a ~~phrase~~, used for ~~identification~~. Its modifiers are called ~~attributes~~ (or ~~adnominals~~).
+- **Predicate** \
+  The head of a ~~clause~~, used for ~~assertion~~. Its modifiers are called ~~adverbials~~.
+:::
+
+It is by no means necessary for identification and assertion to be encoded by syntactic heads and their encompassing expressions. Personal pronouns, demonstratives and content interrogatives can be interpreted as identifying expression, but they are operators (i.e. they cannot be modified). Likewise, interjections and conversational particles can be seen as assertions without much internal structure. Still, it does not seem to be a coincidence that exactly the most elaborate syntactic structures (phrases and clauses) are precisely those structures that are used for two main communicative elements in a linguistic utterance.
+
+[--
+semi-clause, non-finite clause, restricted clause, deranked clause
+--]::
+
+### Operators: admodifiers, junctors & specifiers
+
+Operators, as defined previously, are ingredients that cannot be modified, or can only have a single modifier out of a small set of possibilities. I will distinguish three different kinds of operators based on their morphosyntactic characteristics, called admodifiers, junctors and specifiers.
+
+**Positionally-flexible admodifiers.** Most operators are positionally predictable–that is, when they are used to modify a base, their position relative to the base is morphosyntactically fixed. However, there is a group of operators that have more freedom in their positioning, so the speaker has to explicitly decide where to place them, mostly leading to slight differences in the intended meaning. Such positionally flexible operators will be called ~~admodifiers~~.^[This term is used differently here from Croft (2022:§2.2.2). Alternative terms for "admodifier" might be adorner, additor, adjustor or adaptor.] In German these admodifiers comprise various ingredients that are traditionally called adverbs. Also some adjectives might belong to this class, but in German this does not seem to be the case. Diachronically, admodifiers seem to be an intermediate phase in the grammaticalisation of heads into positionally-fixed operators.
+
+**Relation-marking junctors.** Among the positionally-fixed operators there is a special class of ingredients that specify the kind of modification–that is, they spell out more precisely what is the relation between a base and its modifier (cf. postulate P4 from [@sec:postulates]). Heads can be modified by multiple other heads, each with their own relation to the superordinate head. These relations between base-heads and modifier-heads are often explicitly marked in the linguistic structure by operators that are called ~~junctors~~ here. In German, examples of phrasal junctors are prepositions and case marking ("flagging"), while examples of clausal junctors are subjunctions and conjunctions. Default ("unmarked") relations also exist in the form of constructions like appositive phrases, relative clauses and non-finite "restricted" clauses.
+
+**Positionally-fixed specifiers.** For clarity of exposition, all other positionally-fixed operators (i.e. all operators except for the admodifiers and junctors) are called ~~specifiers~~ here. These specifiers contain many traditional grammatical categories like tense-aspect-mood marking for clauses, or number and definiteness for phrases. Which specifiers can be added depends on the base being modified. The two largest groups of specifiers are the phrasal and clausal specifiers, but specifiers for other operators also exist (possibly leading to stacks of operators).
+
+### Spawned junctors: roles
+
+Heads typically spawn junctors. These phenomenena are commonly known as lexically-determined arguments or roles, but it will be approaches from a slightly different angle here. The basic idea is that individual lexemes will have restrictions on how they can be modified (cf. postulate P3 from [@sec:postulates]). One such type of restriction is that a lexeme induces specific relations that are typically added to modify this lexeme. For example, the German verb *hoffen* 'to hope' has a relation *Hoffende* 'the hoping one', typically using the German *Nominativ* case as a junctor, and a relation *Hoffnung* 'the object of hope', typically using the German preposition *auf* as a junctor. 
+
+Such lexically-determined junctors are called ~~roles~~. Although there are many widespread tendencies as to which roles exist and how they are expressed, for now I will simply specify the roles for each lexical ingredient seperately. German phrases and clauses almost always have a "principal" role, which for phrases will be called the ~~container~~ (German: *Behälter*, typically using a *Genitiv* junctor) and for clauses will be called the ~~protagonist~~ (German: *Protagonist*, typically using a *Nominativ* junctor).
+
+These principal roles only very rarely appear to be absent, like the absence of a protagonist with weather verbs. In contrast, additional roles are spawned by many lexical items, like the well-known roles of (di)transitive verbs. However, adjectives and nouns can also spawn additional roles, in German typically using grammaticalised prepositions. For example, the adjective *froh* 'happy' uses the preposition *über* 'above, over' for the origin of the happiness, or the noun *Reaktion* 'reaction' using the preposition *auf* 'on top of' for the event causing the reaction.
+
+### Building a recipe
+
+Very simple utterances can consist of just an assertion (e.g. imperatives) or just an identification (i.e. answers to content questions). Recipes for such utterances consist of just a single predicate or just a single referendum. For more complex utterances various of the previously discussed ingredients are combined into larger recipes consisting of multiple instructions.
+
+The generation of a recipe can be formalised as a very simple recursive procedure shown in [@next]. This procedure is completely context free as there are no restrictions on the generation at this level of abstraction. The notation used here is inspired by generative rewrite rules for constituency trees, but they work slightly differently to generate a dependency tree. The plus symbol stands for modification of the first element on the right side of the arrow. The arrow itself literally means replacement of the left side with the right side. Additionally, in the notation below the vertical bar stands for "or", the round brackets indicate optionality and the superscripted (Kleene) star indicates that the enclosed elements can occur zero or more times. 
+
+::: ex
+Formalisation of the generation of a recipe:
+
+1: base → instruction + (base)\* \
+2: instruction → nucleus + (junctor) + (specifier)\* \
+3: nucleus → predicate | referendum | admodifier
+:::
+
+The central elements of a recipe are the instructions. Using the first rule, instructions are inserted recursively modifying other instructions. For readability of the recipe I propose to write each instruction as a single line, using indentation for modification. Each instruction has an obligatory nucleus with optionally a junctor in front, separated by a colon, and optionally specifiers in round brackets at the end of the line. These details of the formatting of a recipe are just cosmetic decisions.
+
+Randomly applying the above rules might result in a recipe like in [@next]. However, when building a real recipe, each instruction will immediately be constructed with actual linguistic content before moving to the generation of a subsequent instruction. A "skeleton" recipe like in [@next] will thus never be generated and it is just shown here to illustrate the formalisation in [@last].
+
+::: {.ex noFormat=true}
+```
+predicate (specifier)
+  junctor: referendum (specifier)
+    admodifier
+  admodifier
+  junctor: predicate (specifier)
+    junctor: referendum
+      junctor: referendum
+```
+:::
+
+To illustrate the dependency nature of such a recipe, the first three instructions from [@last] are shown as a dependency tree in [@fig:dependency]. The difference between such a dependency tree and a constituency tree is not really substantial. When the procedure in [@llast] is interpretated as a set of classic generative rewrite rules, then the first three instructions from [@last] result in a constituency tree as shown in [@fig:constituency]. Added to this figure is a notion of headedness, as indicated by the arrows. When these arrows are "collapsed" by inserting the arrow-origin into the arrow-goal, then the same dependency structure as shown in [@fig:dependency] is obtained. This demonstrates that a constituency structure (with an additional notion of headedness) is equivalent to a dependency structure. The only difference is that the constituent tree explicitly includes the history of application of the rewrite rules.
+
+![Example of a dependency tree generated by the formalisation in [@llast], illustrated here for the first three lines of the example in [@last].](figures/dependency){#fig:dependency width=63%}
+
+![Consituent tree for the same example as in [@fig:dependency]. This structure is the result of interpreting the formalisation in [@last] as generative rewrite rules. The arrows indicate the headedness of each constituent.](figures/constituency){#fig:constituency}
+
+How to choose an appropriate linguistic content is to a large extent a matter of speaker choice, which seems most profitably to be handled by the kind of large language models developed recently. However, grammatical restrictions start to appear as soon as individual ingredients are chosen, specifically after any chosen nucleus. There are basically three kinds of syntactic restrictions: any chosen nuclues typically will restrict (i) the choice of junctor in the instruction, (ii) the choice of specifiers in the instruction, and possibly (iii) the choice of junctors in subsequent modifying instructions. 
+
+Each instruction has an obligatory ~~nucleus~~ with optionally a ~~junctor~~ in front (separated by a colon) and optionally ~~specifiers~~ following (in round brackets). For example, the first instruction of the recipe in [@nnext] has a nucleus *hören* 'to hear' with a specifier indicating that it should be put in the *Perfekt* form. There is no junctor here, although a conjunction like *und* 'and' or *aber* 'but' could have been added.
+
+Each instruction has two further elements, which are less obviously present in the recipe. First, each instruction indicates which element it is modifying by indentation. In the example below, the first instruction is not indented, so there is no modification of an earlier instruction. Second, each instruction is either a clause, a phrase or an admodifier. In the example below, the first instruction is inferred to be a clause. This is the default inference for a verbal nucleus like *hören* 'to hear'. To simplify the recipes, such defaults are not explicitly written down.
+
+::: ex
+Das kleine Kind hat gestern gehört, dass sein Vater Bürgermeister wird.
+:::
+
+::: {.ex noFormat=true}
+```
+hören (perfekt)
+  Hörende: Kind (definit)
+    klein
+  gestern
+  Gehörte: Bürgermeister (werden)
+    Werdende: Vater
+      Behälter: Kind
+```
+:::
+
+The second instruction in [@last] indicates by indentation that it modifies the first instruction. The relation *Hörende* is just a German name for the protagonist role spawned by the verb *hören* of the modified instruction. The nucleus noun *Kind* 'child' by default is inferred to be the head of a phrase. The third instruction *klein* 'small' only consist of a nucleus, modifying *Kind* from the second instruction with a default relationship (i.e. there is no junction).
+
+The fourth instruction *gestern* 'yesterday' has only a single indentation, indicating that it modifies the clause *hören* of the first instruction. Crucially, this means that the possibility of the modification of the phrase *Kind* is now finished. This allows for the formulation of this phrase to be completed. In general, modification in the recipe is always immediate: it is not possible to resume modification later, once a hierarchically higher base is modified.
+
+# Syntactic functions and ingredient classes
+
+## Syntactic functions
+
+in a specific utterance, each ingredient has a syntactic function. it is possible (and useful) to enumerate the ingredients that can be used in a syntactic function. Such a class of elements is alike to a part of speech. Ho
+
+The main question is thus which syntactic functions should be distinguished. Each function then defines a class. 
+
+function determines class! how to define a syntactic function? 
+
+for heads: form of predicate and referendum
+for operators: classified by the kind of modification:
+
+- what kind of base is modified? Main options: modification of predicate or referendum. Additionally: some limited groups of modification of operators 
+- what is the positional relation to the modified base? (e.g. bound, syntactically fixed, positionally variable, note that variable+bound also is possible). A class is simple a group of ingredients with the same positional relation, whatever it is.
+
+## Parts of speech
+
+Ingredients can be categorized into classes on the basis of their syntactic characteristics. However, such ingredient classes ("parts of speech") are not an atomic feature of the morphosyntax in YAST, but a secondary consequence of the possible syntactic functions of the ingredients. In the end, when considering all morphosyntactic phenomena, I expect that each ingredient will have its own individual syntactic characteristics, so ultimately each ingredient will be its own class. When scrutinizing all linguistic details, ingredient classes will dissolve into an ever expanding pile of subclasses. 
+
+Still, a few large classes, somewhat reminiscent of traditional parts of speech, can profitably be identified. However, these classes should not be expected to be perfectly homogeneous (i.e. they will always be internally variable), nor will they be complementary (i.e. they will always overlap). 
+
+Moreover, the group of ingredient that belong to a certain class is not fixed. In principle, all ingredients can occur in all classes because the creativity of language use allows ingenious speakers to employ any ingredient anyway they like. So, in principle each class includes the whole language. However, the probability for a specific ingredient to occur in a class is strongly skewed. I will pretend here that inclusion of an ingredient into a class is a yes/no question, but this is a strong simplification. In reality the question of the class-membership of an ingredient is a probabilistic decision.
+
+The major elements of a recipe as defined in the previous section are the most extensive of these ingredient classes. The four major kinds of ingredients are recapped briefly in [@next] below. These classes are defined in such a way that they are probably universally applicable to all human languages. To get closer to the traditional parts of speech, these macro-classes will be subdivided in this chapter into smaller groups based on language-specific distributional characteristics.
+
+::: ex
+Macro-classes in YAST
+
+- **Heads.** Heads are ingredients that can be freely modified by multiple other ingredients. In German, heads basically include verbs, nouns, adjectives but also some adverbs.
+- **Admodifiers.** Admodifiers are operators (i.e. they cannot be modified, or only allow for very limited modification) that have some positional flexibility. In German, admodifiers are basically adverbs and numerals.
+- **Specifiers.** Specifiers are operators that have no positional variability. In German this includes most morphology as attached to heads (e.g. affixes for nominal plural, verbal past or adjectival comparative), but also all kinds of syntactic "particles".
+- **Junctors.** Junctors are operators that indicate the kind of modification. In German this includes prepositions, subjunctions and conjunctions, but also grammaticalised roles with their accompanying case marking.
+:::
+
+Sometimes rules that need to know classes (e.g. postpositions). Also: attribute genitives: pre-nominal with proper names, otherwise postnominal. Also: order of adjectives
+
+Note: compounding is extremely frequent to make new bases
 
 morpheme classes are language specific
 
@@ -187,140 +388,40 @@ Roots that are noun, verb and adjective: fett, harsch, laut (lauten/läuten), le
 - die seit gestern sehr laute Glocken sind nervig
 - die Laute ist am nervigsten
 
-## Elements of a recipe
+## Heads
 
-### Generating a recipe: ingredients
+Heads are used either as predicate or as referendum (see [@sec:heads]).
 
-(Postulate G1)
+Heads will be classified on the basis how they are used in the two main syntactic functions, namely as (i) predicate and as (ii) referendum. 
 
-In the syntactic model pursued here, the production of an utterance consists of two stages: first a ~~recipe~~ is created, followed by the application of ~~rules~~. Planning an utterance means to create a recipe for it, and this formation of a recipe is a generative process. This generative process also has some "rules"–that is, restrictions on which recipes can be constructed. However, these restrictions are relatively minor, even for a strongly flectional language like German. Other languages might exhibit even less constraints in this regard. The relative freedom to produce recipes reflects the wide leeway speakers have to produce a wide variety of utterances. In extremis, the automatic rules will sometimes have to "work around" the instructions in the recipe to mould the speaker's creative intention in accordance to the structure of the language.
+- predicate with person/number inflection ("indexing"!?) ("verb")
+- predicate with auxiliary
+  - *werden/sein/bleiben* ("adjectives" and participles and alienable anthroponyms)
+  - only *sein*: (various "adverbs")
+  - *haben* (various nouns, like Angst, Schmerz, Hoffnung, Vertrauen, Sehnsucht, Appetit, Durst, Hunger, Kopfschmerzen, Fieber, Schnupfen, Zeit, Geduld, Talent, Recht, Glück, Pech, Einfluss, Ferien, Urlaub, Dienst, Pause, Geld, Schulden, Besitz, Eigentum) Note: *Freude haben an etwas*
 
-The basic building blocks of a recipe will be called ~~ingredients~~ (in keeping with the cooking metaphor). Basically, ingredients are morphemes, but they also include fixed grammaticalized combinations of morphemes (like non-compositional idioms) and multi-part grammatical structures (like auxiliary constructions). Semantically, ingredients induce a state-of-mind at the addressee, probably consisting of a multitude of possible situations in accordance to the communally developed practice of using the ingredient (i.e. the ingredient's "meaning"). The act of using an ingredient intends to conjure up some of those possible situations in the mind of the addressee, narrowing down the interpretative possibilities with each further ingredient used.
+- referendum with fixed genus ("noun")
+- referendum with agreement and free genus ("adjective", participles)
+- referendum neutrum with -en ("verb")
 
-Restrictions on building a recipe mainly consist of limits on which ingredients can be used in specific points in the generation. There will ultimately be two different kinds of restrictions, namely (i) restrictions on lexical insertion of ~~heads~~, which will be minimal, and (ii) restrictions on adding grammatical ~~operators~~, which are strongly determined by the chosen head. To fully describe these limits it will ultimately be necessary to specify individual possibilities separately for each ingredient of a language, because ultimately each ingredient has different distributional constraints and tendencies. In the end, something like a Large Language Model with millions of parameters is necessary to fully describe the distributional detail of a language. However, in this book I will only describe some general patterns with the understanding that these patterns are just a starting point for the subsequent specification of more detail. Ultimately, there is clearly a need for some kind of "grammatical lexicon" that includes the full syntactic detail for each ingredient in humanly readably form (as opposed to the unintelligible black box that is a Large Language Model).
+Classes of heads can be established by the possibility of a base being the center of any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive adjustor, or as (iv) adverbial adjustor. Five German base classes can then be defined by the distribution as shown in [@tbl:heads]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the classes of adverbs and numerals actually consist of various syntactic subclasses.
 
-### Combining ingredients: base & modifier
+--
+               *Verb*      *Adjektiv*   *Anthroponym*   *Nomen*   *Adprädikat*
+------------- ----------- ------------ --------------- --------- --------------
+Predicate      +INFL       AUX+INFL     AUX+INFL        –         *sein*+INFL
 
-(Postulate G2)
+Referendum     gender \    gender \     gender \        gender \   
+               choice \    choice \     fixed \         fixed \    –
+               *‑end*+AGR  +AGR                                    
 
-Language extends the usefulness of its ingredients by combining multiple of them into larger utterances. The underlying semantic effect of the combination of ingredients is probably something quite general like intersecting the two sets of possible situations. Uttering an ingredient-combination asks the addressee to search for possible situations that are in accordance with both ingredients. When, at first, the addressee might not be able to find any feasible intersection, this forces a reconsideration of possible interpretations of the ingredients, hopefully eventually leading to some kind of "understanding" on the part of the addressee.
+--
 
-Additionally, a central tenet of human language is that combinations of linguistic elements is in general asymmetrical. Ingredients are not simply combined as equals, but there is always a ~~base~~ that is modified by another linguistic element, the ~~modifier~~. Symmetrical connections with European-style *and*-coordination seem to be a relatively late addition to the grammatical spectrum. For the recipe, I will assume that all combinations of ingredients in human language are asymmetrical.
+Table: Syntactic expression of German heads. Five large German word classes can be defined by how heads are expressed when used as predicate and as referendum. (INFL=person/number inflection (*Verbflektion*), AGR=case/number/gender agreement (*Kongruenz*). AUX=*werden/sein/bleiben*) {#tbl:heads}
 
-Bases can have multiple modifiers and each modifier can itself be a base that again can be modified. In this way, a recipe is in essence just a complex hierarchical dependency structure. When a base has multiple modifiers, then the ordering of these modifiers is often meaningful, so the ordering will have to be encoded in the recipe. However, in many situations the actual ordering of modifiers is strongly restricted in a language, for example in morphologically bound constructions. Such templatic restrictions are encoded in the rules, not in the recipe. Yet, there are also situation in which the ordering is not completely fixed, but there nevertheless are strong tendencies, for example in the ordering of attributive adjectives in many languages. It is currently unclear how to best encode such tendencies. For now the recipe will simply allow all possible orders, also the unusual variants.
+*Nomen*
 
-### Syntactic elements: head & operator
-
-(Postulate S1)
-
-To streamline the raw intricacy of pure modification, it is helpful to distinguish two different kinds of elements in the hierarchical structure. First, when an ingredient cannot itself be modified again, or when it can only have a single modifier from a closed set of possible ingredients, then it will be called an ~~operator~~. Second, when an ingredient potentially allows for more than one modifier in parallel, then it will be called a ~~head~~. It is important to note that these terms describe syntactic functions and not specific ingredients. One and the same ingredient might be able to occur in different functions depending on the context in which it is used. Also note that this distinction between operator and head is largely independent from the distinction between base and modifier from the previous section. Both heads and operators can be both modifiers and bases. However, the modification of operators is quite restricted, so they typically do not function as the base of a modification.
-
-::: ex
-Syntactic elements in YAST
-
-- ~~operator~~: an ingredient that itself cannot be modified or can only have a single modifier from a closed class of possibilities.
-- ~~head~~: an ingredient that can be modified by operators, adjustors or other heads.
-:::
-
-fixed operators vs. variably order operators
-multiple operators form a stack
-fixed operators => specifiers
-multiple modifiers of a head are layered: order is important
-
-
-[comment: Other terms instead of "adjustor" might be: adorner, additor, admodifier, adaptor]::
-
-The current definitions of the terms "operator" and "head" might not always coincide with what one might otherwise conceive of as an operator or head. However, the effect of these definitions seems close enough to most other applications of these terms that it seemed worthwhile to retain these terms, notwithstanding possible confusion. The term "adjustor" is newly conceived here to be reminiscent of the traditional terms "adjective" and "adverb", while indicating that its function is to "adjust" or "alter" another ingredient.
-
-Typical operators are bound morphemes, but there are many other non-bound linguistic elements that are operators under the current definition (namely, that they cannot themselves be modified), for example intensifiers, quantifiers, adpositions or subjunctions. Typical adjustors are adverbs and attributive adjectives, which only allow for limited modification like gradation and intensification. Finally, heads typically comprise verbs and nouns, but they also includes most adjectives, and even some adverbs. 
-
-Hierarchical structure: stacking, layering & embedding
-
-The hallmark of human language is the possibility to productively combine many different linguistic elements into large utterances. One important aspect of morphosyntactic structure is that linguistic elements can in turn consist of multiple linguistic elements, leading to a hierarchical internal structure of the utterance. This hierarchical structure is commonly modeled in syntactic theories by using the mechanism of recursion. However, not all hierarchical structures are equally in need of a recursive treatment.
-
-Roughly coinciding with the three kinds of syntactic elements introduced above, I propose to break down the hierarchical structure of a recipe into three different levels of modification, which I will refer to as ~~stacking~~, ~~layering~~ and ~~embedding~~. These three levels of hierarchical structure are conceptually constructed as variations of each other, all three being different kinds of modification. Specifically, layering is a special case of stacking, and embedding is a special case of layering. In practice, however, I will use the term "stacking" only for modification that is not layering nor embedding. Likewise, "embedding" is only used for layers that that themselves include further layers.
-
-Crucially, only embedding will be modeled with recursion. Stacking and layering are much simpler and do not need recursion. They can easily be modeled by iteration, i.e. stacked and layered modifiers are simply applied one after the other without intricate branching.
-
-::: ex
-Hierarchical structures in YAST
-
-- ~~stacking~~ is modification by operators.
-- ~~layering~~ is modification by an adjustor or head, possibly including stacking itself (i.e. they might have their own operators).
-- ~~embedding~~ is modification by a head that itself exhibits layering (not just stacking).
-:::
-
-The term ~~stack~~ is proposed for a base with all its operators. Multiple operators modify the base iteratively, as the order of the operators is sometimes important. A typical example of a stack is a fully inflected wordform, consisting of a base root with its modifying bound morphemes. However, also non-bound operators are part of the stack, like nominal focus particles. A stack will be written as a single line in the recipe.
-
-A typical ~~layer~~ is an attributive adjective, an argument or an adverbial adjunct. Each layer is a new line in the recipe, with indentation showing the dependency. The ordering of the layers in the recipe is often crucial for the ordering in the resulting utterance. 
-
-Only when such a layer itself again has layers of its own then the point is reached of real recursion in language. Such recursive layers are then called ~~embeddings~~. Note that the term embedding is used here both for nominal and verbal recursive structures.
-
-[comment: There is an unfortunate inconsistency in the structure of this terminology. First, ideally the phenomenon would be a term ending in *-ing*, while the concrete instantiation would not have this suffix (i.e. *a stack* vs. *stacking* and *a layer* vs. *layering*). However, this regularity breaks down with the term *embedding*, which is used for both meanings (i.e. *an embedding* as instantiation and *embedding* as the phenomenon. Alternatively *an embed* might be used for the instantiation, but that sounds weird). Second, a stack is the complete set of all modifiers added by stacking, while a layer and an embedding are single modifications added by layering or embedding.]::
-
-These three levels of modification suggest an evolutionary development in that human language first developed stacking, then layering and then embedding. However, that is purely speculation because all human languages currently appear to employ all three kinds of hierarchical structure. Also note that contemporaneous language change does not follow the path from stacking to layering to embedding. In contrast, grammaticalization typically develops in the reverse direction, from embedding to layering to stacking.
-
-### Heads: predicate & referent
-
-(Postulate G3 and G4)
-
-Heads, as defined previously, are ingredients that can be modified freely, and they alone allow for embedding. For German (and possibly for all human languages), it only appears to be necessary to distinguish two different kinds of heads, coinciding with two central functions of human language, namely identification and assertion. 
-
-First, speakers attempt to convey which entities they are talking about and these entities then have to be identified by the addressee. The primary ingredient that is used to encode the identity of an entity in an utterance is called a ~~referent~~. This referent is the head of a referential expression that includes all its modifiers (which might themselves again be modified). The whole referential expression is called a ~~phrase~~. A referent is typically encoded by a noun, but many other parts of speech can also be used as referent. Note that, differently from most syntactic theories, there is only one kind of phrase in YAST, roughly equivalent to what is called "noun phrase" in other approaches.
-
-Second, in a typical utterance some kind of assertion is made about these entities. The primary ingredient that is used to encode the assertion is called a ~~predicate~~. The predicate is the head of an assertion that also includes all its modifiers (which might themselves again be modified). This whole assertive expression is called a ~~clause~~. A predicate is typically encoded by a verb, but other parts of speech can also be used predicatively.
-
-::: ex
-Heads in YAST
-
-- ~~referent~~, the head of a ~~phrase~~, used for ~~identification~~
-- ~~predicate~~, the head of a ~~clause~~, used for ~~assertion~~
-:::
-
-It is by no means necessary for identification and assertion to be encoded by syntactic heads and their encompassing expressions. Personal pronouns, demonstratives and content interrogatives can be interpreted as identificational expression that are operators (i.e. they cannot be modified). Likewise, interjections and conversational particles can be seen as assertions without much internal structure. Still, it does not seem to be a coincidence that exactly the most elaborate syntactic structures are precisely those structures that are used for two main communicative elements in a linguistic utterance.
-
-Heads can be modified by multiple other heads, each with their own complex internal structure and each with their own relation to their superordinate head. These relations between heads and modifier-heads are often explicitly marked in the linguistic structure by operators that are called ~~junctors~~ here. In German, phrasal junctors are prepositions or case marking ("flagging"), while clausal junctors are subjunctions, conjunctions and a few preposition-like operators. Default "unmarked" relations between heads only occur in the form of appositive phrases and relative clauses.
-
-### Operators: junctors & specifiers
-
-(postulate S2)
-
-### Modification: attribute, adverbial & argument
-
-
-### Building a recipe
-
-very simple utterances can consist of just an assertion (e.g. imperatives) or just an identification (i.e. answers to content questions). Recipes for such utterances would then consist of just a predicate or just a referent.
-
-Sentences consist of an assertion about some referent(s) with various additional modification.
-
-
-## Ingredient classes
-
-### Parts of speech
-
-Ingredients can be categorized into classes on the basis of their syntactic possibilities. When considering all linguistic evidence, I expect that – in the end – each ingredient will have its own special distributional characteristics, so ultimately each ingredient will be its own class. Yet, a few large classes can profitably be formulated, although these classes should not be expected to be perfectly homogeneous. When scrutinizing the details, these classes will dissolve into an ever expanding pile of subclasses.
-
-Ingredients will be classified on the basis how they are used in the the four syntactic functions, namely in (i) referential phrases, (ii) predicative clauses, (iii) phrasal attributes, and (iv) clausal adverbials. The classification of bases will be first discussed. This will be followed by a discussion of the classification of operators. Recall that bases are ingredients that can be modified, while operators are ingredients that cannot be modified.
-
-Note: classes in German are mostly necessary for the generation of a recipe. There are only very few phenomena in the rules that need to know additional classes (e.g. postpositions). Also: attribute genitives: pre-nominal with proper names, otherwise postnominal. Also: order of adjectives
-
-Note: compounding is extremely frequent to make new bases
-
-### Base classes
-
-Base-classes are established by the possibility of a base being the center of any of the four major syntactic functions, namely whether they can be used as (i) referential head, (ii) predicative head, (iii) attributive adjustor, or as (iv) adverbial adjustor. Five German base classes can then be defined by the distribution as shown in [@tbl:baseclasses]. These classes largely correspond to the traditional categories as used in German grammar, except for adverbs, which turn out to be a rather incoherent hybrid class. The first three classes (*Nomen, Verb, Adjektiv*) are very large, while the latter two (*Adverb, Numerale*) are strongly restricted in size. Additionally, as indicated by the "plus-minus" symbol, the classes of adverbs and numerals actually consist of various syntactic subclasses.
-
-Syntactic function   | *Nomen* | *Verb* | *Adjektiv* | *Adverb* | *Numerale*
-:---------           | :-: | :-: | :-: | :-: | :-:
-Referential head     |  ✓  |  ✓  |  ✓  |  ±  |  ✓  
-Predicative head     |  ✓  |  ✓  |  ✓  |  ±  |  ±  
-Attributive adjustor |  –  |  ✓  |  ✓  |  ±  |  ✓  
-Adverbial adjustor   |  –  |  –  |  ✓  |  ✓  |  ±  
-
-Table: Syntactic possibilities of German base-classes. {#tbl:baseclasses}
-
-### *Nomen*
+Humannomen (better: alienable human noun!): Sohn/Freund geht nicht, Wirklichkeit event. wohl
 
 The class of *Nomen* corresponds to the traditional concept of nouns as it is used in German grammar, and it is arguably the largest of the base classes. Nouns in German have a lexically determined inherent gender when used as a referential head [@next a] and they can all be used as predicative head with the help of a copula, either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain' [@next b]. Note that such a "real" predicative use of a noun does not have an article. Many nouns can only be used as "real" predicative head (i.e. without article) in the plural to indicate the generic meaning [@next c]. With an article the predicative use of a noun turns into an identificational construction to be discussed later (see ???).
 
@@ -335,7 +436,7 @@ Syntactic uses of a *Nomen* in German
 
 German nouns can only be used as an attributive adjustor and as an adverbial adjustor using lexically-specific morphological derivations with suffixes like *‑haft, ‑ig, ‑isch, ‑lich, ‑gemäß, ‑mäßig* or *‑artig*. The availability of these derivations are strongly lexically dependent. Many nouns allow for multiple such derivations (e.g. *kindhaft, kindisch, kindlich, kindgemäß*), while others do not seem to allow any of these derivational suffixes (e.g. *Stuhl* or *Schuh*). Such uses of nouns as adjustors are not included here as syntactic possibilities because these suffixes are not productively available to all nouns.
 
-### *Verb*
+*Verb*
 
 The class of *Verb* also corresponds to the traditional concept as used in German grammar, illustrated here with the verb *lesen* 'to read' in [@next]. When used as a predicative head a German verb has person-number-tense inflection [@next a]. All German verbs can be used as a referential head in the *Infinitiv*, a form ending in *-en* and written with a capital in German orthography when used as a referential head [@next b]. As a referential head, the gender of a verb is always neuter.
 
@@ -352,9 +453,9 @@ Syntactic uses of a *Verb* in German
 - "Fake" adverbial adjustor (depictive): *Man hat mich in Apfelbäumen **lesend** erwischt.*^[~~DWDS~~: Zeit Magazin, 15.11.2012, Nr. 47.]
 :::
 
-### *Adjektiv*
+*Adjektiv*
 
-The class of *Adjektiv* consists of ingredients that can be used in all four syntactic functions from [@tbl:baseclasses], as illustrated with the adjective *groß* 'large' in [@next]. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head [@next a] the gender can be freely assigned. Second, both as a referential head [@next a] and as an attributive adjustor [@next c], adjectives in German have case-number-gender agreement suffixes, so-called *KNG-Kongruenz* in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head [@next b], either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain'. When used as an adverbial adjustor it is used without any further morphological change [@next d]. Note that it is also possible to use adjectives as "fake" adverbials, i.e. to use them depictively [@next e], similar to the use of participles in [@last d]. This is treated as an attributive adjustor, though with a different syntactic appearance in the sentence.
+The class of *Adjektiv* consists of ingredients that can be used in all four syntactic functions from [@tbl:heads], as illustrated with the adjective *groß* 'large' in [@next]. Grammatically, there are few special characteristics of the different uses of adjectives. First, when used as a referential head [@next a] the gender can be freely assigned. Second, both as a referential head [@next a] and as an attributive adjustor [@next c], adjectives in German have case-number-gender agreement suffixes, so-called *KNG-Kongruenz* in the German grammatical tradition. Third, an adjective needs a copula when used as a predicative head [@next b], either *werden* 'to become', *sein* 'to be', or *bleiben* 'to remain'. When used as an adverbial adjustor it is used without any further morphological change [@next d]. Note that it is also possible to use adjectives as "fake" adverbials, i.e. to use them depictively [@next e], similar to the use of participles in [@last d]. This is treated as an attributive adjustor, though with a different syntactic appearance in the sentence.
 
 ::: ex
 Syntactic uses of an *Adjektiv* in German
@@ -388,7 +489,7 @@ German monomorphic adjectives
 *albern, alt, andere, arg, arm, äußere, bang, barsch, besondere, bequem, besser, bieder, billig, bitter, blank, blass, blau, bleich, blind, blöd, blond, bloß, böse, braun, brav, breit, brüsk, bunt, derb, deutsch, dicht, dick, direkt, doof, doppelt, dreist, dumm, dumpf, dunkel, dünn, dürr, düster, echt, edel, egal, eigen, einzig, eitel, elend, eng, enorm, ernst, erst, extrem, fad, falsch, faul, feig, fein, feist, fern, fesch, fest, fett, feucht, fies, finster, firm, firn, flach, flau, flink, flott, forsch, frech, frei, fremd, froh, fromm, früh, ganz, gar, geil, gelb, gemein, genau, gerade, gering, geschwind, gesund, gewiss, glatt, gleich, grau, greis, grell, grob, groß, grün, gut, hager, harsch, hart, heikel, heil, heilig, heiser, heiß, heiter, hell, herb, hintere, hohe, hohl, hübsch, innere, irre, jäh, jung, kahl, kalt, kaputt, karg, keck, kess, keusch, kirre, klamm, klar, klein, klug, knapp, komplett, krank, krass, kraus, krude, krumm, kühl, kühn, kurz, lahm, lang, lasch, lau, laut, lauter, lässig, leck, lecker, ledig, leer, leicht, leise, letzt, licht, lieb, lila, lind, linke, locker, los, mager, matt, mies, mild, minder, morsch, müde, muff, munter, mürbe, nächste, nackt, nah, nass, nett, neu, niedere, nüchtern, obere, öd, offen, orange, platt, plump, prall, prüde, quick, rank, rar, rasch, rau, rechte, rege, reich, reif, rein, richtig, roh, rosa, rot, rüde, rund, sacht, sanft, satt, sauber, sauer, schal, scharf, scheu, schick, schief, schlack, schlaff, schlank, schlapp, schlau, schlecht, schleunig, schlicht, schlimm, schmal, schmuck, schnell, schnöde, schön, schräg, schrill, schroff, schüchtern, schwach, schwanger, schwarz, schwer, schwul, schwül, seicht, selig, selten, sicher, simpel, sohr, spät, spitz, spröde, stark, starr, steif, steil, stetig, stier, still, stolz, straff, stramm, streng, stumm, stumpf, stur, süß, tapfer, taub, teuer, tief, toll, tot, total, träge, treu, trocken, trüb, ungefähr, untere, übel, übrig, vage, viel, voll, vollkommen, vordere, wach, wacker, wahr, warm, weh, weich, weise, weiß, weit, welk, wild, wirr, wirsch, wund, wüst, zäh, zag, zahm, zart*
 :::
 
-### *Adverb*
+## *Admodifiers*
 
 The class of *Adverb* is a rather disparate group of ingredients from a syntactic point of view. This class will consequently be further subdivided in at least five different syntactic subclasses. The number of ingredients in this class is small: there are a few affixes that can be used semi-productively to produce adverbs, but other than those there are just short of 200 monomorphemic adverbs in German (as listed at the end of this section). These monomorphemic adverbs are often semi-transparent to German speakers but completely grammaticalized in their adverbial use, e.g. *nebenbei* 'lit. besides+by' or *deswegen* 'lit. of the+because of'.
 
@@ -405,6 +506,14 @@ The ingredients to be included here as adverbs can be positively characterized b
 - ***Gestern** suchte die Polizei nach dem Jungen.*
 - ***Bald** wird die Befragung beginnen.*
 :::
+
+adverbs after genitiv!
+
+- Am Erstlauf des BR715 gestern nahm auch der Vorsitzende der chinesischen Plankommission, Chen Jinhua, teil. (Berliner Zeitung, 29.04.1997)
+- In der Entscheidung des Gerichts gestern hieß es, der italienische Anspruch, den mutmaßlichen Kriegsverbrecher anzuklagen, habe Vorrang […]. (Berliner Zeitung, 04.03.1997)
+- […] sondern auch die Vorstellung des Regierungsprogramms gestern betrifft. (Deutscher Bundestag: Plenarprotokoll Nr. 18/73 vom 04.12.2014, S. 6932)
+- […] wenn ich an die Rede des Bundeskanzlers gestern denke […] (Deutscher Bundestag: Plenarprotokoll Nr. 07/102 vom 21.05.1974, S. 6710.)
+- Das ganze Verhalten des Mannes gestern zeigte mir evident, daß er mehr als nur ein Gerücht wußte, daß irgend etwas zwischen gemäßigter Arbeiterschaft, Bürgertum und Heer in Vorbereitung sein muß. (Klemperer, Victor: [Tagebuch] 1943. In: ders., Ich will Zeugnis ablegen bis zum letzten, Berlin: Aufbau-Taschenbuch-Verl. 1999 [1943], S. 32)
 
 Now, investigating the class of adverbs in more detail, there turn out to be at least five different subclasses depending on their syntactic possibilities. All adverbs can be used adverbially, but they differ in whether they can be used as referential head, as predicative head and/or as attributive adjustor. Confusingly, the resulting syntactic classes do not show any obvious semantic differentiation, so they will simply be numbered here. There is a tendency for adverbs with a local meaning to allow for more different syntactic uses, while adverbs with a modal meaning have fewer syntactic uses. However, this is just a statistical tendency and it is completely unclear to me whether this observation has any ramifications for the understanding of the different syntactic possibilities of adverbs.
 
@@ -516,7 +625,7 @@ There are still a few ingredients that need special attention. First, the double
 
 Second, most dictionaries of German categorize the ingredients *nahezu, nämlich, schier, sehr, sogar, überaus* and *weitaus* as adverbs.^[No attempt is made to propose English translations for these ingredients, because a faithful translation for them is extremely context-dependent.] They can indeed be used adverbially without being modifiable themselves, like the adverbs listed in [@adverbstype4]. However, they are not very frequent in this adverbial usage. They occur much more frequently in narrow-scope modification, like *schier unmöglich* 'practically impossible' or *weitaus größer* 'much larger'. Crucially, they are syntactically special in that they cannot be used as the sole content of the first position of the sentence, i.e. as the *Vorfeld*. This makes them different from all adverbs discussed in this section. They are not classified as adverbs here, but as non-initial particles (see ???).
 
-### *Numerale*
+*Numerale*
 
 The class of *Numerale* (numerals) is arguably a subclass of adjectives, but it has various different syntactic characteristics that warrant a separate class. First note that numerals are actually bases (and not operators), because they can be modified [@next a]. Also note that numerals are typically ordered at the start of a chain of attributive modifiers, but it is also possible for them to occur after other attributes in the noun phrase [@next b].
 
@@ -568,30 +677,12 @@ German monomorphic numerals
 - Suppletive fractions: *halb ("zwei‑tel"), drittel ("drei‑tel")*
 :::
 
-### Stems used in multiple base classes
-
-- Nomen/Verb (very many!)
-- Nomen/Adjektiv (only ~10?): *das Deutsch/deutsch, das Doppel/doppelt, das Fett/fett, der Gram/gram, der Greis/greis, der Laut/laut, das Leck/leck, das Licht/licht, das Recht/recht, der Schmuch/schmuck, der Tot/tot, das Wild/wild*
-- Verb/Adjektiv (219 out of 300 adjectives): 
-- Numerale/Adjektiv: *hundert, tausend, Million* ('very many')
-- Numeral/Nomen: *Million* ('one million in monetary value')
-- Adverb/Nomen: *morgen/Morgen* ('tomorrow/morning')
-
-Die Zeit, 23.02.2016 (online) 
-Ab März dürfen die hunderte [tausende/Millionen] Jahre alten Bauwerke nicht mehr bestiegen werden.
-Der Tagesspiegel, 28.05.1997 
-Die Million kommt von diversen Sponsoren.
-
-## Operator classes
-
-Junctors, Limiters
-
-Quantors, Abtönungspartikel, Konjunktionaladverben, Epithesis/Diathesis, etc.
-
-### Junctors
+## Junctors
 
 phrasal: both attributive and adverbial (and argument!)
 clausal: only adverbial. Attributive clauses do not have junctor
+
+head-specific roles (marked by case)! also: phrase: *Behälter* (genitive), clause *Mensuralergänzung* (accusative)
 
 ::: ex
 Phrasal junctors 
@@ -623,8 +714,11 @@ Conjunctions
 *aber, denn, doch, noch, oder, sondern, sowie, und, und zwar*
 :::
 
+## Specifiers 
 
-### Specifiers 
+Limiters
+
+Quantors, Abtönungspartikel, Konjunktionaladverben, Epithesis/Diathesis, etc.
 
 multiple specifiers	
 Rede von Wolfgang Clement, 14.01.2003
@@ -695,6 +789,28 @@ weitaus übertreffen, überwiegen, überragen
 :::
 
 *schier* also attributively: schiere Masse, schiere Überlastung, etc.
+
+## Stems used in multiple classes
+
+- Nomen/Verb (very many!)
+- Nomen/Adjektiv (only ~10?): *das Deutsch/deutsch, das Doppel/doppelt, das Fett/fett, der Gram/gram, der Greis/greis, der Laut/laut, das Leck/leck, das Licht/licht, das Recht/recht, der Schmuch/schmuck, der Tot/tot, das Wild/wild*
+- Verb/Adjektiv (219 out of 300 adjectives): 
+- Numerale/Adjektiv: *hundert, tausend, Million* ('very many')
+- Numeral/Nomen: *Million* ('one million in monetary value')
+- Adverb/Nomen: *morgen/Morgen* ('tomorrow/morning')
+
+Die Zeit, 23.02.2016 (online) 
+Ab März dürfen die hunderte [tausende/Millionen] Jahre alten Bauwerke nicht mehr bestiegen werden.
+Der Tagesspiegel, 28.05.1997 
+Die Million kommt von diversen Sponsoren.
+
+# Clause structure
+
+# Phrase structure
+
+# Context and indexing
+
+do these really belong together?
 
 # Old text
 

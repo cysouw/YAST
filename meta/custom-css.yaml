@@ -69,6 +69,11 @@ header-includes:
     margin-left: auto;
     margin-right: auto;
   }
+  .linguistic-example-number {
+    vertical-align: top !important;
+  }
+  pre {
+    margin: 0 0 !important}
   </style>
   ```
 # Webfont links. 
