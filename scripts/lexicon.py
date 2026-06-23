@@ -41,7 +41,7 @@ Lokalpräpositionen = ['an', 'auf', 'bei', 'gegenüber', 'hinter', 'in', 'neben'
 # adverbiale adjektive nicht trennbar von präposition (nicht vorfeldfähig):
 # kurz vor, seitlich vor, direkt vor, unmittelbar vor, dicht vor, knapp vor, schräg vor, weit vor, leicht hinter, östlich hinter, gerade über, hoch über, tief unter, gleich gegenüber
 # auch zusammen mit adverbien: dicht zusammen, gleich nebenan, genau hier
-Präpositionsspezifikation = ['dicht', 'direkt', 'eng', 'genau', 'gerade', 'gleich', 'hoch', 'knapp', 'kurz', 'lang', 'leicht', 'nah', 'schräg', 'tief', 'weit', 'östlich', 'seitlich', 'ungefähr', 'unmittelbar']
+Präpositionsspezifikation = ['dicht', 'direkt', 'eng', 'genau', 'gerade', 'gleich', 'hoch', 'knapp', 'kurz', 'lang', 'leicht', 'nah', 'mitten', 'schräg', 'tief', 'weit', 'östlich', 'seitlich', 'ungefähr', 'unmittelbar']
 
 # note 'werden' in both classes!
 Modalverben = ['dürfen', 'können', 'mögen', 'möchten', 'müssen', 'sollen', 'werden', 'brauchen']
